@@ -18,6 +18,7 @@ package im.vector.app.features.login
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import butterknife.OnClick
 import im.vector.app.R
 import im.vector.app.core.utils.openUrlInChromeCustomTab
@@ -36,6 +37,7 @@ class LoginServerSelectionFragment @Inject constructor() : AbstractLoginFragment
         super.onViewCreated(view, savedInstanceState)
 
         initTextViews()
+        selectEMS()
     }
 
     private fun updateSelectedChoice(state: LoginViewState) {
@@ -47,6 +49,11 @@ class LoginServerSelectionFragment @Inject constructor() : AbstractLoginFragment
             text = getString(R.string.login_server_modular_learn_more)
             textDecorationLine = "underline"
         }
+        loginServerChoiceMatrixOrg.isVisible = false
+        loginServerChoiceEms.isVisible = false
+        loginServerChoiceOther.isVisible = false
+        loginServerIKnowMyIdSubmit.isVisible = false
+        loginServerChoiceEmsLearnMore.isVisible = false
     }
 
     @OnClick(R.id.loginServerChoiceEmsLearnMore)

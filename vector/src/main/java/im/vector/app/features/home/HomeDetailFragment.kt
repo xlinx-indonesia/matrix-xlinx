@@ -38,6 +38,9 @@ import im.vector.app.features.call.VectorCallActivity
 import im.vector.app.features.call.WebRtcPeerConnectionManager
 import im.vector.app.features.home.room.list.RoomListFragment
 import im.vector.app.features.home.room.list.RoomListParams
+import im.vector.app.features.home.xcalls.XlinxCallsFragment
+import im.vector.app.features.home.xspace.XlinxSpaceFragment
+import im.vector.app.features.home.xwallet.XlinxWalletFragment
 import im.vector.app.features.popup.PopupAlertManager
 import im.vector.app.features.popup.VerificationVectorAlert
 import im.vector.app.features.settings.VectorPreferences
@@ -132,13 +135,23 @@ class HomeDetailFragment @Inject constructor(
     }
 
     private fun checkNotificationTabStatus() {
-        val wasVisible = bottomNavigationView.menu.findItem(R.id.bottom_action_notification).isVisible
-        bottomNavigationView.menu.findItem(R.id.bottom_action_notification).isVisible = vectorPreferences.labAddNotificationTab()
-        if (wasVisible && !vectorPreferences.labAddNotificationTab()) {
+//        val wasVisible = bottomNavigationView.menu.findItem(R.id.bottom_action_notification).isVisible
+//        bottomNavigationView.menu.findItem(R.id.bottom_action_notification).isVisible = vectorPreferences.labAddNotificationTab()
+        val wasCallsVisible = bottomNavigationView.menu.findItem(R.id.bottom_action_calls).isVisible
+        val wasSpaceVisible = bottomNavigationView.menu.findItem(R.id.bottom_action_space).isVisible
+        val wasWalletVisible = bottomNavigationView.menu.findItem(R.id.bottom_action_wallet).isVisible
+        bottomNavigationView.menu.findItem(R.id.bottom_action_calls).isVisible = vectorPreferences.labAddCallsTab()
+        bottomNavigationView.menu.findItem(R.id.bottom_action_space).isVisible = vectorPreferences.labAddSpaceTab()
+        bottomNavigationView.menu.findItem(R.id.bottom_action_wallet).isVisible = vectorPreferences.labAddWalletTab()
+        if ((wasCallsVisible || wasSpaceVisible || wasWalletVisible) && !vectorPreferences.labAddNotificationTab()) {
             // As we hide it check if it's not the current item!
             withState(viewModel) {
-                if (it.displayMode.toMenuId() == R.id.bottom_action_notification) {
-                    viewModel.handle(HomeDetailAction.SwitchDisplayMode(RoomListDisplayMode.PEOPLE))
+                if (it.displayMode.toMenuId() == R.id.bottom_action_calls) {
+                    viewModel.handle(HomeDetailAction.SwitchDisplayMode(RoomListDisplayMode.CALLS))
+                } else if (it.displayMode.toMenuId() == R.id.bottom_action_space) {
+                    viewModel.handle(HomeDetailAction.SwitchDisplayMode(RoomListDisplayMode.SPACE))
+                } else if (it.displayMode.toMenuId() == R.id.bottom_action_wallet) {
+                    viewModel.handle(HomeDetailAction.SwitchDisplayMode(RoomListDisplayMode.WALLET))
                 }
             }
         }
@@ -242,12 +255,17 @@ class HomeDetailFragment @Inject constructor(
     }
 
     private fun setupBottomNavigationView() {
-        bottomNavigationView.menu.findItem(R.id.bottom_action_notification).isVisible = vectorPreferences.labAddNotificationTab()
+//        bottomNavigationView.menu.findItem(R.id.bottom_action_notification).isVisible = vectorPreferences.labAddNotificationTab()
+        bottomNavigationView.menu.findItem(R.id.bottom_action_calls).isVisible = vectorPreferences.labAddCallsTab()
+        bottomNavigationView.menu.findItem(R.id.bottom_action_space).isVisible = vectorPreferences.labAddSpaceTab()
+        bottomNavigationView.menu.findItem(R.id.bottom_action_wallet).isVisible = vectorPreferences.labAddWalletTab()
         bottomNavigationView.setOnNavigationItemSelectedListener {
             val displayMode = when (it.itemId) {
+                R.id.bottom_action_calls -> RoomListDisplayMode.CALLS
                 R.id.bottom_action_people -> RoomListDisplayMode.PEOPLE
                 R.id.bottom_action_rooms  -> RoomListDisplayMode.ROOMS
-                else                      -> RoomListDisplayMode.NOTIFICATIONS
+                R.id.bottom_action_space -> RoomListDisplayMode.SPACE
+                else -> RoomListDisplayMode.WALLET
             }
             viewModel.handle(HomeDetailAction.SwitchDisplayMode(displayMode))
             true
@@ -273,17 +291,98 @@ class HomeDetailFragment @Inject constructor(
     private fun updateSelectedFragment(displayMode: RoomListDisplayMode) {
         val fragmentTag = "FRAGMENT_TAG_${displayMode.name}"
         val fragmentToShow = childFragmentManager.findFragmentByTag(fragmentTag)
-        childFragmentManager.commitTransaction {
-            childFragmentManager.fragments
-                    .filter { it != fragmentToShow }
-                    .forEach {
-                        detach(it)
-                    }
-            if (fragmentToShow == null) {
-                val params = RoomListParams(displayMode)
-                add(R.id.roomListContainer, RoomListFragment::class.java, params.toMvRxBundle(), fragmentTag)
-            } else {
-                attach(fragmentToShow)
+
+        when (displayMode.name) {
+            "CALLS" -> childFragmentManager.commitTransaction {
+                childFragmentManager.fragments
+                        .filter { it != fragmentToShow }
+                        .forEach {
+                            detach(it)
+                        }
+                if (fragmentToShow == null) {
+                    val params = RoomListParams(displayMode)
+                    add(R.id.roomListContainer, XlinxCallsFragment::class.java, params.toMvRxBundle(), fragmentTag)
+                } else {
+                    attach(fragmentToShow)
+                }
+            }
+            "PEOPLE" -> childFragmentManager.commitTransaction {
+                childFragmentManager.fragments
+                        .filter { it != fragmentToShow }
+                        .forEach {
+                            detach(it)
+                        }
+                if (fragmentToShow == null) {
+                    val params = RoomListParams(displayMode)
+                    add(R.id.roomListContainer, RoomListFragment::class.java, params.toMvRxBundle(), fragmentTag)
+                } else {
+                    attach(fragmentToShow)
+                }
+            }
+            "ROOMS" -> childFragmentManager.commitTransaction {
+                childFragmentManager.fragments
+                        .filter { it != fragmentToShow }
+                        .forEach {
+                            detach(it)
+                        }
+                if (fragmentToShow == null) {
+                    val params = RoomListParams(displayMode)
+                    add(R.id.roomListContainer, RoomListFragment::class.java, params.toMvRxBundle(), fragmentTag)
+                } else {
+                    attach(fragmentToShow)
+                }
+            }
+            "SPACE" -> childFragmentManager.commitTransaction {
+                childFragmentManager.fragments
+                        .filter { it != fragmentToShow }
+                        .forEach {
+                            detach(it)
+                        }
+                if (fragmentToShow == null) {
+                    val params = RoomListParams(displayMode)
+                    add(R.id.roomListContainer, XlinxSpaceFragment::class.java, params.toMvRxBundle(), fragmentTag)
+                } else {
+                    attach(fragmentToShow)
+                }
+            }
+            "WALLET" -> childFragmentManager.commitTransaction {
+                childFragmentManager.fragments
+                        .filter { it != fragmentToShow }
+                        .forEach {
+                            detach(it)
+                        }
+                if (fragmentToShow == null) {
+                    val params = RoomListParams(displayMode)
+                    add(R.id.roomListContainer, XlinxWalletFragment::class.java, params.toMvRxBundle(), fragmentTag)
+                } else {
+                    attach(fragmentToShow)
+                }
+            }
+            "FILTERED" -> childFragmentManager.commitTransaction {
+                childFragmentManager.fragments
+                        .filter { it != fragmentToShow }
+                        .forEach {
+                            detach(it)
+                        }
+                if (fragmentToShow == null) {
+                    val params = RoomListParams(displayMode)
+                    add(R.id.roomListContainer, RoomListFragment::class.java, params.toMvRxBundle(), fragmentTag)
+                } else {
+                    attach(fragmentToShow)
+                }
+            }
+            else -> childFragmentManager.commitTransaction {
+                childFragmentManager.fragments
+                        .filter { it != fragmentToShow }
+                        .forEach {
+                            detach(it)
+                        }
+                if (fragmentToShow == null) {
+                    val params = RoomListParams(displayMode)
+                    add(R.id.roomListContainer, RoomListFragment::class.java, params.toMvRxBundle(), fragmentTag)
+                } else {
+                    attach(fragmentToShow)
+                }
             }
         }
     }
@@ -304,7 +403,7 @@ class HomeDetailFragment @Inject constructor(
         Timber.v(it.toString())
         bottomNavigationView.getOrCreateBadge(R.id.bottom_action_people).render(it.notificationCountPeople, it.notificationHighlightPeople)
         bottomNavigationView.getOrCreateBadge(R.id.bottom_action_rooms).render(it.notificationCountRooms, it.notificationHighlightRooms)
-        bottomNavigationView.getOrCreateBadge(R.id.bottom_action_notification).render(it.notificationCountCatchup, it.notificationHighlightCatchup)
+//        bottomNavigationView.getOrCreateBadge(R.id.bottom_action_notification).render(it.notificationCountCatchup, it.notificationHighlightCatchup)
         syncStateView.render(it.syncState)
     }
 
@@ -321,9 +420,12 @@ class HomeDetailFragment @Inject constructor(
     }
 
     private fun RoomListDisplayMode.toMenuId() = when (this) {
+        RoomListDisplayMode.CALLS -> R.id.bottom_action_calls
         RoomListDisplayMode.PEOPLE -> R.id.bottom_action_people
         RoomListDisplayMode.ROOMS  -> R.id.bottom_action_rooms
-        else                       -> R.id.bottom_action_notification
+        RoomListDisplayMode.SPACE -> R.id.bottom_action_space
+        else -> R.id.bottom_action_wallet
+//        else                       -> R.id.bottom_action_notification
     }
 
     override fun onTapToReturnToCall() {

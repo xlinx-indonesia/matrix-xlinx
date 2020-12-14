@@ -2,22 +2,40 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/bottom_action_calls"
+        android:enabled="true"
+        android:icon="@drawable/ic_xlinx_nav_call"
+        android:title="@string/bottom_action_people_x" />
+
+    <item
         android:id="@+id/bottom_action_people"
         android:enabled="true"
-        android:icon="@drawable/ic_home_bottom_chat"
+        android:icon="@drawable/ic_xlinx_nav_chat"
         android:title="@string/bottom_action_people_x" />
 
     <item
         android:id="@+id/bottom_action_rooms"
         android:enabled="true"
-        android:icon="@drawable/ic_home_bottom_group"
+        android:icon="@drawable/ic_xlinx_nav_room"
         android:title="@string/bottom_action_rooms" />
 
     <item
-        android:id="@+id/bottom_action_notification"
+        android:id="@+id/bottom_action_space"
         android:enabled="true"
-        android:icon="@drawable/ic_settings_root_notification"
-        android:title="@string/bottom_action_notification"
-        android:visible="false" />
+        android:icon="@drawable/ic_xlinx_nav_space"
+        android:title="@string/bottom_action_people_x" />
+
+    <item
+        android:id="@+id/bottom_action_wallet"
+        android:enabled="true"
+        android:icon="@drawable/ic_xlinx_nav_wallet"
+        android:title="@string/bottom_action_people_x" />
+
+<!--    <item-->
+<!--        android:id="@+id/bottom_action_notification"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_settings_root_notification"-->
+<!--        android:title="@string/bottom_action_notification"-->
+<!--        android:visible="false" />-->
 
 </menu>

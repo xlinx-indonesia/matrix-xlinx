@@ -150,21 +150,27 @@ class LoginFragment @Inject constructor() : AbstractLoginFragment() {
 
             when (state.serverType) {
                 ServerType.MatrixOrg -> {
-                    loginServerIcon.isVisible = true
+                    loginServerIcon.isVisible = false
                     loginServerIcon.setImageResource(R.drawable.ic_logo_matrix_org)
                     loginTitle.text = getString(resId, state.homeServerUrl.toReducedUrl())
                     loginNotice.text = getString(R.string.login_server_matrix_org_text)
+                    loginTitle.isVisible = false
+                    loginNotice.isVisible = false
                 }
                 ServerType.EMS       -> {
-                    loginServerIcon.isVisible = true
+                    loginServerIcon.isVisible = false
                     loginServerIcon.setImageResource(R.drawable.ic_logo_element_matrix_services)
                     loginTitle.text = getString(resId, "Element Matrix Services")
                     loginNotice.text = getString(R.string.login_server_modular_text)
+                    loginTitle.isVisible = false
+                    loginNotice.isVisible = false
                 }
                 ServerType.Other     -> {
                     loginServerIcon.isVisible = false
                     loginTitle.text = getString(resId, state.homeServerUrl.toReducedUrl())
                     loginNotice.text = getString(R.string.login_server_other_text)
+                    loginTitle.isVisible = false
+                    loginNotice.isVisible = false
                 }
                 ServerType.Unknown   -> Unit /* Should not happen */
             }

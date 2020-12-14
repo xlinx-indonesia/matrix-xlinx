@@ -186,6 +186,13 @@ class VectorPreferences @Inject constructor(private val context: Context) {
 
         private const val SETTINGS_UNKNOWN_DEVICE_DISMISSED_LIST = "SETTINGS_UNKNWON_DEVICE_DISMISSED_LIST"
 
+
+        const val SETTINGS_LABS_CALL_HISTORY_AS_TAB = "SETTINGS_LABS_CALL_HISTORY_AS_TAB"
+        const val SETTINGS_LABS_XLINX_SPACE_AS_TAB = "SETTINGS_LABS_XLINX_SPACE_AS_TAB"
+        const val SETTINGS_LABS_XLINX_WALLET_AS_TAB = "SETTINGS_LABS_XLINX_WALLET_AS_TAB"
+
+
+
         // Background sync modes
 
         // some preferences keys must be kept after a logout
@@ -233,6 +240,7 @@ class VectorPreferences @Inject constructor(private val context: Context) {
                 SETTINGS_SECURITY_USE_FLAG_SECURE
         )
     }
+
 
     private val defaultPrefs = DefaultSharedPreferences.getInstance(context)
 
@@ -297,6 +305,14 @@ class VectorPreferences @Inject constructor(private val context: Context) {
 
     fun labAddNotificationTab(): Boolean {
         return defaultPrefs.getBoolean(SETTINGS_LABS_UNREAD_NOTIFICATIONS_AS_TAB, false)
+    }
+
+    fun labAddCallsTab(): Boolean {
+        return defaultPrefs.getBoolean(SETTINGS_LABS_CALL_HISTORY_AS_TAB, true)
+    }fun labAddSpaceTab(): Boolean {
+        return defaultPrefs.getBoolean(SETTINGS_LABS_XLINX_SPACE_AS_TAB, true)
+    }fun labAddWalletTab(): Boolean {
+        return defaultPrefs.getBoolean(SETTINGS_LABS_XLINX_WALLET_AS_TAB, true)
     }
 
     fun failFast(): Boolean {

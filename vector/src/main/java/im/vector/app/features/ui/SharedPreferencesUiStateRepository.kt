@@ -40,6 +40,10 @@ class SharedPreferencesUiStateRepository @Inject constructor(
         return when (sharedPreferences.getInt(KEY_DISPLAY_MODE, VALUE_DISPLAY_MODE_CATCHUP)) {
             VALUE_DISPLAY_MODE_PEOPLE -> RoomListDisplayMode.PEOPLE
             VALUE_DISPLAY_MODE_ROOMS  -> RoomListDisplayMode.ROOMS
+            VALUE_DISPLAY_MODE_CALLS -> RoomListDisplayMode.CALLS
+            VALUE_DISPLAY_MODE_SPACE -> RoomListDisplayMode.SPACE
+            VALUE_DISPLAY_MODE_WALLET -> RoomListDisplayMode.WALLET
+
             else                      -> if (vectorPreferences.labAddNotificationTab()) {
                 RoomListDisplayMode.NOTIFICATIONS
             } else {
@@ -54,6 +58,10 @@ class SharedPreferencesUiStateRepository @Inject constructor(
                     when (displayMode) {
                         RoomListDisplayMode.PEOPLE -> VALUE_DISPLAY_MODE_PEOPLE
                         RoomListDisplayMode.ROOMS  -> VALUE_DISPLAY_MODE_ROOMS
+                        RoomListDisplayMode.CALLS -> VALUE_DISPLAY_MODE_CALLS
+                        RoomListDisplayMode.SPACE -> VALUE_DISPLAY_MODE_SPACE
+                        RoomListDisplayMode.WALLET -> VALUE_DISPLAY_MODE_WALLET
+
                         else                       -> VALUE_DISPLAY_MODE_CATCHUP
                     })
         }
@@ -64,5 +72,9 @@ class SharedPreferencesUiStateRepository @Inject constructor(
         private const val VALUE_DISPLAY_MODE_CATCHUP = 0
         private const val VALUE_DISPLAY_MODE_PEOPLE = 1
         private const val VALUE_DISPLAY_MODE_ROOMS = 2
+        private const val VALUE_DISPLAY_MODE_CALLS = 3
+        private const val VALUE_DISPLAY_MODE_SPACE = 4
+        private const val VALUE_DISPLAY_MODE_WALLET = 5
+
     }
 }

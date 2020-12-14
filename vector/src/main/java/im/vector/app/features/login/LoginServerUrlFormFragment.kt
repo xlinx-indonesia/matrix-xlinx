@@ -39,10 +39,13 @@ class LoginServerUrlFormFragment @Inject constructor() : AbstractLoginFragment()
 
     override fun getLayoutResId() = R.layout.fragment_login_server_url_form
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupHomeServerField()
+        loginServerUrlFormHomeServerUrl.setText("https://homeserver.x-linx.co")
+        submit()
     }
 
     private fun setupHomeServerField() {
@@ -60,17 +63,24 @@ class LoginServerUrlFormFragment @Inject constructor() : AbstractLoginFragment()
             }
             return@setOnEditorActionListener false
         }
+        loginServerUrlFormHomeServerUrl.isVisible = false
     }
 
     private fun setupUi(state: LoginViewState) {
         when (state.serverType) {
             ServerType.EMS -> {
-                loginServerUrlFormIcon.isVisible = true
+                loginServerUrlFormIcon.isVisible = false
                 loginServerUrlFormTitle.text = getString(R.string.login_connect_to_modular)
                 loginServerUrlFormText.text = getString(R.string.login_server_url_form_modular_text)
                 loginServerUrlFormLearnMore.isVisible = true
                 loginServerUrlFormHomeServerUrlTil.hint = getText(R.string.login_server_url_form_modular_hint)
                 loginServerUrlFormNotice.text = getString(R.string.login_server_url_form_common_notice)
+                loginServerUrlFormTitle.isVisible = false
+                loginServerUrlFormText.isVisible = false
+                loginServerUrlFormLearnMore.isVisible = false
+                loginServerUrlFormHomeServerUrlTil.isVisible = false
+                loginServerUrlFormNotice.isVisible = false
+
             }
             else           -> {
                 loginServerUrlFormIcon.isVisible = false

@@ -35,7 +35,7 @@ class PolicyController @Inject constructor() : TypedEpoxyController<List<Localiz
                 title(entry.localizedFlowDataLoginTerms.localizedName)
                 subtitle(homeServer)
 
-                clickListener(View.OnClickListener { listener?.openPolicy(entry.localizedFlowDataLoginTerms) })
+//                clickListener(View.OnClickListener { listener?.openPolicy(entry.localizedFlowDataLoginTerms) })
                 checkChangeListener { _, isChecked ->
                     listener?.setChecked(entry.localizedFlowDataLoginTerms, isChecked)
                 }

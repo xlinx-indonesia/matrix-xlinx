@@ -39,10 +39,13 @@ open class LoginSignUpSignInSelectionFragment @Inject constructor() : AbstractLo
                 loginSignupSigninText.text = getString(R.string.login_server_matrix_org_text)
             }
             ServerType.EMS       -> {
-                loginSignupSigninServerIcon.setImageResource(R.drawable.ic_logo_element_matrix_services)
-                loginSignupSigninServerIcon.isVisible = true
-                loginSignupSigninTitle.text = getString(R.string.login_connect_to_modular)
-                loginSignupSigninText.text = state.homeServerUrl.toReducedUrl()
+//                loginSignupSigninServerIcon.setImageResource(R.drawable.ic_logo_element_matrix_services)
+//                loginSignupSigninServerIcon.isVisible = true
+//                loginSignupSigninTitle.text = getString(R.string.login_connect_to_modular)
+//                loginSignupSigninText.text = state.homeServerUrl.toReducedUrl()
+                loginSignupSigninServerIcon.isVisible = false;
+                loginSignupSigninTitle.isVisible = false;
+                loginSignupSigninText.isVisible = false;
             }
             ServerType.Other     -> {
                 loginSignupSigninServerIcon.isVisible = false

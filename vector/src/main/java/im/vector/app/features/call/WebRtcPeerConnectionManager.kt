@@ -346,7 +346,7 @@ class WebRtcPeerConnectionManager @Inject constructor(
         getTurnServer { turnServer ->
             val call = currentCall ?: return@getTurnServer
             when (mode) {
-                VectorCallActivity.INCOMING_ACCEPT  -> {
+                VectorCallActivity.INCOMING_ACCEPT -> {
                     internalAcceptIncomingCall(call, turnServer)
                 }
                 VectorCallActivity.INCOMING_RINGING -> {
@@ -899,14 +899,14 @@ class WebRtcPeerConnectionManager @Inject constructor(
                  * Every ICE transport used by the connection is either in use (state "connected" or "completed")
                  * or is closed (state "closed"); in addition, at least one transport is either "connected" or "completed"
                  */
-                PeerConnection.PeerConnectionState.CONNECTED    -> {
+                PeerConnection.PeerConnectionState.CONNECTED -> {
                     callContext.mxCall.state = CallState.Connected(newState)
                     callAudioManager.onCallConnected(callContext.mxCall)
                 }
                 /**
                  * One or more of the ICE transports on the connection is in the "failed" state.
                  */
-                PeerConnection.PeerConnectionState.FAILED       -> {
+                PeerConnection.PeerConnectionState.FAILED -> {
                     // This can be temporary, e.g when other ice not yet received...
                     // callContext.mxCall.state = CallState.ERROR
                     callContext.mxCall.state = CallState.Connected(newState)
@@ -922,7 +922,7 @@ class WebRtcPeerConnectionManager @Inject constructor(
                      * One or more of the ICE transports are currently in the process of establishing a connection;
                      * that is, their RTCIceConnectionState is either "checking" or "connected", and no transports are in the "failed" state
                      */
-                PeerConnection.PeerConnectionState.CONNECTING   -> {
+                PeerConnection.PeerConnectionState.CONNECTING -> {
                     callContext.mxCall.state = CallState.Connected(PeerConnection.PeerConnectionState.CONNECTING)
                 }
                 /**
@@ -938,7 +938,7 @@ class WebRtcPeerConnectionManager @Inject constructor(
                 PeerConnection.PeerConnectionState.DISCONNECTED -> {
                     callContext.mxCall.state = CallState.Connected(newState)
                 }
-                null                                            -> {
+                null -> {
                 }
             }
         }
@@ -963,14 +963,14 @@ class WebRtcPeerConnectionManager @Inject constructor(
                  * the ICE agent is gathering addresses or is waiting to be given remote candidates through
                  * calls to RTCPeerConnection.addIceCandidate() (or both).
                  */
-                PeerConnection.IceConnectionState.NEW          -> {
+                PeerConnection.IceConnectionState.NEW -> {
                 }
                 /**
                  * The ICE agent has been given one or more remote candidates and is checking pairs of local and remote candidates
                  * against one another to try to find a compatible match, but has not yet found a pair which will allow
                  * the peer connection to be made. It's possible that gathering of candidates is also still underway.
                  */
-                PeerConnection.IceConnectionState.CHECKING     -> {
+                PeerConnection.IceConnectionState.CHECKING -> {
                 }
 
                 /**
@@ -979,7 +979,7 @@ class WebRtcPeerConnectionManager @Inject constructor(
                  * It's possible that gathering is still underway, and it's also possible that the ICE agent is still checking
                  * candidates against one another looking for a better connection to use.
                  */
-                PeerConnection.IceConnectionState.CONNECTED    -> {
+                PeerConnection.IceConnectionState.CONNECTED -> {
                 }
                 /**
                  * Checks to ensure that components are still connected failed for at least one component of the RTCPeerConnection.
@@ -993,7 +993,7 @@ class WebRtcPeerConnectionManager @Inject constructor(
                  * compatible matches for all components of the connection.
                  * It is, however, possible that the ICE agent did find compatible connections for some components.
                  */
-                PeerConnection.IceConnectionState.FAILED       -> {
+                PeerConnection.IceConnectionState.FAILED -> {
                     // I should not hangup here..
                     // because new candidates could arrive
                     // callContext.mxCall.hangUp()
@@ -1001,12 +1001,12 @@ class WebRtcPeerConnectionManager @Inject constructor(
                 /**
                  *  The ICE agent has finished gathering candidates, has checked all pairs against one another, and has found a connection for all components.
                  */
-                PeerConnection.IceConnectionState.COMPLETED    -> {
+                PeerConnection.IceConnectionState.COMPLETED -> {
                 }
                 /**
                  * The ICE agent for this RTCPeerConnection has shut down and is no longer handling requests.
                  */
-                PeerConnection.IceConnectionState.CLOSED       -> {
+                PeerConnection.IceConnectionState.CLOSED -> {
                 }
             }
         }

@@ -46,6 +46,7 @@ import im.vector.app.features.home.room.detail.widget.RoomWidgetsBottomSheet
 import im.vector.app.features.home.room.filtered.FilteredRoomsActivity
 import im.vector.app.features.home.room.list.RoomListModule
 import im.vector.app.features.home.room.list.actions.RoomListQuickActionsBottomSheet
+import im.vector.app.features.home.xspace.conference.XlinxSpaceActivity
 import im.vector.app.features.invite.InviteUsersToRoomActivity
 import im.vector.app.features.invite.VectorInviteView
 import im.vector.app.features.link.LinkHandlerActivity
@@ -143,6 +144,7 @@ interface ScreenComponent {
     fun inject(activity: VectorJitsiActivity)
     fun inject(activity: SearchActivity)
     fun inject(activity: UserCodeActivity)
+    fun inject(activity: XlinxSpaceActivity)
 
     /* ==========================================================================================
      * BottomSheets

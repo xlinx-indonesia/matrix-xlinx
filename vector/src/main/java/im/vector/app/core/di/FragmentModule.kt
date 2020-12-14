@@ -54,6 +54,9 @@ import im.vector.app.features.home.room.breadcrumbs.BreadcrumbsFragment
 import im.vector.app.features.home.room.detail.RoomDetailFragment
 import im.vector.app.features.home.room.detail.search.SearchFragment
 import im.vector.app.features.home.room.list.RoomListFragment
+import im.vector.app.features.home.xcalls.XlinxCallsFragment
+import im.vector.app.features.home.xspace.XlinxSpaceFragment
+import im.vector.app.features.home.xwallet.XlinxWalletFragment
 import im.vector.app.features.login.LoginCaptchaFragment
 import im.vector.app.features.login.LoginFragment
 import im.vector.app.features.login.LoginGenericTextInputFormFragment
@@ -127,6 +130,21 @@ interface FragmentModule {
     @IntoMap
     @FragmentKey(RoomListFragment::class)
     fun bindRoomListFragment(fragment: RoomListFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(XlinxCallsFragment::class)
+    fun bindXlinxCallsFragment(fragment: XlinxCallsFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(XlinxSpaceFragment::class)
+    fun bindXlinxSpaceFragment(fragment: XlinxSpaceFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(XlinxWalletFragment::class)
+    fun bindXlinxWalletFragment(fragment: XlinxWalletFragment): Fragment
 
     @Binds
     @IntoMap

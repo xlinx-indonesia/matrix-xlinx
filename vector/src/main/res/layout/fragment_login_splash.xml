@@ -12,14 +12,21 @@
 
     <!-- Strategy: 5 Spaces are used to spread the remaining space, using weight -->
 
-    <Space
-        android:id="@+id/loginSplashSpace1"
-        android:layout_width="match_parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieview"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:importantForAccessibility="no"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_welcome_3"
         app:layout_constraintBottom_toTopOf="@+id/loginSplashLogoContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside"
-        app:layout_constraintVertical_weight="4" />
+        app:layout_constraintVertical_weight="10"
+        />
 
     <LinearLayout
         android:id="@+id/loginSplashLogoContainer"
@@ -27,149 +34,44 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/loginSplashSpace2"
+        app:layout_constraintBottom_toTopOf="@+id/loginSplashTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace1">
+        app:layout_constraintTop_toBottomOf="@+id/lottieview">
 
         <ImageView
             android:id="@+id/loginSplashLogo"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/element_logo_green"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:src="@drawable/ic_xlinx_compact"
             android:transitionName="loginLogoTransition" />
-
-        <ImageView
-            android:id="@+id/logoType"
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/element_logotype"
-            app:tint="?colorAccent"
-            tools:ignore="MissingPrefix" />
 
     </LinearLayout>
 
-    <Space
-        android:id="@+id/loginSplashSpace2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginSplashTitle"
-        app:layout_constraintTop_toBottomOf="@+id/loginSplashLogoContainer"
-        app:layout_constraintVertical_weight="1" />
 
     <TextView
         android:id="@+id/loginSplashTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/login_splash_title"
+        android:text="X-LinX"
         android:textAppearance="@style/TextAppearance.Vector.Login.Title"
         android:transitionName="loginTitleTransition"
         app:layout_constraintBottom_toTopOf="@+id/loginSplashSpace3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace2" />
+        app:layout_constraintTop_toBottomOf="@+id/loginSplashLogoContainer"
+        tools:ignore="HardcodedText" />
 
     <Space
         android:id="@+id/loginSplashSpace3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginSplashContent"
+        app:layout_constraintBottom_toTopOf="@+id/loginSplashSubmit"
         app:layout_constraintTop_toBottomOf="@+id/loginSplashTitle"
         app:layout_constraintVertical_weight="2" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/loginSplashContent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/loginSplashSpace4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace3">
 
-        <ImageView
-            android:id="@+id/loginSplashPicto1"
-            android:layout_width="32dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_login_splash_message_circle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/loginSplashText1"
-            app:tint="?riotx_text_secondary"
-            tools:ignore="MissingPrefix" />
-
-        <TextView
-            android:id="@+id/loginSplashText1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:gravity="start"
-            android:text="@string/login_splash_text1"
-            android:textAppearance="@style/TextAppearance.Vector.Login.Text"
-            app:layout_constraintBottom_toTopOf="@+id/loginSplashText2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/loginSplashPicto1"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/loginSplashPicto2"
-            android:layout_width="32dp"
-            android:layout_height="wrap_content"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_login_splash_lock"
-            app:layout_constraintStart_toStartOf="@id/loginSplashPicto1"
-            app:layout_constraintTop_toTopOf="@+id/loginSplashText2"
-            app:tint="?riotx_text_secondary"
-            tools:ignore="MissingPrefix" />
-
-        <TextView
-            android:id="@+id/loginSplashText2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="start"
-            android:text="@string/login_splash_text2"
-            android:textAppearance="@style/TextAppearance.Vector.Login.Text"
-            app:layout_constraintBottom_toTopOf="@id/loginSplashText3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/loginSplashText1"
-            app:layout_constraintTop_toBottomOf="@+id/loginSplashText1" />
-
-        <ImageView
-            android:id="@+id/loginSplashPicto3"
-            android:layout_width="32dp"
-            android:layout_height="wrap_content"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_login_splash_sliders"
-            app:layout_constraintStart_toStartOf="@+id/loginSplashPicto1"
-            app:layout_constraintTop_toTopOf="@+id/loginSplashText3"
-            app:tint="?riotx_text_secondary"
-            tools:ignore="MissingPrefix" />
-
-        <TextView
-            android:id="@+id/loginSplashText3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="start"
-            android:text="@string/login_splash_text3"
-            android:textAppearance="@style/TextAppearance.Vector.Login.Text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/loginSplashText1"
-            app:layout_constraintTop_toBottomOf="@+id/loginSplashText2" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Space
-        android:id="@+id/loginSplashSpace4"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginSplashSubmit"
-        app:layout_constraintTop_toBottomOf="@+id/loginSplashContent"
-        app:layout_constraintVertical_weight="2" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginSplashSubmit"
@@ -181,7 +83,7 @@
         app:layout_constraintBottom_toTopOf="@+id/loginSplashSpace5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace4" />
+        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace3" />
 
     <Space
         android:id="@+id/loginSplashSpace5"
@@ -189,6 +91,203 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginSplashSubmit"
-        app:layout_constraintVertical_weight="4" />
+        app:layout_constraintVertical_weight="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="?riotx_background"-->
+<!--    android:paddingStart="36dp"-->
+<!--    android:paddingTop="@dimen/layout_vertical_margin"-->
+<!--    android:paddingEnd="36dp"-->
+<!--    android:paddingBottom="@dimen/layout_vertical_margin">-->
+
+<!--    &lt;!&ndash; Strategy: 5 Spaces are used to spread the remaining space, using weight &ndash;&gt;-->
+
+<!--    <Space-->
+<!--        android:id="@+id/loginSplashSpace1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/loginSplashLogoContainer"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_chainStyle="spread_inside"-->
+<!--        app:layout_constraintVertical_weight="4" />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/loginSplashLogoContainer"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/loginSplashSpace2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace1">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/loginSplashLogo"-->
+<!--            android:layout_width="64dp"-->
+<!--            android:layout_height="64dp"-->
+<!--            android:src="@drawable/element_logo_green"-->
+<!--            android:transitionName="loginLogoTransition" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/logoType"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="44dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:src="@drawable/element_logotype"-->
+<!--            app:tint="?colorAccent"-->
+<!--            tools:ignore="MissingPrefix" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <Space-->
+<!--        android:id="@+id/loginSplashSpace2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/loginSplashTitle"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginSplashLogoContainer"-->
+<!--        app:layout_constraintVertical_weight="1" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/loginSplashTitle"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:text="X-LinX"-->
+<!--        android:textAppearance="@style/TextAppearance.Vector.Login.Title"-->
+<!--        android:transitionName="loginTitleTransition"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/loginSplashSpace3"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace2"-->
+<!--        tools:ignore="HardcodedText" />-->
+
+<!--    <Space-->
+<!--        android:id="@+id/loginSplashSpace3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/loginSplashContent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginSplashTitle"-->
+<!--        app:layout_constraintVertical_weight="2" />-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/loginSplashContent"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/loginSplashSpace4"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace3">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/loginSplashPicto1"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="2dp"-->
+<!--            android:importantForAccessibility="no"-->
+<!--            android:src="@drawable/ic_login_splash_message_circle"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/loginSplashText1"-->
+<!--            app:tint="?riotx_text_secondary"-->
+<!--            tools:ignore="MissingPrefix" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/loginSplashText1"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:gravity="start"-->
+<!--            android:text="@string/login_splash_text1"-->
+<!--            android:textAppearance="@style/TextAppearance.Vector.Login.Text"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/loginSplashText2"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@id/loginSplashPicto1"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/loginSplashPicto2"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:importantForAccessibility="no"-->
+<!--            android:src="@drawable/ic_login_splash_lock"-->
+<!--            app:layout_constraintStart_toStartOf="@id/loginSplashPicto1"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/loginSplashText2"-->
+<!--            app:tint="?riotx_text_secondary"-->
+<!--            tools:ignore="MissingPrefix" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/loginSplashText2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:gravity="start"-->
+<!--            android:text="@string/login_splash_text2"-->
+<!--            android:textAppearance="@style/TextAppearance.Vector.Login.Text"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/loginSplashText3"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="@id/loginSplashText1"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/loginSplashText1" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/loginSplashPicto3"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:importantForAccessibility="no"-->
+<!--            android:src="@drawable/ic_login_splash_sliders"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/loginSplashPicto1"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/loginSplashText3"-->
+<!--            app:tint="?riotx_text_secondary"-->
+<!--            tools:ignore="MissingPrefix" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/loginSplashText3"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:gravity="start"-->
+<!--            android:text="@string/login_splash_text3"-->
+<!--            android:textAppearance="@style/TextAppearance.Vector.Login.Text"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/loginSplashText1"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/loginSplashText2" />-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    <Space-->
+<!--        android:id="@+id/loginSplashSpace4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/loginSplashSubmit"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginSplashContent"-->
+<!--        app:layout_constraintVertical_weight="2" />-->
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/loginSplashSubmit"-->
+<!--        style="@style/Style.Vector.Login.Button"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/login_splash_submit"-->
+<!--        android:transitionName="loginSubmitTransition"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/loginSplashSpace5"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginSplashSpace4" />-->
+
+<!--    <Space-->
+<!--        android:id="@+id/loginSplashSpace5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginSplashSubmit"-->
+<!--        app:layout_constraintVertical_weight="4" />-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

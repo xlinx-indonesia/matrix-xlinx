@@ -21,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:importantForAccessibility="no"
+                android:visibility="invisible"
                 android:src="@drawable/ic_logo_element_matrix_services"
                 app:tint="?riotx_text_primary"
                 tools:ignore="MissingPrefix" />
@@ -30,6 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
+                android:visibility="invisible"
                 android:textAppearance="@style/TextAppearance.Vector.Login.Title"
                 tools:text="@string/login_connect_to_modular" />
 
@@ -39,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_vertical_margin"
                 android:gravity="start"
+                android:visibility="invisible"
                 android:textAppearance="@style/TextAppearance.Vector.Login.Text"
                 tools:text="@string/login_server_url_form_modular_text" />
 
@@ -47,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:visibility="invisible"
                 android:text="@string/login_server_modular_learn_more"
                 android:textAppearance="@style/TextAppearance.Vector.Login.Text"
                 android:textColor="@color/riotx_accent" />
@@ -57,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
+                android:visibility="invisible"
                 app:errorEnabled="true"
                 tools:hint="@string/login_server_url_form_modular_hint">
 
@@ -75,6 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:visibility="invisible"
                 android:gravity="start"
                 android:textAppearance="@style/TextAppearance.Vector.Login.Text.Small"
                 tools:text="@string/login_server_url_form_common_notice" />
@@ -85,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:visibility="invisible"
                 android:layout_marginTop="22dp"
                 android:text="@string/login_continue" />
 

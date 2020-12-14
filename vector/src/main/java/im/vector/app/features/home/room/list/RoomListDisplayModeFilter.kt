@@ -33,6 +33,10 @@ class RoomListDisplayModeFilter(private val displayMode: RoomListDisplayMode) : 
             RoomListDisplayMode.PEOPLE        -> roomSummary.isDirect && roomSummary.membership.isActive()
             RoomListDisplayMode.ROOMS         -> !roomSummary.isDirect && roomSummary.membership.isActive()
             RoomListDisplayMode.FILTERED      -> roomSummary.membership == Membership.JOIN
+            RoomListDisplayMode.CALLS        -> roomSummary.isDirect && roomSummary.membership.isActive()
+            RoomListDisplayMode.SPACE        -> roomSummary.isDirect && roomSummary.membership.isActive()
+            RoomListDisplayMode.WALLET        -> roomSummary.isDirect && roomSummary.membership.isActive()
+
         }
     }
 }
