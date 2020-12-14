@@ -16,7 +16,9 @@
 
 package im.vector.app.features.home.room.detail
 
+import android.annotation.SuppressLint
 import android.net.Uri
+import android.util.Log
 import androidx.annotation.IdRes
 import androidx.lifecycle.viewModelScope
 import com.airbnb.mvrx.FragmentViewModelContext
@@ -120,7 +122,7 @@ class RoomDetailViewModel @AssistedInject constructor(
         timelineSettingsFactory: TimelineSettingsFactory
 ) : VectorViewModel<RoomDetailViewState, RoomDetailAction, RoomDetailViewEvents>(initialState), Timeline.Listener {
 
-    private val mmkv: MMKV = MMKV.mmkvWithID("callhistory")
+    private val mmkv: MMKV = MMKV.mmkvWithID("xlinxcallhistory")
 
     private val room = session.getRoom(initialState.roomId)!!
     private val eventId = initialState.eventId
@@ -338,15 +340,18 @@ class RoomDetailViewModel @AssistedInject constructor(
         room.sendEvent(EventType.STICKER, action.stickerContent.toContent())
     }
 
+    @SuppressLint("LogNotTimber")
     private fun handleStartCall(action: RoomDetailAction.StartCall) {
         room.roomSummary()?.otherMemberIds?.firstOrNull()?.let {
+            val displayName = room.roomSummary()?.displayName
+
             val timestamp = System.currentTimeMillis().toString()
             val currentCount: Long = mmkv.count() + 1
 
-            if (!action.isVideo) {
-                mmkv.encode(timestamp, currentCount.toString() + ":::" + room.roomId + ":::" + it + ":::" + "VOICE_CALL" + ":::" + "2" + ":::" + timestamp)
+            if (action.isVideo) {
+                mmkv.encode(timestamp, currentCount.toString() + ":::" + room.roomId + ":::" + displayName + ":::" + "2" + ":::" + "2" + ":::" + timestamp)
             } else {
-                mmkv.encode(timestamp, currentCount.toString() + ":::" + room.roomId + ":::" + it + ":::" + "VIDEO_CALL" + ":::" + "2" + ":::" + timestamp)
+                mmkv.encode(timestamp, currentCount.toString() + ":::" + room.roomId + ":::" + displayName + ":::" + "1" + ":::" + "2" + ":::" + timestamp)
             }
 
             webRtcPeerConnectionManager.startOutgoingCall(room.roomId, it, action.isVideo)

@@ -21,11 +21,22 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.epoxy.EpoxyAttribute
+import com.airbnb.epoxy.EpoxyModelClass
 import im.vector.app.R
+import im.vector.app.core.glide.GlideApp
+import im.vector.app.features.home.AvatarRenderer
+import kotlinx.android.synthetic.main.fragment_home_detail.*
 import kotlinx.android.synthetic.main.xlinx_item_calls_history.view.*
+import org.matrix.android.sdk.api.session.Session
+import org.matrix.android.sdk.api.util.toMatrixItem
+import java.net.URL
+import javax.inject.Inject
 
 class XlinxCallsItemAdapter(
-        private val calls: ArrayList<XlinxCallsItem>
+        private val calls: ArrayList<XlinxCallsItem>,
+        private val session: Session,
+        private val avatarRenderer: AvatarRenderer
 ) : RecyclerView.Adapter<XlinxCallsItemAdapter.CallHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): XlinxCallsItemAdapter.CallHolder {
@@ -35,7 +46,7 @@ class XlinxCallsItemAdapter(
 
     override fun onBindViewHolder(holder: XlinxCallsItemAdapter.CallHolder, position: Int) {
         val itemCall = calls[position]
-        holder.bindCallItem(itemCall)
+        holder.bindCallItem(itemCall, session, avatarRenderer)
     }
 
     override fun getItemCount(): Int = calls.size
@@ -60,11 +71,28 @@ class XlinxCallsItemAdapter(
             Log.d("RecyclerView", "CLICK!")
         }
 
-        fun bindCallItem(callItem: XlinxCallsItem) {
+        @SuppressLint("SetTextI18n")
+        fun bindCallItem(callItem: XlinxCallsItem, session: Session, avatarRenderer: AvatarRenderer) {
             this.callItem = callItem
+//            val me = session.getRoomMember(session.myUserId, callItem.targetRoomId)?.toMatrixItem()
+            val matrixItem = session.getRoomSummary(callItem.targetRoomId)?.toMatrixItem()
+//            val avatar = me?.avatarUrl?.let { session.contentUrlResolver().resolveFullSize(it) }?.let { URL(it) }
+
+            matrixItem?.let { avatarRenderer.render(it, view.roomAvatarImageView) }
+
             view.roomNameView.text                  = callItem.targetName
             view.roomLastEventTimeView.text         = callItem.timestamp.toString()
-            view.roomLastEventView.text             = callItem.callMode.toString()
+
+            when (callItem.callType) {
+                1 ->    view.roomLastEventView.text = "Incoming Call"
+                2 ->    view.roomLastEventView.text = "Outgoing Call"
+            }
+
+            when (callItem.callMode) {
+                1 ->    view.callTypeStatus.setImageResource(R.drawable.ic_call_end)
+                2 ->    view.callTypeStatus.setImageResource(R.drawable.ic_videocam)
+            }
+
         }
 
         companion object {

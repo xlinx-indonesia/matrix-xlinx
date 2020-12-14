@@ -21,7 +21,7 @@ import kotlin.properties.Delegates
 data class XlinxCallsItem(
         val targetRoomId: String = "",
         val targetName: String = "",
-        val timestamp: Long,
+        val timestamp: String = "",
         val callMode: Int,
         val callType: Int
 ) {
@@ -29,13 +29,13 @@ data class XlinxCallsItem(
     class Builder {
         private var targetRoomId : String = ""
         private var targetName : String = ""
-        private var timestamp by Delegates.notNull<Long>()
+        private var timestamp : String = ""
         private var callMode by Delegates.notNull<Int>()
         private var callType by Delegates.notNull<Int>()
 
         fun targetRoomId(targetRoomId: String) = apply { this.targetRoomId = targetRoomId }
         fun targetName(targetName: String) = apply { this.targetName = targetName }
-        fun timestamp(timestamp: Long) = apply { this.timestamp = timestamp }
+        fun timestamp(timestamp: String) = apply { this.timestamp = timestamp }
         fun callMode(callMode: Int) = apply { this.callMode = callMode }
         fun callType(callType: Int) = apply { this.callType = callType }
 

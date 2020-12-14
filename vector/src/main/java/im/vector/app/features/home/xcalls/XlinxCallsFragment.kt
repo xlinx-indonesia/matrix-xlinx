@@ -16,26 +16,41 @@
 
 package im.vector.app.features.home.xcalls
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
+import android.text.format.DateFormat
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.epoxy.OnModelBuildFinishedListener
+import com.airbnb.mvrx.Fail
+import com.airbnb.mvrx.Incomplete
+import com.airbnb.mvrx.Success
+import com.airbnb.mvrx.args
+import com.airbnb.mvrx.fragmentViewModel
+import com.airbnb.mvrx.withState
 import com.tencent.mmkv.MMKV
 import im.vector.app.R
 import im.vector.app.core.epoxy.LayoutManagerStateRestorer
 import im.vector.app.core.extensions.cleanup
 import im.vector.app.core.platform.OnBackPressed
 import im.vector.app.core.platform.VectorBaseFragment
+import im.vector.app.features.home.AvatarRenderer
 import im.vector.app.features.home.RoomListDisplayMode
 import im.vector.app.features.home.room.list.RoomListAnimator
+import im.vector.app.features.home.room.list.RoomListParams
+import im.vector.app.features.home.room.list.RoomListViewModel
 import im.vector.app.features.home.room.list.widget.NotifsFabMenuView
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.fragment_room_list.*
 import kotlinx.android.synthetic.main.xlinx_calls_main_fragment.*
+import org.matrix.android.sdk.api.session.Session
+import java.text.SimpleDateFormat
+import java.util.Locale
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 @Parcelize
 data class RoomListParams(
@@ -43,66 +58,112 @@ data class RoomListParams(
 ) : Parcelable
 
 class XlinxCallsFragment @Inject constructor(
-        private val sharedViewPool: RecyclerView.RecycledViewPool
+        private val session: Session,
+        private val avatarRenderer: AvatarRenderer,
+        private val sharedViewPool: RecyclerView.RecycledViewPool,
 ) : VectorBaseFragment(), OnBackPressed, NotifsFabMenuView.Listener {
 
-    private val mmkv: MMKV = MMKV.mmkvWithID("callhistory")
-    private lateinit var xlinxCallsItemAdapter: XlinxCallsItemAdapter
     private lateinit var stateRestorer: LayoutManagerStateRestorer
-    private var modelBuildListener: OnModelBuildFinishedListener? = null
-//    private var callItems: ArrayList<XlinxCallsItem>? = null
+
+    private val mmkv: MMKV = MMKV.mmkvWithID("xlinxcallhistory")
+    private lateinit var xlinxCallsItemAdapter: XlinxCallsItemAdapter
+    private var callItems: ArrayList<XlinxCallsItem> = arrayListOf()
 
     override fun getLayoutResId() = R.layout.xlinx_calls_main_fragment
 
-    private var hasUnreadRooms = false
+    override fun getMenuRes() = R.menu.xlinx_call_history
 
-//    override fun getMenuRes() = R.menu.room_list
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_calls_clear_history -> {
+                mmkv.clearAll()
+                clearCallData()
+                return true
+            }
+        }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.menu_home_mark_all_as_read -> {
-//                roomListViewModel.handle(RoomListAction.MarkAllRoomsRead)
-//                return true
-//            }
-//        }
-//
-//        return super.onOptionsItemSelected(item)
-//    }
+        return super.onOptionsItemSelected(item)
+    }
 
-//    override fun onPrepareOptionsMenu(menu: Menu) {
-//        menu.findItem(R.id.menu_home_mark_all_as_read).isVisible = hasUnreadRooms
-//        super.onPrepareOptionsMenu(menu)
-//    }
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.menu_calls_clear_history).isVisible = true
+        super.onPrepareOptionsMenu(menu)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        setupRecyclerView()
-//        addCallData("qwe123ID", "aselole", 123,2, 1)
+        setupRecyclerView()
+//        addCallData("qwe123ID", "aselole", "123", 2, 1)
+        loadCallData()
+        invalidateOptionsMenu()
     }
 
-//    private fun setupRecyclerView() {
-//        val layoutManager = LinearLayoutManager(context)
-//        stateRestorer = LayoutManagerStateRestorer(layoutManager).register()
-//        callListView.layoutManager = layoutManager
-//        callListView.itemAnimator = RoomListAnimator()
-//        callListView.setRecycledViewPool(sharedViewPool)
-//        layoutManager.recycleChildrenOnDetach = true
-//        xlinxCallsItemAdapter = XlinxCallsItemAdapter(callItems)
-//        callListView.adapter = xlinxCallsItemAdapter
-//        stateView.contentView = callListView
-//    }
-//
-//    private fun addCallData(targetRoomId: String, targetName: String, timestamp: Long, callMode: Int, callType: Int) {
-//        callItems.add(XlinxCallsItem(targetRoomId, targetName, timestamp, callMode, callType))
-//        xlinxCallsItemAdapter.notifyItemInserted(callItems.size-1)
-//    }
+    private fun setupRecyclerView() {
+        val layoutManager = LinearLayoutManager(context)
+        stateRestorer = LayoutManagerStateRestorer(layoutManager).register()
+        callListView.layoutManager = layoutManager
+        callListView.itemAnimator = RoomListAnimator()
+        callListView.setRecycledViewPool(sharedViewPool)
+        layoutManager.recycleChildrenOnDetach = true
+        xlinxCallsItemAdapter = XlinxCallsItemAdapter(callItems, session, avatarRenderer)
+        callListView.adapter = xlinxCallsItemAdapter
+    }
+
+    private fun addCallData(targetRoomId: String, targetName: String, timestamp: String, callMode: Int, callType: Int) {
+        callItems.add(XlinxCallsItem(targetRoomId, targetName, timestamp, callMode, callType))
+        xlinxCallsItemAdapter.notifyItemInserted(callItems.size - 1)
+    }
+
+    private fun loadCallData() {
+        if (mmkv.count() < 1) {
+            return
+        }
+
+        val dateFormatter: SimpleDateFormat = getDetailedXlinxDateFormatter(requireContext(), Locale.getDefault())
+
+        val kvdb: Array<String> = mmkv.allKeys()
+
+        for (s in kvdb) {
+            val tempRaw: String = mmkv.decodeString(s)
+            val tempData = tempRaw.split(":::".toRegex()).toTypedArray()
+            val targetRoomId = tempData[1]
+            val targetName = tempData[2]
+            val callMode = tempData[3].toInt()
+            val callType = tempData[4].toInt()
+            val callDate = dateFormatter.format(tempData[5].toLong())
+
+            addCallData(targetRoomId, targetName, callDate, callMode, callType)
+        }
+
+    }
+
+    private fun getDetailedXlinxDateFormatter(context: Context, locale: Locale): SimpleDateFormat {
+        val dateFormatPattern: String
+        dateFormatPattern = if (DateFormat.is24HourFormat(context)) {
+            getLocalizedPattern("MMM d, HH:mm", locale)
+        } else {
+            getLocalizedPattern("MMM d, hh:mm", locale)
+        }
+        return SimpleDateFormat(dateFormatPattern, locale)
+    }
+
+    private fun getLocalizedPattern(template: String, locale: Locale): String {
+        return DateFormat.getBestDateTimePattern(locale, template)
+    }
+
+    private fun clearCallData() {
+        val size: Int = callItems.size
+        callItems.clear()
+        xlinxCallsItemAdapter.notifyItemRangeRemoved(0, size)
+    }
 
     override fun showFailure(throwable: Throwable) {
         showErrorInSnackbar(throwable)
     }
 
     override fun onDestroyView() {
+        clearCallData()
         callListView.cleanup()
         super.onDestroyView()
     }
