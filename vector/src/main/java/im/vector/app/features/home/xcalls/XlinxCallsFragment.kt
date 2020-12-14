@@ -38,6 +38,7 @@ import im.vector.app.core.epoxy.LayoutManagerStateRestorer
 import im.vector.app.core.extensions.cleanup
 import im.vector.app.core.platform.OnBackPressed
 import im.vector.app.core.platform.VectorBaseFragment
+import im.vector.app.features.call.WebRtcPeerConnectionManager
 import im.vector.app.features.home.AvatarRenderer
 import im.vector.app.features.home.RoomListDisplayMode
 import im.vector.app.features.home.room.list.RoomListAnimator
@@ -61,6 +62,7 @@ class XlinxCallsFragment @Inject constructor(
         private val session: Session,
         private val avatarRenderer: AvatarRenderer,
         private val sharedViewPool: RecyclerView.RecycledViewPool,
+        private val webRtcPeerConnectionManager: WebRtcPeerConnectionManager
 ) : VectorBaseFragment(), OnBackPressed, NotifsFabMenuView.Listener {
 
     private lateinit var stateRestorer: LayoutManagerStateRestorer
@@ -106,7 +108,7 @@ class XlinxCallsFragment @Inject constructor(
         callListView.itemAnimator = RoomListAnimator()
         callListView.setRecycledViewPool(sharedViewPool)
         layoutManager.recycleChildrenOnDetach = true
-        xlinxCallsItemAdapter = XlinxCallsItemAdapter(callItems, session, avatarRenderer)
+        xlinxCallsItemAdapter = XlinxCallsItemAdapter(callItems, session, avatarRenderer, webRtcPeerConnectionManager)
         callListView.adapter = xlinxCallsItemAdapter
     }
 

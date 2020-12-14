@@ -22,6 +22,7 @@ import androidx.core.content.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
+import com.tencent.mmkv.MMKV
 import im.vector.app.ActiveSessionDataSource
 import im.vector.app.core.services.BluetoothHeadsetReceiver
 import im.vector.app.core.services.CallService
@@ -399,6 +400,17 @@ class WebRtcPeerConnectionManager @Inject constructor(
                 matrixId = currentSession?.myUserId ?: "",
                 callId = mxCall.callId
         )
+
+        val mmkv: MMKV = MMKV.mmkvWithID("xlinxcallhistory")
+        val timestamp = System.currentTimeMillis().toString()
+        val currentCount: Long = mmkv.count() + 1
+
+        if (mxCall.isVideoCall) {
+            mmkv.encode(timestamp, currentCount.toString() + ":::" + mxCall.roomId + ":::" + name + ":::" + "2" + ":::" + "1" + ":::" + timestamp)
+        } else {
+            mmkv.encode(timestamp, currentCount.toString() + ":::" + mxCall.roomId + ":::" + name + ":::" + "1" + ":::" + "1" + ":::" + timestamp)
+        }
+
         executor.execute {
             // 1) create peer connection
             createPeerConnection(callContext, turnServerResponse)
