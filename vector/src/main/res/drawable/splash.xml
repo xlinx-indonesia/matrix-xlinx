@@ -11,7 +11,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/riot_splash_white" />
+            android:src="@drawable/ic_xlinx_onwhite" />
     </item>
 
 </layer-list>

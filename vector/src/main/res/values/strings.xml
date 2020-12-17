@@ -23,6 +23,10 @@
     <string name="space_bs_meeting_title_2">Everywhere</string>
     <string name="space_bs_meeting_title_3">Everything</string>
 
+    <string name="conversation_activity__quick_attachment_drawer_lock_record_description">Lock recording of audio attachment</string>
+    <string name="conversation_activity__quick_attachment_drawer_record_and_send_audio_description">Record and send audio attachment</string>
+
+
 
     <!-- permanent notification subtitle -->
     <string name="notification_sync_init">Initializing service</string>
@@ -520,7 +524,7 @@
 
     <string name="room_participants_header_admin_tools">ADMIN TOOLS</string>
     <string name="room_participants_header_call">CALL</string>
-    <string name="room_participants_header_direct_chats">Direct Messages</string>
+    <string name="room_participants_header_direct_chats">Chats</string>
     <string name="room_participants_header_devices">SESSIONS</string>
 
     <string name="room_participants_action_invite">Invite</string>
@@ -1691,7 +1695,7 @@
     <string name="room_preview_world_readable_room_not_supported_yet">"The preview of world-readable room is not supported yet in Element"</string>
 
     <string name="fab_menu_create_room">"Rooms"</string>
-    <string name="fab_menu_create_chat">"Direct Messages"</string>
+    <string name="fab_menu_create_chat">"Chats"</string>
 
     <!-- Create room screen -->
     <string name="create_room_title">"New Room"</string>
@@ -1749,7 +1753,7 @@
     <string name="settings_labs_show_hidden_events_in_timeline">Show hidden events in timeline</string>
     <string name="settings_labs_show_complete_history_in_encrypted_room">"Show complete history in encrypted rooms"</string>
 
-    <string name="bottom_action_people_x">Direct Messages</string>
+    <string name="bottom_action_people_x">Chats</string>
 
     <string name="send_file_step_idle">Waiting…</string>
     <string name="send_file_step_encrypting_thumbnail">Encrypting thumbnail…</string>
@@ -2264,7 +2268,7 @@
     <string name="encryption_information_dg_xsigning_not_trusted">Cross-Signing is enabled.\nKeys are not trusted</string>
     <string name="encryption_information_dg_xsigning_disabled">Cross-Signing is not enabled</string>
 
-    <string name="settings_hs_admin_e2e_disabled">Your server admin has disabled end-to-end encryption by default in private rooms &amp; Direct Messages.</string>
+    <string name="settings_hs_admin_e2e_disabled">Your server admin has disabled end-to-end encryption by default in private rooms &amp; Chats.</string>
     <string name="settings_active_sessions_list">Active Sessions</string>
     <string name="settings_active_sessions_show_all">Show All Sessions</string>
     <string name="settings_active_sessions_manage">Manage Sessions</string>

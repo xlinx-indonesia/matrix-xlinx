@@ -124,6 +124,17 @@
         tools:visibility="visible"
         />
 
+    <ImageButton
+        android:id="@+id/voiceNoteButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/circle_tintable"
+        android:src="@drawable/ic_microphone_on"
+        app:tint="?attr/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/attachmentButton"
+        app:layout_constraintStart_toEndOf="@id/composerEditText"
+        tools:ignore="MissingPrefix" />
 
     <ImageButton
         android:id="@+id/attachmentButton"
@@ -134,7 +145,7 @@
         app:tint="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendButton"
-        app:layout_constraintStart_toEndOf="@id/composerEditText"
+        app:layout_constraintStart_toEndOf="@id/voiceNoteButton"
         tools:ignore="MissingPrefix" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -168,9 +179,23 @@
         android:nextFocusLeft="@id/composerEditText"
         android:nextFocusUp="@id/composerEditText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/attachmentButton"
+        app:layout_constraintEnd_toStartOf="@+id/voiceNoteButton"
         app:layout_constraintStart_toEndOf="@+id/composer_shield"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@tools:sample/lorem/random" />
+
+<!--    <FrameLayout-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginBottom="12dp"-->
+<!--        android:clipChildren="false"-->
+<!--        android:clipToPadding="false">-->
+
+<!--        <include layout="@layout/recording_layout" />-->
+
+<!--    </FrameLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

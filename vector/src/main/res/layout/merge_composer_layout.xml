@@ -92,6 +92,16 @@
         tools:src="@tools:sample/avatars" />
 
     <ImageButton
+        android:id="@+id/voiceNoteButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/option_send_files"
+        android:src="@drawable/ic_microphone_on"
+        android:tint="?attr/colorAccent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
         android:id="@+id/attachmentButton"
         android:layout_width="0dp"
         android:layout_height="0dp"

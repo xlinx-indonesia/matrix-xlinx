@@ -16,16 +16,24 @@
 
 package im.vector.app.features.home.room.detail.composer
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.net.Uri
 import android.text.Editable
 import android.util.AttributeSet
+import android.view.MotionEvent
+import android.view.View.OnClickListener
+import android.view.View.OnLongClickListener
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.core.text.toSpannable
 import androidx.core.view.isVisible
 import androidx.transition.ChangeBounds
@@ -43,13 +51,15 @@ import org.matrix.android.sdk.api.crypto.RoomEncryptionTrustLevel
  * Encapsulate the timeline composer UX.
  *
  */
-class TextComposerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
-                                                 defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr) {
+@SuppressLint("ClickableViewAccessibility") class TextComposerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
+                                                                                             defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     interface Callback : ComposerEditText.Callback {
         fun onCloseRelatedMessage()
         fun onSendMessage(text: CharSequence)
         fun onAddAttachment()
+        fun onStartRecording()
+        fun onStopRecording()
     }
 
     var callback: Callback? = null
@@ -107,6 +117,30 @@ class TextComposerView @JvmOverloads constructor(context: Context, attrs: Attrib
         attachmentButton.setOnClickListener {
             callback?.onAddAttachment()
         }
+
+//        voiceNoteButton.setOnClickListener {
+//            callback?.onVoiceNote()
+//        }
+
+//        voiceNoteButton.setOnClickListener(OnClickListener {
+//            //code for click event
+//        })
+
+        voiceNoteButton.setOnLongClickListener(OnLongClickListener {
+            //code for hold event... which sounds like you want to begin recording here
+            callback?.onStartRecording()
+            true
+        })
+
+        voiceNoteButton.setOnTouchListener(OnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_UP -> {
+                    callback?.onStopRecording()
+                    return@OnTouchListener true
+                }
+            }
+            false
+        })
     }
 
     fun collapse(animate: Boolean = true, transitionComplete: (() -> Unit)? = null) {
