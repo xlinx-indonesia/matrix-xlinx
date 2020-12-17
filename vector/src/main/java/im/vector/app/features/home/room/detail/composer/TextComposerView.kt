@@ -58,8 +58,6 @@ import org.matrix.android.sdk.api.crypto.RoomEncryptionTrustLevel
         fun onCloseRelatedMessage()
         fun onSendMessage(text: CharSequence)
         fun onAddAttachment()
-        fun onStartRecording()
-        fun onStopRecording()
     }
 
     var callback: Callback? = null
@@ -126,21 +124,21 @@ import org.matrix.android.sdk.api.crypto.RoomEncryptionTrustLevel
 //            //code for click event
 //        })
 
-        voiceNoteButton.setOnLongClickListener(OnLongClickListener {
-            //code for hold event... which sounds like you want to begin recording here
-            callback?.onStartRecording()
-            true
-        })
-
-        voiceNoteButton.setOnTouchListener(OnTouchListener { _, event ->
-            when (event.action) {
-                MotionEvent.ACTION_UP -> {
-                    callback?.onStopRecording()
-                    return@OnTouchListener true
-                }
-            }
-            false
-        })
+//        voiceNoteButton.setOnLongClickListener(OnLongClickListener {
+//            //code for hold event... which sounds like you want to begin recording here
+//            callback?.onStartRecording()
+//            true
+//        })
+//
+//        voiceNoteButton.setOnTouchListener(OnTouchListener { _, event ->
+//            when (event.action) {
+//                MotionEvent.ACTION_UP -> {
+//                    callback?.onStopRecording()
+//                    return@OnTouchListener true
+//                }
+//            }
+//            false
+//        })
     }
 
     fun collapse(animate: Boolean = true, transitionComplete: (() -> Unit)? = null) {
