@@ -123,6 +123,14 @@ class AttachmentsHelper(val context: Context, val callback: Callback) : Restorab
         )
     }
 
+    fun onVoiceNoteResult(data: Uri, audioName: String, audioSize: Long, audioDuration: Long, mimeTypeX: String) {
+        callback.onContentAttachmentsReady(
+                MultiPicker.get(MultiPicker.AUDIO)
+                        .getAudioFile(data, audioName, audioSize, audioDuration, mimeTypeX)
+                        .map { it.toContentAttachmentData() }
+        )
+    }
+
     fun onContactResult(data: Intent?) {
         MultiPicker.get(MultiPicker.CONTACT)
                 .getSelectedFiles(context, data)

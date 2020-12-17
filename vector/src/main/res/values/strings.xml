@@ -26,6 +26,8 @@
     <string name="conversation_activity__quick_attachment_drawer_lock_record_description">Lock recording of audio attachment</string>
     <string name="conversation_activity__quick_attachment_drawer_record_and_send_audio_description">Record and send audio attachment</string>
 
+    <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Tap and hold to record a voice message, release to send</string>
+
 
 
     <!-- permanent notification subtitle -->

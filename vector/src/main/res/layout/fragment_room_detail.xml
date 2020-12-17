@@ -169,6 +169,166 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="60dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <LinearLayout
+                android:id="@+id/compose_bubble"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical">
+
+                <Space
+                    android:id="@+id/quote_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <Space
+                    android:id="@+id/link_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:visibility="gone" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:paddingStart="8dp"
+                        tools:ignore="RtlSymmetry">
+
+                        <Space
+                            android:id="@+id/emoji_toggle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/conversation_compose_height"
+                            android:layout_gravity="bottom"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:paddingEnd="6dp" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/conversation_compose_height" />
+
+                        <Space
+                            android:id="@+id/embedded_text_editor"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:nextFocusRight="@+id/send_button"
+                            android:nextFocusForward="@+id/send_button"
+                            tools:hint="Send TextSecure message"
+                            tools:visibility="invisible">
+
+                        </Space>
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:clipChildren="false"
+                            android:clipToPadding="false">
+
+                            <LinearLayout
+                                android:id="@+id/quick_attachment_toggle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                tools:ignore="RtlHardcoded">
+
+                                <Space
+                                    android:id="@+id/quick_camera_toggle"
+                                    android:layout_width="24dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="12dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:visibility="gone"
+                                    android:background="?selectableItemBackgroundBorderless"
+                                    android:scaleType="fitCenter" />
+
+                                <im.vector.app.features.home.room.detail.composer.MicrophoneRecorderView
+                                    android:id="@+id/recorder_view"
+                                    android:layout_width="24dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="13dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:clipChildren="false"
+                                    android:clipToPadding="false">
+
+                                    <include layout="@layout/microphone_recorder_view" />
+
+                                </im.vector.app.features.home.room.detail.composer.MicrophoneRecorderView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/inline_attachment_container"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:visibility="gone"
+                                tools:ignore="RtlHardcoded">
+
+                                <Space
+                                    android:id="@+id/inline_attachment_button"
+                                    android:layout_width="24dp"
+                                    android:layout_height="@dimen/conversation_compose_height"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="?selectableItemBackgroundBorderless"
+                                    android:scaleType="fitCenter" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <include layout="@layout/recording_layout" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+
     <im.vector.app.features.invite.VectorInviteView
         android:id="@+id/inviteView"
         android:layout_width="0dp"
