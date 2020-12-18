@@ -47,6 +47,8 @@ allprojects {
                 //Chat effects
                 includeGroupByRegex 'com\\.github\\.jetradarmobile'
                 includeGroupByRegex 'nl\\.dionsegijn'
+
+                includeGroupByRegex 'com\\.github\\.WrathChaos'
             }
         }
         maven {

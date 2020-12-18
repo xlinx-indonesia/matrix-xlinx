@@ -2,9 +2,11 @@
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:parentTag="android.widget.LinearLayout">
+
 
     <TextView
         android:id="@+id/receiptMore"
@@ -67,5 +69,17 @@
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"
         tools:src="@tools:sample/avatars" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/readBy"-->
+<!--        android:layout_width="18dp"-->
+<!--        android:layout_height="18dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:importantForAccessibility="no"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        app:tint="@color/green_500"-->
+<!--        android:src="@drawable/ic_double_checking"-->
+<!--        tools:ignore="MissingPrefix,UseAppTint" />-->
 
 </merge>

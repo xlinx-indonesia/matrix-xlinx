@@ -48,7 +48,7 @@ class LoginServerUrlFormFragment @Inject constructor() : AbstractLoginFragment()
         super.onViewCreated(view, savedInstanceState)
 
         setupHomeServerField()
-        loginServerUrlFormHomeServerUrl.setText("https://homeserver.x-linx.co")
+        loginServerUrlFormHomeServerUrl.setText("https://iig-xlinx.ems.host/")
         submit()
     }
 

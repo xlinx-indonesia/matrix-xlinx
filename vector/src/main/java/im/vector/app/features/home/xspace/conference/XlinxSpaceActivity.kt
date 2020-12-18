@@ -103,6 +103,7 @@ class XlinxSpaceActivity : VectorBaseActivity(), JitsiMeetActivityInterface, Jit
                 .setFeatureFlag("video-share.enabled", false)
                 .setFeatureFlag("meeting-name.enabled", true)
                 .setFeatureFlag("toolbox.alwaysVisible", true)
+                .setFeatureFlag("call-integration.enabled", false)
                 .setRoom(viewState.roomId)
                 .build()
         jitsiMeetView?.join(jitsiMeetConferenceOptions)

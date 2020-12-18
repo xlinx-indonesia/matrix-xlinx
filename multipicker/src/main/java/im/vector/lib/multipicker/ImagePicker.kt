@@ -18,6 +18,7 @@ package im.vector.lib.multipicker
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.provider.MediaStore
 import im.vector.lib.multipicker.entity.MultiPickerImageType
 import im.vector.lib.multipicker.utils.ImageUtils
@@ -35,6 +36,49 @@ class ImagePicker : Picker<MultiPickerImageType>() {
         val imageList = mutableListOf<MultiPickerImageType>()
 
         getSelectedUriList(data).forEach { selectedUri ->
+            val projection = arrayOf(
+                    MediaStore.Images.Media.DISPLAY_NAME,
+                    MediaStore.Images.Media.SIZE
+            )
+
+            context.contentResolver.query(
+                    selectedUri,
+                    projection,
+                    null,
+                    null,
+                    null
+            )?.use { cursor ->
+                val nameColumn = cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME)
+                val sizeColumn = cursor.getColumnIndex(MediaStore.Images.Media.SIZE)
+
+                if (cursor.moveToNext()) {
+                    val name = cursor.getString(nameColumn)
+                    val size = cursor.getLong(sizeColumn)
+
+                    val bitmap = ImageUtils.getBitmap(context, selectedUri)
+                    val orientation = ImageUtils.getOrientation(context, selectedUri)
+
+                    imageList.add(
+                            MultiPickerImageType(
+                                    name,
+                                    size,
+                                    context.contentResolver.getType(selectedUri),
+                                    selectedUri,
+                                    bitmap?.width ?: 0,
+                                    bitmap?.height ?: 0,
+                                    orientation
+                            )
+                    )
+                }
+            }
+        }
+        return imageList
+    }
+
+    fun getSelectedUris(context: Context, data: List<Uri>?): List<MultiPickerImageType> {
+        val imageList = mutableListOf<MultiPickerImageType>()
+
+        data?.forEach { selectedUri ->
             val projection = arrayOf(
                     MediaStore.Images.Media.DISPLAY_NAME,
                     MediaStore.Images.Media.SIZE

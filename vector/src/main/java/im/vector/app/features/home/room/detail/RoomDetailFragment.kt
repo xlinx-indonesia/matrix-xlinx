@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("DEPRECATION")
+
 package im.vector.app.features.home.room.detail
 
 import android.Manifest
@@ -41,6 +43,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
+import android.widget.Gallery
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -79,6 +82,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.jakewharton.rxbinding3.widget.textChanges
 import im.vector.app.R
+import im.vector.app.core.dialogs.CameraDialogChooserHelper
 import im.vector.app.core.dialogs.ConfirmationDialogBuilder
 import im.vector.app.core.dialogs.GalleryOrCameraDialogHelper
 import im.vector.app.core.dialogs.withColoredButton
@@ -179,6 +183,7 @@ import im.vector.app.features.widgets.WidgetActivity
 import im.vector.app.features.widgets.WidgetArgs
 import im.vector.app.features.widgets.WidgetKind
 import im.vector.app.features.widgets.permissions.RoomWidgetPermissionBottomSheet
+import im.vector.lib.multipicker.entity.MultiPickerImageType
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.parcel.Parcelize
@@ -223,6 +228,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
+private const val PICKER_REQUEST_CODE = 2929
 
 @Parcelize
 data class RoomDetailArgs(
@@ -255,6 +261,7 @@ class RoomDetailFragment @Inject constructor(
         JumpToReadMarkerView.Callback,
         AttachmentTypeSelectorView.Callback,
         AttachmentsHelper.Callback,
+        CameraDialogChooserHelper.Callback,
         GalleryOrCameraDialogHelper.Listener,
         MicrophoneRecorderView.Listener,
         ActiveCallView.Callback {
@@ -278,6 +285,8 @@ class RoomDetailFragment @Inject constructor(
     }
 
     private val galleryOrCameraDialogHelper = GalleryOrCameraDialogHelper(this, colorProvider)
+    private val cameraDialogChooserHelper = CameraDialogChooserHelper(this, colorProvider, this)
+
 
     private val roomDetailArgs: RoomDetailArgs by args()
     private val glideRequests by lazy {
@@ -2035,20 +2044,64 @@ class RoomDetailFragment @Inject constructor(
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun launchAttachmentProcess(type: AttachmentTypeSelectorView.Type) {
         when (type) {
-            AttachmentTypeSelectorView.Type.CAMERA -> attachmentsHelper.openCamera(requireContext(), attachmentPhotoActivityResultLauncher)
+//            AttachmentTypeSelectorView.Type.CAMERA -> attachmentsHelper.openCamera(requireContext(), attachmentPhotoActivityResultLauncher)
+            AttachmentTypeSelectorView.Type.CAMERA -> cameraDialogChooserHelper.show()
             AttachmentTypeSelectorView.Type.FILE -> attachmentsHelper.selectFile(attachmentFileActivityResultLauncher)
             AttachmentTypeSelectorView.Type.GALLERY -> attachmentsHelper.selectGallery(attachmentImageActivityResultLauncher)
+//            AttachmentTypeSelectorView.Type.GALLERY -> {
+//                val intent = Intent(requireContext(), Gallery::class.java)
+//                intent.putExtra("title", R.string.attachment_type_gallery)
+//                // Mode 1 for both images and videos selection, 2 for images only and 3 for videos!
+//                intent.putExtra("mode", 1)
+//                intent.putExtra("maxSelection", 5) // Optional
+//                startActivityForResult(intent, PICKER_REQUEST_CODE)
+//            }
             AttachmentTypeSelectorView.Type.AUDIO -> attachmentsHelper.selectAudio(attachmentAudioActivityResultLauncher)
             AttachmentTypeSelectorView.Type.CONTACT -> attachmentsHelper.selectContact(attachmentContactActivityResultLauncher)
             AttachmentTypeSelectorView.Type.STICKER -> roomDetailViewModel.handle(RoomDetailAction.SelectStickerAttachment)
         }.exhaustive
     }
 
+    @Suppress("DEPRECATION")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        // Check which request we're responding to
+        if (requestCode == PICKER_REQUEST_CODE) {
+            // Make sure the request was successful
+            if (resultCode == Activity.RESULT_OK && data != null) {
+                val uriList = mutableListOf<Uri>()
+                val selectionResult = data.getStringArrayListExtra("result")
+                try {
+                    selectionResult?.forEach {
+                        uriList.add(Uri.fromFile(File(it)))
+                    }
+                } finally {
+                    attachmentsHelper.onPickerImageResult(uriList)
+                }
+
+            }
+        }
+    }
+
+
 // AttachmentsHelper.Callback
 
     override fun onContentAttachmentsReady(attachments: List<ContentAttachmentData>) {
+        val grouped = attachments.toGroupedContentAttachmentData()
+        if (grouped.notPreviewables.isNotEmpty()) {
+            // Send the not previewable attachments right now (?)
+            roomDetailViewModel.handle(RoomDetailAction.SendMedia(grouped.notPreviewables, false))
+        }
+        if (grouped.previewables.isNotEmpty()) {
+            val intent = AttachmentsPreviewActivity.newIntent(requireContext(), AttachmentsPreviewArgs(grouped.previewables))
+            contentAttachmentActivityResultLauncher.launch(intent)
+        }
+    }
+
+    override fun onCameraContentAttachmentsReady(attachments: List<ContentAttachmentData>) {
         val grouped = attachments.toGroupedContentAttachmentData()
         if (grouped.notPreviewables.isNotEmpty()) {
             // Send the not previewable attachments right now (?)
