@@ -17,6 +17,7 @@
 package im.vector.app.features.home.room.detail.timeline.item
 
 import android.text.method.MovementMethod
+import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.text.PrecomputedTextCompat
 import androidx.core.widget.TextViewCompat
@@ -85,6 +86,12 @@ abstract class MessageTextItem : AbsMessageItem<MessageTextItem.Holder>() {
         holder.messageView.setOnClickListener(attributes.itemClickListener)
         holder.messageView.setOnLongClickListener(attributes.itemLongClickListener)
         holder.messageView.setTextFuture(textFuture)
+
+        if (attributes.informationData.sentByMe) {
+            holder.messageView.apply {
+                textAlignment = View.TEXT_ALIGNMENT_VIEW_END
+            }
+        }
     }
 
     override fun unbind(holder: Holder) {

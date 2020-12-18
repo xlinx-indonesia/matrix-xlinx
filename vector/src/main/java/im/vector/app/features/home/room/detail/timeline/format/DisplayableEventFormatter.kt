@@ -42,9 +42,9 @@ class DisplayableEventFormatter @Inject constructor(
 ) {
 
     fun format(timelineEvent: TimelineEvent, appendAuthor: Boolean, roomSummary: RoomSummary?): CharSequence {
-        if (timelineEvent.root.isRedacted()) {
-            return noticeEventFormatter.formatRedactedEvent(timelineEvent.root)
-        }
+//        if (timelineEvent.root.isRedacted()) {
+//            return noticeEventFormatter.formatRedactedEvent(timelineEvent.root)
+//        }
 
         if (timelineEvent.root.isEncrypted()
                 && timelineEvent.root.mxDecryptionResult == null) {

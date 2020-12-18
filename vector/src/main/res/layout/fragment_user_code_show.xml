@@ -55,12 +55,10 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-
         <ImageView
             android:id="@+id/showUserCodeAvatar"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="@dimen/layout_horizontal_margin"
             android:elevation="4dp"
             android:transitionName="profile"
             app:layout_constraintBottom_toBottomOf="@id/showUserCodeCardTopBarrier"
@@ -68,6 +66,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/showUserCodeCardTopBarrier"
             tools:src="@tools:sample/avatars" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/showUserCodeAvatar"-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginStart="@dimen/layout_horizontal_margin"-->
+<!--            android:elevation="4dp"-->
+<!--            android:transitionName="profile"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/showUserCodeCardTopBarrier"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@id/showUserCodeCardTopBarrier"-->
+<!--            tools:src="@tools:sample/avatars" />-->
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/showUserCodeCardTopBarrier"

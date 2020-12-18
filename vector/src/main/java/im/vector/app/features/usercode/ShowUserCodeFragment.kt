@@ -82,6 +82,10 @@ class ShowUserCodeFragment @Inject constructor(
         state.matrixItem?.let { avatarRenderer.render(it, showUserCodeAvatar) }
         state.shareLink?.let { showUserCodeQRImage.setData(it) }
         showUserCodeCardNameText.setTextOrHide(state.matrixItem?.displayName)
-        showUserCodeCardUserIdText.setTextOrHide(state.matrixItem?.id)
+
+        val strippedUserId = state.matrixItem?.id?.split(":homeserver")
+        showUserCodeCardUserIdText.setTextOrHide(strippedUserId?.get(0))
+
+//        showUserCodeCardUserIdText.setTextOrHide(state.matrixItem?.id)
     }
 }

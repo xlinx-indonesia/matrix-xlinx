@@ -16,8 +16,10 @@
 
 package im.vector.app.features.home.room.detail.timeline.item
 
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.core.view.ViewCompat
@@ -29,6 +31,7 @@ import im.vector.app.core.glide.GlideApp
 import im.vector.app.features.home.room.detail.timeline.helper.ContentUploadStateTrackerBinder
 import im.vector.app.features.media.ImageContentRenderer
 import org.matrix.android.sdk.api.session.room.send.SendState
+import kotlin.coroutines.coroutineContext
 
 @EpoxyModelClass(layout = R.layout.item_timeline_event_base)
 abstract class MessageImageVideoItem : AbsMessageItem<MessageImageVideoItem.Holder>() {
@@ -99,5 +102,13 @@ abstract class MessageImageVideoItem : AbsMessageItem<MessageImageVideoItem.Hold
 
     companion object {
         private const val STUB_ID = R.id.messageContentMediaStub
+    }
+
+    open fun setMargins(v: View, l: Int, t: Int, r: Int, b: Int) {
+        if (v.layoutParams is MarginLayoutParams) {
+            val p = v.layoutParams as MarginLayoutParams
+            p.setMargins(l, t, r, b)
+            v.requestLayout()
+        }
     }
 }

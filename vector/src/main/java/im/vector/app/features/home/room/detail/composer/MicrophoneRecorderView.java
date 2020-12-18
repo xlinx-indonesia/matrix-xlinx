@@ -147,6 +147,8 @@ public final class MicrophoneRecorderView extends FrameLayout implements View.On
     void onRecordReleased();
     void onRecordCanceled();
     void onRecordLocked();
+    void onRecordFinished();
+    void onRecordStarted();
     void onRecordMoved(float offsetX, float absoluteX);
     void onRecordPermissionRequired();
   }

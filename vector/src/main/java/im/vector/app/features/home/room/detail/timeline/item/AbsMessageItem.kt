@@ -16,9 +16,11 @@
 
 package im.vector.app.features.home.room.detail.timeline.item
 
+import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.view.View
 import android.widget.ImageView
+import android.widget.TableRow
 import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.core.view.isInvisible
@@ -49,6 +51,7 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
         attributes.avatarCallback?.onMemberNameClicked(attributes.informationData)
     })
 
+    @SuppressLint("SetTextI18n")
     override fun bind(holder: H) {
         super.bind(holder)
         if (attributes.informationData.showInformation) {
@@ -67,6 +70,18 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
             attributes.avatarRenderer.render(attributes.informationData.matrixItem, holder.avatarImageView)
             holder.avatarImageView.setOnLongClickListener(attributes.itemLongClickListener)
             holder.memberNameView.setOnLongClickListener(attributes.itemLongClickListener)
+
+            if (attributes.informationData.sentByMe) {
+                holder.memberNameView.apply {
+//                    layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+//                            TableRow.LayoutParams.WRAP_CONTENT)
+                    textAlignment = View.TEXT_ALIGNMENT_VIEW_END
+                    text = "You"
+                }
+//                holder.avatarImageView.apply {
+//                    visibility = View.GONE
+//                }
+            }
         } else {
             holder.avatarImageView.setOnClickListener(null)
             holder.memberNameView.setOnClickListener(null)

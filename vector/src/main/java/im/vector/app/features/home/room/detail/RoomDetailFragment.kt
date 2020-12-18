@@ -21,7 +21,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
@@ -139,7 +138,6 @@ import im.vector.app.features.home.room.detail.composer.MicrophoneRecorderView
 import im.vector.app.features.home.room.detail.composer.RecordTime
 import im.vector.app.features.home.room.detail.composer.SlideToCancel
 import im.vector.app.features.home.room.detail.composer.TextComposerView
-import im.vector.app.features.home.room.detail.composer.WavRecorder
 import im.vector.app.features.home.room.detail.composer.util.AssertedSuccessListener
 import im.vector.app.features.home.room.detail.composer.util.ListenableFuture
 import im.vector.app.features.home.room.detail.composer.util.ServiceUtil
@@ -343,8 +341,6 @@ class RoomDetailFragment @Inject constructor(
 
     private lateinit var slideToCancel: SlideToCancel
 
-    private val listener: Listener? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedActionViewModel = activityViewModelProvider.get(MessageSharedActionViewModel::class.java)
@@ -445,6 +441,8 @@ class RoomDetailFragment @Inject constructor(
         if (savedInstanceState == null) {
             handleShareData()
         }
+
+        xrecorder_container.isVisible = false
     }
 
     private fun handleChatEffect(chatEffect: ChatEffect) {
@@ -2093,13 +2091,13 @@ class RoomDetailFragment @Inject constructor(
         }
     }
 
-    interface Listener {
-        fun onRecorderStarted()
-        fun onRecorderLocked()
-        fun onRecorderFinished()
-        fun onRecorderCanceled()
-        fun onRecorderPermissionRequired()
-    }
+//    interface Listener {
+//        fun onRecorderStarted()
+//        fun onRecorderLocked()
+//        fun onRecorderFinished()
+//        fun onRecorderCanceled()
+//        fun onRecorderPermissionRequired()
+//    }
 
     private var fileName: String = ""
 //    private var fileString: String = ""
@@ -2112,44 +2110,59 @@ class RoomDetailFragment @Inject constructor(
     override fun onRecordPressed() {
 //        fileName = "${requireContext().externalCacheDir?.absolutePath}/" + fileString
         val timestamp = DateProvider.toLocalDateTime(System.currentTimeMillis()).toString()
-        fileName = "REC_${timestamp}"
+        fileName = "REC_${timestamp}.mp3"
 
-        startRecording()
-//        ActivityCompat.requestPermissions(requireActivity(), permissions, REQUEST_RECORD_AUDIO_PERMISSION)
-
-        listener?.onRecorderStarted();
-        recordTime.display();
-        slideToCancel.display();
+        recordTime.display()
+        slideToCancel.display()
 
         XlinxUtil.fadeOut(quickAudioToggle, XlinxUtil.FADE_TIME, View.INVISIBLE)
         XlinxUtil.fadeOut(composerLayout.attachmentButton, XlinxUtil.FADE_TIME, View.INVISIBLE)
         XlinxUtil.fadeOut(composerLayout.composerShieldImageView, XlinxUtil.FADE_TIME, View.INVISIBLE)
         XlinxUtil.fadeOut(composerLayout.composerEditText, XlinxUtil.FADE_TIME, View.INVISIBLE)
 
+        onRecordStarted()
     }
 
     override fun onRecordReleased() {
         val elapsedTime: Long = onRecordHideEvent()
 
         if (elapsedTime > 1000) {
-            stopRecording()
-            sendVoiceNote(elapsedTime)
+            onRecordFinished();
         } else {
-            Toast.makeText(requireContext(), R.string.InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send, Toast.LENGTH_LONG).show()
-            stopRecording()
+            Toast.makeText(requireContext(), R.string.InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send, Toast.LENGTH_LONG).show();
+            onRecordCanceled();
         }
-
     }
 
+    @Suppress("DEPRECATION")
     override fun onRecordCanceled() {
-        onRecordHideEvent();
-        listener?.onRecorderCanceled();
+        onRecordHideEvent()
+
+        val vibrator: Vibrator = ServiceUtil.getVibrator(requireContext())
+        vibrator.vibrate(50)
+
+        requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+        stopRecording(false)
     }
 
     override fun onRecordLocked() {
-        slideToCancel.hide();
+        slideToCancel.hide()
         recordLockCancel.visibility = View.VISIBLE
-        listener?.onRecorderLocked();
+    }
+
+    override fun onRecordFinished() {
+        stopRecording(true)
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onRecordStarted() {
+        val vibrator: Vibrator = ServiceUtil.getVibrator(requireContext())
+        vibrator.vibrate(20)
+
+        requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+        startRecording()
     }
 
     override fun onRecordMoved(offsetX: Float, absoluteX: Float) {
@@ -2165,7 +2178,7 @@ class RoomDetailFragment @Inject constructor(
     }
 
     override fun onRecordPermissionRequired() {
-        listener?.onRecorderPermissionRequired();
+        ActivityCompat.requestPermissions(requireActivity(), permissions, REQUEST_RECORD_AUDIO_PERMISSION)
     }
 
     private fun onRecordHideEvent(): Long {
@@ -2187,7 +2200,7 @@ class RoomDetailFragment @Inject constructor(
         recorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
             setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-            setOutputFile(requireContext().externalCacheDir?.path + "/$fileName")
+            setOutputFile(requireContext().externalCacheDir?.absolutePath + "/xlinxrecs/$fileName")
             setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
 
             try {
@@ -2200,17 +2213,27 @@ class RoomDetailFragment @Inject constructor(
         }
     }
 
-    private fun stopRecording() {
-        recorder?.apply {
-            stop()
-            release()
+    private fun stopRecording(isSending: Boolean) {
+        try {
+            recorder?.apply {
+                stop()
+                release()
+            }
+            recorder = null
+        } catch (e: java.lang.IllegalStateException) {
+            e.printStackTrace()
+        } finally {
+            if (isSending) {
+                sendVoiceNote()
+            }
         }
-        recorder = null
     }
 
 
-    private fun sendVoiceNote(elapsedTime: Long) {
-        var resultFile = File(requireContext().externalCacheDir?.path + "/$fileName")
+    private fun sendVoiceNote() {
+        val elapsedTime: Long = onRecordHideEvent()
+
+        val resultFile = File(requireContext().externalCacheDir?.absolutePath + "/$fileName")
 
         if (elapsedTime > 1000) {
             attachmentsHelper.onVoiceNoteResult(Uri.fromFile(resultFile), fileName, resultFile.length(), elapsedTime, "audio/mp3")

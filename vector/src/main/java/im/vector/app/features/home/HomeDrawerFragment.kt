@@ -16,7 +16,9 @@
 
 package im.vector.app.features.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
@@ -47,6 +49,7 @@ class HomeDrawerFragment @Inject constructor(
 
     override fun getLayoutResId() = R.layout.fragment_home_drawer
 
+    @SuppressLint("LogNotTimber")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,7 +63,10 @@ class HomeDrawerFragment @Inject constructor(
             if (user != null) {
                 avatarRenderer.render(user.toMatrixItem(), homeDrawerHeaderAvatarView)
                 homeDrawerUsernameView.text = user.displayName
-                homeDrawerUserIdView.text = user.userId
+
+                val strippedUserId = user.userId.split(":homeserver")
+
+                homeDrawerUserIdView.text = strippedUserId[0]
             }
         }
         // Profile
@@ -93,13 +99,19 @@ class HomeDrawerFragment @Inject constructor(
 
         homeDrawerInviteFriendButton.debouncedClicks {
             session.permalinkService().createPermalink(sharedActionViewModel.session.myUserId)?.let { permalink ->
-                val text = getString(R.string.invite_friends_text, permalink)
+//                val text = getString(R.string.invite_friends_text, permalink)
+
+                Log.i("permalink", permalink)
+
+//                val xlinxId = "https://chat.x-linx.co/#/" + session.myUserId
+                val xlinxId = session.myUserId.split(":homeserver")
+                val xlinxtext = getString(R.string.invite_friends_text, xlinxId[0] + ":x-linx.com")
 
                 startSharePlainTextIntent(
                         fragment = this,
                         activityResultLauncher = null,
                         chooserTitle = getString(R.string.invite_friends),
-                        text = text,
+                        text = xlinxtext,
                         extraTitle = getString(R.string.invite_friends_rich_title)
                 )
             }
