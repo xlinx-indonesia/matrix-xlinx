@@ -1692,8 +1692,6 @@ class RoomDetailFragment @Inject constructor(
         val contentUrlResolver = activeSessionHolder.getActiveSession().contentUrlResolver()
         val resolvedUrl = contentUrlResolver.resolveFullSize(fileUrl) ?: return
 
-        Log.i("audiocontent", messageAudioContent.url + " | " + resolvedUrl)
-
         val trackSelector: TrackSelector = DefaultTrackSelector()
         val loadControl: LoadControl = DefaultLoadControl()
 
@@ -1701,12 +1699,23 @@ class RoomDetailFragment @Inject constructor(
 
         val dataSourceFactory = DefaultDataSourceFactory(requireContext(), Util.getUserAgent(requireContext(), "xlinx"), null)
         val extractorsFactory: ExtractorsFactory = DefaultExtractorsFactory().setConstantBitrateSeekingEnabled(true)
-//        val audioSource: MediaSource = ExtractorMediaSource(Uri.parse(resolvedUrl), dataSourceFactory, extractorsFactory, null, null)
-        val progressiveMediaSource: ProgressiveMediaSource = ProgressiveMediaSource.Factory(dataSourceFactory, extractorsFactory).createMediaSource(Uri.parse(resolvedUrl))
 
-        exoPlayer?.prepare(progressiveMediaSource)
+        session.fileService().downloadFile(
+                messageContent = messageAudioContent,
+                callback = object : MatrixCallback<File> {
+                    override fun onSuccess(data: File) {
+                        if (isAdded) {
+//                          val audioSource: MediaSource = ExtractorMediaSource(Uri.parse(resolvedUrl), dataSourceFactory, extractorsFactory, null, null)
+                            val progressiveMediaSource: ProgressiveMediaSource = ProgressiveMediaSource.Factory(dataSourceFactory, extractorsFactory).createMediaSource(Uri.fromFile(data))
 
-        setPlayPause(true)
+                            exoPlayer?.prepare(progressiveMediaSource)
+
+                            setPlayPause(true)
+                        }
+                    }
+                }
+        )
+        Log.i("audiocontent", messageAudioContent.url + " | " + resolvedUrl)
     }
 
     private fun setPlayPause(play: Boolean) {
