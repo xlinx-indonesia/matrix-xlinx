@@ -23,17 +23,21 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
-import android.media.MediaPlayer
+import android.media.AudioFormat
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.os.Parcelable
+import android.os.StrictMode
 import android.os.Vibrator
 import android.text.Spannable
+import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -43,11 +47,11 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
-import android.widget.Gallery
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
+import androidx.annotation.NonNull
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -78,10 +82,22 @@ import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.args
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
+import com.google.android.exoplayer2.DefaultLoadControl
+import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.LoadControl
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
+import com.google.android.exoplayer2.extractor.ExtractorsFactory
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+import com.google.android.exoplayer2.trackselection.TrackSelector
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.util.Util
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.jakewharton.rxbinding3.widget.textChanges
 import im.vector.app.R
+import im.vector.app.core.di.ActiveSessionHolder
 import im.vector.app.core.dialogs.CameraDialogChooserHelper
 import im.vector.app.core.dialogs.ConfirmationDialogBuilder
 import im.vector.app.core.dialogs.GalleryOrCameraDialogHelper
@@ -183,7 +199,6 @@ import im.vector.app.features.widgets.WidgetActivity
 import im.vector.app.features.widgets.WidgetArgs
 import im.vector.app.features.widgets.WidgetKind
 import im.vector.app.features.widgets.permissions.RoomWidgetPermissionBottomSheet
-import im.vector.lib.multipicker.entity.MultiPickerImageType
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.parcel.Parcelize
@@ -192,6 +207,11 @@ import kotlinx.android.synthetic.main.fragment_room_detail.*
 import kotlinx.android.synthetic.main.merge_overlay_waiting_view.*
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
+import omrecorder.AudioRecordConfig
+import omrecorder.OmRecorder
+import omrecorder.PullTransport
+import omrecorder.PullableSource
+import omrecorder.Recorder
 import org.billcarsonfr.jsonviewer.JSonViewerDialog
 import org.commonmark.parser.Parser
 import org.matrix.android.sdk.api.MatrixCallback
@@ -201,6 +221,7 @@ import org.matrix.android.sdk.api.session.events.model.Event
 import org.matrix.android.sdk.api.session.events.model.toModel
 import org.matrix.android.sdk.api.session.room.model.Membership
 import org.matrix.android.sdk.api.session.room.model.RoomSummary
+import org.matrix.android.sdk.api.session.room.model.message.MessageAudioContent
 import org.matrix.android.sdk.api.session.room.model.message.MessageContent
 import org.matrix.android.sdk.api.session.room.model.message.MessageFormat
 import org.matrix.android.sdk.api.session.room.model.message.MessageImageInfoContent
@@ -222,12 +243,14 @@ import org.matrix.android.sdk.internal.crypto.model.event.WithHeldCode
 import timber.log.Timber
 import java.io.File
 import java.io.IOException
+import java.net.HttpURLConnection
 import java.net.URL
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
+private const val REQUEST_WRITE_AUDIO_PERMISSION = 300
 private const val PICKER_REQUEST_CODE = 2929
 
 @Parcelize
@@ -253,7 +276,8 @@ class RoomDetailFragment @Inject constructor(
         private val matrixItemColorProvider: MatrixItemColorProvider,
         private val imageContentRenderer: ImageContentRenderer,
         private val roomDetailPendingActionStore: RoomDetailPendingActionStore,
-        private val pillsPostProcessorFactory: PillsPostProcessor.Factory
+        private val pillsPostProcessorFactory: PillsPostProcessor.Factory,
+        private val activeSessionHolder: ActiveSessionHolder
 ) :
         VectorBaseFragment(),
         TimelineEventController.Callback,
@@ -451,7 +475,7 @@ class RoomDetailFragment @Inject constructor(
             handleShareData()
         }
 
-        xrecorder_container.isVisible = false
+//        xrecorder_container.isVisible = false
     }
 
     private fun handleChatEffect(chatEffect: ChatEffect) {
@@ -1637,6 +1661,64 @@ class RoomDetailFragment @Inject constructor(
         }
     }
 
+
+    private var exoPlayer: SimpleExoPlayer? = null
+
+//    @Suppress("DEPRECATED_IDENTITY_EQUALS")
+//    @Throws(IOException::class)
+//    fun getFinalURL(url: String?): String? {
+//        val SDK_INT = Build.VERSION.SDK_INT
+//        val redirectUrl: String?
+//        if (SDK_INT > 8) {
+//            val policy: StrictMode.ThreadPolicy = StrictMode.ThreadPolicy.Builder()
+//                    .permitAll().build()
+//            StrictMode.setThreadPolicy(policy)
+//            //your codes here
+//            val con: HttpURLConnection = URL(url).openConnection() as HttpURLConnection
+//            con.instanceFollowRedirects = false
+//            con.connect()
+//            con.inputStream
+//            if (con.responseCode === HttpURLConnection.HTTP_MOVED_PERM || con.responseCode === HttpURLConnection.HTTP_MOVED_TEMP) {
+//                redirectUrl = con.getHeaderField("Location")
+//                return getFinalURL(redirectUrl)
+//            }
+//            return url
+//        }
+//        return url
+//    }
+
+    @SuppressLint("LogNotTimber")
+    override fun onAudioMessageClicked(messageAudioContent: MessageAudioContent, fileUrl: String) {
+        val contentUrlResolver = activeSessionHolder.getActiveSession().contentUrlResolver()
+        val resolvedUrl = contentUrlResolver.resolveFullSize(fileUrl) ?: return
+
+        Log.i("audiocontent", messageAudioContent.url + " | " + resolvedUrl)
+
+        val trackSelector: TrackSelector = DefaultTrackSelector()
+        val loadControl: LoadControl = DefaultLoadControl()
+
+        exoPlayer = ExoPlayerFactory.newSimpleInstance(requireContext(), trackSelector, loadControl)
+
+        val dataSourceFactory = DefaultDataSourceFactory(requireContext(), Util.getUserAgent(requireContext(), "xlinx"), null)
+        val extractorsFactory: ExtractorsFactory = DefaultExtractorsFactory().setConstantBitrateSeekingEnabled(true)
+//        val audioSource: MediaSource = ExtractorMediaSource(Uri.parse(resolvedUrl), dataSourceFactory, extractorsFactory, null, null)
+        val progressiveMediaSource: ProgressiveMediaSource = ProgressiveMediaSource.Factory(dataSourceFactory, extractorsFactory).createMediaSource(Uri.parse(resolvedUrl))
+
+        exoPlayer?.prepare(progressiveMediaSource)
+
+        setPlayPause(true)
+    }
+
+    private fun setPlayPause(play: Boolean) {
+//        var isPlaying = play
+        exoPlayer!!.playWhenReady = play
+//        if (!isPlaying) {
+//            btnPlay.setImageResource(android.R.drawable.ic_media_play)
+//        } else {
+//            setProgress()
+//        }
+    }
+
 //    override fun onFileMessageClicked(eventId: String, messageFileContent: MessageFileContent) {
 //        val isEncrypted = messageFileContent.encryptedFileInfo != null
 //        val action = RoomDetailAction.DownloadOrOpen(eventId, messageFileContent, isEncrypted)
@@ -2156,14 +2238,15 @@ class RoomDetailFragment @Inject constructor(
 //    private var fileString: String = ""
     private var permissionToRecordAccepted = false
     private var permissions: Array<String> = arrayOf(Manifest.permission.RECORD_AUDIO)
-    private var recorder: MediaRecorder? = null
-    private var player: MediaPlayer? = null
+    private var recorder: Recorder? = null
 //    private lateinit var wavRecorder: WavRecorder? = null
 
     override fun onRecordPressed() {
 //        fileName = "${requireContext().externalCacheDir?.absolutePath}/" + fileString
-        val timestamp = DateProvider.toLocalDateTime(System.currentTimeMillis()).toString()
-        fileName = "REC_${timestamp}.mp3"
+        val current = DateProvider.currentLocalDateTime()
+        val formatter = org.threeten.bp.format.DateTimeFormatter.ISO_DATE_TIME
+        val formatted = current.format(formatter)
+        fileName = "REC_${formatted}.wav"
 
         recordTime.display()
         slideToCancel.display()
@@ -2209,14 +2292,30 @@ class RoomDetailFragment @Inject constructor(
     }
 
     @Suppress("DEPRECATION")
+    @SuppressLint("LogNotTimber")
     override fun onRecordStarted() {
         val vibrator: Vibrator = ServiceUtil.getVibrator(requireContext())
         vibrator.vibrate(20)
 
         requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
-        startRecording()
+        if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_WRITE_AUDIO_PERMISSION)
+        } else {
+            recorder = OmRecorder.wav(
+                    PullTransport.Default(mic()) { audioChunk ->
+                        Log.i("omrecorder", audioChunk.toString())
+                    }, file())
+        }
+
+
+        if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.RECORD_AUDIO), REQUEST_RECORD_AUDIO_PERMISSION)
+        } else {
+            startRecording()
+        }
     }
+
 
     override fun onRecordMoved(offsetX: Float, absoluteX: Float) {
         slideToCancel.moveTo(offsetX)
@@ -2250,30 +2349,32 @@ class RoomDetailFragment @Inject constructor(
     }
 
     private fun startRecording() {
-        recorder = MediaRecorder().apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-            setOutputFile(requireContext().externalCacheDir?.absolutePath + "/xlinxrecs/$fileName")
-            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+        recorder?.startRecording()
+    }
 
-            try {
-                prepare()
-            } catch (e: IOException) {
-                e.printStackTrace()
+    private fun mic(): PullableSource? {
+        return PullableSource.Default(
+                AudioRecordConfig.Default(
+                        MediaRecorder.AudioSource.MIC, AudioFormat.ENCODING_PCM_16BIT,
+                        AudioFormat.CHANNEL_IN_MONO, 44100
+                )
+        )
+    }
+
+    @NonNull
+    private fun file(): File? {
+        val filesDir: File = requireContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!
+        if (!filesDir.exists()) {
+            if (filesDir.mkdirs()) {
             }
-
-            start()
         }
+        return File(filesDir, fileName)
     }
 
     private fun stopRecording(isSending: Boolean) {
         try {
-            recorder?.apply {
-                stop()
-                release()
-            }
-            recorder = null
-        } catch (e: java.lang.IllegalStateException) {
+            recorder?.stopRecording()
+        } catch (e: Exception) {
             e.printStackTrace()
         } finally {
             if (isSending) {
@@ -2286,10 +2387,12 @@ class RoomDetailFragment @Inject constructor(
     private fun sendVoiceNote() {
         val elapsedTime: Long = onRecordHideEvent()
 
-        val resultFile = File(requireContext().externalCacheDir?.absolutePath + "/$fileName")
+        val audioSize = file()?.length()
 
         if (elapsedTime > 1000) {
-            attachmentsHelper.onVoiceNoteResult(Uri.fromFile(resultFile), fileName, resultFile.length(), elapsedTime, "audio/mp3")
+            if (audioSize != null) {
+                attachmentsHelper.onVoiceNoteResult(Uri.fromFile(file()), fileName, audioSize, elapsedTime, "audio/x-wav")
+            }
         }
     }
 }

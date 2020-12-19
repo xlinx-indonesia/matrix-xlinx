@@ -98,7 +98,7 @@ public final class MicrophoneRecorderView extends FrameLayout implements View.On
 
   private void hideUi() {
     floatingRecordButton.hide();
-    lockDropTarget.hide();
+//    lockDropTarget.hide();
   }
 
   @Override
@@ -110,7 +110,7 @@ public final class MicrophoneRecorderView extends FrameLayout implements View.On
         } else {
           state = State.RUNNING_HELD;
           floatingRecordButton.display(event.getX(), event.getY());
-          lockDropTarget.display();
+//          lockDropTarget.display();
           if (listener != null) listener.onRecordPressed();
         }
         break;

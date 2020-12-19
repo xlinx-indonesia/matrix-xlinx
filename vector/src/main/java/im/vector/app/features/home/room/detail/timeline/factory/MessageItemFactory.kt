@@ -153,7 +153,7 @@ class MessageItemFactory @Inject constructor(
             is MessageNoticeContent              -> buildNoticeMessageItem(messageContent, informationData, highlight, callback, attributes)
             is MessageVideoContent               -> buildVideoMessageItem(messageContent, informationData, highlight, callback, attributes)
             is MessageFileContent                -> buildFileMessageItem(messageContent, highlight, attributes)
-            is MessageAudioContent               -> buildAudioMessageItem(messageContent, informationData, highlight, attributes)
+            is MessageAudioContent               -> buildAudioMessageItem(messageContent, informationData, highlight, callback, attributes)
             is MessageVerificationRequestContent -> buildVerificationRequestMessageItem(messageContent, informationData, highlight, callback, attributes)
             is MessageOptionsContent             -> buildOptionsMessageItem(messageContent, informationData, highlight, callback, attributes)
             is MessagePollResponseContent        -> noticeItemFactory.create(event, highlight, roomSummaryHolder.roomSummary, callback)
@@ -196,6 +196,7 @@ class MessageItemFactory @Inject constructor(
                                       @Suppress("UNUSED_PARAMETER")
                                       informationData: MessageInformationData,
                                       highlight: Boolean,
+                                      callback: TimelineEventController.Callback?,
                                       attributes: AbsMessageItem.Attributes): MessageFileItem? {
         val fileUrl = messageContent.getFileUrl()?.let {
             if (informationData.sentByMe && !informationData.sendState.isSent()) {
@@ -204,6 +205,7 @@ class MessageItemFactory @Inject constructor(
                 it.takeIf { it.startsWith("mxc://") }
             }
         } ?: ""
+
         return MessageFileItem_()
                 .attributes(attributes)
                 .izLocalFile(fileUrl.isLocalFile())
@@ -220,6 +222,12 @@ class MessageItemFactory @Inject constructor(
                 .leftGuideline(avatarSizeProvider.leftGuideline)
                 .filename(messageContent.body)
                 .iconRes(R.drawable.ic_headphones)
+                .apply {
+                    clickListener(
+                            DebouncedClickListener(View.OnClickListener { _ ->
+                                callback?.onAudioMessageClicked(messageContent, fileUrl)
+                            }))
+                }
     }
 
     private fun buildVerificationRequestMessageItem(messageContent: MessageVerificationRequestContent,

@@ -44,8 +44,8 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
     @DrawableRes
     var iconRes: Int = 0
 
-//    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
-//    var clickListener: View.OnClickListener? = null
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    var clickListener: View.OnClickListener? = null
 
     @EpoxyAttribute
     var izLocalFile = false
@@ -83,9 +83,6 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
         }
 //        holder.view.setOnClickListener(clickListener)
 
-//        if (filename.contains("REC_", true)) {
-//            holder.filenameView.setOnClickListener(clickListener)
-//        }
 
         holder.filenameView.setOnClickListener(attributes.itemClickListener)
         holder.filenameView.setOnLongClickListener(attributes.itemLongClickListener)
@@ -98,6 +95,10 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
             SendState.ENCRYPTING,
             SendState.SENDING -> true
             else              -> false
+        }
+
+        if (filename.contains("REC_", true)) {
+            holder.filenameView.setOnClickListener(clickListener)
         }
     }
 

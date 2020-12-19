@@ -457,6 +457,9 @@ dependencies {
 //    implementation 'com.opensooq.supernova:gligar:1.1.0'
 //    implementation 'gun0912.ted:tedimagepicker:1.1.4'
     implementation 'com.github.WrathChaos:MediaPickerLib:0.2.0'
+    implementation 'com.kailashdabhi:om-recorder:1.1.5'
+    implementation "com.google.android.exoplayer:exoplayer:2.12.2"
+
 
 
     // TESTS
