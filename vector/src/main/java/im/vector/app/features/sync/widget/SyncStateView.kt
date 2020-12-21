@@ -16,10 +16,13 @@
 
 package im.vector.app.features.sync.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import im.vector.app.R
 import im.vector.app.core.utils.isAirplaneModeOn
@@ -33,6 +36,8 @@ class SyncStateView @JvmOverloads constructor(context: Context, attrs: Attribute
         View.inflate(context, R.layout.view_sync_state, this)
     }
 
+//    @RequiresApi(Build.VERSION_CODES.M)
+    @SuppressLint("SetTextI18n")
     fun render(newState: SyncState) {
         syncStateProgressBar.isVisible = newState is SyncState.Running && newState.afterPause
 
@@ -40,6 +45,14 @@ class SyncStateView @JvmOverloads constructor(context: Context, attrs: Attribute
             val isAirplaneModeOn = isAirplaneModeOn(context)
             syncStateNoNetwork.isVisible = isAirplaneModeOn.not()
             syncStateNoNetworkAirplane.isVisible = isAirplaneModeOn
+        } else if (newState == SyncState.RestoreSlow) {
+            syncStateNoNetwork.isVisible = true
+            syncStateNoNetwork.text = "Restoring messages ..."
+//            syncStateNoNetwork.setBackgroundColor(context.getColor(R.color.notification_accent_color))
+        } else if (newState == SyncState.RestoreFail) {
+            syncStateNoNetwork.isVisible = true
+            syncStateNoNetwork.text = "Slow connection detected, retrying to restore ..."
+//            syncStateNoNetwork.setBackgroundColor(context.getColor(R.color.vector_warning_color))
         } else {
             syncStateNoNetwork.isVisible = false
             syncStateNoNetworkAirplane.isVisible = false

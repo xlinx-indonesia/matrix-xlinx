@@ -100,6 +100,7 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
         if (filename.contains("REC_", true)) {
             holder.filenameView.setOnClickListener(clickListener)
             holder.fileImageWrapper.setOnClickListener(clickListener)
+            holder.fileLayout.setOnClickListener(clickListener)
         }
     }
 

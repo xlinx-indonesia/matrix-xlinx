@@ -24,4 +24,6 @@ sealed class SyncState {
     object Killed : SyncState()
     object NoNetwork : SyncState()
     object InvalidToken : SyncState()
+    object RestoreSlow : SyncState()
+    object RestoreFail : SyncState()
 }

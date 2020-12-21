@@ -476,6 +476,7 @@ class RoomDetailFragment @Inject constructor(
         }
 
 //        xrecorder_container.isVisible = false
+
     }
 
     private fun handleChatEffect(chatEffect: ChatEffect) {
