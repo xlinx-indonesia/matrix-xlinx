@@ -205,6 +205,8 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.composer_layout.view.*
 import kotlinx.android.synthetic.main.fragment_room_detail.*
 import kotlinx.android.synthetic.main.merge_overlay_waiting_view.*
+import kotlinx.android.synthetic.main.view_sync_state.*
+import kotlinx.android.synthetic.main.view_sync_state.view.*
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 import omrecorder.AudioRecordConfig
@@ -234,6 +236,7 @@ import org.matrix.android.sdk.api.session.room.send.SendState
 import org.matrix.android.sdk.api.session.room.timeline.Timeline
 import org.matrix.android.sdk.api.session.room.timeline.TimelineEvent
 import org.matrix.android.sdk.api.session.room.timeline.getLastMessageContent
+import org.matrix.android.sdk.api.session.sync.SyncState
 import org.matrix.android.sdk.api.session.widgets.model.Widget
 import org.matrix.android.sdk.api.session.widgets.model.WidgetType
 import org.matrix.android.sdk.api.util.MatrixItem
@@ -374,6 +377,7 @@ class RoomDetailFragment @Inject constructor(
 
     private lateinit var slideToCancel: SlideToCancel
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedActionViewModel = activityViewModelProvider.get(MessageSharedActionViewModel::class.java)
@@ -431,9 +435,9 @@ class RoomDetailFragment @Inject constructor(
             }
         }
 
-        roomDetailViewModel.selectSubscribe(RoomDetailViewState::syncState) { syncState ->
-            syncStateView.render(syncState)
-        }
+//        roomDetailViewModel.selectSubscribe(RoomDetailViewState::syncState) { syncState ->
+//            syncStateView.render(syncState)
+//        }
 
         roomDetailViewModel.observeViewEvents {
             when (it) {
@@ -476,7 +480,10 @@ class RoomDetailFragment @Inject constructor(
         }
 
 //        xrecorder_container.isVisible = false
-
+        syncStateView.render(SyncState.RestoreSlow)
+//        syncStateView.isVisible = true
+//        syncStateNoNetwork.isVisible = true
+//        syncStateNoNetwork.text = "Restoring messages ..."
     }
 
     private fun handleChatEffect(chatEffect: ChatEffect) {

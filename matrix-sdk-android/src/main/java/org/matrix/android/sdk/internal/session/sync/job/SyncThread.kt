@@ -128,19 +128,21 @@ internal class SyncThread @Inject constructor(private val syncTask: SyncTask,
     override fun run() {
         Timber.v("Start syncing...")
 
-        isRestoring = true
+//        isRestoring = true
+//
+//        Timber.v("Restoring messages ...")
+//        updateStateTo(SyncState.RestoreSlow)
+//        synchronized(lock) { lock.wait() }
+//        Timber.v("...unlocked")
+//
+//        Handler().postDelayed({
+////                Timber.v("Slow connection detected, retrying to restore ...")
+////                updateStateTo(SyncState.RestoreFail)
+////                synchronized(lock) { lock.notify() }
+////                Timber.v("...unlocked")
+//            kill()
+//        }, 5000)
 
-        Timber.v("Restoring messages ...")
-        updateStateTo(SyncState.RestoreSlow)
-        synchronized(lock) { lock.wait() }
-        Timber.v("...unlocked")
-
-        Handler().postDelayed({
-            Timber.v("Slow connection detected, retrying to restore ...")
-            updateStateTo(SyncState.RestoreFail)
-            synchronized(lock) { lock.wait() }
-            Timber.v("...unlocked")
-        }, (10000..50000).random().toLong())
 
         isStarted = true
         networkConnectivityChecker.register(this)
@@ -170,19 +172,6 @@ internal class SyncThread @Inject constructor(private val syncTask: SyncTask,
                 updateStateTo(SyncState.InvalidToken)
                 synchronized(lock) { lock.wait() }
                 Timber.v("...unlocked")
-            } else if (isRestoring) {
-                Timber.v("Restoring messages ...")
-                updateStateTo(SyncState.RestoreSlow)
-                synchronized(lock) { lock.wait() }
-                Timber.v("...unlocked")
-
-                Handler().postDelayed({
-                    Timber.v("Slow connection detected, retrying to restore ...")
-                    updateStateTo(SyncState.RestoreFail)
-                    synchronized(lock) { lock.wait() }
-                    Timber.v("...unlocked")
-                }, (10000..50000).random().toLong())
-
             } else {
                 if (state !is SyncState.Running) {
                     updateStateTo(SyncState.Running(afterPause = true))
