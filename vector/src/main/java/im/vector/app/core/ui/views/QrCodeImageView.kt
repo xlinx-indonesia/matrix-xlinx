@@ -17,11 +17,21 @@
 package im.vector.app.core.ui.views
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.FileAsyncHttpResponseHandler
+import com.loopj.android.http.RequestParams
+import cz.msebera.android.httpclient.Header
 import im.vector.app.core.qrcode.toBitMatrix
 import im.vector.app.core.qrcode.toBitmap
+import org.json.JSONException
+import org.json.JSONObject
+import timber.log.Timber
+import java.io.File
+import java.io.FileInputStream
 
 class QrCodeImageView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -45,11 +55,50 @@ class QrCodeImageView @JvmOverloads constructor(
     }
 
     private fun render() {
-        data
-                ?.takeIf { height > 0 }
-                ?.let {
-                    val bitmap = it.toBitMatrix(height).toBitmap()
-                    post { setImageBitmap(bitmap) }
-                }
+//        data
+//                ?.takeIf { height > 0 }
+//                ?.let {
+//                    val bitmap = it.toBitMatrix(height).toBitmap()
+//                    post { setImageBitmap(bitmap) }
+//                }
+        data?.let { createXlinxQR(it) }
+    }
+
+    private fun createXlinxQR(qrData: String) {
+        val client = AsyncHttpClient()
+
+        client.addHeader("content-type", "application/json")
+        client.addHeader("x-rapidapi-key", "0dc323c809msh8c0e6a30eae3f54p120c73jsnbfef66dfde9d")
+        client.addHeader("x-rapidapi-host", "qrcode-monkey.p.rapidapi.com")
+
+        val jsonString = "{\n    \"body\": \"leaf\",\n        \"eye\": \"frame2\",\n        \"eyeBall\": \"ball17\",\n        \"erf1\": [],\n        \"erf2\": [fh],\n        \"erf3\": [fv],\n        \"brf1\": [],\n        \"brf2\": [fh],\n        \"brf3\": [fv],\n        \"bodyColor\": \"#15161D\",\n        \"bgColor\": \"#FFFFFF\",\n        \"eye1Color\": \"#2B79E5\",\n        \"eye2Color\": \"#2B79E5\",\n        \"eye3Color\": \"#2B79E5\",\n        \"eyeBall1Color\": \"#8DC21F\",\n        \"eyeBall2Color\": \"#8DC21F\",\n        \"eyeBall3Color\": \"#8DC21F\",\n        \"gradientColor1\": \"\",\n        \"gradientColor2\": \"\",\n        \"gradientType\": \"\",\n        \"gradientOnEyes\": false,\n        \"logo\": \"https://raw.githubusercontent.com/ngodn/fileassets/main/ic_xlinx_qr_onwhite.png\"\n    }"
+        var jsonData: JSONObject? = null
+        try {
+            jsonData = JSONObject(jsonString)
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+
+        val params = RequestParams()
+        params.put("data", qrData)
+        params.put("config", jsonData)
+        params.put("size", 512)
+        params.put("download", false)
+        params.put("file", "png")
+
+        client["https://rapidapi.p.rapidapi.com/qr/custom", params, object : FileAsyncHttpResponseHandler(context) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>, throwable: Throwable, file: File) {
+                Timber.e("fileqr : %s", throwable.message)
+            }
+            override fun onSuccess(statusCode: Int, headers: Array<Header>, file: File) {
+                Timber.i("fileqr : $statusCode")
+                file
+                        .takeIf { height > 0 }
+                        ?.let {
+                            val fileInputStream = FileInputStream(file)
+                            post { setImageBitmap(BitmapFactory.decodeStream(fileInputStream)) }
+                        }
+            }
+        }]
     }
 }

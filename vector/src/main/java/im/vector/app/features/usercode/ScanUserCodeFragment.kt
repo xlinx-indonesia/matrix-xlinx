@@ -127,7 +127,11 @@ class ScanUserCodeFragment @Inject constructor()
             val rawBytes = getRawBytes(result)
             val rawBytesStr = rawBytes?.toString(Charsets.ISO_8859_1)
             val value = rawBytesStr ?: result.text
-            sharedViewModel.handle(UserCodeActions.DecodedQRCode(value))
+
+            val strippedUserId: List<String> = value.split("https://x-linx.co/#/")
+            val newUserId: String = "https://matrix.to/#/" + strippedUserId[1]
+
+            sharedViewModel.handle(UserCodeActions.DecodedQRCode(newUserId))
         }
     }
 

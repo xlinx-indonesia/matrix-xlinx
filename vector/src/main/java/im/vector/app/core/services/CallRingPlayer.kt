@@ -17,11 +17,11 @@
 package im.vector.app.core.services
 
 import android.content.Context
-import android.media.Ringtone
-import android.media.RingtoneManager
 import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.MediaPlayer
+import android.media.Ringtone
+import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.content.getSystemService
 import im.vector.app.R
@@ -60,8 +60,28 @@ class CallRingPlayerOutgoing(
         player = createPlayer()
 
         // Check if sound is enabled
-        val ringerMode = audioManager.ringerMode
-        if (player != null && ringerMode == AudioManager.RINGER_MODE_NORMAL) {
+//        val ringerMode = audioManager.ringerMode
+//        if (player != null && ringerMode == AudioManager.RINGER_MODE_NORMAL) {
+//            try {
+//                if (player?.isPlaying == false) {
+//                    player?.start()
+//                    Timber.v("## VOIP Starting ringing outgoing")
+//                } else {
+//                    Timber.v("## VOIP already playing")
+//                }
+//            } catch (failure: Throwable) {
+//                Timber.e(failure, "## VOIP Failed to start ringing outgoing")
+//                player = null
+//            }
+//        } else {
+//            Timber.v("## VOIP Can't play $player ode $ringerMode")
+//        }
+//        val ringerMode = audioManager.ringerMode
+
+        audioManager.mode = AudioManager.MODE_IN_COMMUNICATION
+        audioManager.isMicrophoneMute = false
+
+        if (player != null) {
             try {
                 if (player?.isPlaying == false) {
                     player?.start()
@@ -74,7 +94,7 @@ class CallRingPlayerOutgoing(
                 player = null
             }
         } else {
-            Timber.v("## VOIP Can't play $player ode $ringerMode")
+            Timber.v("## VOIP Can't play $player ode ")
         }
     }
 
@@ -91,7 +111,7 @@ class CallRingPlayerOutgoing(
             mediaPlayer.isLooping = true
             if (Build.VERSION.SDK_INT <= 21) {
                 @Suppress("DEPRECATION")
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_RING)
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_VOICE_CALL)
             } else {
                 mediaPlayer.setAudioAttributes(AudioAttributes.Builder()
                         .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)

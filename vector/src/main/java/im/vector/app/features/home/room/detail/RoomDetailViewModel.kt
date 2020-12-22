@@ -615,7 +615,7 @@ class RoomDetailViewModel @AssistedInject constructor(
             R.id.timeline_setting -> true
             R.id.invite           -> state.canInvite
             R.id.clear_all        -> state.asyncRoomSummary()?.hasFailedSending == true
-            R.id.open_matrix_apps -> true
+//            R.id.open_matrix_apps -> true
             R.id.voice_call,
             R.id.video_call       -> true // always show for discoverability
             R.id.hangup_call      -> webRtcPeerConnectionManager.currentCall != null

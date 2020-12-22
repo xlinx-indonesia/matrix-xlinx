@@ -80,7 +80,11 @@ class ShowUserCodeFragment @Inject constructor(
 
     override fun invalidate() = withState(sharedViewModel) { state ->
         state.matrixItem?.let { avatarRenderer.render(it, showUserCodeAvatar) }
-        state.shareLink?.let { showUserCodeQRImage.setData(it) }
+        state.shareLink?.let {
+            val strippedUserId: List<String> = it.split("https://matrix.to/#/")
+            val newUserId: String = "https://x-linx.co/#/" + strippedUserId[1]
+            showUserCodeQRImage.setData(newUserId)
+        }
         showUserCodeCardNameText.setTextOrHide(state.matrixItem?.displayName)
 
         val strippedUserId = state.matrixItem?.id?.split(":homeserver")

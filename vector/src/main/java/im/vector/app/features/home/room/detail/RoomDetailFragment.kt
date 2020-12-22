@@ -797,11 +797,11 @@ class RoomDetailFragment @Inject constructor(
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         // We use a custom layout for this menu item, so we need to set a ClickListener
-        menu.findItem(R.id.open_matrix_apps)?.let { menuItem ->
-            menuItem.actionView.setOnClickListener {
-                onOptionsItemSelected(menuItem)
-            }
-        }
+//        menu.findItem(R.id.open_matrix_apps)?.let { menuItem ->
+//            menuItem.actionView.setOnClickListener {
+//                onOptionsItemSelected(menuItem)
+//            }
+//        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -819,24 +819,24 @@ class RoomDetailFragment @Inject constructor(
                 menu.findItem(it).icon?.alpha = if (callButtonsEnabled) 0xFF else 0x40
             }
 
-            val matrixAppsMenuItem = menu.findItem(R.id.open_matrix_apps)
-            val widgetsCount = state.activeRoomWidgets.invoke()?.size ?: 0
-            if (widgetsCount > 0) {
-                val actionView = matrixAppsMenuItem.actionView
-                actionView
-                        .findViewById<ImageView>(R.id.action_view_icon_image)
-                        .setColorFilter(ContextCompat.getColor(requireContext(), R.color.riotx_accent))
-                actionView.findViewById<TextView>(R.id.cart_badge).setTextOrHide("$widgetsCount")
-                matrixAppsMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-            } else {
-                // icon should be default color no badge
-                val actionView = matrixAppsMenuItem.actionView
-                actionView
-                        .findViewById<ImageView>(R.id.action_view_icon_image)
-                        .setColorFilter(ThemeUtils.getColor(requireContext(), R.attr.riotx_text_secondary))
-                actionView.findViewById<TextView>(R.id.cart_badge).isVisible = false
-                matrixAppsMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
-            }
+//            val matrixAppsMenuItem = menu.findItem(R.id.open_matrix_apps)
+//            val widgetsCount = state.activeRoomWidgets.invoke()?.size ?: 0
+//            if (widgetsCount > 0) {
+//                val actionView = matrixAppsMenuItem.actionView
+//                actionView
+//                        .findViewById<ImageView>(R.id.action_view_icon_image)
+//                        .setColorFilter(ContextCompat.getColor(requireContext(), R.color.riotx_accent))
+//                actionView.findViewById<TextView>(R.id.cart_badge).setTextOrHide("$widgetsCount")
+//                matrixAppsMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+//            } else {
+//                // icon should be default color no badge
+//                val actionView = matrixAppsMenuItem.actionView
+//                actionView
+//                        .findViewById<ImageView>(R.id.action_view_icon_image)
+//                        .setColorFilter(ThemeUtils.getColor(requireContext(), R.attr.riotx_text_secondary))
+//                actionView.findViewById<TextView>(R.id.cart_badge).isVisible = false
+//                matrixAppsMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+//            }
         }
     }
 
@@ -854,10 +854,10 @@ class RoomDetailFragment @Inject constructor(
                 roomDetailViewModel.handle(RoomDetailAction.ResendAll)
                 true
             }
-            R.id.open_matrix_apps -> {
-                roomDetailViewModel.handle(RoomDetailAction.ManageIntegrations)
-                true
-            }
+//            R.id.open_matrix_apps -> {
+//                roomDetailViewModel.handle(RoomDetailAction.ManageIntegrations)
+//                true
+//            }
             R.id.voice_call,
             R.id.video_call -> {
                 handleCallRequest(item)

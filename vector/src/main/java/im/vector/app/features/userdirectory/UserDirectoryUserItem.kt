@@ -41,13 +41,18 @@ abstract class UserDirectoryUserItem : VectorEpoxyModel<UserDirectoryUserItem.Ho
         super.bind(holder)
         holder.view.setOnClickListener(clickListener)
         // If name is empty, use userId as name and force it being centered
+
+        val strippedUserId: List<String> = matrixItem.id.split(":homeserver")
+
         if (matrixItem.displayName.isNullOrEmpty()) {
             holder.userIdView.visibility = View.GONE
-            holder.nameView.text = matrixItem.id
+//            holder.nameView.text = matrixItem.id
+            holder.nameView.text = strippedUserId[0]
         } else {
             holder.userIdView.visibility = View.VISIBLE
             holder.nameView.text = matrixItem.displayName
-            holder.userIdView.text = matrixItem.id
+//            holder.userIdView.text = matrixItem.id
+            holder.userIdView.text = strippedUserId[0]
         }
         renderSelection(holder, selected)
     }

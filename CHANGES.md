@@ -36,7 +36,7 @@ Build 🧱:
  - Upgrade Realm dependency to 10.1.2
 
 Other changes:
- - Remove "Status.im" theme #2424
+ - Remove "ABC" theme #2424
  - Log HTTP requests and responses in production (level BASIC, i.e. without any private data)
 
 Changes in Element 1.0.11 (2020-11-27)
@@ -285,7 +285,7 @@ Improvements 🙌:
 
 Bugfix 🐛:
  - Fix incorrect date format for some Asian languages (#1928)
- - Fix invisible toolbar (Status.im theme) (#1746)
+ - Fix invisible toolbar (ABC theme) (#1746)
  - Fix relative date time formatting (#822)
  - Fix crash reported by RageShake
  - Fix refreshing of sessions list when another session is logged out

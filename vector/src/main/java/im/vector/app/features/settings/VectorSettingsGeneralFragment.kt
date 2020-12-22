@@ -179,8 +179,9 @@ class VectorSettingsGeneralFragment @Inject constructor(
         // Advanced settings
 
         // user account
+        val strippedUserId: List<String> = session.myUserId.split(":homeserver")
         findPreference<VectorPreference>(VectorPreferences.SETTINGS_LOGGED_IN_PREFERENCE_KEY)!!
-                .summary = session.myUserId
+                .summary = strippedUserId[0]
 
         // home server
         findPreference<VectorPreference>(VectorPreferences.SETTINGS_HOME_SERVER_PREFERENCE_KEY)!!

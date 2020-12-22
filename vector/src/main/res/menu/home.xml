@@ -11,11 +11,13 @@
     <item
         android:id="@+id/menu_home_suggestion"
         android:icon="@drawable/ic_material_bug_report"
+        android:visible="false"
         android:title="@string/send_suggestion" />
 
     <item
         android:id="@+id/menu_home_report_bug"
         android:icon="@drawable/ic_material_bug_report"
+        android:visible="false"
         android:title="@string/send_bug_report" />
 
     <item
