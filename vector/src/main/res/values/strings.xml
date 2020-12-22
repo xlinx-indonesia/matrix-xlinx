@@ -13,6 +13,11 @@
     <string name="black_them">Black Theme</string>
     <string name="status_theme">ABC Theme</string>
 
+    <string name="protectedapps_headline">Additional Permission</string>
+    <string name="protectedapps_message">X-LinX requires to be enabled in \'Protected Apps\' to function properly, such as notifications, ringtone, etc. Please enable it or add X-LinX to the protected apps list.</string>
+    <string name="protectedapps_enable">Enable Now</string>
+    <string name="protectedapps_skip">Do not show again</string>
+
 
     <string name="space_bs_create_meeting_username_hint">Enter your nickname</string>
     <string name="space_bs_create_meeting_room_hint">Enter group name</string>

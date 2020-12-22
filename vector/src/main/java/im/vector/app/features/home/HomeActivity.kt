@@ -16,9 +16,13 @@
 
 package im.vector.app.features.home
 
+import android.content.ComponentName
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.MenuItem
@@ -32,6 +36,7 @@ import com.airbnb.mvrx.MvRx
 import com.airbnb.mvrx.viewModel
 import com.tencent.mmkv.MMKV
 import im.vector.app.R
+import im.vector.app.XlinxUtils
 import im.vector.app.core.di.ActiveSessionHolder
 import im.vector.app.core.di.ScreenComponent
 import im.vector.app.core.extensions.exhaustive
@@ -162,6 +167,9 @@ class HomeActivity : VectorBaseActivity(), ToolbarConfigurable, UnknownDeviceDet
 
         val rootDir = MMKV.initialize(this)
         println("mmkv root: $rootDir")
+
+
+        XlinxUtils.startPowerSaverIntent(this)
 
     }
 
@@ -366,11 +374,11 @@ class HomeActivity : VectorBaseActivity(), ToolbarConfigurable, UnknownDeviceDet
                 bugReporter.openBugReportScreen(this, false)
                 return true
             }
-            R.id.menu_home_filter     -> {
+            R.id.menu_home_filter -> {
                 navigator.openRoomsFiltering(this)
                 return true
             }
-            R.id.menu_home_setting    -> {
+            R.id.menu_home_setting -> {
                 navigator.openSettings(this)
                 return true
             }

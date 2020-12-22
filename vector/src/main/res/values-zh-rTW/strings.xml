@@ -4,6 +4,20 @@
     <string name="bottom_action_calls">通话</string>
     <string name="bottom_action_wallet"> X-LinX 钱包</string>
 
+    <string name="space_bs_create_meeting_username_hint">输入您的昵称</string>
+    <string name="space_bs_create_meeting_room_hint">输入房间名称</string>
+    <string name="space_bs_create_meeting_room_go">加入/创建</string>
+    <string name="space_bs_meeting_description">赶快邀请您认识的伙伴们，一起开启视讯会议/聊天吧。X-LinX Space 是一个基于区块链技术开发，实现全加密的隐私安全通信平台。</string>
+    <string name="space_bs_meeting_title">任何人，任何地方，任何事</string>
+    <string name="space_bs_meeting_title_1">任何人</string>
+    <string name="space_bs_meeting_title_2">任何地方</string>
+    <string name="space_bs_meeting_title_3">任何事</string>
+
+    <string name="protectedapps_headline">附加权限</string>
+    <string name="protectedapps_message">必须在“受保护的应用程序”中启用X-LinX才能正常运行，例如通知，铃声等。请启用或将X-LinX添加到受保护的应用程序列表中。</string>
+    <string name="protectedapps_enable">立即启用</string>
+    <string name="protectedapps_skip">别再显示</string>
+
     <string name="resources_language">zh</string>
     <string name="resources_country_code">TW</string>
     <string name="light_theme">淺色主題</string>
@@ -2168,7 +2182,7 @@
     <string name="user_code_info_text">與夥伴們分享此條碼，這樣他們就可以掃描它來加入您並開始聊天。</string>
     <string name="user_code_my_code">我的條碼</string>
     <string name="user_code_share">分享我的條碼</string>
-    <string name="user_code_scan">掃描 QR code</string>
+    <string name="user_code_scan">扫二维码</string>
     <string name="not_a_valid_qr_code">不是有效的 X-LinX QR code</string>
     <string name="invite_friends_rich_title">🔐️ 在 X-LinX 上加入我</string>
     <string name="invite_friends_text">嗨，和我在 X-LinX 上聊天吧：%s</string>
