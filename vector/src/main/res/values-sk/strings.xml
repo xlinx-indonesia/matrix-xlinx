@@ -1000,7 +1000,7 @@ Viditeľnosť správ odoslaných cez matrix funguje podobne ako viditeľnosť sp
 
     <string name="unknown_error">Prepáčte, vyskytla sa chyba</string>
 
-    <string name="status_theme">Vzhľad Status.im</string>
+    <string name="status_theme">Vzhľad ABC</string>
 
     <string name="room_sliding_menu_version_x">Verzia %s</string>
     <string name="encryption_export_notice">Prosím vytvorte si heslo, ktorým zašifrujete exportované kľúče. Toto isté heslo budete musieť zadať aj pri importe kľúčov z uloženého súboru.</string>

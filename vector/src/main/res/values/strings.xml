@@ -11,11 +11,11 @@
     <string name="light_theme">Light Theme</string>
     <string name="dark_theme">Dark Theme</string>
     <string name="black_them">Black Theme</string>
-    <string name="status_theme">Status.im Theme</string>
+    <string name="status_theme">ABC Theme</string>
 
 
     <string name="space_bs_create_meeting_username_hint">Enter your nickname</string>
-    <string name="space_bs_create_meeting_room_hint">Enter room name</string>
+    <string name="space_bs_create_meeting_room_hint">Enter group name</string>
     <string name="space_bs_create_meeting_room_go">Join / Create</string>
     <string name="space_bs_meeting_description">Hurry up and invite your friends and colleagues to start a video conference/chat together. X-LinX Space is a fully encrypted, private and secure, blockchain-based communication platform.</string>
     <string name="space_bs_meeting_title">Everyone, Everywhere, Everything</string>
@@ -106,15 +106,15 @@
     <string name="cannot_start_call">Cannot start the call, please try later</string>
     <string name="missing_permissions_warning">"Due to missing permissions, some features may be missing…</string>
     <string name="missing_permissions_error">"Due to missing permissions, this action is not possible.</string>
-    <string name="missing_permissions_to_start_conf_call">You need permission to invite to start a conference in this room</string>
-    <string name="no_permissions_to_start_conf_call">You do not have permission to start a conference call in this room</string>
+    <string name="missing_permissions_to_start_conf_call">You need permission to invite to start a conference in this group</string>
+    <string name="no_permissions_to_start_conf_call">You do not have permission to start a conference call in this group</string>
     <string name="no_permissions_to_start_conf_call_in_direct_room">You do not have permission to start a conference call</string>
-    <string name="no_permissions_to_start_webrtc_call">You do not have permission to start a call in this room</string>
+    <string name="no_permissions_to_start_webrtc_call">You do not have permission to start a call in this group</string>
     <string name="no_permissions_to_start_webrtc_call_in_direct_room">You do not have permission to start a call</string>
     <string name="conference_call_in_progress">A conference is already in progress!</string>
     <string name="video_meeting">Start video meeting</string>
     <string name="audio_meeting">Start audio meeting</string>
-    <string name="audio_video_meeting_description">Meetings use Jitsi security and permission policies. All people currently in the room will see an invite to join while your meeting is happening.</string>
+    <string name="audio_video_meeting_description">Meetings use Jitsi security and permission policies. All people currently in the group will see an invite to join while your meeting is happening.</string>
     <string name="missing_permissions_title_to_start_conf_call">Cannot start call</string>
     <string name="cannot_call_yourself">You cannot place a call with yourself</string>
     <string name="cannot_call_yourself_with_invite">You cannot place a call with yourself, wait for participants to accept invitation</string>
@@ -179,10 +179,10 @@
 
 
     <!-- Home screen -->
-    <string name="home_filter_placeholder_home">Filter room names</string>
+    <string name="home_filter_placeholder_home">Filter group names</string>
     <string name="home_filter_placeholder_favorites">Filter favourites</string>
     <string name="home_filter_placeholder_people">Filter people</string>
-    <string name="home_filter_placeholder_rooms">Filter room names</string>
+    <string name="home_filter_placeholder_rooms">Filter group names</string>
     <string name="home_filter_placeholder_groups">Filter community names</string>
 
     <!-- Home fragment -->
@@ -194,7 +194,7 @@
     <string name="direct_chats_header">Conversations</string>
     <string name="local_address_book_header">Local address book</string>
     <string name="user_directory_header">User directory</string>
-    <string name="matrix_only_filter">Matrix contacts only</string>
+    <string name="matrix_only_filter">X-LinX contacts only</string>
     <string name="no_conversation_placeholder">No conversations</string>
     <string name="no_contact_access_placeholder">You didn’t allow X-LinX to access your local contacts</string>
     <string name="no_result_placeholder">No results</string>
@@ -347,7 +347,7 @@
     <string name="login_error_unable_register_mail_ownership">Unable to register : email ownership failure</string>
     <string name="login_error_invalid_home_server">Please enter a valid URL</string>
     <string name="login_error_unknown_host">This URL is not reachable, please check it</string>
-    <string name="login_error_no_homeserver_found">This is not a valid Matrix server address</string>
+    <string name="login_error_no_homeserver_found">This is not a valid X-LinX server address</string>
     <string name="login_error_homeserver_not_found">Cannot reach a homeserver at this URL, please check it</string>
     <string name="login_error_ssl_peer_unverified">"SSL Error: the peer's identity has not been verified."</string>
     <string name="login_error_ssl_other">"SSL Error."</string>
@@ -396,11 +396,11 @@
     <string name="attachment_remaining_time_seconds">%d s</string>
     <string name="attachment_remaining_time_minutes">%1$dm %2$ds</string>
 
-    <!-- room creation dialog Screen -->
+    <!-- group creation dialog Screen -->
     <string name="yesterday">Yesterday</string>
     <string name="today">Today</string>
 
-    <!-- room info dialog Screen -->
+    <!-- group info dialog Screen -->
     <string name="room_info_room_name">Group name</string>
     <string name="room_info_room_topic">Group topic</string>
 
@@ -445,8 +445,8 @@
     <string name="permissions_rationale_msg_record_audio">X-LinX needs permission to access your microphone to perform audio calls.</string>
     <string name="permissions_rationale_msg_record_audio_explanation">\n\nPlease allow access on the next pop-up to be able to make the call.</string>
     <string name="permissions_rationale_msg_camera_and_audio">X-LinX needs permission to access your camera and your microphone to perform video calls.\n\nPlease allow access on the next pop-ups to be able to make the call.</string>
-    <string name="permissions_rationale_msg_contacts">X-LinX can check your address book to find other Matrix users based on their email and phone numbers. If you agree to share your address book for this purpose, please allow access on the next pop-up.</string>
-    <string name="permissions_msg_contacts_warning_other_androids">X-LinX can check your address book to find other Matrix users based on their email and phone numbers.\n\nDo you agree to share your address book for this purpose?</string>
+    <string name="permissions_rationale_msg_contacts">X-LinX can check your address book to find other X-LinX users based on their email and phone numbers. If you agree to share your address book for this purpose, please allow access on the next pop-up.</string>
+    <string name="permissions_msg_contacts_warning_other_androids">X-LinX can check your address book to find other X-LinX users based on their email and phone numbers.\n\nDo you agree to share your address book for this purpose?</string>
 
     <string name="permissions_action_not_performed_missing_permissions">Sorry. Action not performed, due to missing permissions</string>
     <string name="permissions_denied_qr_code">To scan a QR code, you need to allow camera access.</string>
@@ -472,11 +472,11 @@
     <string name="room_jump_to_first_unread">Jump to first unread message.</string>
 
     <!-- Group Preview -->
-    <string name="room_preview_invitation_format">You have been invited to join this room by %s</string>
+    <string name="room_preview_invitation_format">You have been invited to join this group by %s</string>
     <string name="room_preview_unlinked_email_warning">This invitation was sent to %s, which is not associated with this account.\nYou may wish to login with a different account, or add this email to your account.</string>
     <string name="room_preview_try_join_an_unknown_room">You are trying to access %s. Would you like to join in order to participate in the discussion?</string>
-    <string name="room_preview_try_join_an_unknown_room_default">a room</string>
-    <string name="room_preview_room_interactions_disabled">This is a preview of this room. Group interactions have been disabled.</string>
+    <string name="room_preview_try_join_an_unknown_room_default">a group</string>
+    <string name="room_preview_room_interactions_disabled">This is a preview of this group. Group interactions have been disabled.</string>
     <string name="invite_no_identity_server_error">Add an identity server in your settings to perform this action.</string>
     <!-- Chat creation -->
     <string name="room_creation_title">New Chat</string>
@@ -510,8 +510,8 @@
     </plurals>
 
     <!--  Chat participants -->
-    <string name="room_participants_leave_prompt_title">Leave room</string>
-    <string name="room_participants_leave_prompt_msg">Are you sure you want to leave the room?</string>
+    <string name="room_participants_leave_prompt_title">Leave group</string>
+    <string name="room_participants_leave_prompt_msg">Are you sure you want to leave the group?</string>
     <string name="room_participants_remove_prompt_msg">Are you sure you want to remove %s from this chat?</string>
     <string name="room_participants_create">Create</string>
 
@@ -533,8 +533,8 @@
 
     <string name="room_participants_action_invite">Invite</string>
     <string name="room_participants_action_cancel_invite">Cancel invite</string>
-    <string name="room_participants_action_leave">Leave this room</string>
-    <string name="room_participants_action_remove">Remove from this room</string>
+    <string name="room_participants_action_leave">Leave this group</string>
+    <string name="room_participants_action_remove">Remove from this group</string>
     <string name="room_participants_action_ban">Ban</string>
     <string name="room_participants_action_unban">Unban</string>
     <string name="room_participants_action_kick">Kick</string>
@@ -547,7 +547,7 @@
     <string name="room_participants_power_level_prompt">You will not be able to undo this change as you are promoting the user to have the same power level as yourself.\nAre you sure?</string>
 
     <string name="room_participants_power_level_demote_warning_title">Demote yourself?</string>
-    <string name="room_participants_power_level_demote_warning_prompt">"You will not be able to undo this change as you are demoting yourself, if you are the last privileged user in the room it will be impossible to regain privileges."</string>
+    <string name="room_participants_power_level_demote_warning_prompt">"You will not be able to undo this change as you are demoting yourself, if you are the last privileged user in the group it will be impossible to regain privileges."</string>
     <string name="room_participants_power_level_demote">Demote</string>
 
 
@@ -563,12 +563,12 @@
     <string name="room_participants_action_cancel_invite_prompt_msg">Are you sure you want to cancel the invite for this user?</string>
     <string name="room_participants_kick_title">Kick user</string>
     <string name="room_participants_kick_reason">Reason to kick</string>
-    <string name="room_participants_kick_prompt_msg">kicking user will remove them from this room.\n\nTo prevent them from joining again, you should ban them instead.</string>
+    <string name="room_participants_kick_prompt_msg">kicking user will remove them from this group.\n\nTo prevent them from joining again, you should ban them instead.</string>
     <string name="room_participants_ban_title">Ban user</string>
     <string name="room_participants_ban_reason">Reason to ban</string>
     <string name="room_participants_unban_title">Unban user</string>
-    <string name="room_participants_ban_prompt_msg">Banning user will kick them from this room and prevent them from joining again.</string>
-    <string name="room_participants_unban_prompt_msg">Unbanning user will allow them to join the room again.</string>
+    <string name="room_participants_ban_prompt_msg">Banning user will kick them from this group and prevent them from joining again.</string>
+    <string name="room_participants_unban_prompt_msg">Unbanning user will allow them to join the group again.</string>
 
     <string name="reason_hint">Reason</string>
 
@@ -588,11 +588,11 @@
     <string name="people_search_invite_by_id"><u>Invite by ID</u></string>
     <string name="people_search_local_contacts">LOCAL CONTACTS (%d)</string>
     <string name="people_search_user_directory">USER DIRECTORY (%s)</string>
-    <string name="people_search_filter_text">Matrix users only</string>
+    <string name="people_search_filter_text">X-LinX users only</string>
 
     <string name="people_search_invite_by_id_dialog_title">Invite user by ID</string>
-    <string name="people_search_invite_by_id_dialog_description">Please enter one or more email address or Matrix ID</string>
-    <string name="people_search_invite_by_id_dialog_hint">Email or Matrix ID</string>
+    <string name="people_search_invite_by_id_dialog_description">Please enter one or more email address or X-LinX ID</string>
+    <string name="people_search_invite_by_id_dialog_hint">Email or X-LinX ID</string>
 
     <!--  Chat -->
     <string name="room_menu_search">Search</string>
@@ -611,7 +611,7 @@
     <string name="room_resend_unsent_messages">Resend unsent messages</string>
     <string name="room_delete_unsent_messages">Delete unsent messages</string>
     <string name="room_message_file_not_found">File not found</string>
-    <string name="room_do_not_have_permission_to_post">You do not have permission to post to this room</string>
+    <string name="room_do_not_have_permission_to_post">You do not have permission to post to this group</string>
     <plurals name="room_new_messages_notification">
         <item quantity="one">%d new message</item>
         <item quantity="other">%d new messages</item>
@@ -639,7 +639,7 @@
         <item quantity="one">%d selected</item>
         <item quantity="other">%d selected</item>
     </plurals>
-    <string name="malformed_id">Malformed ID. Should be an email address or a Matrix ID like \'@localpart:domain\'</string>
+    <string name="malformed_id">Malformed ID. Should be an email address or a X-LinX ID like \'@localpart:domain\'</string>
     <string name="room_details_people_invited_group_name">INVITED</string>
     <string name="room_details_people_present_group_name">JOINED</string>
 
@@ -651,7 +651,7 @@
 
     <!-- Search -->
     <string name="search_hint">Search</string>
-    <string name="search_members_hint">Filter room members</string>
+    <string name="search_members_hint">Filter group members</string>
     <string name="search_banned_user_hint">Filter banned users</string>
     <string name="search_no_results">No results</string>
     <string name="tab_title_search_rooms">ROOMS</string>
@@ -668,24 +668,24 @@
     <string name="room_recents_low_priority">LOW PRIORITY</string>
     <string name="room_recents_invites">INVITES</string>
     <string name="room_recents_start_chat">Start chat</string>
-    <string name="room_recents_create_room">Create room</string>
-    <string name="room_recents_join_room">Join room</string>
-    <string name="room_recents_join_room_title">Join a room</string>
-    <string name="room_recents_join_room_prompt">Type a room id or a room alias</string>
+    <string name="room_recents_create_room">Create group</string>
+    <string name="room_recents_join_room">Join group</string>
+    <string name="room_recents_join_room_title">Join a group</string>
+    <string name="room_recents_join_room_prompt">Type a group id or a group alias</string>
 
     <!-- Directory -->
     <string name="directory_search_results_title">Browse directory</string>
     <plurals name="directory_search_rooms">
-        <item quantity="one">%d room</item>
+        <item quantity="one">%d group</item>
         <item quantity="other">%d groups</item>
     </plurals>
     <plurals name="directory_search_rooms_for">
-        <item quantity="one">%1$s room found for %2$s</item>
+        <item quantity="one">%1$s group found for %2$s</item>
         <item quantity="other">%1$s groups found for %2$s</item>
     </plurals>
     <string name="directory_searching_title">Searching directory…</string>
 
-    <!-- home room settings -->
+    <!-- home group settings -->
     <string name="room_settings_all_messages_noisy">All messages (noisy)</string>
     <string name="room_settings_all_messages">All messages</string>
     <string name="room_settings_mention_only">Mentions only</string>
@@ -817,7 +817,7 @@
     <string name="settings_notification_privacy_no_background_sync">The apps does <b>not</b> need to connect to the HomeServer in the background, it should reduce battery usage</string>
     <string name="settings_notification_privacy_fcm">• Notifications are sent via Firebase Cloud Messaging</string>
     <string name="settings_notification_privacy_metadata">• Notifications only contain meta data</string>
-    <string name="settings_notification_privacy_secure_message_content">• Message content of the notification is <b>located securely direct from the Matrix homeserver</b></string>
+    <string name="settings_notification_privacy_secure_message_content">• Message content of the notification is <b>located securely direct from the X-LinX homeserver</b></string>
     <string name="settings_notification_privacy_nosecure_message_content">• Notifications contain <b>meta and message data</b></string>
     <string name="settings_notification_privacy_message_content_not_shown">• Notifications will <b>not show message content</b></string>
 
@@ -835,7 +835,7 @@
     <string name="settings_containing_my_user_name">Msgs containing my user name</string>
     <string name="settings_messages_in_one_to_one">Msgs in one-to-one chats</string>
     <string name="settings_messages_in_group_chat">Msgs in group chats</string>
-    <string name="settings_invited_to_room">When I’m invited to a room</string>
+    <string name="settings_invited_to_room">When I’m invited to a group</string>
     <string name="settings_call_invitations">Call invitations</string>
     <string name="settings_messages_sent_by_bot">Messages sent by bot</string>
 
@@ -877,7 +877,7 @@
     <string name="settings_other">Other</string>
     <string name="settings_advanced">Advanced</string>
     <string name="settings_integrations">Integrations</string>
-    <string name="settings_integrations_summary">Use an Integration Manager to manage bots, bridges, widgets and sticker packs.\nIntegration Managers receive configuration data, and can modify widgets, send room invites and set power levels on your behalf.</string>
+    <string name="settings_integrations_summary">Use an Integration Manager to manage bots, bridges, widgets and sticker packs.\nIntegration Managers receive configuration data, and can modify widgets, send group invites and set power levels on your behalf.</string>
     <string name="settings_cryptography">Cryptography</string>
     <string name="settings_cryptography_manage_keys">Cryptography Keys Management</string>
     <string name="settings_notifications_targets">Notification Targets</string>
@@ -898,7 +898,7 @@
     <string name="settings_12_24_timestamps">Show timestamps in 12-hour format</string>
     <string name="settings_show_read_receipts">Show read receipts</string>
     <string name="settings_show_read_receipts_summary">Click on the read receipts for a detailed list.</string>
-    <string name="settings_show_room_member_state_events">Show room member state events</string>
+    <string name="settings_show_room_member_state_events">Show group member state events</string>
     <string name="settings_chat_effects_title">Show chat effects</string>
     <string name="settings_chat_effects_description">Use /confetti command or send a message containing ❄️ or 🎉</string>
     <string name="settings_show_room_member_state_events_summary">Includes invite/join/left/kick/ban events and avatar/display name changes.</string>
@@ -988,7 +988,7 @@
     <string name="passwords_do_not_match">Passwords do not match</string>
 
     <string name="settings_emails_and_phone_numbers_title">Emails and phone numbers</string>
-    <string name="settings_emails_and_phone_numbers_summary">Manage emails and phone numbers linked to your Matrix account</string>
+    <string name="settings_emails_and_phone_numbers_summary">Manage emails and phone numbers linked to your X-LinX account</string>
 
     <string name="settings_delete_notification_targets_confirmation">Are you sure you want to remove this notification target?</string>
 
@@ -1027,7 +1027,7 @@
 
     <!-- Group Settings -->
 
-    <!-- room global settings-->
+    <!-- group global settings-->
     <string name="room_settings_room_photo">Group Photo</string>
     <string name="room_settings_room_name">Group Name</string>
     <string name="room_settings_topic">Topic</string>
@@ -1039,24 +1039,24 @@
     <string name="room_settings_tag_pref_entry_low_priority">Low priority</string>
     <string name="room_settings_tag_pref_entry_none">None</string>
 
-    <!-- room settings : access and visibility -->
+    <!-- group settings : access and visibility -->
     <string name="room_settings_category_access_visibility_title">Access and visibility</string>
-    <string name="room_settings_directory_visibility">List this room in room directory</string>
+    <string name="room_settings_directory_visibility">List this group in group directory</string>
     <string name="room_settings_room_notifications_title">Notifications</string>
     <string name="room_settings_room_access_rules_pref_title">Group Access</string>
     <string name="room_settings_room_read_history_rules_pref_title">Group History Readability</string>
     <string name="room_settings_room_read_history_rules_pref_dialog_title">Who can read history?</string>
-    <string name="room_settings_room_read_history_dialog_subtitle">Changes to who can read history will only apply to future messages in this room. The visibility of existing history will be unchanged.</string>
-    <string name="room_settings_room_access_rules_pref_dialog_title">Who can access this room?</string>
+    <string name="room_settings_room_read_history_dialog_subtitle">Changes to who can read history will only apply to future messages in this group. The visibility of existing history will be unchanged.</string>
+    <string name="room_settings_room_access_rules_pref_dialog_title">Who can access this group?</string>
     <string name="room_settings_room_access_title">Group access</string>
 
-    <!-- room settings : alias -->
+    <!-- group settings : alias -->
     <string name="room_settings_alias_title">Group addresses</string>
-    <string name="room_settings_alias_subtitle">See and managed addresses of this room, and its visibility in the room directory.</string>
+    <string name="room_settings_alias_subtitle">See and managed addresses of this group, and its visibility in the group directory.</string>
 
     <string name="room_alias_title">Group Addresses</string>
     <string name="room_alias_published_alias_title">Published Addresses</string>
-    <string name="room_alias_published_alias_subtitle">Published addresses can be used by anyone on any server to join your room. To publish an address, it needs to be set as a local address first.</string>
+    <string name="room_alias_published_alias_subtitle">Published addresses can be used by anyone on any server to join your group. To publish an address, it needs to be set as a local address first.</string>
     <string name="room_alias_published_alias_main">This is the main address</string>
     <string name="room_alias_main_address_hint">Main address</string>
     <string name="room_alias_published_other">Other published addresses:</string>
@@ -1064,25 +1064,25 @@
     <string name="room_alias_published_alias_add_manually_submit">Publish</string>
     <string name="room_alias_unpublish_confirmation">Unpublish the address \"%1$s\"?</string>
     <string name="room_alias_delete_confirmation">Delete the address \"%1$s\"?</string>
-    <!-- Parameter will be the url of the homeserver, ex: matrix.org -->
-    <string name="room_alias_publish">Publish this room to the public in %1$s\'s room directory?</string>
+    <!-- Parameter will be the url of the homeserver, ex: X-LinX.org -->
+    <string name="room_alias_publish">Publish this group to the public in %1$s\'s group directory?</string>
     <string name="room_alias_address_empty_can_add">No other published addresses yet, add one below.</string>
     <string name="room_alias_address_empty">No other published addresses yet.</string>
     <string name="room_alias_address_hint">New published address (e.g. #alias:server)</string>
 
     <string name="room_alias_local_address_title">Local Addresses</string>
-    <!-- Parameter will be the url of the homeserver, ex: matrix.org -->
-    <string name="room_alias_local_address_subtitle">Set addresses for this room so users can find this room through your homeserver (%1$s)</string>
-    <string name="room_alias_local_address_empty">This room has no local addresses</string>
+    <!-- Parameter will be the url of the homeserver, ex: X-LinX.org -->
+    <string name="room_alias_local_address_subtitle">Set addresses for this group so users can find this group through your homeserver (%1$s)</string>
+    <string name="room_alias_local_address_empty">This group has no local addresses</string>
     <string name="room_alias_local_address_add">Add a local address</string>
 
     <string name="room_alias_action_publish">Publish this address</string>
     <string name="room_alias_action_unpublish">Unpublish this address</string>
 
-    <!-- Parameter will be the url of the homeserver, ex: matrix.org -->
-    <string name="room_alias_publish_to_directory">Publish this room to the public in %1$s\'s room directory?</string>
+    <!-- Parameter will be the url of the homeserver, ex: X-LinX.org -->
+    <string name="room_alias_publish_to_directory">Publish this group to the public in %1$s\'s group directory?</string>
     <!-- Parameter will be a technical error message -->
-    <string name="room_alias_publish_to_directory_error">Unable to retrieve the current room directory visibility (%1$s).</string>
+    <string name="room_alias_publish_to_directory_error">Unable to retrieve the current group directory visibility (%1$s).</string>
 
     <!-- Group settings, access and visibility : WHO CAN READ HISTORY? (read rule) -->
     <string name="room_settings_read_history_entry_anyone">Anyone</string>
@@ -1090,11 +1090,11 @@
     <string name="room_settings_read_history_entry_members_only_invited">Members only (since they were invited)</string>
     <string name="room_settings_read_history_entry_members_only_joined">Members only (since they joined)</string>
 
-    <!-- Group settings: "Who can access this room?" (access rule) -->
-    <string name="room_settings_room_access_warning">To link to a room it must have an address.</string>
+    <!-- Group settings: "Who can access this group?" (access rule) -->
+    <string name="room_settings_room_access_warning">To link to a group it must have an address.</string>
     <string name="room_settings_room_access_entry_only_invited">Only people who have been invited</string>
-    <string name="room_settings_room_access_entry_anyone_with_link_apart_guest">Anyone who knows the room’s link, apart from guests</string>
-    <string name="room_settings_room_access_entry_anyone_with_link_including_guest">Anyone who knows the room’s link, including guests</string>
+    <string name="room_settings_room_access_entry_anyone_with_link_apart_guest">Anyone who knows the group’s link, apart from guests</string>
+    <string name="room_settings_room_access_entry_anyone_with_link_including_guest">Anyone who knows the group’s link, including guests</string>
 
     <!-- Group settings: banned users -->
     <string name="room_settings_banned_users_title">Banned users</string>
@@ -1105,7 +1105,7 @@
 
     <!-- advanced -->
     <string name="room_settings_category_advanced_title">Advanced</string>
-    <string name="room_settings_room_internal_id">This room’s internal ID</string>
+    <string name="room_settings_room_internal_id">This group’s internal ID</string>
     <string name="room_settings_addresses_pref_title">Addresses</string>
     <string name="room_settings_labs_pref_title">Labs</string>
     <string name="room_settings_labs_warning_message">These are experimental features that may break in unexpected ways. Use with caution.</string>
@@ -1113,21 +1113,21 @@
     <string name="room_settings_labs_end_to_end_is_active">End-to-End Encryption is active</string>
     <string name="room_settings_labs_end_to_end_warnings">You need to logout to be able to enable the encryption.</string>
     <string name="room_settings_never_send_to_unverified_devices_title">Encrypt to verified sessions only</string>
-    <string name="room_settings_never_send_to_unverified_devices_summary">Never send encrypted messages to unverified sessions in this room from this session.</string>
+    <string name="room_settings_never_send_to_unverified_devices_summary">Never send encrypted messages to unverified sessions in this group from this session.</string>
 
     <!-- Group settings: advanced addresses -->
-    <string name="room_settings_addresses_no_local_addresses">This room has no local addresses</string>
-    <string name="room_settings_addresses_add_new_address">New address (e.g #foo:matrix.org")</string>
+    <string name="room_settings_addresses_no_local_addresses">This group has no local addresses</string>
+    <string name="room_settings_addresses_add_new_address">New address (e.g #foo:X-LinX.org")</string>
 
-    <string name="room_settings_no_flair">This room is not showing flair for any communities</string>
-    <string name="room_settings_add_new_group">New community ID (e.g +foo:matrix.org")</string>
+    <string name="room_settings_no_flair">This group is not showing flair for any communities</string>
+    <string name="room_settings_add_new_group">New community ID (e.g +foo:X-LinX.org")</string>
     <string name="room_settings_invalid_group_format_dialog_title">Invalid community ID</string>
     <string name="room_settings_invalid_group_format_dialog_body">\'%s\' is not a valid community ID</string>
 
 
     <string name="room_settings_addresses_invalid_format_dialog_title">Invalid alias format</string>
     <string name="room_settings_addresses_invalid_format_dialog_body">\'%s\' is not a valid format for an alias</string>
-    <string name="room_settings_addresses_disable_main_address_prompt_msg">You will have no main address specified for this room."</string>
+    <string name="room_settings_addresses_disable_main_address_prompt_msg">You will have no main address specified for this group."</string>
     <string name="room_settings_addresses_disable_main_address_prompt_title">Main address warnings</string>
 
     <string name="room_settings_set_main_address">Set as main address</string>
@@ -1135,16 +1135,16 @@
     <string name="room_settings_copy_room_id">Copy Group ID</string>
     <string name="room_settings_copy_room_address">Copy Group Address</string>
 
-    <string name="room_settings_addresses_e2e_enabled">Encryption is enabled in this room.</string>
-    <string name="room_settings_addresses_e2e_disabled">Encryption is disabled in this room.</string>
+    <string name="room_settings_addresses_e2e_enabled">Encryption is enabled in this group.</string>
+    <string name="room_settings_addresses_e2e_disabled">Encryption is disabled in this group.</string>
     <string name="room_settings_addresses_e2e_encryption_warning">Enable encryption \n(warning: cannot be disabled again!)</string>
 
     <!-- Directory -->
     <string name="directory_title">Directory</string>
     <string name="settings_theme">Theme</string>
 
-    <!-- matrix error -->
-    <string name="failed_to_load_timeline_position">%s was trying to load a specific point in this room’s timeline but was unable to find it.</string>
+    <!-- X-LinX error -->
+    <string name="failed_to_load_timeline_position">%s was trying to load a specific point in this group’s timeline but was unable to find it.</string>
 
     <!-- encryption dialog -->
     <string name="encryption_information_title">End-to-end encryption information</string>
@@ -1167,19 +1167,19 @@
     <string name="encryption_information_verification">Verification</string>
     <string name="encryption_information_ed25519_fingerprint">Ed25519 fingerprint</string>
 
-    <string name="encryption_export_e2e_room_keys">Export E2E room keys</string>
-    <string name="encryption_export_room_keys">Export room keys</string>
+    <string name="encryption_export_e2e_room_keys">Export E2E group keys</string>
+    <string name="encryption_export_room_keys">Export group keys</string>
     <string name="encryption_export_room_keys_summary">Export the keys to a local file</string>
     <string name="encryption_export_export">Export</string>
     <string name="encryption_export_notice">Please create a passphrase to encrypt the exported keys. You will need to enter the same passphrase to be able to import the keys.</string>
-    <string name="encryption_export_saved_as">The E2E room keys have been saved to \'%s\'.\n\nWarning: this file may be deleted if the application is uninstalled.</string>
+    <string name="encryption_export_saved_as">The E2E group keys have been saved to \'%s\'.\n\nWarning: this file may be deleted if the application is uninstalled.</string>
     <string name="encryption_exported_successfully">Keys successfully exported</string>
 
     <string name="encryption_message_recovery">Encrypted Messages Recovery</string>
     <string name="encryption_settings_manage_message_recovery_summary">Manage Key Backup</string>
 
-    <string name="encryption_import_e2e_room_keys">Import E2E room keys</string>
-    <string name="encryption_import_room_keys">Import room keys</string>
+    <string name="encryption_import_e2e_room_keys">Import E2E group keys</string>
+    <string name="encryption_import_room_keys">Import group keys</string>
     <string name="encryption_import_room_keys_summary">Import the keys from a local file</string>
     <string name="encryption_import_import">Import</string>
     <string name="encryption_never_send_to_unverified_devices_title">Encrypt to verified sessions only</string>
@@ -1209,10 +1209,10 @@
 
     <!-- unknown sessions management -->
     <string name="unknown_devices_alert_title">Group contains unknown sessions</string>
-    <string name="unknown_devices_alert_message">This room contains unknown sessions which have not been verified.\nThis means there is no guarantee that the sessions belong to the users they claim to.\nWe recommend you go through the verification process for each session before continuing, but you can resend the message without verifying if you prefer.\n\nUnknown sessions:</string>
+    <string name="unknown_devices_alert_message">This group contains unknown sessions which have not been verified.\nThis means there is no guarantee that the sessions belong to the users they claim to.\nWe recommend you go through the verification process for each session before continuing, but you can resend the message without verifying if you prefer.\n\nUnknown sessions:</string>
 
     <!-- directory activity  -->
-    <string name="select_room_directory">Select a room directory</string>
+    <string name="select_room_directory">Select a group directory</string>
     <string name="directory_server_fail_to_retrieve_server">The server may be unavailable or overloaded</string>
     <string name="directory_server_type_homeserver">Type a homeserver to list public groups from</string>
     <string name="directory_server_placeholder">Homeserver URL</string>
@@ -1232,7 +1232,7 @@
         <item quantity="other">%d unread notified messages</item>
     </plurals>
     <plurals name="notification_unread_notified_messages_in_room_rooms">
-        <item quantity="one">%d room</item>
+        <item quantity="one">%d group</item>
         <item quantity="other">%d groups</item>
     </plurals>
     <plurals name="notification_invitations">
@@ -1257,7 +1257,7 @@
     <string name="notification_new_messages">New Messages</string>
     <string name="notification_new_invitation">New Invitation</string>
     <string name="notification_sender_me">Me</string>
-    <string name="notification_inline_reply_failed">** Failed to send - please open room</string>
+    <string name="notification_inline_reply_failed">** Failed to send - please open group</string>
     <string name="notification_ticker_text_dm">%1$s: %2$s</string>
     <string name="notification_ticker_text_group">%1$s: %2$s %3$s</string>
 
@@ -1275,10 +1275,10 @@
     <string name="huge">Huge</string>
 
     <!-- Widget-->
-    <string name="widget_no_power_to_manage">You need permission to manage widgets in this room</string>
+    <string name="widget_no_power_to_manage">You need permission to manage widgets in this group</string>
     <string name="widget_creation_failure">Widget creation has failed</string>
     <string name="settings_labs_create_conference_with_jitsi">Create conference calls with jitsi</string>
-    <string name="widget_delete_message_confirmation">Are you sure you want to delete the widget from this room?</string>
+    <string name="widget_delete_message_confirmation">Are you sure you want to delete the widget from this group?</string>
     <plurals name="active_widgets">
         <item quantity="one">%d active widget</item>
         <item quantity="other">%d active widgets</item>
@@ -1318,15 +1318,15 @@
     <string name="widget_integration_unable_to_create">Unable to create widget.</string>
     <string name="widget_integration_failed_to_send_request">Failed to send request.</string>
     <string name="widget_integration_positive_power_level">Power level must be positive integer.</string>
-    <string name="widget_integration_must_be_in_room">You are not in this room.</string>
-    <string name="widget_integration_no_permission_in_room">You do not have permission to do that in this room.</string>
+    <string name="widget_integration_must_be_in_room">You are not in this group.</string>
+    <string name="widget_integration_no_permission_in_room">You do not have permission to do that in this group.</string>
     <string name="widget_integration_missing_room_id">Missing room_id in request.</string>
     <string name="widget_integration_missing_user_id">Missing user_id in request.</string>
     <string name="widget_integration_room_not_visible">Group %s is not visible.</string>
     <string name="widget_integration_missing_parameter">A required parameter is missing.</string>
     <string name="widget_integration_invalid_parameter">A parameter is not valid.</string>
     <string name="integration_manager_not_configured">No integration manager configured.</string>
-    <string name="room_add_matrix_apps">Add Matrix apps</string>
+    <string name="room_add_matrix_apps">Add X-LinX apps</string>
     <string name="room_manage_integrations">Manage Integrations</string>
     <string name="room_no_active_widgets">No active widgets</string>
     <string name="settings_labs_native_camera">Use native camera</string>
@@ -1366,14 +1366,14 @@
     <string name="command_description_unban_user">Unbans user with given id</string>
     <string name="command_description_op_user">Define the power level of a user</string>
     <string name="command_description_deop_user">Deops user with given id</string>
-    <string name="command_description_invite_user">Invites user with given id to current room</string>
-    <string name="command_description_join_room">Joins room with given alias</string>
-    <string name="command_description_part_room">Leave room</string>
-    <string name="command_description_topic">Set the room topic</string>
+    <string name="command_description_invite_user">Invites user with given id to current group</string>
+    <string name="command_description_join_room">Joins group with given alias</string>
+    <string name="command_description_part_room">Leave group</string>
+    <string name="command_description_topic">Set the group topic</string>
     <string name="command_description_kick_user">Kicks user with given id</string>
     <string name="command_description_nick">Changes your display nickname</string>
     <string name="command_description_markdown">On/Off markdown</string>
-    <string name="command_description_clear_scalar_token">To fix Matrix Apps management</string>
+    <string name="command_description_clear_scalar_token">To fix X-LinX Apps management</string>
 
     <string name="markdown_has_been_enabled">Markdown has been enabled.</string>
     <string name="markdown_has_been_disabled">Markdown has been disabled.</string>
@@ -1411,7 +1411,7 @@
     </plurals>
 
     <plurals name="group_rooms">
-        <item quantity="one">%d room</item>
+        <item quantity="one">%d group</item>
         <item quantity="other">%d groups</item>
     </plurals>
     <string name="group_no_long_description">The community admin has not provided a long description for this community.</string>
@@ -1420,7 +1420,7 @@
     <string name="has_been_banned">You have been banned from %1$s by %2$s</string>
     <string name="reason_colon">Reason: %1$s</string>
     <string name="rejoin">Rejoin</string>
-    <string name="forget_room">Forget room</string>
+    <string name="forget_room">Forget group</string>
 
     <!-- Miscellaneous image descriptions for accessibility -->
     <string name="receipt_avatar">Receipt avatar</string>
@@ -1433,16 +1433,16 @@
 
     <!-- Deactivate account screen -->
     <string name="deactivate_account_title">Deactivate Account</string>
-    <string name="deactivate_account_content">This will make your account permanently unusable. You will not be able to log in, and no one will be able to re-register the same user ID. This will cause your account to leave all groups it is participating in, and it will remove your account details from your identity server. <b>This action is irreversible</b>.\n\nDeactivating your account <b>does not by default cause us to forget messages you have sent</b>. If you would like us to forget your messages, please tick the box below.\n\nMessage visibility in Matrix is similar to email. Our forgetting your messages means that messages you have sent will not be shared with any new or unregistered users, but registered users who already have access to these messages will still have access to their copy.</string>
+    <string name="deactivate_account_content">This will make your account permanently unusable. You will not be able to log in, and no one will be able to re-register the same user ID. This will cause your account to leave all groups it is participating in, and it will remove your account details from your identity server. <b>This action is irreversible</b>.\n\nDeactivating your account <b>does not by default cause us to forget messages you have sent</b>. If you would like us to forget your messages, please tick the box below.\n\nMessage visibility in X-LinX is similar to email. Our forgetting your messages means that messages you have sent will not be shared with any new or unregistered users, but registered users who already have access to these messages will still have access to their copy.</string>
     <string name="deactivate_account_delete_checkbox">Please forget all messages I have sent when my account is deactivated (Warning: this will cause future users to see an incomplete view of conversations)</string>
     <string name="deactivate_account_prompt_password">To continue, please enter your password:</string>
     <string name="deactivate_account_submit">Deactivate Account</string>
 
     <string name="error_empty_field_enter_user_name">Please enter a username.</string>
     <string name="error_empty_field_your_password">Please enter your password.</string>
-    <string name="room_tombstone_versioned_description">This room has been replaced and is no longer active</string>
+    <string name="room_tombstone_versioned_description">This group has been replaced and is no longer active</string>
     <string name="room_tombstone_continuation_link">The conversation continues here</string>
-    <string name="room_tombstone_continuation_description">This room is a continuation of another conversation</string>
+    <string name="room_tombstone_continuation_description">This group is a continuation of another conversation</string>
     <string name="room_tombstone_predecessor_link">Click here to see older messages</string>
 
     <!-- Resource limit-->
@@ -1465,13 +1465,13 @@
 
     <!-- Lazy loading -->
     <string name="settings_lazy_loading_title">Lazy load groups members</string>
-    <string name="settings_lazy_loading_description">Increase performance by only loading room members on first view.</string>
-    <string name="error_lazy_loading_not_supported_by_home_server">Your homeserver does not support lazy loading of room members yet. Try later.</string>
+    <string name="settings_lazy_loading_description">Increase performance by only loading group members on first view.</string>
+    <string name="error_lazy_loading_not_supported_by_home_server">Your homeserver does not support lazy loading of group members yet. Try later.</string>
 
     <!-- Other errors -->
     <string name="unknown_error">Sorry, an error occurred</string>
 
-    <!-- Expand/Collapse room member changes -->
+    <!-- Expand/Collapse group member changes -->
     <string name="merged_events_expand">expand</string>
     <string name="merged_events_collapse">collapse</string>
 
@@ -1497,7 +1497,7 @@
     <!-- Key Backup -->
 
     <string name="keys_backup_passphrase_not_empty_error_message">Please delete the passphrase if you want X-LinX to generate a recovery key.</string>
-    <string name="keys_backup_no_session_error">No Matrix session available</string>
+    <string name="keys_backup_no_session_error">No X-LinX session available</string>
 
     <string name="keys_backup_setup_step1_title">Never lose encrypted messages</string>
     <string name="keys_backup_setup_step1_description">Messages in encrypted groups are secured with end-to-end encryption. Only you and the recipient(s) have the keys to read these messages.\n\nSecurely back up your keys to avoid losing them.</string>
@@ -1697,7 +1697,7 @@
     <string name="reply">Reply</string>
 
     <string name="global_retry">"Retry"</string>
-    <string name="room_list_empty">"Join a room to start using the app."</string>
+    <string name="room_list_empty">"Join a group to start using the app."</string>
     <string name="send_you_invite">"Sent you an invitation"</string>
     <string name="invited_by">Invited by %s</string>
 
@@ -1721,7 +1721,7 @@
     <string name="settings_show_redacted">Show removed messages</string>
     <string name="settings_show_redacted_summary">Show a placeholder for removed messages</string>
     <string name="event_redacted_by_user_reason">Event deleted by user</string>
-    <string name="event_redacted_by_admin_reason">Event moderated by room admin</string>
+    <string name="event_redacted_by_admin_reason">Event moderated by group admin</string>
     <string name="last_edited_info_message">Last edited by %1$s on %2$s</string>
 
 
@@ -1733,14 +1733,14 @@
     <string name="please_wait">"Please wait…"</string>
     <string name="group_all_communities">"All Communities"</string>
 
-    <string name="room_preview_no_preview">"This room can't be previewed"</string>
-    <string name="room_preview_world_readable_room_not_supported_yet">"The preview of world-readable room is not supported yet in X-LinX"</string>
-    <string name="room_preview_not_found">This room is not accessible at this time.\nTry again later, or ask a room admin to check if you have access.</string>
-    <string name="room_preview_no_preview_join">"This room can't be previewed. Do you want to join it?"</string>
+    <string name="room_preview_no_preview">"This group can't be previewed"</string>
+    <string name="room_preview_world_readable_room_not_supported_yet">"The preview of world-readable group is not supported yet in X-LinX"</string>
+    <string name="room_preview_not_found">This group is not accessible at this time.\nTry again later, or ask a group admin to check if you have access.</string>
+    <string name="room_preview_no_preview_join">"This group can't be previewed. Do you want to join it?"</string>
     <string name="fab_menu_create_room">"Groups"</string>
     <string name="fab_menu_create_chat">"Chats"</string>
 
-    <!-- Create room screen -->
+    <!-- Create group screen -->
     <string name="create_room_title">"New Group"</string>
     <string name="create_room_action_create">"CREATE"</string>
     <string name="create_room_name_section">"Group name"</string>
@@ -1749,19 +1749,19 @@
     <string name="create_room_topic_hint">"Topic"</string>
     <string name="create_room_settings_section">"Group settings"</string>
     <string name="create_room_public_title">"Public"</string>
-    <string name="create_room_public_description">"Anyone will be able to join this room"</string>
+    <string name="create_room_public_description">"Anyone will be able to join this group"</string>
     <string name="create_room_directory_title">"Group Directory"</string>
-    <string name="create_room_directory_description">"Publish this room in the room directory"</string>
-    <string name="create_room_federation_error">"The room has been created, but some invitations have not been sent for the following reason:\n\n%s"</string>
+    <string name="create_room_directory_description">"Publish this group in the group directory"</string>
+    <string name="create_room_federation_error">"The group has been created, but some invitations have not been sent for the following reason:\n\n%s"</string>
 
     <string name="keys_backup_unable_to_get_trust_info">"An error occurred getting trust info"</string>
     <string name="keys_backup_unable_to_get_keys_backup_data">"An error occurred getting keys backup data"</string>
 
     <string name="import_e2e_keys_from_file">"Import e2e keys from file \"%1$s\"."</string>
 
-    <string name="settings_sdk_version">Matrix SDK Version</string>
+    <string name="settings_sdk_version">X-LinX SDK Version</string>
     <string name="settings_other_third_party_notices">Other third party notices</string>
-    <string name="navigate_to_room_when_already_in_the_room">You are already viewing this room!</string>
+    <string name="navigate_to_room_when_already_in_the_room">You are already viewing this group!</string>
 
     <string name="quick_reactions">Quick Reactions</string>
 
@@ -1815,11 +1815,11 @@
     <!-- Group filtering -->
     <string name="room_filtering_filter_hint">Filter conversations…</string>
     <string name="room_filtering_footer_title">Can’t find what you’re looking for?</string>
-    <string name="room_filtering_footer_create_new_room">Create a new room</string>
+    <string name="room_filtering_footer_create_new_room">Create a new group</string>
     <string name="room_filtering_footer_create_new_direct_message">Send a new direct message</string>
-    <string name="room_filtering_footer_open_room_directory">View the room directory</string>
+    <string name="room_filtering_footer_open_room_directory">View the group directory</string>
 
-    <string name="room_directory_search_hint">Name or ID (#example:matrix.org)</string>
+    <string name="room_directory_search_hint">Name or ID (#example:X-LinX.org)</string>
     <string name="user_directory_search_hint">Search by name or ID</string>
 
     <string name="labs_swipe_to_reply_in_timeline">Enable swipe to reply in timeline</string>
@@ -1827,11 +1827,11 @@
 
     <string name="link_copied_to_clipboard">Link copied to clipboard</string>
 
-    <string name="add_by_matrix_id">Add by matrix ID</string>
+    <string name="add_by_matrix_id">Add by X-LinX ID</string>
     <string name="add_by_qr_code">Add by QR code</string>
     <string name="qr_code">QR code</string>
-    <string name="creating_direct_room">"Creating room…"</string>
-    <string name="direct_room_no_known_users">"No result found, use Add by matrix ID to search on server."</string>
+    <string name="creating_direct_room">"Creating group…"</string>
+    <string name="direct_room_no_known_users">"No result found, use Add by X-LinX ID to search on server."</string>
     <string name="direct_room_start_search">"Start typing to get results"</string>
     <string name="direct_room_filter_hint">"Filter by username or ID…"</string>
     <string name="direct_room_user_list_recent_title">Recent</string>
@@ -1839,7 +1839,7 @@
     <string name="direct_room_user_list_contacts_title">Contacts</string>
     <string name="direct_room_user_list_suggestions_title">Suggestions</string>
 
-    <string name="joining_room">"Joining room…"</string>
+    <string name="joining_room">"Joining group…"</string>
 
     <string name="message_view_edit_history">View Edit History</string>
 
@@ -1898,12 +1898,12 @@
     <string name="send_attachment">Send attachment</string>
 
     <string name="a11y_open_drawer">Open the navigation drawer</string>
-    <string name="a11y_create_menu_open">Open the create room menu</string>
-    <string name="a11y_create_menu_close">Close the create room menu…</string>
+    <string name="a11y_create_menu_open">Open the create group menu</string>
+    <string name="a11y_create_menu_close">Close the create group menu…</string>
     <string name="a11y_create_direct_message">Create a new direct conversation</string>
-    <string name="a11y_create_direct_message_by_mxid">Create a new direct conversation by Matrix ID</string>
+    <string name="a11y_create_direct_message_by_mxid">Create a new direct conversation by X-LinX ID</string>
     <string name="a11y_create_direct_message_by_qr_code">Create a new direct conversation by scanning a QR code</string>
-    <string name="a11y_create_room">Create a new room</string>
+    <string name="a11y_create_room">Create a new group</string>
     <string name="a11y_close_keys_backup_banner">Close keys backup banner</string>
     <string name="a11y_show_password">Show password</string>
     <string name="a11y_hide_password">Hide password</string>
@@ -1938,11 +1938,11 @@
     <string name="attachment_viewer_item_x_of_y">%1$d of %2$d</string>
 
     <string name="uploads_media_title">MEDIA</string>
-    <string name="uploads_media_no_result">There are no media in this room</string>
+    <string name="uploads_media_no_result">There are no media in this group</string>
     <string name="uploads_files_title">FILES</string>
     <!-- First parameter is a username and second is a date Example: "Matthew at 12:00 on 01/01/01" -->
     <string name="uploads_files_subtitle">%1$s at %2$s</string>
-    <string name="uploads_files_no_result">There are no files in this room</string>
+    <string name="uploads_files_no_result">There are no files in this group</string>
 
     <string name="report_content_spam">"It's spam"</string>
     <string name="report_content_inappropriate">"It's inappropriate"</string>
@@ -1974,7 +1974,7 @@
     <string name="room_list_quick_actions_favorite_remove">"Remove from favorites"</string>
     <string name="room_list_quick_actions_low_priority_add">"Add to low priority"</string>
     <string name="room_list_quick_actions_low_priority_remove">"Remove from low priority"</string>
-    <string name="room_list_quick_actions_leave">"Leave the room"</string>
+    <string name="room_list_quick_actions_leave">"Leave the group"</string>
     <string name="notice_member_no_changes">"%1$s made no changes"</string>
     <string name="notice_member_no_changes_by_you">"You made no changes"</string>
     <string name="command_description_spoiler">Sends the given message as a spoiler</string>
@@ -1983,13 +1983,13 @@
 
     <string name="no_ignored_users">You are not ignoring any users</string>
 
-    <string name="help_long_click_on_room_for_more_options">Long click on a room to see more options</string>
+    <string name="help_long_click_on_room_for_more_options">Long click on a group to see more options</string>
 
 
-    <string name="room_join_rules_public">%1$s made the room public to whoever knows the link.</string>
-    <string name="room_join_rules_public_by_you">You made the room public to whoever knows the link.</string>
-    <string name="room_join_rules_invite">%1$s made the room invite only.</string>
-    <string name="room_join_rules_invite_by_you">You made the room invite only.</string>
+    <string name="room_join_rules_public">%1$s made the group public to whoever knows the link.</string>
+    <string name="room_join_rules_public_by_you">You made the group public to whoever knows the link.</string>
+    <string name="room_join_rules_invite">%1$s made the group invite only.</string>
+    <string name="room_join_rules_invite_by_you">You made the group invite only.</string>
     <string name="direct_room_join_rules_invite">%1$s made this invite only.</string>
     <string name="direct_room_join_rules_invite_by_you">You made this invite only.</string>
     <string name="timeline_unread_messages">Unread messages</string>
@@ -2018,7 +2018,7 @@
     <string name="login_continue">Continue</string>
     <!-- Replaced string is the homeserver url -->
     <string name="login_connect_to">Connect to %1$s</string>
-    <string name="login_connect_to_modular">Connect to X-LinX Matrix Services</string>
+    <string name="login_connect_to_modular">Connect to X-LinX X-LinX Services</string>
     <string name="login_connect_to_a_custom_server">Connect to a custom server</string>
     <!-- Replaced string is the homeserver url -->
     <string name="login_signin_to">Sign in to %1$s</string>
@@ -2027,7 +2027,7 @@
     <string name="login_signin_sso">Continue with SSO</string>
     <string name="login_clear_homeserver_history">Clear history</string>
 
-    <string name="login_server_url_form_modular_hint">X-LinX Matrix Services Address</string>
+    <string name="login_server_url_form_modular_hint">X-LinX X-LinX Services Address</string>
     <string name="login_server_url_form_other_hint">Address</string>
     <string name="login_server_url_form_modular_text">Premium hosting for organisations</string>
     <string name="login_server_url_form_modular_notice">Enter the address of the Modular X-LinX or Server you want to use</string>
@@ -2049,7 +2049,7 @@
     <string name="login_reset_password_password_hint">New password</string>
 
     <string name="login_reset_password_warning_title">Warning!</string>
-    <string name="login_reset_password_warning_content">Changing your password will reset any end-to-end encryption keys on all of your sessions, making encrypted chat history unreadable. Set up Key Backup or export your room keys from another session before resetting your password.</string>
+    <string name="login_reset_password_warning_content">Changing your password will reset any end-to-end encryption keys on all of your sessions, making encrypted chat history unreadable. Set up Key Backup or export your group keys from another session before resetting your password.</string>
     <string name="login_reset_password_warning_submit">Continue</string>
 
     <string name="login_reset_password_error_not_found">This email is not linked to any account</string>
@@ -2102,8 +2102,8 @@
     <string name="login_signup_cancel_confirmation_title">Warning</string>
     <string name="login_signup_cancel_confirmation_content">Your account is not created yet.\n\nStop the registration process?</string>
 
-    <string name="login_a11y_choose_matrix_org">Select matrix.org</string>
-    <string name="login_a11y_choose_modular">Select X-LinX Matrix Services</string>
+    <string name="login_a11y_choose_matrix_org">Select X-LinX.org</string>
+    <string name="login_a11y_choose_modular">Select X-LinX X-LinX Services</string>
     <string name="login_a11y_choose_other">Select a custom homeserver</string>
     <string name="login_a11y_captcha_container">Please perform the captcha challenge</string>
     <string name="login_terms_title">Accept terms to continue</string>
@@ -2120,11 +2120,11 @@
         <item quantity="other">Too many requests have been sent. You can retry in %1$d seconds…</item>
     </plurals>
 
-    <string name="login_connect_using_matrix_id_notice">Alternatively, if you already have an account and you know your Matrix identifier and your password, you can use this method:</string>
-    <string name="login_connect_using_matrix_id_submit">Sign in with Matrix ID</string>
-    <string name="login_signin_matrix_id_title">Sign in with Matrix ID</string>
-    <string name="login_signin_matrix_id_notice">If you set up an account on a homeserver, use your Matrix ID (e.g. @user:domain.com) and password below.</string>
-    <string name="login_signin_matrix_id_hint">Matrix ID</string>
+    <string name="login_connect_using_matrix_id_notice">Alternatively, if you already have an account and you know your X-LinX identifier and your password, you can use this method:</string>
+    <string name="login_connect_using_matrix_id_submit">Sign in with X-LinX ID</string>
+    <string name="login_signin_matrix_id_title">Sign in with X-LinX ID</string>
+    <string name="login_signin_matrix_id_notice">If you set up an account on a homeserver, use your X-LinX ID (e.g. @user:domain.com) and password below.</string>
+    <string name="login_signin_matrix_id_hint">X-LinX ID</string>
     <string name="login_signin_matrix_id_password_notice">If you don’t know your password, go back to reset it.</string>
     <string name="login_signin_matrix_id_error_invalid_matrix_id">This is not a valid user identifier. Expected format: \'@user:homeserver.org\'</string>
     <string name="autodiscover_well_known_error">Unable to find a valid homeserver. Please check your identifier</string>
@@ -2152,7 +2152,7 @@
     <string name="soft_logout_clear_data_dialog_submit">Clear data</string>
     <string name="soft_logout_sso_not_same_user_error">The current session is for user %1$s and you provide credentials for user %2$s. This is not supported by X-LinX.\nPlease first clear data, then sign in again on another account.</string>
 
-    <string name="permalink_malformed">Your matrix.to link was malformed</string>
+    <string name="permalink_malformed">Your X-LinX.to link was malformed</string>
     <string name="bug_report_error_too_short">The description is too short</string>
 
     <string name="notification_initial_sync">Initial Sync…</string>
@@ -2182,14 +2182,14 @@
     <string name="show_advanced">Show advanced</string>
     <string name="hide_advanced">Hide advanced</string>
 
-    <string name="create_room_disable_federation_title">Block anyone not part of %s from ever joining this room</string>
-    <string name="create_room_disable_federation_description">You might enable this if the room will only be used for collaborating with internal teams on your homeserver. This cannot be changed later.</string>
+    <string name="create_room_disable_federation_title">Block anyone not part of %s from ever joining this group</string>
+    <string name="create_room_disable_federation_description">You might enable this if the group will only be used for collaborating with internal teams on your homeserver. This cannot be changed later.</string>
 
     <string name="create_room_alias_hint">Group address</string>
     <string name="create_room_alias_already_in_use">This address is already in use</string>
-    <string name="create_room_alias_empty">Please provide a room address</string>
+    <string name="create_room_alias_empty">Please provide a group address</string>
     <string name="create_room_alias_invalid">Some characters are not allowed</string>
-    <string name="create_room_in_progress">Creating room…</string>
+    <string name="create_room_in_progress">Creating group…</string>
 
     <string name="login_error_threepid_denied">Your email domain is not authorized to register on this server</string>
 
@@ -2198,7 +2198,7 @@
     <string name="verification_sas_do_not_match">They don\'t match</string>
     <string name="verify_user_sas_emoji_help_text">Verify this user by confirming the following unique emoji appear on their screen, in the same order."</string>
     <string name="verify_user_sas_emoji_security_tip">For ultimate security, use another trusted means of communication or do this in person.</string>
-    <string name="verification_green_shield">Look for the green shield to ensure a user is trusted. Trust all users in a room to ensure the room is secure.</string>
+    <string name="verification_green_shield">Look for the green shield to ensure a user is trusted. Trust all users in a group to ensure the group is secure.</string>
 
     <string name="verification_conclusion_not_secure">Not secure</string>
     <string name="verification_conclusion_compromised">One of the following may be compromised:\n\n   - Your homeserver\n   - The homeserver the user you’re verifying is connected to\n   - Yours, or the other users’ internet connection\n   - Yours, or the other users’ device
@@ -2243,9 +2243,9 @@
     <string name="verification_verified_user">Verified %s</string>
     <string name="verification_request_waiting_for">Waiting for %s…</string>
     <string name="verification_request_alert_description">For extra security, verify %s by checking a one-time code on both your devices.\n\nFor maximum security, do this in person.</string>
-    <string name="room_profile_not_encrypted_subtitle">Messages in this room are not end-to-end encrypted.</string>
+    <string name="room_profile_not_encrypted_subtitle">Messages in this group are not end-to-end encrypted.</string>
     <string name="direct_room_profile_not_encrypted_subtitle">Messages here are not end-to-end encrypted.</string>
-    <string name="room_profile_encrypted_subtitle">Messages in this room are end-to-end encrypted.\n\nYour messages are secured with locks and only you and the recipient have the unique keys to unlock them.</string>
+    <string name="room_profile_encrypted_subtitle">Messages in this group are end-to-end encrypted.\n\nYour messages are secured with locks and only you and the recipient have the unique keys to unlock them.</string>
     <string name="direct_room_profile_encrypted_subtitle">Messages here are end-to-end encrypted.\n\nYour messages are secured with locks and only you and the recipient have the unique keys to unlock them.</string>
     <string name="room_profile_section_security">Security</string>
     <string name="room_profile_section_security_learn_more">Learn more</string>
@@ -2261,7 +2261,7 @@
     <string name="room_profile_section_more_uploads">Uploads</string>
     <string name="room_profile_section_more_leave">Leave Group</string>
     <string name="direct_room_profile_section_more_leave">Leave</string>
-    <string name="room_profile_leaving_room">"Leaving the room…"</string>
+    <string name="room_profile_leaving_room">"Leaving the group…"</string>
 
     <string name="room_member_power_level_admins">Admins</string>
     <string name="room_member_power_level_moderators">Moderators</string>
@@ -2298,11 +2298,11 @@
     <string name="settings_category_composer">Message editor</string>
 
     <string name="room_settings_enable_encryption">Enable end-to-end encryption…</string>
-    <string name="room_settings_enable_encryption_no_permission">You don\'t have permission to enable encryption in this room.</string>
+    <string name="room_settings_enable_encryption_no_permission">You don\'t have permission to enable encryption in this group.</string>
     <string name="room_settings_enable_encryption_warning">Once enabled, encryption cannot be disabled.</string>
 
     <string name="room_settings_enable_encryption_dialog_title">Enable encryption?</string>
-    <string name="room_settings_enable_encryption_dialog_content">Once enabled, encryption for a room cannot be disabled. Messages sent in an encrypted room cannot be seen by the server, only by the participants of the room. Enabling encryption may prevent many bots and bridges from working correctly.</string>
+    <string name="room_settings_enable_encryption_dialog_content">Once enabled, encryption for a group cannot be disabled. Messages sent in an encrypted group cannot be seen by the server, only by the participants of the group. Enabling encryption may prevent many bots and bridges from working correctly.</string>
     <string name="room_settings_enable_encryption_dialog_submit">Enable encryption</string>
 
     <string name="verification_request_notice">To be secure, verify %s by checking a one-time code.</string>
@@ -2401,12 +2401,12 @@
     </plurals>
 
     <string name="delete_event_dialog_title">Confirm Removal</string>
-    <string name="delete_event_dialog_content">Are you sure you wish to remove (delete) this event? Note that if you delete a room name or topic change, it could undo the change.</string>
+    <string name="delete_event_dialog_content">Are you sure you wish to remove (delete) this event? Note that if you delete a group name or topic change, it could undo the change.</string>
     <string name="delete_event_dialog_reason_checkbox">Include a reason</string>
     <string name="delete_event_dialog_reason_hint">Reason for redacting</string>
 
     <string name="event_redacted_by_user_reason_with_reason">Event deleted by user, reason: %1$s</string>
-    <string name="event_redacted_by_admin_reason_with_reason">Event moderated by room admin, reason: %1$s</string>
+    <string name="event_redacted_by_admin_reason_with_reason">Event moderated by group admin, reason: %1$s</string>
 
     <string name="keys_backup_restore_success_title_already_up_to_date">Keys are already up to date!</string>
 
@@ -2492,20 +2492,20 @@
     <string name="bootstrap_cancel_text">If you cancel now, you may lose encrypted messages &amp; data if you lose access to your logins.\n\nYou can also set up Secure Backup &amp; manage your keys in Settings.</string>
 
     <string name="encryption_enabled">Encryption enabled</string>
-    <string name="encryption_enabled_tile_description">Messages in this room are end-to-end encrypted. Learn more &amp; verify users in their profile.</string>
-    <string name="direct_room_encryption_enabled_tile_description">Messages in this room are end-to-end encrypted.</string>
+    <string name="encryption_enabled_tile_description">Messages in this group are end-to-end encrypted. Learn more &amp; verify users in their profile.</string>
+    <string name="direct_room_encryption_enabled_tile_description">Messages in this group are end-to-end encrypted.</string>
     <string name="encryption_not_enabled">Encryption not enabled</string>
-    <string name="encryption_unknown_algorithm_tile_description">The encryption used by this room is not supported</string>
+    <string name="encryption_unknown_algorithm_tile_description">The encryption used by this group is not supported</string>
 
-    <string name="room_created_summary_item">%s created and configured the room.</string>
-    <string name="room_created_summary_item_by_you">You created and configured the room.</string>
+    <string name="room_created_summary_item">%s created and configured the group.</string>
+    <string name="room_created_summary_item_by_you">You created and configured the group.</string>
     <string name="direct_room_created_summary_item">%s joined.</string>
     <string name="direct_room_created_summary_item_by_you">You joined.</string>
     <string name="this_is_the_beginning_of_room">This is the beginning of %s.</string>
     <string name="this_is_the_beginning_of_room_no_name">This is the beginning of this conversation.</string>
     <string name="this_is_the_beginning_of_dm">This is the beginning of your direct message history with %s.</string>
     <!-- First param will be replaced by the value of add_a_topic_link_text, that will be clickable-->
-    <string name="room_created_summary_no_topic_creation_text">%s to let people know what this room is about.</string>
+    <string name="room_created_summary_no_topic_creation_text">%s to let people know what this group is about.</string>
     <string name="add_a_topic_link_text">Add a topic</string>
     <string name="topic_prefix">"Topic: "</string>
 
@@ -2516,7 +2516,7 @@
     <string name="error_failed_to_import_keys">Failed to import keys</string>
 
     <string name="settings_notification_configuration">Notifications configuration</string>
-    <string name="settings_messages_at_room">Messages containing @room</string>
+    <string name="settings_messages_at_room">Messages containing @group</string>
     <string name="settings_messages_in_e2e_one_to_one">Encrypted messages in one-to-one chats</string>
     <string name="settings_messages_in_e2e_group_chat">Encrypted messages in group chats</string>
     <string name="settings_when_rooms_are_upgraded">When groups are upgraded</string>
@@ -2569,12 +2569,12 @@
     <string name="error_saving_media_file">Could not save media file</string>
     <string name="change_password_summary">Set a new account password…</string>
 
-    <string name="use_other_session_content_description">Use the latest X-LinX on your other devices, X-LinX Web, X-LinX Desktop, X-LinX iOS, X-LinX for Android, or another cross-signing capable Matrix client</string>
+    <string name="use_other_session_content_description">Use the latest X-LinX on your other devices, X-LinX Web, X-LinX Desktop, X-LinX iOS, X-LinX for Android, or another cross-signing capable X-LinX client</string>
     <string name="app_desktop_web">X-LinX Web\nX-LinX Desktop</string>
     <string name="app_ios_android">X-LinX iOS\nX-LinX Android</string>
-    <string name="or_other_mx_capabale_client">or another cross-signing capable Matrix client</string>
+    <string name="or_other_mx_capabale_client">or another cross-signing capable X-LinX client</string>
     <string name="use_latest_app">Use the latest X-LinX on your other devices:</string>
-    <string name="command_description_discard_session">Forces the current outbound group session in an encrypted room to be discarded</string>
+    <string name="command_description_discard_session">Forces the current outbound group session in an encrypted group to be discarded</string>
     <string name="command_description_discard_session_not_handled">Only supported in encrypted groups</string>
     <!-- first will be replaced by recovery_passphrase, second will be replaced by recovery_key-->
     <string name="enter_secret_storage_passphrase_or_key">Use your %1$s or use your %2$s to continue.</string>
@@ -2632,7 +2632,7 @@
     <string name="invite_friends_rich_title">🔐️ Join me on X-LinX</string>
     <string name="invitation_sent_to_one_user">Invitation sent to %1$s</string>
     <string name="invitations_sent_to_two_users">Invitations sent to %1$s and %2$s</string>
-    <string name="not_a_valid_qr_code">"It's not a valid matrix QR code"</string>
+    <string name="not_a_valid_qr_code">"It's not a valid X-LinX QR code"</string>
     <plurals name="invitations_sent_to_one_and_more_users">
         <item quantity="one">Invitations sent to %1$s and one more</item>
         <item quantity="other">Invitations sent to %1$s and %2$d more</item>
@@ -2696,7 +2696,7 @@
     <!-- Group Settings -->
     <string name="room_settings_name_hint">Group Name</string>
     <string name="room_settings_topic_hint">Topic</string>
-    <string name="room_settings_save_success">You changed room settings successfully</string>
+    <string name="room_settings_save_success">You changed group settings successfully</string>
     <string name="room_settings_set_avatar">Set avatar</string>
 
 
@@ -2714,7 +2714,7 @@
     <string name="element_disclaimer_negative_button">GOT IT</string>
     <string name="element_disclaimer_positive_button">LEARN MORE</string>
 
-    <string name="element_login_splash_brand">element</string>
+    <string name="element_login_splash_brand">X-LinX</string>
 
 
     <string name="save_recovery_key_chooser_hint">Save recovery key in</string>
@@ -2726,7 +2726,7 @@
     <string name="loading_contact_book">Retrieving your contacts…</string>
     <string name="empty_contact_book">Your contact book is empty</string>
     <string name="contacts_book_title">Contacts book</string>
-    <string name="phone_book_perform_lookup">Search for contacts on Matrix</string>
+    <string name="phone_book_perform_lookup">Search for contacts on X-LinX</string>
 
     <string name="three_pid_revoke_invite_dialog_title">Revoke invite</string>
     <string name="three_pid_revoke_invite_dialog_content">Revoke invite to %1$s?</string>
@@ -2759,7 +2759,7 @@
     <string name="settings_security_pin_code_use_biometrics_summary_on">Enable device specific biometrics, like fingerprints and face recognition.</string>
     <string name="settings_security_pin_code_use_biometrics_summary_off">PIN code is the only way to unlock X-LinX.</string>
     <string name="settings_security_pin_code_notifications_title">Show content in notifications</string>
-    <string name="settings_security_pin_code_notifications_summary_on">Show details like room names and message content.</string>
+    <string name="settings_security_pin_code_notifications_summary_on">Show details like group names and message content.</string>
     <string name="settings_security_pin_code_notifications_summary_off">Only display number of unread messages in a simple notification.</string>
     <string name="settings_security_pin_code_grace_period_title">Require PIN after 2 minutes</string>
     <string name="settings_security_pin_code_grace_period_summary_on">PIN code is required after 2 minutes of not using X-LinX.</string>
@@ -2767,8 +2767,8 @@
     <string name="settings_security_pin_code_change_pin_title">Change PIN</string>
     <string name="settings_security_pin_code_change_pin_summary">Change your current PIN</string>
     <string name="auth_pin_confirm_to_disable_title">Confirm PIN to disable PIN</string>
-    <string name="error_opening_banned_room">Can\'t open a room where you are banned from.</string>
-    <string name="room_error_not_found">Can\'t find this room. Make sure it exists.</string>
+    <string name="error_opening_banned_room">Can\'t open a group where you are banned from.</string>
+    <string name="room_error_not_found">Can\'t find this group. Make sure it exists.</string>
 
     <!-- Add by QR code -->
     <string name="share_by_text">Share by text</string>
@@ -2778,9 +2778,9 @@
 
     <!-- Universal link -->
     <string name="universal_link_malformed">The link was malformed</string>
-    <string name="warning_room_not_created_yet">The room is not yet created. Cancel the room creation?</string>
+    <string name="warning_room_not_created_yet">The group is not yet created. Cancel the group creation?</string>
     <string name="warning_unsaved_change">There are unsaved changes. Discard the changes?</string>
     <string name="warning_unsaved_change_discard">Discard changes</string>
 
-    <string name="matrix_to_card_title">Matrix Link</string>
+    <string name="matrix_to_card_title">X-LinX Link</string>
 </resources>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="bottom_action_calls">通话</string>
+    <string name="bottom_action_wallet"> X-LinX 钱包</string>
+
     <string name="resources_language">zh</string>
     <string name="resources_country_code">TW</string>
     <string name="light_theme">淺色主題</string>
@@ -82,9 +86,9 @@
     <string name="direct_chats_header">聊天</string>
     <string name="local_address_book_header">裝置上的通訊錄</string>
     <string name="user_directory_header">使用者目錄</string>
-    <string name="matrix_only_filter">僅 Matrix 聯絡人</string>
+    <string name="matrix_only_filter">僅 X-LinX 聯絡人</string>
     <string name="no_conversation_placeholder">沒有對話</string>
-    <string name="no_contact_access_placeholder">您沒有允許 Element 存取裝置上的聯絡資訊</string>
+    <string name="no_contact_access_placeholder">您沒有允許 X-LinX 存取裝置上的聯絡資訊</string>
     <string name="no_result_placeholder">沒有結果</string>
     <string name="rooms_header">聊天室</string>
     <string name="rooms_directory_header">聊天室目錄</string>
@@ -221,22 +225,22 @@
     <string name="media_picker_both_capture_title">拍照或錄影</string>
     <string name="media_picker_cannot_record_video">無法錄影</string>
     <string name="permissions_rationale_popup_title">資訊</string>
-    <string name="permissions_rationale_msg_storage">Element 需要權限來存取你的照片與影片庫，以傳送及儲存附件。 
+    <string name="permissions_rationale_msg_storage">X-LinX 需要權限來存取你的照片與影片庫，以傳送及儲存附件。 
 \n
 \n請在下個彈跳視窗允許存取，來從手機傳送檔案。</string>
-    <string name="permissions_rationale_msg_camera">Element 需要權限存取您的相機，來拍照與視訊通話。</string>
+    <string name="permissions_rationale_msg_camera">X-LinX 需要權限存取您的相機，來拍照與視訊通話。</string>
     <string name="permissions_rationale_msg_camera_explanation">"
 \n
 \n為了要通話，請在下個彈跳視窗中允許存取。"</string>
-    <string name="permissions_rationale_msg_record_audio">Element 需要權限來存取麥克風，來撥打語音通話。</string>
+    <string name="permissions_rationale_msg_record_audio">X-LinX 需要權限來存取麥克風，來撥打語音通話。</string>
     <string name="permissions_rationale_msg_record_audio_explanation">"
 \n
 \n為了要通話，請在下個彈跳視窗中允許存取。"</string>
-    <string name="permissions_rationale_msg_camera_and_audio">Element 需要權限來存取相機及麥克風來撥打視訊通話。 
+    <string name="permissions_rationale_msg_camera_and_audio">X-LinX 需要權限來存取相機及麥克風來撥打視訊通話。 
 \n
 \n為了可以正常使用通話功能，請在下個彈跳視窗中允許存取。</string>
-    <string name="permissions_rationale_msg_contacts">Element 可以檢查您的電話簿並以電子郵件與電話號碼為基礎來尋找其他 Matrix 使用者。如果您同意為此用途分享您的電話簿，請在下一個彈出式視窗中允許存取權限。</string>
-    <string name="permissions_msg_contacts_warning_other_androids">Element 可以檢查您的電話簿並以電子郵件與電話號碼為基礎來尋找其他 Matrix 使用者。
+    <string name="permissions_rationale_msg_contacts">X-LinX 可以檢查您的電話簿並以電子郵件與電話號碼為基礎來尋找其他 X-LinX 使用者。如果您同意為此用途分享您的電話簿，請在下一個彈出式視窗中允許存取權限。</string>
+    <string name="permissions_msg_contacts_warning_other_androids">X-LinX 可以檢查您的電話簿並以電子郵件與電話號碼為基礎來尋找其他 X-LinX 使用者。
 \n
 \n您同意為此用途分享您的電話簿嗎？</string>
     <string name="permissions_action_not_performed_missing_permissions">抱歉。由於缺少權限，所以無法執行動作</string>
@@ -297,10 +301,10 @@
     <string name="people_search_invite_by_id"><u>透過 ID 邀請</u></string>
     <string name="people_search_local_contacts">裝置上的聯絡人（%d）</string>
     <string name="people_search_user_directory">使用者目錄 (%s)</string>
-    <string name="people_search_filter_text">只顯示 Matrix 使用者</string>
+    <string name="people_search_filter_text">只顯示 X-LinX 使用者</string>
     <string name="people_search_invite_by_id_dialog_title">透過 ID 邀請使用者</string>
-    <string name="people_search_invite_by_id_dialog_description">請輸入一或多個電子郵件地址或 Matrix ID</string>
-    <string name="people_search_invite_by_id_dialog_hint">電子郵件或 Matrix ID</string>
+    <string name="people_search_invite_by_id_dialog_description">請輸入一或多個電子郵件地址或 X-LinX ID</string>
+    <string name="people_search_invite_by_id_dialog_hint">電子郵件或 X-LinX ID</string>
     <string name="room_menu_search">搜尋</string>
     <string name="room_one_user_is_typing">%s 正在打字…</string>
     <string name="room_two_users_are_typing">%1$s 和 %2$s 正在打字…</string>
@@ -348,14 +352,14 @@
     <string name="e2e_re_request_encryption_key">從其他工作階段重新請求金鑰。<u>重新請求金鑰</u>。</string>
     <string name="e2e_re_request_encryption_key_sent">已發送金鑰分享請求。</string>
     <string name="e2e_re_request_encryption_key_dialog_title">已發送請求</string>
-    <string name="e2e_re_request_encryption_key_dialog_content">請在另一個可以解密訊息的裝置上啟動 Element，以便它將金鑰發送到此工作階段。</string>
+    <string name="e2e_re_request_encryption_key_dialog_content">請在另一個可以解密訊息的裝置上啟動 X-LinX，以便它將金鑰發送到此工作階段。</string>
     <string name="ssl_expected_existing_expl">憑證已從以前受信任的更改為不受信任的憑證。伺服器可能已續訂其憑證。請與伺服器管理員聯繫以尋找所需的指紋。</string>
     <string name="ssl_only_accept">僅當伺服器管理員發佈的指紋與上面的指紋匹配時才接受此憑證。</string>
     <string name="room_details_title">聊天室詳情</string>
     <string name="room_details_people">成員</string>
     <string name="room_details_files">檔案</string>
     <string name="room_details_settings">設定</string>
-    <string name="malformed_id">ID 格式不正確。它應該是電子郵件地址或 Matrix ID，如 ‘@localpart:domain’</string>
+    <string name="malformed_id">ID 格式不正確。它應該是電子郵件地址或 X-LinX ID，如 ‘@localpart:domain’</string>
     <string name="room_details_people_invited_group_name">已邀請</string>
     <string name="room_details_people_present_group_name">已加入</string>
     <string name="room_event_action_report_prompt_reason">報告此內容的原因</string>
@@ -421,7 +425,7 @@
     <string name="settings_notification_privacy_need_permission">應用程式需要權限以在後臺運行</string>
     <string name="settings_notification_privacy_fcm">• 通知將透過 Firebase Cloud Messaging 發送</string>
     <string name="settings_notification_privacy_metadata">• 通知僅包含中繼資料</string>
-    <string name="settings_notification_privacy_secure_message_content">• 通知的消息內容<b>將從 Matrix 主服務器安全取得</b></string>
+    <string name="settings_notification_privacy_secure_message_content">• 通知的消息內容<b>將從 X-LinX 主服務器安全取得</b></string>
     <string name="settings_notification_privacy_nosecure_message_content">• 通知含有<b>訊息與中繼資料</b></string>
     <string name="settings_notification_privacy_message_content_not_shown">• 通知<b>不會顯示訊息內容</b></string>
     <string name="settings_notification_ringtone">通知音效</string>
@@ -470,12 +474,12 @@
     <string name="settings_deactivate_account_section">停用帳號</string>
     <string name="settings_deactivate_my_account">停用我的帳號</string>
     <string name="startup_notification_privacy_title">通知隱私</string>
-    <string name="startup_notification_privacy_message">Element 可以在後臺安全隱密地管理通知。這可能會影響電池的使用。</string>
+    <string name="startup_notification_privacy_message">X-LinX 可以在後臺安全隱密地管理通知。這可能會影響電池的使用。</string>
     <string name="startup_notification_privacy_button_grant">獲取權限</string>
     <string name="startup_notification_privacy_button_other">選擇其他選項</string>
     <string name="settings_analytics">傳送分析資料</string>
     <string name="settings_opt_in_of_analytics">傳送分析資料</string>
-    <string name="settings_opt_in_of_analytics_summary">Element 會收集匿名分析以讓我們可以改進此應用程式。</string>
+    <string name="settings_opt_in_of_analytics_summary">X-LinX 會收集匿名分析以讓我們可以改進此應用程式。</string>
     <string name="settings_opt_in_of_analytics_prompt">請允許收集匿名分析以讓我們可以改進此應用程式。</string>
     <string name="settings_opt_in_of_analytics_ok">是的，我想要協助！</string>
     <string name="settings_data_save_mode">節省流量模式</string>
@@ -563,9 +567,9 @@
     <string name="room_settings_never_send_to_unverified_devices_title">只匯出到已驗證的工作階段</string>
     <string name="room_settings_never_send_to_unverified_devices_summary">從不在此房間中從此工作階段上傳送未加密的訊息到未驗證的工作階段。</string>
     <string name="room_settings_addresses_no_local_addresses">此房間沒有本機地址</string>
-    <string name="room_settings_addresses_add_new_address">新地址 （如 #foo:matrix.org）</string>
+    <string name="room_settings_addresses_add_new_address">新地址 （如 #foo:X-LinX.org）</string>
     <string name="room_settings_no_flair">此聊天室並未對任何社群顯示特色</string>
-    <string name="room_settings_add_new_group">新社群地址（如 +foo:matrix.org）</string>
+    <string name="room_settings_add_new_group">新社群地址（如 +foo:X-LinX.org）</string>
     <string name="room_settings_invalid_group_format_dialog_title">無效的社群地址</string>
     <string name="room_settings_invalid_group_format_dialog_body">“%s”不是一個有效的社群 ID</string>
     <string name="room_settings_addresses_invalid_format_dialog_title">別名格式錯誤</string>
@@ -675,7 +679,7 @@
     <string name="widget_integration_room_not_visible">聊天室 %s 不可見。</string>
     <string name="widget_integration_missing_parameter">缺少必需的參數。</string>
     <string name="widget_integration_invalid_parameter">無效參數。</string>
-    <string name="room_add_matrix_apps">新增 Matrix 應用程式</string>
+    <string name="room_add_matrix_apps">新增 X-LinX 應用程式</string>
     <string name="settings_labs_native_camera">使用原生相機</string>
     <string name="settings_labs_enable_send_voice">傳送語音訊息</string>
     <string name="you_added_a_new_device">您新增的工作階段「%s」正在請求加密金鑰。</string>
@@ -721,7 +725,7 @@
 \n
 \n停用您的帳戶<b>不會預設導致我們刪除您發送的訊息</b>。如果您想讓我們忘記您的訊息, 請在下面的方框中打勾。 
 \n
-\nMatrix 中的訊息可見度類似于電子郵件。我們忘記您的訊息意味著您發送的訊息將不會與任何新的或未註冊的使用者分享，但是已註冊並已取得這些訊息的用戶仍然可以訪問他們的副本。</string>
+\nX-LinX 中的訊息可見度類似于電子郵件。我們忘記您的訊息意味著您發送的訊息將不會與任何新的或未註冊的使用者分享，但是已註冊並已取得這些訊息的用戶仍然可以訪問他們的副本。</string>
     <string name="deactivate_account_delete_checkbox">請在我的帳號停用時忘記我傳送過的所有訊息（<b>警告：</b>這將會造成未來的使用者無法看見完整的對話紀錄）</string>
     <string name="deactivate_account_prompt_password">若要繼續進行，請輸入您的密碼：</string>
     <string name="deactivate_account_submit">停用帳號</string>
@@ -744,7 +748,7 @@
     <string name="command_description_kick_user">踢除指定 id 的使用者</string>
     <string name="command_description_nick">變更您的顯示暱稱</string>
     <string name="command_description_markdown">開啟／關閉 markdown</string>
-    <string name="command_description_clear_scalar_token">為了修復 Matrix 應用程式管理</string>
+    <string name="command_description_clear_scalar_token">為了修復 X-LinX 應用程式管理</string>
     <string name="room_tombstone_versioned_description">這個聊天室已被取代，且不再活躍</string>
     <string name="room_tombstone_continuation_link">對話在此繼續</string>
     <string name="room_tombstone_continuation_description">這個聊天示是其他對話的延續</string>
@@ -791,7 +795,7 @@
     <string name="settings_lazy_loading_description">透過僅載入在第一次看到的地方的聊天室成員來增進效能。</string>
     <string name="error_lazy_loading_not_supported_by_home_server">您的家伺服器尚不支援延遲載入聊天室成員。請稍後再試。</string>
     <string name="unknown_error">抱歉，遇到錯誤</string>
-    <string name="status_theme">Status.im 主題</string>
+    <string name="status_theme">ABC 主題</string>
     <string name="room_sliding_menu_version_x">版本 %s</string>
     <string name="encryption_export_notice">請建立密語以加密您匯出的金鑰。您將需要輸入這些密語以匯入金鑰。</string>
     <string name="passphrase_create_passphrase">建立密語</string>
@@ -827,7 +831,7 @@
     <string name="plus_x">+%d</string>
     <string name="x_plus">%d+</string>
     <string name="settings_call_category">通話</string>
-    <string name="settings_call_ringtone_use_app_ringtone">為來電使用預設的 Element 鈴聲</string>
+    <string name="settings_call_ringtone_use_app_ringtone">為來電使用預設的 X-LinX 鈴聲</string>
     <string name="settings_call_ringtone_title">來電鈴聲</string>
     <string name="settings_call_ringtone_dialog_title">選取通話鈴聲：</string>
     <string name="accept">接受</string>
@@ -852,11 +856,11 @@
     <string name="settings_troubleshoot_test_device_settings_title">工作階段設定。</string>
     <string name="settings_troubleshoot_test_device_settings_success">通知已為此工作階段啟用。</string>
     <string name="settings_troubleshoot_test_device_settings_failed">此工作階段未啟用通知。
-\n請檢查 Element 設定。</string>
+\n請檢查 X-LinX 設定。</string>
     <string name="settings_troubleshoot_test_device_settings_quickfix">啟用</string>
     <string name="settings_troubleshoot_test_play_services_title">Play 服務檢查</string>
     <string name="settings_troubleshoot_test_play_services_success">Google Play 服務 APK 可用且已為最新。</string>
-    <string name="settings_troubleshoot_test_play_services_failed">Element 使用 Google Play 服務來傳遞推送訊息，但它似乎並未正確設定：
+    <string name="settings_troubleshoot_test_play_services_failed">X-LinX 使用 Google Play 服務來傳遞推送訊息，但它似乎並未正確設定：
 \n%1$s</string>
     <string name="settings_troubleshoot_test_play_services_quickfix">修復 Play 服務</string>
     <string name="settings_troubleshoot_test_fcm_title">Firebase 權杖</string>
@@ -878,22 +882,22 @@
     <string name="settings_troubleshoot_test_service_restart_failed">服務重新啟動失敗</string>
     <string name="settings_troubleshoot_test_service_boot_title">開機時啟動</string>
     <string name="settings_troubleshoot_test_service_boot_success">服務將會在裝置重新啟動時自行啟動。</string>
-    <string name="settings_troubleshoot_test_service_boot_failed">服務不會在裝置重心啟動時自行啟動，您將不能在 Element 開啟前收到通知。</string>
+    <string name="settings_troubleshoot_test_service_boot_failed">服務不會在裝置重心啟動時自行啟動，您將不能在 X-LinX 開啟前收到通知。</string>
     <string name="settings_troubleshoot_test_service_boot_quickfix">啟用開機時啟動</string>
     <string name="settings_troubleshoot_test_bg_restricted_title">檢查背景限制</string>
-    <string name="settings_troubleshoot_test_bg_restricted_success">背景限制已為 Element 停用。本測試應該使用行動數據執行（不是 WiFi）。
+    <string name="settings_troubleshoot_test_bg_restricted_success">背景限制已為 X-LinX 停用。本測試應該使用行動數據執行（不是 WiFi）。
 \n%1$s</string>
-    <string name="settings_troubleshoot_test_bg_restricted_failed">背景限制已為 Element 啟用。 
+    <string name="settings_troubleshoot_test_bg_restricted_failed">背景限制已為 X-LinX 啟用。 
 \n應用程式要在背景執行的工作將被嚴格限制，這可能會影響通知功能。
 \n %1$s</string>
     <string name="settings_troubleshoot_test_bg_restricted_quickfix">停用限制</string>
     <string name="settings_troubleshoot_test_battery_title">電池最佳化</string>
-    <string name="settings_troubleshoot_test_battery_success">Element 不會被電池最佳化影響。</string>
+    <string name="settings_troubleshoot_test_battery_success">X-LinX 不會被電池最佳化影響。</string>
     <string name="settings_troubleshoot_test_battery_failed">如果使用者不為裝置充電，並讓其靜置一段時間，且將螢幕關閉，裝置將會進入 Doze 模式。這可能會導致應用程式無法存取網路，並延遲它們的工作、同步與標準警報。</string>
     <string name="settings_troubleshoot_test_battery_quickfix">忽略最佳化</string>
     <string name="startup_notification_fdroid_battery_optim_title">背景連線</string>
-    <string name="startup_notification_fdroid_battery_optim_message">Element 需要保持最低影響的背景連線以接收可靠的通知。 
-\n在下一個畫面，您必須允許 Element 總是在背景執行，請接受。</string>
+    <string name="startup_notification_fdroid_battery_optim_message">X-LinX 需要保持最低影響的背景連線以接收可靠的通知。 
+\n在下一個畫面，您必須允許 X-LinX 總是在背景執行，請接受。</string>
     <string name="startup_notification_fdroid_battery_optim_button_grant">授予權限</string>
     <string name="account_email_error">當驗證您的電子郵件地址時遇到錯誤。</string>
     <string name="account_phone_number_error">當驗證您的手機號碼時遇到錯誤。</string>
@@ -913,11 +917,11 @@
     <string name="settings_troubleshoot_test_bing_settings_failed_to_load_rules">載入自訂規則失敗，請重試。</string>
     <string name="settings_troubleshoot_test_bing_settings_quickfix">檢查設定</string>
     <string name="settings_troubleshoot_test_fcm_failed_too_many_registration">[%1$s] 
-\n這個錯誤並非 Element 所能控制，而是與 Google 有關，這個錯誤代表裝置註冊了太多使用 FCM 的應用程式。這個錯誤只會發生在有超大量的應用程式的裝置上，所以不應該影響一般的使用者。</string>
+\n這個錯誤並非 X-LinX 所能控制，而是與 Google 有關，這個錯誤代表裝置註冊了太多使用 FCM 的應用程式。這個錯誤只會發生在有超大量的應用程式的裝置上，所以不應該影響一般的使用者。</string>
     <string name="settings_troubleshoot_test_fcm_failed_service_not_available">[%1$s]
-\n這個錯誤並非 Element 所能控制。可能由多種原因所導致。也可能會在稍後重試時就可以運作，您也可以檢查 Google Play 服務在系統設定中有沒有被限制使用資料，或是您裝置的時鐘是否正確，或是也可能會在自訂的 ROM 上發生。</string>
+\n這個錯誤並非 X-LinX 所能控制。可能由多種原因所導致。也可能會在稍後重試時就可以運作，您也可以檢查 Google Play 服務在系統設定中有沒有被限制使用資料，或是您裝置的時鐘是否正確，或是也可能會在自訂的 ROM 上發生。</string>
     <string name="settings_troubleshoot_test_fcm_failed_account_missing">[%1$s]
-\n這個錯誤並非 Element 所能控制。手機上沒有 Google 帳號。請開啟帳號管理員並新增一個 Google 帳號。</string>
+\n這個錯誤並非 X-LinX 所能控制。手機上沒有 Google 帳號。請開啟帳號管理員並新增一個 Google 帳號。</string>
     <string name="settings_troubleshoot_test_fcm_failed_account_missing_quick_fix">新增帳號</string>
     <string name="settings_noisy_notifications_preferences">設定吵鬧的通知</string>
     <string name="settings_call_notifications_preferences">設定通話通知</string>
@@ -928,8 +932,8 @@
     <string name="notification_silent">安靜</string>
     <string name="passphrase_empty_error_message">請輸入通關密語</string>
     <string name="passphrase_passphrase_too_weak">通關密語太弱了</string>
-    <string name="keys_backup_passphrase_not_empty_error_message">如果您想要讓 Element 生成復原金鑰的話，請刪除通關密語。</string>
-    <string name="keys_backup_no_session_error">沒有可用的 Matrix 工作階段</string>
+    <string name="keys_backup_passphrase_not_empty_error_message">如果您想要讓 X-LinX 生成復原金鑰的話，請刪除通關密語。</string>
+    <string name="keys_backup_no_session_error">沒有可用的 X-LinX 工作階段</string>
     <string name="keys_backup_setup_step1_title">永不遺失已加密的訊息</string>
     <string name="keys_backup_setup_step1_description">在加密聊天室裡的訊息是使用端到端加密。只有您和接收者有金鑰可以閱讀這些訊息。
 \n
@@ -1055,7 +1059,7 @@
     <string name="passwords_do_not_match">密碼不符合</string>
     <string name="autodiscover_invalid_response">無效的家伺服器探索回應</string>
     <string name="autodiscover_well_known_autofill_dialog_title">自動完成伺服器選項</string>
-    <string name="autodiscover_well_known_autofill_dialog_message">Element 偵測到您的 userId 網域「%1$s」有自訂的伺服器設定：
+    <string name="autodiscover_well_known_autofill_dialog_message">X-LinX 偵測到您的 userId 網域「%1$s」有自訂的伺服器設定：
 \n%2$s</string>
     <string name="autodiscover_well_known_autofill_confirm">使用設定</string>
     <string name="notification_sync_init">正在初始化服務</string>
@@ -1168,7 +1172,7 @@
     <string name="please_wait">請稍候……</string>
     <string name="group_all_communities">所有社群</string>
     <string name="room_preview_no_preview">無法預覽此聊天室</string>
-    <string name="room_preview_world_readable_room_not_supported_yet">Element 尚不支援預覽所有人皆可讀的聊天室</string>
+    <string name="room_preview_world_readable_room_not_supported_yet">X-LinX 尚不支援預覽所有人皆可讀的聊天室</string>
     <string name="fab_menu_create_room">聊天室</string>
     <string name="fab_menu_create_chat">直接訊息</string>
     <string name="create_room_title">新聊天室</string>
@@ -1181,7 +1185,7 @@
     <string name="keys_backup_unable_to_get_trust_info">取得信任資訊時發生錯誤</string>
     <string name="keys_backup_unable_to_get_keys_backup_data">取得金鑰備份資料時發生錯誤</string>
     <string name="import_e2e_keys_from_file">從檔案「%1$s」匯入 e2e 金鑰。</string>
-    <string name="settings_sdk_version">Matrix SDK 版本</string>
+    <string name="settings_sdk_version">X-LinX SDK 版本</string>
     <string name="settings_other_third_party_notices">其他第三方提醒</string>
     <string name="navigate_to_room_when_already_in_the_room">您已在檢視此聊天室了！</string>
     <string name="quick_reactions">快速反應</string>
@@ -1223,14 +1227,14 @@
     <string name="room_filtering_footer_create_new_room">建立新聊天室</string>
     <string name="room_filtering_footer_create_new_direct_message">傳送新直接訊息</string>
     <string name="room_filtering_footer_open_room_directory">檢視聊天室目錄</string>
-    <string name="room_directory_search_hint">名稱或 ID (#example:matrix.org)</string>
+    <string name="room_directory_search_hint">名稱或 ID (#example:X-LinX.org)</string>
     <string name="labs_swipe_to_reply_in_timeline">啟用滑動以在時間軸上回覆</string>
     <string name="link_copied_to_clipboard">連結已複製到剪貼簿</string>
     <string name="settings_integration_manager">整合管理員</string>
     <string name="integration_manager_not_configured">未設定整合管理員。</string>
-    <string name="add_by_matrix_id">透過 matrix ID 新增</string>
+    <string name="add_by_matrix_id">透過 X-LinX ID 新增</string>
     <string name="creating_direct_room">正在建立聊天室……</string>
-    <string name="direct_room_no_known_users">找不到結果，在伺服器上使用透過 matrix ID 新增。</string>
+    <string name="direct_room_no_known_users">找不到結果，在伺服器上使用透過 X-LinX ID 新增。</string>
     <string name="direct_room_start_search">開始輸入以取得結果</string>
     <string name="direct_room_filter_hint">透過使用者名稱或 ID 過濾……</string>
     <string name="joining_room">正在加入聊天室……</string>
@@ -1263,11 +1267,11 @@
     <string name="invite_no_identity_server_error">在您的設定中新增一臺身份識別伺服器以執行此動作。</string>
     <string name="settings_background_fdroid_sync_mode">背景同步模式</string>
     <string name="settings_background_fdroid_sync_mode_battery">為電池最佳化</string>
-    <string name="settings_background_fdroid_sync_mode_battery_description">Element 將會在背景同步以節省裝置的有限資源（電池）。
+    <string name="settings_background_fdroid_sync_mode_battery_description">X-LinX 將會在背景同步以節省裝置的有限資源（電池）。
 \n取決於您裝置的資源狀態，作業系統可能會延遲同步。</string>
     <string name="settings_background_fdroid_sync_mode_real_time">為即時作業最佳化</string>
-    <string name="settings_background_fdroid_sync_mode_real_time_description">Element 將會精準地定期在背景同步（可設定）。
-\n這會影響到網路與電池的使用，並會顯示指出 Element 正在監聽某事件的永久通知。</string>
+    <string name="settings_background_fdroid_sync_mode_real_time_description">X-LinX 將會精準地定期在背景同步（可設定）。
+\n這會影響到網路與電池的使用，並會顯示指出 X-LinX 正在監聽某事件的永久通知。</string>
     <string name="settings_background_fdroid_sync_mode_disabled">無背景同步</string>
     <string name="settings_background_fdroid_sync_mode_disabled_description">當應用程式在背景時，您將不會收到訊息通知。</string>
     <string name="settings_background_sync_update_error">更新設定失敗。</string>
@@ -1350,13 +1354,13 @@
     <string name="content_reported_as_inappropriate_content">此內容已被回報為不合適。 
 \n 
 \n如果您不想要看到從此使用者而來的更多內容，您可以忽略他們以隱藏他們的訊息。</string>
-    <string name="permissions_rationale_msg_keys_backup_export">Element 需要權限以在磁碟上儲存您的 E2E 金鑰。
+    <string name="permissions_rationale_msg_keys_backup_export">X-LinX 需要權限以在磁碟上儲存您的 E2E 金鑰。
 \n
 \n請在下個彈出視窗中允許存取以讓您可以手動匯出您的金鑰。</string>
     <string name="no_network_indicator">目前沒有網路連線</string>
     <string name="resources_script">Latn</string>
     <string name="settings_add_3pid_confirm_password_title">確認您的密碼</string>
-    <string name="settings_add_3pid_flow_not_supported">您無法在行動裝置上的 Element 做這件事</string>
+    <string name="settings_add_3pid_flow_not_supported">您無法在行動裝置上的 X-LinX 做這件事</string>
     <string name="settings_add_3pid_authentication_needed">需要驗證</string>
     <string name="settings_integrations">整合</string>
     <string name="settings_integrations_summary">使用整合管理員以管理機器人、橋接、小工具與貼紙包。
@@ -1384,7 +1388,7 @@
     <string name="room_widget_webview_access_camera">使用相機</string>
     <string name="room_widget_webview_access_microphone">使用麥克風</string>
     <string name="room_widget_webview_read_protected_media">讀取 DRM 保護的媒體</string>
-    <string name="login_error_no_homeserver_found">這不是有效的 Matrix 伺服器位置</string>
+    <string name="login_error_no_homeserver_found">這不是有效的 X-LinX 伺服器位置</string>
     <string name="message_ignore_user">忽略使用者</string>
     <string name="room_list_quick_actions_notifications_all_noisy">所有訊息（吵雜）</string>
     <string name="room_list_quick_actions_notifications_all">所有訊息</string>
@@ -1415,17 +1419,17 @@
     <string name="login_server_other_text">自訂與進階設定</string>
     <string name="login_continue">繼續</string>
     <string name="login_connect_to">連線到 %1$s</string>
-    <string name="login_connect_to_modular">連線到 Element Matrix Services</string>
+    <string name="login_connect_to_modular">連線到 X-LinX Services</string>
     <string name="login_connect_to_a_custom_server">連線到自訂伺服器</string>
     <string name="login_signin_to">登入到 %1$s</string>
     <string name="login_signup">註冊</string>
     <string name="login_signin">登入</string>
     <string name="login_signin_sso">以 SSO 繼續</string>
-    <string name="login_server_url_form_modular_hint">Element Matrix Services 位置</string>
+    <string name="login_server_url_form_modular_hint">X-LinX Services 位置</string>
     <string name="login_server_url_form_other_hint">位置</string>
     <string name="login_server_url_form_modular_text">組織有專業主機</string>
-    <string name="login_server_url_form_modular_notice">輸入 Modular Element 或您想要使用的伺服器位置</string>
-    <string name="login_server_url_form_other_notice">輸入您想要連線的伺服器或 Element 的位置</string>
+    <string name="login_server_url_form_modular_notice">輸入 Modular X-LinX 或您想要使用的伺服器位置</string>
+    <string name="login_server_url_form_other_notice">輸入您想要連線的伺服器或 X-LinX 的位置</string>
     <string name="login_sso_error_message">載入頁面時發生錯誤：%1$s (%2$d)</string>
     <string name="login_mode_not_supported">應用程式無法登入此家伺服器。家伺服器支援以下登入類型：%1$s。
 \n
@@ -1483,8 +1487,8 @@
     <string name="login_signup_cancel_confirmation_content">尚未建立您的帳號。
 \n
 \n停止註冊程序？</string>
-    <string name="login_a11y_choose_matrix_org">選取 matrix.org</string>
-    <string name="login_a11y_choose_modular">選取 Element Matrix Services</string>
+    <string name="login_a11y_choose_matrix_org">選取 X-LinX.org</string>
+    <string name="login_a11y_choose_modular">選取 X-LinX Services</string>
     <string name="login_a11y_choose_other">選取自訂的家伺服器</string>
     <string name="login_a11y_captcha_container">請執行 captcha 挑戰</string>
     <string name="login_terms_title">接受條款以繼續</string>
@@ -1523,9 +1527,9 @@
 \n再次登入以存取您的帳號資料與訊息。</string>
     <string name="soft_logout_clear_data_dialog_e2e_warning_content">除非您登入以復原您的加密金鑰，否則您將會失去對安全訊息的存取權。</string>
     <string name="soft_logout_clear_data_dialog_submit">清除資料</string>
-    <string name="soft_logout_sso_not_same_user_error">使用者 %1$s 目前的工作階段與您提供的使用者 %2$s 憑證。Element 並不支援。
+    <string name="soft_logout_sso_not_same_user_error">使用者 %1$s 目前的工作階段與您提供的使用者 %2$s 憑證。X-LinX 並不支援。
 \n請先清除您的資料，然後再以其他帳號登入。</string>
-    <string name="permalink_malformed">您的 matrix.to 連結格式錯誤</string>
+    <string name="permalink_malformed">您的 X-LinX.to 連結格式錯誤</string>
     <string name="bug_report_error_too_short">描述太短了</string>
     <string name="notification_initial_sync">初始化同步……</string>
     <string name="settings_show_devices_list">檢視我的所有工作階段</string>
@@ -1541,7 +1545,7 @@
     <string name="devices_other_devices">其他工作階段</string>
     <string name="autocomplete_limited_results">僅顯示第一個結果，輸入更多字母……</string>
     <string name="settings_developer_mode_fail_fast_title">快速失敗</string>
-    <string name="settings_developer_mode_fail_fast_summary">在發生非預期的錯誤時，Element 可能更常當機</string>
+    <string name="settings_developer_mode_fail_fast_summary">在發生非預期的錯誤時，X-LinX 可能更常當機</string>
     <string name="command_description_shrug">將 ¯\\_(ツ)_/¯ 附加到純文字訊息中</string>
     <string name="create_room_encryption_title">啟用加密</string>
     <string name="create_room_encryption_description">加密一旦啟用就無法停用。</string>
@@ -1611,9 +1615,9 @@
     <string name="room_member_power_level_moderator_in">%1$s 中的板主</string>
     <string name="room_member_power_level_custom_in">%2$s 中的自訂 (%1$d)</string>
     <string name="room_member_jump_to_read_receipt">跳至讀取回條</string>
-    <string name="rendering_event_error_type_of_event_not_handled">Element 無法處理類型為「%1$s」的事件</string>
-    <string name="rendering_event_error_type_of_message_not_handled">Element 無法處理類型為「%1$s」的訊息</string>
-    <string name="rendering_event_error_exception">在彩現 id「%1$s」事件的內容時，Element 遇到問題</string>
+    <string name="rendering_event_error_type_of_event_not_handled">X-LinX 無法處理類型為「%1$s」的事件</string>
+    <string name="rendering_event_error_type_of_message_not_handled">X-LinX 無法處理類型為「%1$s」的訊息</string>
+    <string name="rendering_event_error_exception">在彩現 id「%1$s」事件的內容時，X-LinX 遇到問題</string>
     <string name="unignore">取消忽略</string>
     <string name="verify_cannot_cross_sign">此工作階段無法與您其他的工作階段分享此驗證。
 \n驗證將會儲存在本機並在未來版本的應用程式中共享。</string>
@@ -1704,7 +1708,7 @@
     <string name="event_redacted_by_user_reason_with_reason">被使用者刪除的活動，理由：%1$s</string>
     <string name="event_redacted_by_admin_reason_with_reason">由聊天室管理員管理的活動，理由：%1$s</string>
     <string name="keys_backup_restore_success_title_already_up_to_date">金鑰已為最新！</string>
-    <string name="login_default_session_public_name">Element Android</string>
+    <string name="login_default_session_public_name">X-LinX Android</string>
     <string name="settings_key_requests">金鑰請求</string>
     <string name="e2e_use_keybackup">解鎖已加密的訊息歷史</string>
     <string name="refresh">重新整理</string>
@@ -1805,13 +1809,13 @@
     <string name="media_file_added_to_gallery">媒體檔案已新增至媒體庫中</string>
     <string name="error_adding_media_file_to_gallery">無法新增媒體檔案到媒體庫中</string>
     <string name="change_password_summary">設定新的帳號密碼……</string>
-    <string name="use_other_session_content_description">在您的其他裝置上使用最新的 Element、Element Web、Element 桌面版、Element iOS、Element for Android 或其他有交叉簽章功能的 Matrix 客戶端</string>
-    <string name="app_desktop_web">Element Web
-\nElement 桌面版</string>
-    <string name="app_ios_android">Element iOS
-\nElement Android</string>
-    <string name="or_other_mx_capabale_client">或其他有交叉簽章功能的 Matrix 客戶端</string>
-    <string name="use_latest_app">在您的其他裝置上使用最新的 Element：</string>
+    <string name="use_other_session_content_description">在您的其他裝置上使用最新的 X-LinX、X-LinX Web、X-LinX 桌面版、X-LinX iOS、X-LinX for Android 或其他有交叉簽章功能的 X-LinX 客戶端</string>
+    <string name="app_desktop_web">X-LinX Web
+\nX-LinX 桌面版</string>
+    <string name="app_ios_android">X-LinX iOS
+\nX-LinX Android</string>
+    <string name="or_other_mx_capabale_client">或其他有交叉簽章功能的 X-LinX 客戶端</string>
+    <string name="use_latest_app">在您的其他裝置上使用最新的 X-LinX：</string>
     <string name="command_description_discard_session">強制丟棄目前在加密聊天室中的外發群組工作階段</string>
     <string name="command_description_discard_session_not_handled">僅在加密聊天室中支援</string>
     <string name="enter_secret_storage_passphrase_or_key">使用您的 %1$s 或使用您的 %2$s 以繼續。</string>
@@ -1858,10 +1862,10 @@
     <string name="uploads_files_title">檔案</string>
     <string name="uploads_files_subtitle">%1$s 在 %2$s</string>
     <string name="uploads_files_no_result">此聊天室中沒有檔案</string>
-    <string name="login_connect_using_matrix_id_notice">或者如果您已有帳號，而且您也知道您 Matrix 的識別符與密碼，您可以使用此方式：</string>
-    <string name="login_connect_using_matrix_id_submit">使用我的 Matrix 識別符登入</string>
+    <string name="login_connect_using_matrix_id_notice">或者如果您已有帳號，而且您也知道您 X-LinX 的識別符與密碼，您可以使用此方式：</string>
+    <string name="login_connect_using_matrix_id_submit">使用我的 X-LinX 識別符登入</string>
     <string name="login_signin_matrix_id_title">登入</string>
-    <string name="login_signin_matrix_id_notice">如果您在家伺服器上建立了帳號，使用您的 Matrix ID（例如 @user:domain.com）與下方的密碼。</string>
+    <string name="login_signin_matrix_id_notice">如果您在家伺服器上建立了帳號，使用您的 X-LinX ID（例如 @user:domain.com）與下方的密碼。</string>
     <string name="login_signin_matrix_id_hint">使用者識別符</string>
     <string name="login_signin_matrix_id_error_invalid_matrix_id">這不是有效的使用者識別符。預期中的格式：\'@user:homeserver.org\'</string>
     <string name="autodiscover_well_known_error">找不到有效的家伺服器。請檢查您的識別符</string>
@@ -1871,11 +1875,11 @@
     <string name="choose_locale_loading_locales">正在載入可用的語言……</string>
     <string name="open_terms_of">開啟 %s 的條款</string>
     <string name="disconnect_identity_server_dialog_content">從身份識別伺服器 %s 斷線？</string>
-    <string name="identity_server_error_outdated_identity_server">此身份識別伺服器太舊了。Element 僅支援 API V2。</string>
+    <string name="identity_server_error_outdated_identity_server">此身份識別伺服器太舊了。X-LinX 僅支援 API V2。</string>
     <string name="identity_server_error_outdated_home_server">此動作是不可能的。家伺服器太舊了。</string>
     <string name="identity_server_error_no_identity_server_configured">請先設定身份識別伺服器。</string>
     <string name="identity_server_error_terms_not_signed">請先在設定中同意身份識別伺服器的條款。</string>
-    <string name="identity_server_error_bulk_sha256_not_supported">為了保護您的隱私，Element 僅支援傳送雜湊過的使用者電子郵件與電話號碼。</string>
+    <string name="identity_server_error_bulk_sha256_not_supported">為了保護您的隱私，X-LinX 僅支援傳送雜湊過的使用者電子郵件與電話號碼。</string>
     <string name="identity_server_error_binding_error">關聯失敗。</string>
     <string name="identity_server_error_no_current_binding_error">目前沒有此識別符的關聯。</string>
     <string name="identity_server_set_default_notice">您的家伺服器 (%1$s) 建議將 %2$s 用於您的身份識別伺服器</string>
@@ -1889,7 +1893,7 @@
     <string name="action_copy">複製</string>
     <string name="dialog_title_success">成功</string>
     <string name="bottom_action_notification">通知</string>
-    <string name="call_failed_no_connection">Element 呼叫失敗</string>
+    <string name="call_failed_no_connection">X-LinX 呼叫失敗</string>
     <string name="call_failed_no_connection_description">建立即時連線失敗。
 \n請要求您家伺服器的管理員設定 TURN 伺服器以讓通話的運作更可靠。</string>
     <string name="call_select_sound_device">選取音效裝置</string>
@@ -2001,11 +2005,11 @@
     <string name="crypto_error_withheld_unverified">您無法存取此訊息，因為您的工作階段未被傳送者所信任</string>
     <string name="crypto_error_withheld_generic">您無法存取此訊息，因為傳送者刻意未傳送金鑰</string>
     <string name="notice_crypto_unable_to_decrypt_merged">正在等待加密歷史</string>
-    <string name="element_disclaimer_title">Riot 現在是 Element 了！</string>
+    <string name="element_disclaimer_title">X-LinX</string>
     <string name="element_disclaimer_content">我們很高興地我們已變更名稱！您的應用程式是最新的，而您也登入了您的帳號。</string>
     <string name="element_disclaimer_negative_button">知道了</string>
     <string name="element_disclaimer_positive_button">取得更多資訊</string>
-    <string name="element_login_splash_brand">element</string>
+    <string name="element_login_splash_brand">X-LinX</string>
     <string name="save_recovery_key_chooser_hint">儲存復原金鑰於</string>
     <string name="add_from_phone_book">從我的電話簿新增</string>
     <string name="empty_phone_book">您的電話簿是空的</string>
@@ -2066,7 +2070,7 @@
     <string name="settings_remove_three_pid_confirmation_content">移除 %s？</string>
     <string name="error_threepid_auth_failed">確保您已經點擊我們傳送給您的電子郵件中的連結。</string>
     <string name="settings_emails_and_phone_numbers_title">電子郵件與電話號碼</string>
-    <string name="settings_emails_and_phone_numbers_summary">管理連結到您 Matrix 帳號的電子郵件與電話號碼</string>
+    <string name="settings_emails_and_phone_numbers_summary">管理連結到您 X-LinX 帳號的電子郵件與電話號碼</string>
     <string name="settings_text_message_sent_hint">代碼</string>
     <string name="login_msisdn_notice">請使用國際格式（電話號碼必須以 \'+\' 開頭）</string>
     <string name="confirm_your_identity_quad_s">透過確認此登入來驗證您的身份，以及授予存取加密訊息的權限。</string>
@@ -2087,13 +2091,13 @@
     <string name="delete_account_data_warning">刪除類型為 %1$s 的帳號資料？
 \n
 \n小心使用，它可能會導致意料之外的行為。</string>
-    <string name="settings_security_pin_code_grace_period_summary_off">每次打開 Element 時都需要 PIN 碼。</string>
-    <string name="settings_security_pin_code_grace_period_summary_on">未使用 Element 2分鐘後，要求輸入 PIN 碼。</string>
+    <string name="settings_security_pin_code_grace_period_summary_off">每次打開 X-LinX 時都需要 PIN 碼。</string>
+    <string name="settings_security_pin_code_grace_period_summary_on">未使用 X-LinX 2分鐘後，要求輸入 PIN 碼。</string>
     <string name="settings_security_pin_code_grace_period_title">2分鐘後要求輸入 PIN 碼</string>
     <string name="settings_security_pin_code_notifications_summary_off">在簡易通知中僅顯示未讀訊息數量。</string>
     <string name="settings_security_pin_code_notifications_summary_on">顯示如聊天是名稱與訊息內容等詳細資訊。</string>
     <string name="settings_security_pin_code_notifications_title">在通知中顯示內容</string>
-    <string name="settings_security_pin_code_use_biometrics_summary_off">PIN 碼是解鎖 Element 的唯一方式。</string>
+    <string name="settings_security_pin_code_use_biometrics_summary_off">PIN 碼是解鎖 X-LinX 的唯一方式。</string>
     <string name="settings_security_pin_code_use_biometrics_summary_on">啟用特定裝置的生物識別技術，如指紋與臉部辨識。</string>
     <string name="settings_security_application_protection_screen_title">設定保護</string>
     <string name="settings_security_application_protection_summary">使用 PIN 碼與生物識別技術來保護存取權。</string>
@@ -2153,21 +2157,21 @@
     <string name="room_member_open_or_create_dm">直接訊息</string>
     <string name="send_bug_report_include_key_share_history">傳送金鑰共享請求歷史</string>
     <string name="no_more_results">沒有更多結果</string>
-    <string name="matrix_to_card_title">Matrix 連結</string>
+    <string name="matrix_to_card_title">X-LinX 連結</string>
     <string name="qr_code_not_scanned">未掃描 QR code！</string>
     <string name="invalid_qr_code_uri">無效的 QR code（無效的 URI）！</string>
     <string name="cannot_dm_self">無法對您自己直接訊息！</string>
     <string name="share_by_text">透過文字分享</string>
-    <string name="phone_book_perform_lookup">在 Matrix 上搜尋聯絡人</string>
+    <string name="phone_book_perform_lookup">在 X-LinX 上搜尋聯絡人</string>
     <string name="room_settings_set_avatar">設定大頭照</string>
     <string name="identity_server_user_consent_not_provided">使用者尚未提供其同意。</string>
     <string name="user_code_info_text">與夥伴們分享此條碼，這樣他們就可以掃描它來加入您並開始聊天。</string>
     <string name="user_code_my_code">我的條碼</string>
     <string name="user_code_share">分享我的條碼</string>
     <string name="user_code_scan">掃描 QR code</string>
-    <string name="not_a_valid_qr_code">不是有效的 Matrix QR code</string>
-    <string name="invite_friends_rich_title">🔐️ 在 Element 上加入我</string>
-    <string name="invite_friends_text">嗨，和我在 Element 上聊天吧：%s</string>
+    <string name="not_a_valid_qr_code">不是有效的 X-LinX QR code</string>
+    <string name="invite_friends_rich_title">🔐️ 在 X-LinX 上加入我</string>
+    <string name="invite_friends_text">嗨，和我在 X-LinX 上聊天吧：%s</string>
     <string name="invite_friends">邀請朋友</string>
     <string name="topic_prefix">"主題： "</string>
     <string name="add_people">新增夥伴</string>
@@ -2188,7 +2192,7 @@
     <string name="show_advanced">顯示進階</string>
     <string name="attachment_viewer_item_x_of_y">%2$d 中的 %1$d</string>
     <string name="a11y_create_direct_message_by_qr_code">透過掃描 QR code 建立新的直接對話</string>
-    <string name="a11y_create_direct_message_by_mxid">透過 Matrix ID 建立新的直接對話</string>
+    <string name="a11y_create_direct_message_by_mxid">透過 X-LinX ID 建立新的直接對話</string>
     <string name="identity_server_consent_dialog_content">為了探索您已知的既有聯絡人，您是否接受將您的聯絡人資料（電話號碼與／或電子郵件）傳送到設定好的身份伺服器 (%1$s)？
 \n
 \n為了更好的隱私，要傳送的資料將會先雜湊過再傳送。</string>
@@ -2204,7 +2208,7 @@
     <string name="direct_room_user_list_recent_title">最近</string>
     <string name="qr_code">QR code</string>
     <string name="add_by_qr_code">透過 QR code 新增</string>
-    <string name="user_directory_search_hint">使用名稱或 ID 搜尋</string>
+    <string name="user_directory_search_hint">名称或编号搜索</string>
     <string name="permissions_denied_add_contact">允許存取您聯絡人的權限。</string>
     <string name="permissions_denied_qr_code">要掃描 QR code，您必須允許存取攝影機。</string>
     <string name="start_chatting">開始聊天</string>

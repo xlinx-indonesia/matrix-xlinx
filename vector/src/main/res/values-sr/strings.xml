@@ -7,7 +7,7 @@
     <string name="light_theme">Светла тема</string>
     <string name="dark_theme">Тамна тема</string>
     <string name="black_them">Црна тема</string>
-    <string name="status_theme">Status.im тема</string>
+    <string name="status_theme">ABC тема</string>
 
     <string name="notification_sync_init">Иницијализација сервиса</string>
     <string name="notification_sync_in_progress">Синхронизација у току…</string>

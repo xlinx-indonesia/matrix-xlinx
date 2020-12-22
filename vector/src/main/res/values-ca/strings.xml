@@ -752,7 +752,7 @@ Atenció: es podria eliminar aquest fitxer si es desinstal·la l\'aplicació.</s
     <string name="e2e_re_request_encryption_key_dialog_title">Sol·licitud enviada</string>
     <string name="e2e_re_request_encryption_key_dialog_content">Si us plau, engega Element a un altre dispositiu que pugui desencriptar el missatge de manera que pugui enviar la clau a aquest dispositiu.</string>
     <string name="settings_notification_privacy_normal">Normal</string>
-    <string name="status_theme">Tema Status.im</string>
+    <string name="status_theme">Tema ABC</string>
     <string name="missing_permissions_error">No es pot dur a terme aquesta acció per falta de permisos.</string>
     <string name="dialog_title_error">Error</string>
     <string name="system_alerts_header">Alertes de sistema</string>

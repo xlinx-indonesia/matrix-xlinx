@@ -1,233 +1,544 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="summary_message">%1$s：%2$s</string>
-    <string name="summary_user_sent_image">%1$s 傳送了一張圖片。</string>
-    <string name="notice_room_invite_no_invitee">%s 的邀請</string>
-    <string name="notice_room_invite">%1$s 邀請了 %2$s</string>
-    <string name="notice_room_invite_you">%1$s 邀請您</string>
-    <string name="notice_room_join">%1$s 已加入聊天室</string>
-    <string name="notice_room_leave">%1$s 已離開聊天室</string>
-    <string name="notice_room_reject">%1$s 拒絕邀請</string>
-    <string name="notice_room_kick">%1$s 踢出 %2$s</string>
-    <string name="notice_room_unban">%1$s 解除禁止 %2$s</string>
-    <string name="notice_room_ban">%1$s 禁止 %2$s</string>
-    <string name="notice_room_withdraw">%1$s 收回了對 %2$s 的邀請</string>
-    <string name="notice_avatar_url_changed">%1$s 變更了他們的大頭貼</string>
-    <string name="notice_display_name_set">%1$s 設定了他們的顯示名稱為 %2$s</string>
-    <string name="notice_display_name_changed_from">%1$s 變更了他們的顯示名稱從 %2$s 到 %3$s</string>
-    <string name="notice_display_name_removed">%1$s 移除了他們的顯示名稱 (%2$s)</string>
-    <string name="notice_room_topic_changed">%1$s 變更主題為：%2$s</string>
-    <string name="notice_room_name_changed">%1$s 變更房間名稱為：%2$s</string>
-    <string name="notice_placed_video_call">%s 撥出了視訊通話。</string>
-    <string name="notice_placed_voice_call">%s 撥出了語音通話。</string>
-    <string name="notice_answered_call">%s 回覆了通話。</string>
-    <string name="notice_ended_call">%s 結束通話。</string>
-    <string name="notice_made_future_room_visibility">%1$s 讓房間未來可讓 %2$s 看到歷史紀錄</string>
-    <string name="notice_room_visibility_invited">所有的房間成員，從他們被邀請的時間開始。</string>
-    <string name="notice_room_visibility_joined">所有的房間成員，從他們加入的時間開始。</string>
-    <string name="notice_room_visibility_shared">所有的房間成員。</string>
-    <string name="notice_room_visibility_world_readable">任何人。</string>
-    <string name="notice_room_visibility_unknown">未知 (%s)。</string>
-    <string name="notice_end_to_end">%1$s 開啟了端對端加密 (%2$s)</string>
-    <string name="notice_requested_voip_conference">%1$s 請求了 VoIP 會議通話</string>
-    <string name="notice_voip_started">VoIP 會議通話已開始</string>
-    <string name="notice_voip_finished">VoIP 會議通話已結束</string>
-    <string name="notice_avatar_changed_too">（大頭貼也變更了）</string>
-    <string name="notice_room_name_removed">%1$s 移除了房間名稱</string>
-    <string name="notice_room_topic_removed">%1$s 移除了房間主題</string>
-    <string name="notice_profile_change_redacted">%1$s 更新了他們的基本資料 %2$s</string>
-    <string name="notice_room_third_party_invite">%1$s 傳送加入房間的邀請給 %2$s</string>
-    <string name="notice_room_third_party_registered_invite">%1$s 接受 %2$s 的邀請</string>
-    <string name="notice_crypto_unable_to_decrypt">** 無法解密：%s **</string>
-    <string name="notice_crypto_error_unkwown_inbound_session_id">傳送者的裝置並未在此訊息傳送他們的金鑰。</string>
-    <string name="could_not_redact">無法編輯</string>
-    <string name="unable_to_send_message">無法傳送訊息</string>
-    <string name="message_failed_to_upload">上傳圖片失敗</string>
-    <string name="network_error">網路錯誤</string>
-    <string name="matrix_error">Matrix 錯誤</string>
-    <string name="room_error_join_failed_empty_room">目前無法重新加入空房間。</string>
-    <string name="encrypted_message">已加密的訊息</string>
-    <string name="medium_email">電子郵件</string>
-    <string name="medium_phone_number">電話號碼</string>
-    <string name="summary_user_sent_sticker">%1$s 傳送了一張貼圖。</string>
-    <string name="room_displayname_invite_from">來自%s 的邀請</string>
-    <string name="room_displayname_room_invite">聊天室邀請</string>
-    <string name="room_displayname_two_members">%1$s 和 %2$s</string>
-    <string name="room_displayname_empty_room">空聊天室</string>
-    <plurals name="room_displayname_three_and_more_members">
-        <item quantity="other">%1$s 和 和其他 %2$d 個人</item>
-    </plurals>
-    <string name="notice_event_redacted">訊息已移除</string>
-    <string name="notice_event_redacted_by">訊息已被 %1$s 移除</string>
-    <string name="notice_event_redacted_with_reason">訊息已移除 [理由：%1$s]</string>
-    <string name="notice_event_redacted_by_with_reason">訊息已被 %1$s 移除 [理由：%2$s]</string>
-    <string name="initial_sync_start_importing_account">初始化同步：
-\n正在匯入帳號……</string>
-    <string name="initial_sync_start_importing_account_crypto">初始化同步：
-\n正在匯入 crypto</string>
-    <string name="initial_sync_start_importing_account_rooms">初始化同步：
-\n正在匯入聊天室</string>
-    <string name="initial_sync_start_importing_account_joined_rooms">初始化同步：
-\n正在匯入已加入的聊天室</string>
-    <string name="initial_sync_start_importing_account_invited_rooms">初始化同步：
-\n正在匯入已邀請的聊天室</string>
-    <string name="initial_sync_start_importing_account_left_rooms">初始化同步：
-\n正在匯入已離開的聊天室</string>
-    <string name="initial_sync_start_importing_account_groups">初始化同步：
-\n正在匯入社群</string>
-    <string name="initial_sync_start_importing_account_data">初始化同步：
-\n正在匯入帳號資料</string>
-    <string name="notice_room_update">%s 已升級此聊天室。</string>
-    <string name="event_status_sending_message">正在傳送訊息……</string>
-    <string name="clear_timeline_send_queue">清除傳送佇列</string>
-    <string name="notice_room_third_party_revoked_invite">%1$s 撤銷了 %2$s 加入聊天室的邀請</string>
-    <string name="notice_room_invite_no_invitee_with_reason">%1$s 的邀請。理由：%2$s</string>
-    <string name="notice_room_invite_with_reason">%1$s 邀請了 %2$s。理由：%3$s</string>
-    <string name="notice_room_invite_you_with_reason">%1$s 邀請了您。理由：%2$s</string>
-    <string name="notice_room_join_with_reason">%1$s 已加入聊天室。理由：%2$s</string>
-    <string name="notice_room_leave_with_reason">%1$s 已離開聊天室。理由：%2$s</string>
-    <string name="notice_room_reject_with_reason">%1$s 已回絕邀請。理由：%2$s</string>
-    <string name="notice_room_kick_with_reason">%1$s 踢走了 %2$s。理由：%3$s</string>
-    <string name="notice_room_unban_with_reason">%1$s 取消封鎖了 %2$s。理由：%3$s</string>
-    <string name="notice_room_ban_with_reason">%1$s 封鎖了 %2$s。理由：%3$s</string>
-    <string name="notice_room_third_party_invite_with_reason">%1$s 已傳送邀請給 %2$s 來加入聊天室。理由：%3$s</string>
-    <string name="notice_room_third_party_revoked_invite_with_reason">%1$s 撤銷了 %2$s 加入聊天室的邀請。理由：%3$s</string>
-    <string name="notice_room_third_party_registered_invite_with_reason">%1$s 接受 %2$s 的邀請。理由：%3$s</string>
-    <string name="notice_room_withdraw_with_reason">%1$s 撤回了對 %2$s 的邀請。理由：%3$s</string>
-    <plurals name="notice_room_aliases_added">
-        <item quantity="other">%1$s 新增了 %2$s 為此聊天室的地址。</item>
-    </plurals>
-    <plurals name="notice_room_aliases_removed">
-        <item quantity="other">%1$s 移除了此聊天室的 %3$s 地址。</item>
-    </plurals>
-    <string name="notice_room_aliases_added_and_removed">%1$s 為此聊天室新增 %2$s 並移除 %3$s 地址。</string>
-    <string name="notice_room_canonical_alias_set">%1$s 為此聊天室設定了 %2$s 為主地址。</string>
-    <string name="notice_room_canonical_alias_unset">%1$s 為此聊天室移除了主要地址。</string>
-    <string name="notice_room_guest_access_can_join">%1$s 已允許訪客加入聊天室。</string>
-    <string name="notice_room_guest_access_forbidden">%1$s 已禁止訪客加入聊天室。</string>
-    <string name="notice_end_to_end_ok">%1$s 已開啟端到端加密。</string>
-    <string name="notice_end_to_end_unknown_algorithm">%1$s 已開啟端到端加密（無法識別的演算法 %2$s）。</string>
-    <string name="key_verification_request_fallback_message">%s 正在請求驗證您的金鑰，但您的客戶端不支援聊天中金鑰驗證。您將必須使用舊版的金鑰驗證來驗證金鑰。</string>
-    <string name="notice_room_created">%1$s 建立了聊天室</string>
-    <string name="summary_you_sent_image">您傳送了圖片。</string>
-    <string name="summary_you_sent_sticker">您傳送了貼圖。</string>
-    <string name="notice_room_invite_no_invitee_by_you">您的邀請</string>
-    <string name="notice_room_created_by_you">您建立了聊天室</string>
-    <string name="notice_room_invite_by_you">您邀請了 %1$s</string>
-    <string name="notice_room_join_by_you">您加入了聊天室</string>
-    <string name="notice_room_leave_by_you">您離開的聊天室</string>
-    <string name="notice_room_reject_by_you">您回絕了邀請</string>
-    <string name="notice_room_kick_by_you">您踢除了 %1$s</string>
-    <string name="notice_room_unban_by_you">您取消封鎖了 %1$s</string>
-    <string name="notice_room_ban_by_you">您封鎖了 %1$s</string>
-    <string name="notice_room_withdraw_by_you">您撤銷了 %1$s 的邀請</string>
-    <string name="notice_avatar_url_changed_by_you">您變更了您的大頭貼</string>
-    <string name="notice_display_name_set_by_you">您將您的顯示名稱設定為 %1$s</string>
-    <string name="notice_display_name_changed_from_by_you">您將您的顯示名稱從 %1$s 變更為 %2$s</string>
-    <string name="notice_display_name_removed_by_you">您移除了您的顯示名稱（其曾為 %1$s）</string>
-    <string name="notice_room_topic_changed_by_you">您將主題變更為：%1$s</string>
-    <string name="notice_room_avatar_changed">%1$s 變更了聊天室大頭貼</string>
-    <string name="notice_room_avatar_changed_by_you">您變更了聊天室大頭貼</string>
-    <string name="notice_room_name_changed_by_you">您將聊天室名稱變更為：%1$s</string>
-    <string name="notice_placed_video_call_by_you">您發起了視訊通話。</string>
-    <string name="notice_placed_voice_call_by_you">您發起了音訊通話。</string>
-    <string name="notice_call_candidates">%s 傳送了資料以建立通話。</string>
-    <string name="notice_call_candidates_by_you">您傳送了資料以建立通話。</string>
-    <string name="notice_answered_call_by_you">您接了通話。</string>
-    <string name="notice_ended_call_by_you">您結束了通話。</string>
-    <string name="notice_made_future_room_visibility_by_you">您已將未來的聊天室歷史設定為對 %1$s 可見</string>
-    <string name="notice_end_to_end_by_you">您開啟了端到端加密 (%1$s)</string>
-    <string name="notice_room_update_by_you">您升級了此聊天室。</string>
-    <string name="notice_requested_voip_conference_by_you">您請求了 VoIP 會議</string>
-    <string name="notice_room_name_removed_by_you">您移除了聊天室名稱</string>
-    <string name="notice_room_topic_removed_by_you">您移除了聊天室主題</string>
-    <string name="notice_room_avatar_removed">%1$s 移除了聊天室大頭貼</string>
-    <string name="notice_room_avatar_removed_by_you">您移除了聊天室大頭貼</string>
-    <string name="notice_profile_change_redacted_by_you">您更新了您的個人檔案 %1$s</string>
-    <string name="notice_room_third_party_invite_by_you">您傳送了邀請給 %1$s 以加入聊天室</string>
-    <string name="notice_room_third_party_revoked_invite_by_you">您已撤銷對 %1$s 加入聊天室的邀請</string>
-    <string name="notice_room_third_party_registered_invite_by_you">您接受了 %1$s 的邀請</string>
-    <string name="notice_widget_added">%1$s 新增了 %2$s 小工具</string>
-    <string name="notice_widget_added_by_you">您新增了 %1$s 小工具</string>
-    <string name="notice_widget_removed">%1$s 移除了 %2$s 小工具</string>
-    <string name="notice_widget_removed_by_you">您移除了 %1$s 小工具</string>
-    <string name="notice_widget_modified">%1$s 修改了 %2$s 小工具</string>
-    <string name="notice_widget_modified_by_you">您修改了 %1$s 小工具</string>
-    <string name="power_level_admin">管理員</string>
-    <string name="power_level_moderator">板主</string>
-    <string name="power_level_default">預設</string>
-    <string name="power_level_custom">自訂 (%1$d)</string>
-    <string name="power_level_custom_no_value">自訂</string>
-    <string name="notice_power_level_changed_by_you">您變更了 %1$s 的權力等級。</string>
-    <string name="notice_power_level_changed">%1$s 變更了 %2$s 的權力等級。</string>
-    <string name="notice_power_level_diff">%1$s 從 %2$s 到 %3$s</string>
-    <string name="notice_room_invite_no_invitee_with_reason_by_you">您的邀請。理由：%1$s</string>
-    <string name="notice_room_invite_with_reason_by_you">您邀請了 %1$s。理由：%2$s</string>
-    <string name="notice_room_join_with_reason_by_you">您加入了聊天室。理由：%1$s</string>
-    <string name="notice_room_leave_with_reason_by_you">您離開了聊天室。理由：%1$s</string>
-    <string name="notice_room_reject_with_reason_by_you">您回絕了邀請。理由：%1$s</string>
-    <string name="notice_room_kick_with_reason_by_you">您踢除了 %1$s。理由：%2$s</string>
-    <string name="notice_room_unban_with_reason_by_you">您取消封鎖了 %1$s。理由：%2$s</string>
-    <string name="notice_room_ban_with_reason_by_you">您封鎖了 %1$s。理由：%2$s</string>
-    <string name="notice_room_third_party_invite_with_reason_by_you">您傳甕了邀請給 %1$s 以加入聊天室。理由：%2$s</string>
-    <string name="notice_room_third_party_revoked_invite_with_reason_by_you">您撤銷了 %1$s 加入聊天室的邀請。理由：%2$s</string>
-    <string name="notice_room_third_party_registered_invite_with_reason_by_you">您接受了 %1$s 的邀請。理由：%2$s</string>
-    <string name="notice_room_withdraw_with_reason_by_you">您撤回了 %1$s 的邀請。理由：%2$s</string>
-    <plurals name="notice_room_aliases_added_by_you">
-        <item quantity="other">您為此聊天室新增了 %1$s 作為地址。</item>
-    </plurals>
-    <plurals name="notice_room_aliases_removed_by_you">
-        <item quantity="other">您為此聊天室移除了 %1$s 作為地址。</item>
-    </plurals>
-    <string name="notice_room_aliases_added_and_removed_by_you">您為此聊天室新增了 %1$s 並移除了 %2$s 作為地址。</string>
-    <string name="notice_room_canonical_alias_set_by_you">您將此聊天室的主要地址設定為 %1$s。</string>
-    <string name="notice_room_canonical_alias_unset_by_you">您將此聊天室的主要地址移除。</string>
-    <string name="notice_room_guest_access_can_join_by_you">您已允許訪客加入聊天室。</string>
-    <string name="notice_room_guest_access_forbidden_by_you">您已阻止訪客加入聊天室。</string>
-    <string name="notice_end_to_end_ok_by_you">您開啟了端到端加密。</string>
-    <string name="notice_end_to_end_unknown_algorithm_by_you">您開啟了端到端加密（無法識別的演算法 %1$s）。</string>
-    <string name="notice_direct_room_guest_access_forbidden_by_you">您已避免訪客加入此聊天室。</string>
-    <string name="notice_direct_room_guest_access_forbidden">%1$s 已避免訪客加入此聊天室。</string>
-    <string name="notice_direct_room_guest_access_can_join_by_you">您已允許訪客加入這裡。</string>
-    <string name="notice_direct_room_guest_access_can_join">%1$s 已允許訪客加入這裡。</string>
-    <string name="notice_direct_room_leave_with_reason_by_you">您已離開。理由：%1$s</string>
-    <string name="notice_direct_room_leave_with_reason">%1$s 已離開。理由：%2$s</string>
-    <string name="notice_direct_room_join_with_reason_by_you">您已加入。理由：%1$s</string>
-    <string name="notice_direct_room_join_with_reason">%1$s 已加入。理由：%2$s</string>
-    <string name="notice_direct_room_third_party_revoked_invite_by_you">您已撤銷對 %1$s 的邀請</string>
-    <string name="notice_direct_room_third_party_revoked_invite">%1$s 已撤銷對 %2$s 的邀請</string>
-    <string name="notice_direct_room_third_party_invite_by_you">您已邀請了 %1$s</string>
-    <string name="notice_direct_room_third_party_invite">%1$s 邀請了 %2$s</string>
-    <string name="notice_direct_room_update_by_you">您已在此升級。</string>
-    <string name="notice_direct_room_update">%s 已在此升級。</string>
-    <string name="notice_made_future_direct_room_visibility_by_you">您讓未來的訊息對 %1$s 可見</string>
-    <string name="notice_made_future_direct_room_visibility">%1$s 已讓未來的訊息對 %2$s 可見</string>
-    <string name="notice_direct_room_leave_by_you">您已離開聊天室</string>
-    <string name="notice_direct_room_leave">%1$s 已離開聊天室</string>
-    <string name="notice_direct_room_join_by_you">您已加入</string>
+    <string name="summary_message">%1$s: %2$s</string>
+    <string name="summary_user_sent_image">%1$s 发送了图片.</string>
+    <string name="summary_you_sent_image"> 您发送了图片.</string>
+    <string name="summary_user_sent_sticker">%1$s 发送了表情包.</string>
+    <string name="summary_you_sent_sticker">您发送了表情包.</string>
+
+    <string name="notice_room_invite_no_invitee">%s\'s 邀请</string>
+    <string name="notice_room_invite_no_invitee_by_you"> 您的邀请</string>
+    <string name="notice_room_created">%1$s 已创建房间 </string>
+    <string name="notice_room_created_by_you"> 您已创建房间 </string>
+    <string name="notice_direct_room_created">%1$s 已创建讨论 n</string>
+    <string name="notice_direct_room_created_by_you"> 您已创建讨论 </string>
+    <string name="notice_room_invite">%1$s 已邀请%2$s</string>
+    <string name="notice_room_invite_by_you"> 你已邀请%1$s</string>
+    <string name="notice_room_invite_you">%1$s 已邀请您 </string>
+    <string name="notice_room_join">%1$s 已加入房间 </string>
+    <string name="notice_room_join_by_you"> 您已加入房间 </string>
     <string name="notice_direct_room_join">%1$s 已加入</string>
-    <string name="notice_direct_room_created_by_you">您已建立此討論</string>
-    <string name="notice_direct_room_created">%1$s 已建立此討論</string>
-    <string name="room_displayname_empty_room_was">空的聊天室（曾為 %s）</string>
+    <string name="notice_direct_room_join_by_you"> 您已加入</string>
+    <string name="notice_room_leave">%1$s 已退出房间 </string>
+    <string name="notice_room_leave_by_you"> 您已退出房间 </string>
+    <string name="notice_direct_room_leave">%1$s 已退出房间 </string>
+    <string name="notice_direct_room_leave_by_you"> 您已退出房间 </string>
+    <string name="notice_room_reject">%1$s 已拒绝邀请 </string>
+    <string name="notice_room_reject_by_you"> 您已拒绝邀请 </string>
+    <string name="notice_room_kick">%1$s 已踢%2$s</string>
+    <string name="notice_room_kick_by_you"> 您已踢%1$s</string>
+    <string name="notice_room_unban">%1$s 已解禁%2$s</string>
+    <string name="notice_room_unban_by_you"> 您已解禁%1$s</string>
+    <string name="notice_room_ban">%1$s 已禁止%2$s</string>
+    <string name="notice_room_ban_by_you">您已禁止%1$s</string>
+    <string name="notice_room_withdraw">%1$s 已撤回%2$s\ 的邀请 </string>
+    <string name="notice_room_withdraw_by_you">  您已撤回 %1$s\ 的邀请 </string>
+    <string name="notice_avatar_url_changed">%1$s 已改变头像 </string>
+    <string name="notice_avatar_url_changed_by_you"> 您已改变头像 </string>
+    <string name="notice_display_name_set">%1$s 将显示名称设置为 %2$s</string>
+    <string name="notice_display_name_set_by_you"> 您将显示名称设置为 %1$s</string>
+    <string name="notice_display_name_changed_from">%1$s 将显示名称从 %2$s 更改为 %3$s</string>
+    <string name="notice_display_name_changed_from_by_you"> 您将显示名称从 %1$s 更改为 %2$s</string>
+    <string name="notice_display_name_removed">%1$s 已删除显示名称（原来是 %2$s)</string>
+    <string name="notice_display_name_removed_by_you"> 您已删除显示名称（原来是 %1$s)</string>
+    <string name="notice_room_topic_changed">%1$s 将主题更改为: %2$s</string>
+    <string name="notice_room_topic_changed_by_you"> 您将主题更改为： %1$s</string>
+    <string name="notice_room_avatar_changed">%1$s 已更改房间头像 </string>
+    <string name="notice_room_avatar_changed_by_you"> 您已更改房间头像 </string>
+    <string name="notice_room_name_changed">%1$s 将房间名称更改为: %2$s</string>
+    <string name="notice_room_name_changed_by_you"> 您将房间名称更改为：%1$s</string>
+    <string name="notice_placed_video_call">%s 已发起视讯通话.</string>
+    <string name="notice_placed_video_call_by_you"> 您已发起视讯通话.</string>
+    <string name="notice_placed_voice_call">%s 已发起语音通话.</string>
+    <string name="notice_placed_voice_call_by_you"> 你已发起语音通话.</string>
+    <string name="notice_call_candidates">%s 已发送数据建立通话.</string>
+    <string name="notice_call_candidates_by_you"> 您已发送数据建立通话 .</string>
+    <string name="notice_answered_call">%s 已接电话.</string>
+    <string name="notice_answered_call_by_you"> 您已接电话.</string>
+    <string name="notice_ended_call">%s 已结束通话 .</string>
+    <string name="notice_ended_call_by_you">您已结束通话.</string>
+    <string name="notice_made_future_room_visibility">%1$s 您使 %2$s可看到未来的房间历史</string>
+    <string name="notice_made_future_room_visibility_by_you"> 您使%1$s可看到未来的房间历史</string>
+    <string name="notice_made_future_direct_room_visibility">%1$s 你使 %2$s看到未来的信息 </string>
+    <string name="notice_made_future_direct_room_visibility_by_you"> 你使 %1$s看到未来的信息 </string>
+    <string name="notice_room_visibility_invited"> 所有房间成员，从被邀请的那一刻起.</string>
+    <string name="notice_room_visibility_joined">所有房间成员，从加入的那一刻起.</string>
+    <string name="notice_room_visibility_shared">所有房间成员.</string>
+    <string name="notice_room_visibility_world_readable">任何人.</string>
+    <string name="notice_room_visibility_unknown">未知 (%s).</string>
+    <string name="notice_end_to_end">%1$s 开启端到端加密 (%2$s)</string>
+    <string name="notice_end_to_end_by_you"> 您已开启端到端加密 (%1$s)</string>
+    <string name="notice_room_update">%s 已升级此房间.</string>
+    <string name="notice_room_update_by_you"> 您已升级此房间.</string>
+    <string name="notice_direct_room_update">%s 已在此升级.</string>
+    <string name="notice_direct_room_update_by_you">您已在此升级.</string>
+    <string name="notice_room_server_acl_set_title">%s 您为此房间设置服务器ACL.</string>
+    <string name="notice_room_server_acl_set_title_by_you"> 您为此房间设置服务器ACL.</string>
+    <string name="notice_room_server_acl_set_banned">• 服务器匹配 %s 被禁止.</string>
+    <string name="notice_room_server_acl_set_allowed">• 服务器匹配 %s 被允许.</string>
+    <string name="notice_room_server_acl_set_ip_literals_allowed">• 允许服务器匹配IP文字.</string>
+    <string name="notice_room_server_acl_set_ip_literals_not_allowed">• 禁止服务器匹配IP文字.</string>
+
+
+    <string name="notice_room_server_acl_updated_title">%s 已更改此房间的服务器ACL.</string>
+    <string name="notice_room_server_acl_updated_title_by_you"> 您已更改此房间的服务器ACL.</string>
+    <string name="notice_room_server_acl_updated_banned">• 服务器匹配 %s 现已被禁止</string>
+    <string name="notice_room_server_acl_updated_was_banned">• 服务器匹配 %s 已从禁令名单中删除.</string>
+    <string name="notice_room_server_acl_updated_allowed">• 服务器匹配 %s 现已被允许.</string>
+    <string name="notice_room_server_acl_updated_was_allowed">• 服务器匹配 %s 已从允许列表中删除.</string>
+    <string name="notice_room_server_acl_updated_ip_literals_allowed">• 现已允许服务器匹配IP文字.</string>
+    <string name="notice_room_server_acl_updated_ip_literals_not_allowed">• 现已禁止服务器匹配IP文字.</string>
+    <string name="notice_room_server_acl_updated_no_change">无变化.</string>
+    <string name="notice_room_server_acl_allow_is_empty">🎉 禁止所有服务器参与！ 此房间已无法使用.</string>
+
+    <string name="notice_requested_voip_conference">%1$s 请求召开VoIP会议 </string>
+    <string name="notice_requested_voip_conference_by_you"> 您请求召开VoIP会议 </string>
+    <string name="notice_voip_started"> VoIP会议已开始 </string>
+    <string name="notice_voip_finished"> VoIP会议已结束</string>
+
+    <string name="notice_avatar_changed_too"> （头像也已更改）</string>
+    <string name="notice_room_name_removed">%1$s 已删除房间名称</string>
+    <string name="notice_room_name_removed_by_you">您已删除房间名称</string>
+    <string name="notice_room_topic_removed">%1$s 已删除房间主题</string>
+    <string name="notice_room_topic_removed_by_you">您已删除房间主题</string>
+    <string name="notice_room_avatar_removed">%1$s 已删除房间头像</string>
+    <string name="notice_room_avatar_removed_by_you">您已删除房间头像</string>
+    <string name="notice_event_redacted">信息已删除</string>
+    <string name="notice_event_redacted_by">信息已被%1$s删除</string>
+    <string name="notice_event_redacted_with_reason">信息已删除 [原因: %1$s]</string>
+    <string name="notice_event_redacted_by_with_reason">信息已被%1$s删除 [原因: %2$s]</string>
+    <string name="notice_profile_change_redacted">%1$已更新了个人资料 %2$s</string>
+    <string name="notice_profile_change_redacted_by_you">您已更新了个人资料 %1$s</string>
+    <string name="notice_room_third_party_invite">%1$ 邀请了 %2$s加入房间 </string>
+    <string name="notice_room_third_party_invite_by_you">您已邀请 %1$s加入房间</string>
+    <string name="notice_direct_room_third_party_invite">%1$s 邀请了%2$s</string>
+    <string name="notice_direct_room_third_party_invite_by_you"> 您邀请了 %1$s</string>
+    <string name="notice_room_third_party_revoked_invite"> %1$s 取消了 %2$s加入房间的邀请 </string>
+    <string name="notice_room_third_party_revoked_invite_by_you"> 您已取消 %1$s加入房间的邀请 </string>
+    <string name="notice_direct_room_third_party_revoked_invite">%1$s 取消了 %2$s 的邀请</string>
+    <string name="notice_direct_room_third_party_revoked_invite_by_you">您已取消 %1$s的邀请 </string>
+    <string name="notice_room_third_party_registered_invite"> %1$s 接受了 %2$s 的邀请</string>
+    <string name="notice_room_third_party_registered_invite_by_you"> 您接受了 %1$s 的邀请</string>
+
+    <string name="notice_widget_added">%1$s 已添加 %2$s 的小部件 </string>
+    <string name="notice_widget_added_by_you"> 您已添加 %1$s 的小部件</string>
+    <string name="notice_widget_removed">%1$s 已删除 %2$s 的小部件 </string>
+    <string name="notice_widget_removed_by_you"> 您已删除 %1$s 的小部件 </string>
+    <string name="notice_widget_modified">%1$s 已修改 %2$s 的小部件 </string>
+    <string name="notice_widget_modified_by_you"> 您已修改 %1$s 的小部件</string>
+
+    <string name="power_level_admin">管理员</string>
+    <string name="power_level_moderator">主持人</string>
+    <string name="power_level_default">预设</string>
+    <string name="power_level_custom">自订(%1$d)</string>
+    <string name="power_level_custom_no_value">自订</string>
+
+    <!-- parameter will be a comma separated list of values of notice_power_level_diff -->
+    <string name="notice_power_level_changed_by_you"> 您已更改 %1$s的能量等级.</string>
+    <!-- First parameter will be a userId or display name, second one will be a comma separated list of values of notice_power_level_diff -->
+    <string name="notice_power_level_changed"> %1$s 已更改 %2$s的能量等级.</string>
+    <!-- First parameter will be a userId or display name, the two last ones will be value of power_level_* -->
+    <string name="notice_power_level_diff">%1$s 从 %2$s 到 %3$s</string>
+
+    <string name="notice_crypto_unable_to_decrypt">** 无法解密: %s **</string>
+    <string name="notice_crypto_error_unkwown_inbound_session_id">发件人的设备尚未向我们发送此消息的密钥.</string>
+
+    <!-- Messages -->
+
+    <!-- Room Screen -->
+    <string name="could_not_redact"> 无法编辑 </string>
+    <string name="unable_to_send_message">无法发送信息</string>
+
+    <string name="message_failed_to_upload"> 无法上传图片 </string>
+
+    <!-- general errors -->
+    <string name="network_error">网络错误</string>
+    <string name="matrix_error">矩阵错误</string>
+
+    <!-- Home Screen -->
+
+    <!-- Last seen time -->
+
+    <!-- call events -->
+
+    <!-- room error messages -->
+    <string name="room_error_join_failed_empty_room">当前无法重新加入空房间.</string>
+
+    <string name="encrypted_message">加密的信息</string>
+
+    <!-- medium friendly name -->
+    <string name="medium_email">电子邮件地址</string>
+    <string name="medium_phone_number"> 电话号码 </string>
+
+    <!-- Room display name -->
+    <string name="room_displayname_invite_from">邀请来自 %s</string>
+    <string name="room_displayname_room_invite">房间邀请</string>
+
+    <!-- The 2 parameters will be members' name -->
+    <string name="room_displayname_two_members">%1$s 和 %2$s</string>
+    <!-- The 3 parameters will be members' name -->
+    <string name="room_displayname_3_members">%1$s, %2$s 和 %3$s</string>
+    <!-- The 4 parameters will be members' name -->
+    <string name="room_displayname_4_members">%1$s, %2$s, %3$s 和 %4$s</string>
+    <!-- The 3 first parameters will be members' name -->
     <plurals name="room_displayname_four_and_more_members">
-        <item quantity="other">%1$s, %2$s, %3$s 與 %4$d 個其他</item>
+        <item quantity="one">%1$s, %2$s, %3$s , %4$d 和其他 </item>
+        <item quantity="other">%1$s, %2$s, %3$s, %4$d 和其他 </item>
     </plurals>
-    <string name="room_displayname_4_members">%1$s, %2$s, %3$s 與 %4$s</string>
-    <string name="room_displayname_3_members">%1$s, %2$s 與 %3$s</string>
-    <string name="notice_room_server_acl_allow_is_empty">🎉 禁止所有伺服器參與！無法再使用此聊天室。</string>
-    <string name="notice_room_server_acl_updated_no_change">無變更。</string>
-    <string name="notice_room_server_acl_updated_ip_literals_not_allowed">• 禁止伺服器符合 IP 文字。</string>
-    <string name="notice_room_server_acl_updated_ip_literals_allowed">• 允許伺服器符合 IP 文字。</string>
-    <string name="notice_room_server_acl_updated_was_allowed">• 伺服器符合 %s 已從允許清單中移除。</string>
-    <string name="notice_room_server_acl_updated_allowed">• 允許伺服器符合 %s。</string>
-    <string name="notice_room_server_acl_updated_was_banned">• 伺服器符合 %s 已從禁止清單中移除。</string>
-    <string name="notice_room_server_acl_updated_banned">• 現在禁止伺服器符合 %s。</string>
-    <string name="notice_room_server_acl_updated_title_by_you">您為此聊天室變更了伺服器 ACL。</string>
-    <string name="notice_room_server_acl_updated_title">%s 為此聊天是變更了伺服器 ACL。</string>
-    <string name="notice_room_server_acl_set_ip_literals_not_allowed">• 禁止伺服器符合 IP 文字。</string>
-    <string name="notice_room_server_acl_set_ip_literals_allowed">• 允許伺服器符合 IP 文字。</string>
-    <string name="notice_room_server_acl_set_allowed">• 已允許伺服器符合 %s。</string>
-    <string name="notice_room_server_acl_set_banned">• 已禁止伺服器符合 %s。</string>
-    <string name="notice_room_server_acl_set_title_by_you">您為此聊天是設定了伺服器 ACL。</string>
-    <string name="notice_room_server_acl_set_title">%s 為此聊天是設定了伺服器 ACL。</string>
+    <plurals name="room_displayname_three_and_more_members">
+        <item quantity="one">%1$s 和1 和其他 </item>
+        <item quantity="other">%1$s 和 %2$d 和其他 </item>
+    </plurals>
+
+    <string name="room_displayname_empty_room"> 空房间 </string>
+    <string name="room_displayname_empty_room_was"> 空房间 (原为 %s)</string>
+
+    <string name="initial_sync_start_importing_account">初始同步：\正在导入帐户…</string>
+    <string name="initial_sync_start_importing_account_crypto">初始同步：\ 导入加密货币</string>
+    <string name="initial_sync_start_importing_account_rooms">初始同步：\ 导入房间</string>
+    <string name="initial_sync_start_importing_account_joined_rooms">初始同步：\ 导入已加入的房间</string>
+    <string name="initial_sync_start_importing_account_invited_rooms">初始同步：\ 导入邀请的房间</string>
+    <string name="initial_sync_start_importing_account_left_rooms">初始同步：\导入已退出的房间 </string>
+    <string name="initial_sync_start_importing_account_groups">初始同步：\ 导入社群 </string>
+    <string name="initial_sync_start_importing_account_data">初始同步：\ 导入帐户数据</string>
+
+    <string name="event_status_sending_message">正在传送信息…</string>
+    <string name="clear_timeline_send_queue"> 清除发送队列 </string>
+
+    <string name="notice_room_invite_no_invitee_with_reason">%1$s的邀请. 原因：%2$s</string>
+    <string name="notice_room_invite_no_invitee_with_reason_by_you">您的邀请。 原因: %1$s</string>
+    <string name="notice_room_invite_with_reason">%1$s 已邀请 %2$s. 原因: %3$s</string>
+    <string name="notice_room_invite_with_reason_by_you"> 您已邀请 %1$s. 原因: %2$s</string>
+    <string name="notice_room_invite_you_with_reason">%1$s 已邀请您. 原因: %2$s</string>
+    <string name="notice_room_join_with_reason">%1$s 已加入房间. 原因: %2$s</string>
+    <string name="notice_room_join_with_reason_by_you"> 您已加入房间. 原因: %1$s</string>
+    <string name="notice_direct_room_join_with_reason">%1$s 已加入. 原因: %2$s</string>
+    <string name="notice_direct_room_join_with_reason_by_you"> 您已加入. 原因: %1$s</string>
+    <string name="notice_room_leave_with_reason">%1$s 已推出房间. 原因: %2$s</string>
+    <string name="notice_room_leave_with_reason_by_you">您已推出房间. 原因: %1$s</string>
+    <string name="notice_direct_room_leave_with_reason">%1$s 已退出. 原因: %2$s</string>
+    <string name="notice_direct_room_leave_with_reason_by_you"> 您已退出. 原因: %1$s</string>
+    <string name="notice_room_reject_with_reason">%1$s 已拒绝邀请. 原因: %2$s</string>
+    <string name="notice_room_reject_with_reason_by_you"> 您已拒绝邀请. 原因: %1$s</string>
+    <string name="notice_room_kick_with_reason"> %1$s 已踢出 %2$s. 原因: %3$s</string>
+    <string name="notice_room_kick_with_reason_by_you"> 您已踢出 %1$s. 原因: %2$s</string>
+    <string name="notice_room_unban_with_reason">%1$s 已解除禁止%2$s. 原因: %3$s</string>
+    <string name="notice_room_unban_with_reason_by_you">您已解除禁止%1$s. 原因: %2$s</string>
+    <string name="notice_room_ban_with_reason">%1$s 已禁止 %2$s. 原因: %3$s</string>
+    <string name="notice_room_ban_with_reason_by_you"> 您已禁止 %1$s. 原因: %2$s</string>
+    <string name="notice_room_third_party_invite_with_reason">%1$s已向 %2$s 发送了邀请加入房间. 原因: %3$s</string>
+    <string name="notice_room_third_party_invite_with_reason_by_you"> 您已向 %1$s 发送了邀请加入房间. 原因: %2$s</string>
+    <string name="notice_room_third_party_revoked_invite_with_reason">%1$s 已取消邀请 %2$s 加入房间. 原因: %3$s</string>
+    <string name="notice_room_third_party_revoked_invite_with_reason_by_you"> 您已取消邀请 %1$s 加入房间. 原因: %2$s</string>
+    <string name="notice_room_third_party_registered_invite_with_reason">%1$s 已接受了 %2$s的邀请. 原因: %3$s</string>
+    <string name="notice_room_third_party_registered_invite_with_reason_by_you"> 您已接受了 %1$s的邀请. 原因: %2$s</string>
+    <string name="notice_room_withdraw_with_reason">%1$s withdrew %2$s\'s invitation. 原因: %3$s</string>
+    <string name="notice_room_withdraw_with_reason_by_you"> 您已推出 %1$s 的邀请. 原因: %2$s</string>
+
+    <plurals name="notice_room_aliases_added">
+        <item quantity="one">%1$s 已添加 %2$s 作为此房间的地址.</item>
+        <item quantity="other">%1$s 已添加 %2$s 作为此房间的地址.</item>
+    </plurals>
+
+    <plurals name="notice_room_aliases_added_by_you">
+        <item quantity="one"> 您已添加 %1$s 作为此房间的地址.</item>
+        <item quantity="other"> 您已添加 %1$s 作为此房间的地址.</item>
+    </plurals>
+
+    <plurals name="notice_room_aliases_removed">
+        <item quantity="one">%1$s 已移除 %2$s 作为此房间的地址.</item>
+        <item quantity="other">%1$s 已移除 %2$作为此房间的地址.</item>
+    </plurals>
+
+    <plurals name="notice_room_aliases_removed_by_you">
+        <item quantity="one"> 您已移除 %1$s 作为此房间的地址.</item>
+        <item quantity="other"> 您已移除 %1$s 作为此房间的地址.</item>
+    </plurals>
+
+    <string name="notice_room_aliases_added_and_removed">%1$s 已添加 %2$s 和移除 %3$s 作为此房间的地址.</string>
+    <string name="notice_room_aliases_added_and_removed_by_you"> 您已添加 %1$s 和移除 %2$s 作为此房间的地址.</string>
+
+    <string name="notice_room_canonical_alias_set">"%1$s 已将此房间的主要地址设置为 %2$s."</string>
+    <string name="notice_room_canonical_alias_set_by_you">"您已将此房间的主要地址设置为 %1$s."</string>
+    <string name="notice_room_canonical_alias_unset">"%1$s 已删除此房间的主要地址."</string>
+    <string name="notice_room_canonical_alias_unset_by_you">"您已删除此房间的主要地址."</string>
+
+    <plurals name="notice_room_canonical_alias_alternative_added">
+        <item quantity="one">%1$s 已添加此房间的备选地址 %2$s.</item>
+        <item quantity="other">%1$s 已添加此房间的备选地址 %2$s.</item>
+    </plurals>
+
+    <plurals name="notice_room_canonical_alias_alternative_added_by_you">
+        <item quantity="one">您为此房间添加了备选地址 %1$s.</item>
+        <item quantity="other"> 您为此房间添加了备选地址 %1$s.</item>
+    </plurals>
+
+    <plurals name="notice_room_canonical_alias_alternative_removed">
+        <item quantity="one">%1$s 已删除了此房间的备选地址 %2$s.</item>
+        <item quantity="other">%1$s 已删除了此房间的备选地址 %2$s.</item>
+    </plurals>
+
+    <plurals name="notice_room_canonical_alias_alternative_removed_by_you">
+        <item quantity="one">您已删除了此房间的备选地址 %1$s.</item>
+        <item quantity="other"> 您已删除了此房间的备选地址 %1$s.</item>
+    </plurals>
+
+    <string name="notice_room_canonical_alias_alternative_changed">%1$s 已更改此房间的备选地址.</string>
+    <string name="notice_room_canonical_alias_alternative_changed_by_you">您已更改此房间的备选地址.</string>
+    <string name="notice_room_canonical_alias_main_and_alternative_changed">%1$s 已更改此房间的主要和备选地址.</string>
+    <string name="notice_room_canonical_alias_main_and_alternative_changed_by_you">您已更改此房间的主要和备选地址.</string>
+    <string name="notice_room_canonical_alias_no_change">%1$s 已更改此房间的地址.</string>
+    <string name="notice_room_canonical_alias_no_change_by_you">您已更改此房间的地址.</string>
+
+    <string name="notice_room_guest_access_can_join">"%1$s 已允许客人加入房间."</string>
+    <string name="notice_room_guest_access_can_join_by_you">"您已允许客人加入房间."</string>
+    <string name="notice_direct_room_guest_access_can_join">"%1$s 已允许客人加入此房间."</string>
+    <string name="notice_direct_room_guest_access_can_join_by_you">"您已允许客人加入此房间."</string>
+    <string name="notice_room_guest_access_forbidden">"%1$s 已阻止客人进入房间."</string>
+    <string name="notice_room_guest_access_forbidden_by_you">"您已阻止客人进入房间."</string>
+    <string name="notice_direct_room_guest_access_forbidden">"%1$s 已阻止客人进入房间."</string>
+    <string name="notice_direct_room_guest_access_forbidden_by_you">"您已阻止客人进入房间."</string>
+
+    <string name="notice_end_to_end_ok">%1$s 已开启端到端加密.</string>
+    <string name="notice_end_to_end_ok_by_you"> 您已开启端到端加密.</string>
+    <string name="notice_end_to_end_unknown_algorithm">%1$s 已开启端到端加密（无法识别的算法 %2$s).</string>
+    <string name="notice_end_to_end_unknown_algorithm_by_you"> 您已开启端到端加密（无法识别的算法 %1$s).</string>
+
+    <string name="key_verification_request_fallback_message">%s 正在请求验证您的密钥，但您的客户端不支持聊天中密钥验证。 您将需要使用旧式密钥验证来验证密钥.</string>
 </resources>
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<resources>-->
+<!--    <string name="summary_message">%1$s：%2$s</string>-->
+<!--    <string name="summary_user_sent_image">%1$s 傳送了一張圖片。</string>-->
+<!--    <string name="notice_room_invite_no_invitee">%s 的邀請</string>-->
+<!--    <string name="notice_room_invite">%1$s 邀請了 %2$s</string>-->
+<!--    <string name="notice_room_invite_you">%1$s 邀請您</string>-->
+<!--    <string name="notice_room_join">%1$s 已加入聊天室</string>-->
+<!--    <string name="notice_room_leave">%1$s 已離開聊天室</string>-->
+<!--    <string name="notice_room_reject">%1$s 拒絕邀請</string>-->
+<!--    <string name="notice_room_kick">%1$s 踢出 %2$s</string>-->
+<!--    <string name="notice_room_unban">%1$s 解除禁止 %2$s</string>-->
+<!--    <string name="notice_room_ban">%1$s 禁止 %2$s</string>-->
+<!--    <string name="notice_room_withdraw">%1$s 收回了對 %2$s 的邀請</string>-->
+<!--    <string name="notice_avatar_url_changed">%1$s 變更了他們的大頭貼</string>-->
+<!--    <string name="notice_display_name_set">%1$s 設定了他們的顯示名稱為 %2$s</string>-->
+<!--    <string name="notice_display_name_changed_from">%1$s 變更了他們的顯示名稱從 %2$s 到 %3$s</string>-->
+<!--    <string name="notice_display_name_removed">%1$s 移除了他們的顯示名稱 (%2$s)</string>-->
+<!--    <string name="notice_room_topic_changed">%1$s 變更主題為：%2$s</string>-->
+<!--    <string name="notice_room_name_changed">%1$s 變更房間名稱為：%2$s</string>-->
+<!--    <string name="notice_placed_video_call">%s 撥出了視訊通話。</string>-->
+<!--    <string name="notice_placed_voice_call">%s 撥出了語音通話。</string>-->
+<!--    <string name="notice_answered_call">%s 回覆了通話。</string>-->
+<!--    <string name="notice_ended_call">%s 結束通話。</string>-->
+<!--    <string name="notice_made_future_room_visibility">%1$s 讓房間未來可讓 %2$s 看到歷史紀錄</string>-->
+<!--    <string name="notice_room_visibility_invited">所有的房間成員，從他們被邀請的時間開始。</string>-->
+<!--    <string name="notice_room_visibility_joined">所有的房間成員，從他們加入的時間開始。</string>-->
+<!--    <string name="notice_room_visibility_shared">所有的房間成員。</string>-->
+<!--    <string name="notice_room_visibility_world_readable">任何人。</string>-->
+<!--    <string name="notice_room_visibility_unknown">未知 (%s)。</string>-->
+<!--    <string name="notice_end_to_end">%1$s 開啟了端對端加密 (%2$s)</string>-->
+<!--    <string name="notice_requested_voip_conference">%1$s 請求了 VoIP 會議通話</string>-->
+<!--    <string name="notice_voip_started">VoIP 會議通話已開始</string>-->
+<!--    <string name="notice_voip_finished">VoIP 會議通話已結束</string>-->
+<!--    <string name="notice_avatar_changed_too">（大頭貼也變更了）</string>-->
+<!--    <string name="notice_room_name_removed">%1$s 移除了房間名稱</string>-->
+<!--    <string name="notice_room_topic_removed">%1$s 移除了房間主題</string>-->
+<!--    <string name="notice_profile_change_redacted">%1$s 更新了他們的基本資料 %2$s</string>-->
+<!--    <string name="notice_room_third_party_invite">%1$s 傳送加入房間的邀請給 %2$s</string>-->
+<!--    <string name="notice_room_third_party_registered_invite">%1$s 接受 %2$s 的邀請</string>-->
+<!--    <string name="notice_crypto_unable_to_decrypt">** 無法解密：%s **</string>-->
+<!--    <string name="notice_crypto_error_unkwown_inbound_session_id">傳送者的裝置並未在此訊息傳送他們的金鑰。</string>-->
+<!--    <string name="could_not_redact">無法編輯</string>-->
+<!--    <string name="unable_to_send_message">無法傳送訊息</string>-->
+<!--    <string name="message_failed_to_upload">上傳圖片失敗</string>-->
+<!--    <string name="network_error">網路錯誤</string>-->
+<!--    <string name="matrix_error">Matrix 錯誤</string>-->
+<!--    <string name="room_error_join_failed_empty_room">目前無法重新加入空房間。</string>-->
+<!--    <string name="encrypted_message">已加密的訊息</string>-->
+<!--    <string name="medium_email">電子郵件</string>-->
+<!--    <string name="medium_phone_number">電話號碼</string>-->
+<!--    <string name="summary_user_sent_sticker">%1$s 傳送了一張貼圖。</string>-->
+<!--    <string name="room_displayname_invite_from">來自%s 的邀請</string>-->
+<!--    <string name="room_displayname_room_invite">聊天室邀請</string>-->
+<!--    <string name="room_displayname_two_members">%1$s 和 %2$s</string>-->
+<!--    <string name="room_displayname_empty_room">空聊天室</string>-->
+<!--    <plurals name="room_displayname_three_and_more_members">-->
+<!--        <item quantity="other">%1$s 和 和其他 %2$d 個人</item>-->
+<!--    </plurals>-->
+<!--    <string name="notice_event_redacted">訊息已移除</string>-->
+<!--    <string name="notice_event_redacted_by">訊息已被 %1$s 移除</string>-->
+<!--    <string name="notice_event_redacted_with_reason">訊息已移除 [理由：%1$s]</string>-->
+<!--    <string name="notice_event_redacted_by_with_reason">訊息已被 %1$s 移除 [理由：%2$s]</string>-->
+<!--    <string name="initial_sync_start_importing_account">初始化同步：-->
+<!--\n正在匯入帳號……</string>-->
+<!--    <string name="initial_sync_start_importing_account_crypto">初始化同步：-->
+<!--\n正在匯入 crypto</string>-->
+<!--    <string name="initial_sync_start_importing_account_rooms">初始化同步：-->
+<!--\n正在匯入聊天室</string>-->
+<!--    <string name="initial_sync_start_importing_account_joined_rooms">初始化同步：-->
+<!--\n正在匯入已加入的聊天室</string>-->
+<!--    <string name="initial_sync_start_importing_account_invited_rooms">初始化同步：-->
+<!--\n正在匯入已邀請的聊天室</string>-->
+<!--    <string name="initial_sync_start_importing_account_left_rooms">初始化同步：-->
+<!--\n正在匯入已離開的聊天室</string>-->
+<!--    <string name="initial_sync_start_importing_account_groups">初始化同步：-->
+<!--\n正在匯入社群</string>-->
+<!--    <string name="initial_sync_start_importing_account_data">初始化同步：-->
+<!--\n正在匯入帳號資料</string>-->
+<!--    <string name="notice_room_update">%s 已升級此聊天室。</string>-->
+<!--    <string name="event_status_sending_message">正在傳送訊息……</string>-->
+<!--    <string name="clear_timeline_send_queue">清除傳送佇列</string>-->
+<!--    <string name="notice_room_third_party_revoked_invite">%1$s 撤銷了 %2$s 加入聊天室的邀請</string>-->
+<!--    <string name="notice_room_invite_no_invitee_with_reason">%1$s 的邀請。理由：%2$s</string>-->
+<!--    <string name="notice_room_invite_with_reason">%1$s 邀請了 %2$s。理由：%3$s</string>-->
+<!--    <string name="notice_room_invite_you_with_reason">%1$s 邀請了您。理由：%2$s</string>-->
+<!--    <string name="notice_room_join_with_reason">%1$s 已加入聊天室。理由：%2$s</string>-->
+<!--    <string name="notice_room_leave_with_reason">%1$s 已離開聊天室。理由：%2$s</string>-->
+<!--    <string name="notice_room_reject_with_reason">%1$s 已回絕邀請。理由：%2$s</string>-->
+<!--    <string name="notice_room_kick_with_reason">%1$s 踢走了 %2$s。理由：%3$s</string>-->
+<!--    <string name="notice_room_unban_with_reason">%1$s 取消封鎖了 %2$s。理由：%3$s</string>-->
+<!--    <string name="notice_room_ban_with_reason">%1$s 封鎖了 %2$s。理由：%3$s</string>-->
+<!--    <string name="notice_room_third_party_invite_with_reason">%1$s 已傳送邀請給 %2$s 來加入聊天室。理由：%3$s</string>-->
+<!--    <string name="notice_room_third_party_revoked_invite_with_reason">%1$s 撤銷了 %2$s 加入聊天室的邀請。理由：%3$s</string>-->
+<!--    <string name="notice_room_third_party_registered_invite_with_reason">%1$s 接受 %2$s 的邀請。理由：%3$s</string>-->
+<!--    <string name="notice_room_withdraw_with_reason">%1$s 撤回了對 %2$s 的邀請。理由：%3$s</string>-->
+<!--    <plurals name="notice_room_aliases_added">-->
+<!--        <item quantity="other">%1$s 新增了 %2$s 為此聊天室的地址。</item>-->
+<!--    </plurals>-->
+<!--    <plurals name="notice_room_aliases_removed">-->
+<!--        <item quantity="other">%1$s 移除了此聊天室的 %3$s 地址。</item>-->
+<!--    </plurals>-->
+<!--    <string name="notice_room_aliases_added_and_removed">%1$s 為此聊天室新增 %2$s 並移除 %3$s 地址。</string>-->
+<!--    <string name="notice_room_canonical_alias_set">%1$s 為此聊天室設定了 %2$s 為主地址。</string>-->
+<!--    <string name="notice_room_canonical_alias_unset">%1$s 為此聊天室移除了主要地址。</string>-->
+<!--    <string name="notice_room_guest_access_can_join">%1$s 已允許訪客加入聊天室。</string>-->
+<!--    <string name="notice_room_guest_access_forbidden">%1$s 已禁止訪客加入聊天室。</string>-->
+<!--    <string name="notice_end_to_end_ok">%1$s 已開啟端到端加密。</string>-->
+<!--    <string name="notice_end_to_end_unknown_algorithm">%1$s 已開啟端到端加密（無法識別的演算法 %2$s）。</string>-->
+<!--    <string name="key_verification_request_fallback_message">%s 正在請求驗證您的金鑰，但您的客戶端不支援聊天中金鑰驗證。您將必須使用舊版的金鑰驗證來驗證金鑰。</string>-->
+<!--    <string name="notice_room_created">%1$s 建立了聊天室</string>-->
+<!--    <string name="summary_you_sent_image">您傳送了圖片。</string>-->
+<!--    <string name="summary_you_sent_sticker">您傳送了貼圖。</string>-->
+<!--    <string name="notice_room_invite_no_invitee_by_you">您的邀請</string>-->
+<!--    <string name="notice_room_created_by_you">您建立了聊天室</string>-->
+<!--    <string name="notice_room_invite_by_you">您邀請了 %1$s</string>-->
+<!--    <string name="notice_room_join_by_you">您加入了聊天室</string>-->
+<!--    <string name="notice_room_leave_by_you">您離開的聊天室</string>-->
+<!--    <string name="notice_room_reject_by_you">您回絕了邀請</string>-->
+<!--    <string name="notice_room_kick_by_you">您踢除了 %1$s</string>-->
+<!--    <string name="notice_room_unban_by_you">您取消封鎖了 %1$s</string>-->
+<!--    <string name="notice_room_ban_by_you">您封鎖了 %1$s</string>-->
+<!--    <string name="notice_room_withdraw_by_you">您撤銷了 %1$s 的邀請</string>-->
+<!--    <string name="notice_avatar_url_changed_by_you">您變更了您的大頭貼</string>-->
+<!--    <string name="notice_display_name_set_by_you">您將您的顯示名稱設定為 %1$s</string>-->
+<!--    <string name="notice_display_name_changed_from_by_you">您將您的顯示名稱從 %1$s 變更為 %2$s</string>-->
+<!--    <string name="notice_display_name_removed_by_you">您移除了您的顯示名稱（其曾為 %1$s）</string>-->
+<!--    <string name="notice_room_topic_changed_by_you">您將主題變更為：%1$s</string>-->
+<!--    <string name="notice_room_avatar_changed">%1$s 變更了聊天室大頭貼</string>-->
+<!--    <string name="notice_room_avatar_changed_by_you">您變更了聊天室大頭貼</string>-->
+<!--    <string name="notice_room_name_changed_by_you">您將聊天室名稱變更為：%1$s</string>-->
+<!--    <string name="notice_placed_video_call_by_you">您發起了視訊通話。</string>-->
+<!--    <string name="notice_placed_voice_call_by_you">您發起了音訊通話。</string>-->
+<!--    <string name="notice_call_candidates">%s 傳送了資料以建立通話。</string>-->
+<!--    <string name="notice_call_candidates_by_you">您傳送了資料以建立通話。</string>-->
+<!--    <string name="notice_answered_call_by_you">您接了通話。</string>-->
+<!--    <string name="notice_ended_call_by_you">您結束了通話。</string>-->
+<!--    <string name="notice_made_future_room_visibility_by_you">您已將未來的聊天室歷史設定為對 %1$s 可見</string>-->
+<!--    <string name="notice_end_to_end_by_you">您開啟了端到端加密 (%1$s)</string>-->
+<!--    <string name="notice_room_update_by_you">您升級了此聊天室。</string>-->
+<!--    <string name="notice_requested_voip_conference_by_you">您請求了 VoIP 會議</string>-->
+<!--    <string name="notice_room_name_removed_by_you">您移除了聊天室名稱</string>-->
+<!--    <string name="notice_room_topic_removed_by_you">您移除了聊天室主題</string>-->
+<!--    <string name="notice_room_avatar_removed">%1$s 移除了聊天室大頭貼</string>-->
+<!--    <string name="notice_room_avatar_removed_by_you">您移除了聊天室大頭貼</string>-->
+<!--    <string name="notice_profile_change_redacted_by_you">您更新了您的個人檔案 %1$s</string>-->
+<!--    <string name="notice_room_third_party_invite_by_you">您傳送了邀請給 %1$s 以加入聊天室</string>-->
+<!--    <string name="notice_room_third_party_revoked_invite_by_you">您已撤銷對 %1$s 加入聊天室的邀請</string>-->
+<!--    <string name="notice_room_third_party_registered_invite_by_you">您接受了 %1$s 的邀請</string>-->
+<!--    <string name="notice_widget_added">%1$s 新增了 %2$s 小工具</string>-->
+<!--    <string name="notice_widget_added_by_you">您新增了 %1$s 小工具</string>-->
+<!--    <string name="notice_widget_removed">%1$s 移除了 %2$s 小工具</string>-->
+<!--    <string name="notice_widget_removed_by_you">您移除了 %1$s 小工具</string>-->
+<!--    <string name="notice_widget_modified">%1$s 修改了 %2$s 小工具</string>-->
+<!--    <string name="notice_widget_modified_by_you">您修改了 %1$s 小工具</string>-->
+<!--    <string name="power_level_admin">管理員</string>-->
+<!--    <string name="power_level_moderator">板主</string>-->
+<!--    <string name="power_level_default">預設</string>-->
+<!--    <string name="power_level_custom">自訂 (%1$d)</string>-->
+<!--    <string name="power_level_custom_no_value">自訂</string>-->
+<!--    <string name="notice_power_level_changed_by_you">您變更了 %1$s 的權力等級。</string>-->
+<!--    <string name="notice_power_level_changed">%1$s 變更了 %2$s 的權力等級。</string>-->
+<!--    <string name="notice_power_level_diff">%1$s 從 %2$s 到 %3$s</string>-->
+<!--    <string name="notice_room_invite_no_invitee_with_reason_by_you">您的邀請。理由：%1$s</string>-->
+<!--    <string name="notice_room_invite_with_reason_by_you">您邀請了 %1$s。理由：%2$s</string>-->
+<!--    <string name="notice_room_join_with_reason_by_you">您加入了聊天室。理由：%1$s</string>-->
+<!--    <string name="notice_room_leave_with_reason_by_you">您離開了聊天室。理由：%1$s</string>-->
+<!--    <string name="notice_room_reject_with_reason_by_you">您回絕了邀請。理由：%1$s</string>-->
+<!--    <string name="notice_room_kick_with_reason_by_you">您踢除了 %1$s。理由：%2$s</string>-->
+<!--    <string name="notice_room_unban_with_reason_by_you">您取消封鎖了 %1$s。理由：%2$s</string>-->
+<!--    <string name="notice_room_ban_with_reason_by_you">您封鎖了 %1$s。理由：%2$s</string>-->
+<!--    <string name="notice_room_third_party_invite_with_reason_by_you">您傳甕了邀請給 %1$s 以加入聊天室。理由：%2$s</string>-->
+<!--    <string name="notice_room_third_party_revoked_invite_with_reason_by_you">您撤銷了 %1$s 加入聊天室的邀請。理由：%2$s</string>-->
+<!--    <string name="notice_room_third_party_registered_invite_with_reason_by_you">您接受了 %1$s 的邀請。理由：%2$s</string>-->
+<!--    <string name="notice_room_withdraw_with_reason_by_you">您撤回了 %1$s 的邀請。理由：%2$s</string>-->
+<!--    <plurals name="notice_room_aliases_added_by_you">-->
+<!--        <item quantity="other">您為此聊天室新增了 %1$s 作為地址。</item>-->
+<!--    </plurals>-->
+<!--    <plurals name="notice_room_aliases_removed_by_you">-->
+<!--        <item quantity="other">您為此聊天室移除了 %1$s 作為地址。</item>-->
+<!--    </plurals>-->
+<!--    <string name="notice_room_aliases_added_and_removed_by_you">您為此聊天室新增了 %1$s 並移除了 %2$s 作為地址。</string>-->
+<!--    <string name="notice_room_canonical_alias_set_by_you">您將此聊天室的主要地址設定為 %1$s。</string>-->
+<!--    <string name="notice_room_canonical_alias_unset_by_you">您將此聊天室的主要地址移除。</string>-->
+<!--    <string name="notice_room_guest_access_can_join_by_you">您已允許訪客加入聊天室。</string>-->
+<!--    <string name="notice_room_guest_access_forbidden_by_you">您已阻止訪客加入聊天室。</string>-->
+<!--    <string name="notice_end_to_end_ok_by_you">您開啟了端到端加密。</string>-->
+<!--    <string name="notice_end_to_end_unknown_algorithm_by_you">您開啟了端到端加密（無法識別的演算法 %1$s）。</string>-->
+<!--    <string name="notice_direct_room_guest_access_forbidden_by_you">您已避免訪客加入此聊天室。</string>-->
+<!--    <string name="notice_direct_room_guest_access_forbidden">%1$s 已避免訪客加入此聊天室。</string>-->
+<!--    <string name="notice_direct_room_guest_access_can_join_by_you">您已允許訪客加入這裡。</string>-->
+<!--    <string name="notice_direct_room_guest_access_can_join">%1$s 已允許訪客加入這裡。</string>-->
+<!--    <string name="notice_direct_room_leave_with_reason_by_you">您已離開。理由：%1$s</string>-->
+<!--    <string name="notice_direct_room_leave_with_reason">%1$s 已離開。理由：%2$s</string>-->
+<!--    <string name="notice_direct_room_join_with_reason_by_you">您已加入。理由：%1$s</string>-->
+<!--    <string name="notice_direct_room_join_with_reason">%1$s 已加入。理由：%2$s</string>-->
+<!--    <string name="notice_direct_room_third_party_revoked_invite_by_you">您已撤銷對 %1$s 的邀請</string>-->
+<!--    <string name="notice_direct_room_third_party_revoked_invite">%1$s 已撤銷對 %2$s 的邀請</string>-->
+<!--    <string name="notice_direct_room_third_party_invite_by_you">您已邀請了 %1$s</string>-->
+<!--    <string name="notice_direct_room_third_party_invite">%1$s 邀請了 %2$s</string>-->
+<!--    <string name="notice_direct_room_update_by_you">您已在此升級。</string>-->
+<!--    <string name="notice_direct_room_update">%s 已在此升級。</string>-->
+<!--    <string name="notice_made_future_direct_room_visibility_by_you">您讓未來的訊息對 %1$s 可見</string>-->
+<!--    <string name="notice_made_future_direct_room_visibility">%1$s 已讓未來的訊息對 %2$s 可見</string>-->
+<!--    <string name="notice_direct_room_leave_by_you">您已離開聊天室</string>-->
+<!--    <string name="notice_direct_room_leave">%1$s 已離開聊天室</string>-->
+<!--    <string name="notice_direct_room_join_by_you">您已加入</string>-->
+<!--    <string name="notice_direct_room_join">%1$s 已加入</string>-->
+<!--    <string name="notice_direct_room_created_by_you">您已建立此討論</string>-->
+<!--    <string name="notice_direct_room_created">%1$s 已建立此討論</string>-->
+<!--    <string name="room_displayname_empty_room_was">空的聊天室（曾為 %s）</string>-->
+<!--    <plurals name="room_displayname_four_and_more_members">-->
+<!--        <item quantity="other">%1$s, %2$s, %3$s 與 %4$d 個其他</item>-->
+<!--    </plurals>-->
+<!--    <string name="room_displayname_4_members">%1$s, %2$s, %3$s 與 %4$s</string>-->
+<!--    <string name="room_displayname_3_members">%1$s, %2$s 與 %3$s</string>-->
+<!--    <string name="notice_room_server_acl_allow_is_empty">🎉 禁止所有伺服器參與！無法再使用此聊天室。</string>-->
+<!--    <string name="notice_room_server_acl_updated_no_change">無變更。</string>-->
+<!--    <string name="notice_room_server_acl_updated_ip_literals_not_allowed">• 禁止伺服器符合 IP 文字。</string>-->
+<!--    <string name="notice_room_server_acl_updated_ip_literals_allowed">• 允許伺服器符合 IP 文字。</string>-->
+<!--    <string name="notice_room_server_acl_updated_was_allowed">• 伺服器符合 %s 已從允許清單中移除。</string>-->
+<!--    <string name="notice_room_server_acl_updated_allowed">• 允許伺服器符合 %s。</string>-->
+<!--    <string name="notice_room_server_acl_updated_was_banned">• 伺服器符合 %s 已從禁止清單中移除。</string>-->
+<!--    <string name="notice_room_server_acl_updated_banned">• 現在禁止伺服器符合 %s。</string>-->
+<!--    <string name="notice_room_server_acl_updated_title_by_you">您為此聊天室變更了伺服器 ACL。</string>-->
+<!--    <string name="notice_room_server_acl_updated_title">%s 為此聊天是變更了伺服器 ACL。</string>-->
+<!--    <string name="notice_room_server_acl_set_ip_literals_not_allowed">• 禁止伺服器符合 IP 文字。</string>-->
+<!--    <string name="notice_room_server_acl_set_ip_literals_allowed">• 允許伺服器符合 IP 文字。</string>-->
+<!--    <string name="notice_room_server_acl_set_allowed">• 已允許伺服器符合 %s。</string>-->
+<!--    <string name="notice_room_server_acl_set_banned">• 已禁止伺服器符合 %s。</string>-->
+<!--    <string name="notice_room_server_acl_set_title_by_you">您為此聊天是設定了伺服器 ACL。</string>-->
+<!--    <string name="notice_room_server_acl_set_title">%s 為此聊天是設定了伺服器 ACL。</string>-->
+<!--</resources>-->
