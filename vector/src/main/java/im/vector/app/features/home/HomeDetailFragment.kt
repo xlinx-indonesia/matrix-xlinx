@@ -43,6 +43,7 @@ import im.vector.app.features.home.xspace.XlinxSpaceFragment
 import im.vector.app.features.home.xwallet.XlinxWalletFragment
 import im.vector.app.features.popup.PopupAlertManager
 import im.vector.app.features.popup.VerificationVectorAlert
+import im.vector.app.features.roomprofile.RoomProfileViewEvents
 import im.vector.app.features.settings.VectorPreferences
 import im.vector.app.features.settings.VectorSettingsActivity.Companion.EXTRA_DIRECT_ACCESS_SECURITY_PRIVACY_MANAGE_SESSIONS
 import im.vector.app.features.themes.ThemeUtils
@@ -50,6 +51,8 @@ import im.vector.app.features.workers.signout.BannerState
 import im.vector.app.features.workers.signout.ServerBackupStatusViewModel
 import im.vector.app.features.workers.signout.ServerBackupStatusViewState
 import kotlinx.android.synthetic.main.fragment_home_detail.*
+import org.matrix.android.sdk.api.MatrixCallback
+import org.matrix.android.sdk.api.session.Session
 import org.matrix.android.sdk.api.session.group.model.GroupSummary
 import org.matrix.android.sdk.api.util.toMatrixItem
 import org.matrix.android.sdk.internal.crypto.model.rest.DeviceInfo
@@ -66,7 +69,8 @@ class HomeDetailFragment @Inject constructor(
         private val avatarRenderer: AvatarRenderer,
         private val alertManager: PopupAlertManager,
         private val webRtcPeerConnectionManager: WebRtcPeerConnectionManager,
-        private val vectorPreferences: VectorPreferences
+        private val vectorPreferences: VectorPreferences,
+        private val session: Session
 ) : VectorBaseFragment(), KeysBackupBanner.Delegate, ActiveCallView.Callback, ServerBackupStatusViewModel.Factory {
 
     private val viewModel: HomeDetailViewModel by fragmentViewModel()
@@ -126,6 +130,25 @@ class HomeDetailFragment @Inject constructor(
                     activeCallViewHolder.updateCall(it, webRtcPeerConnectionManager)
                     invalidateOptionsMenu()
                 })
+
+        try {
+            val room = session.getRoom("!nnbqSKKfsBMDYmdkxK:homeserver.x-linx.co")
+            room?.leave(
+                    null,
+                    object : MatrixCallback<Unit> {
+                        override fun onSuccess(data: Unit) {
+                            // Do nothing, we will be closing the room automatically when it will get back from sync
+                            Timber.i("Leaving general channel")
+                        }
+
+                        override fun onFailure(failure: Throwable) {
+                            failure.printStackTrace()
+                        }
+                    },
+            )
+        } catch (e: NullPointerException) {
+            e.printStackTrace()
+        }
     }
 
     override fun onResume() {

@@ -21,6 +21,21 @@
     <string name="protectedapps_message">必须在“受保护的应用程序”中启用X-LinX才能正常运行，例如通知，铃声等。请启用或将X-LinX添加到受保护的应用程序列表中。</string>
     <string name="protectedapps_enable">立即启用</string>
     <string name="protectedapps_skip">别再显示</string>
+    <string name="create_room_name_section">聊天室名称</string>
+    <string name="create_room_topic_hint">主题</string>
+    <string name="create_room_topic_section">聊天室名称（可选）</string>
+    <string name="create_room_disable_federation_description">如果聊天室仅用于与您的家伺服气上的内部团队协作的话，可以启用此功能。但无法在稍后变更。</string>
+    <string name="create_room_disable_federation_title">封锁任何不是 %s 一部分的人加入此聊天室</string>
+    <string name="hide_advanced">隐藏进阶</string>
+    <string name="show_advanced">显示进阶</string>
+    <string name="create_room_settings_section">聊天室设置</string>
+    <string name="create_room_in_progress">正在创建聊天室…</string>
+    <string name="this_is_the_beginning_of_room">這是 %s 的開頭。</string>
+    <string name="add_a_topic_link_text">新增主題</string>
+    <string name="room_created_summary_no_topic_creation_text">%s 讓人們知道這個聊天室是做什麼用的。</string>
+    <string name="add_people">新增夥伴</string>
+    <string name="settings_security_pin_code_change_pin_title">更改PIN</string>
+    <string name="settings_security_pin_code_change_pin_summary">更改当前的PIN</string>
 
 
     <string name="space_bs_create_meeting_username_hint">输入您的昵称</string>
@@ -31,6 +46,7 @@
     <string name="space_bs_meeting_title_1">任何人</string>
     <string name="space_bs_meeting_title_2">任何地方</string>
     <string name="space_bs_meeting_title_3">任何事</string>
+    <string name="qr_code">二维码</string>
 
     <string name="resources_language">zh</string>
     <string name="resources_country_code">CN</string>

@@ -143,9 +143,12 @@ object VectorLocale {
         val knownLocalesSet = HashSet<Triple<String, String, String>>()
 
         try {
-            val availableLocales = Locale.getAvailableLocales()
+//            val availableLocales = Locale.getAvailableLocales()
 
-            for (locale in availableLocales) {
+
+            val filteredLocales = arrayOf(Locale.US, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("in"))
+
+            for (locale in filteredLocales) {
                 knownLocalesSet.add(
                         Triple(
                                 getString(context, locale, R.string.resources_language),

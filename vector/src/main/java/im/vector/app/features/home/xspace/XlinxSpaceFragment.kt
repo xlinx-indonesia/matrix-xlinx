@@ -17,33 +17,28 @@
 package im.vector.app.features.home.xspace
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
-import androidx.core.view.isVisible
 import butterknife.OnClick
 import com.jakewharton.rxbinding3.widget.textChanges
 import im.vector.app.R
 import im.vector.app.core.epoxy.LayoutManagerStateRestorer
 import im.vector.app.core.platform.OnBackPressed
 import im.vector.app.core.platform.VectorBaseFragment
-import im.vector.app.core.utils.ensureProtocol
-import im.vector.app.features.call.conference.VectorJitsiActivity
 import im.vector.app.features.home.RoomListDisplayMode
 import im.vector.app.features.home.room.list.widget.NotifsFabMenuView
+import im.vector.app.features.home.xspace.conference.SpaceMainActivity
 import im.vector.app.features.home.xspace.conference.XlinxSpaceActivity
-import im.vector.app.features.login.LoginAction
 import im.vector.app.features.notifications.NotificationDrawerManager
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.synthetic.main.fragment_login_server_url_form.*
 import kotlinx.android.synthetic.main.fragment_room_list.*
 import kotlinx.android.synthetic.main.xlinx_space_main_fragment.*
-import org.jitsi.meet.sdk.JitsiMeetUserInfo
 import org.matrix.android.sdk.api.session.Session
 import org.matrix.android.sdk.api.util.toMatrixItem
-import java.net.URL
 import javax.inject.Inject
 
 @Parcelize
@@ -137,7 +132,11 @@ class XlinxSpaceFragment @Inject constructor(
             }
             else                -> {
                 createMeetingButton.isEnabled = true
-                requireContext().startActivity(XlinxSpaceActivity.newIntent(requireContext(), roomId = configRoomname, nickName = configUsername, enableVideo = true))
+                val activityIntent = Intent(requireContext(), SpaceMainActivity::class.java)
+                activityIntent.putExtra(SpaceMainActivity.USERNAME_EXTRA, configUsername)
+                activityIntent.putExtra(SpaceMainActivity.CHANNEL_EXTRA, configRoomname)
+                startActivity(activityIntent)
+//                requireContext().startActivity(XlinxSpaceActivity.newIntent(requireContext(), roomId = configRoomname, nickName = configUsername, enableVideo = true))
             }
         }
     }

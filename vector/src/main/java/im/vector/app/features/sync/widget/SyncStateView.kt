@@ -47,7 +47,7 @@ class SyncStateView @JvmOverloads constructor(context: Context, attrs: Attribute
             syncStateNoNetworkAirplane.isVisible = isAirplaneModeOn
         } else if (newState == SyncState.RestoreSlow) {
             syncStateNoNetwork.isVisible = true
-            syncStateNoNetwork.text = "Restoring messages ..."
+            syncStateNoNetwork.text = context.getString(R.string.keys_backup_restoring_waiting_message)
 //            syncStateNoNetwork.setBackgroundColor(context.getColor(R.color.notification_accent_color))
         } else if (newState == SyncState.RestoreFail) {
             syncStateNoNetwork.isVisible = true

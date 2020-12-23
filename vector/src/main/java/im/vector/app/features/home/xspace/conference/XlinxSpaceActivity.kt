@@ -25,9 +25,7 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
-import com.airbnb.mvrx.Fail
 import com.airbnb.mvrx.MvRx
-import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.viewModel
 import com.facebook.react.modules.core.PermissionListener
 import im.vector.app.R
@@ -35,9 +33,11 @@ import im.vector.app.core.di.ScreenComponent
 import im.vector.app.core.platform.VectorBaseActivity
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_jitsi.*
+import org.jitsi.meet.sdk.ConnectionService
 import org.jitsi.meet.sdk.JitsiMeetActivityDelegate
 import org.jitsi.meet.sdk.JitsiMeetActivityInterface
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions
+import org.jitsi.meet.sdk.JitsiMeetOngoingConferenceService
 import org.jitsi.meet.sdk.JitsiMeetView
 import org.jitsi.meet.sdk.JitsiMeetViewListener
 import org.matrix.android.sdk.api.extensions.tryOrNull
@@ -151,6 +151,7 @@ class XlinxSpaceActivity : VectorBaseActivity(), JitsiMeetActivityInterface, Jit
     }
 
     override fun onConferenceTerminated(p0: MutableMap<String, Any>?) {
+        JitsiMeetActivityDelegate.onHostDestroy(this)
         finish()
     }
 

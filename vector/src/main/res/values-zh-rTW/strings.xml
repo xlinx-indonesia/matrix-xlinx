@@ -13,6 +13,9 @@
     <string name="space_bs_meeting_title_2">任何地方</string>
     <string name="space_bs_meeting_title_3">任何事</string>
 
+    <string name="settings_security_pin_code_change_pin_title">更改PIN</string>
+    <string name="settings_security_pin_code_change_pin_summary">更改当前的PIN</string>
+
     <string name="protectedapps_headline">附加权限</string>
     <string name="protectedapps_message">必须在“受保护的应用程序”中启用X-LinX才能正常运行，例如通知，铃声等。请启用或将X-LinX添加到受保护的应用程序列表中。</string>
     <string name="protectedapps_enable">立即启用</string>
@@ -2220,7 +2223,7 @@
     <string name="direct_room_user_list_contacts_title">聯絡人</string>
     <string name="direct_room_user_list_known_title">已知的使用者</string>
     <string name="direct_room_user_list_recent_title">最近</string>
-    <string name="qr_code">QR code</string>
+    <string name="qr_code">二维码</string>
     <string name="add_by_qr_code">透過 QR code 新增</string>
     <string name="user_directory_search_hint">名称或编号搜索</string>
     <string name="permissions_denied_add_contact">允許存取您聯絡人的權限。</string>
