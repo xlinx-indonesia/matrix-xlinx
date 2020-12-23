@@ -101,6 +101,12 @@ class LoginGenericTextInputFormFragment @Inject constructor() : AbstractLoginFra
                 loginGenericTextInputFormTextInput.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                 loginGenericTextInputFormOtherButton.isVisible = false
                 loginGenericTextInputFormSubmit.text = getString(R.string.login_set_email_submit)
+
+                loginGenericTextInputFormTitle.text = getString(R.string.emailstep_title)
+                loginGenericTextInputFormNotice.text = getString(R.string.emailstep_description)
+                loginGenericTextInputFormNotice2.isVisible = false
+                loginGenericTextInputFormTil.isVisible = false
+                loginGenericTextInputFormOtherButton.isVisible = false
             }
             TextInputFormFragmentMode.SetMsisdn     -> {
                 loginGenericTextInputFormTitle.text = getString(R.string.login_set_msisdn_title)

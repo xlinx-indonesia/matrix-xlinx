@@ -16,12 +16,14 @@
 
 package im.vector.app.features.settings
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Parcelable
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
@@ -287,11 +289,14 @@ class VectorSettingsNotificationPreferenceFragment @Inject constructor(
         }
     }
 
+    @SuppressLint("LogNotTimber")
     private fun updateEnabledForDevice(preference: Preference?) {
         val switchPref = preference as SwitchPreference
         if (switchPref.isChecked) {
             FcmHelper.getFcmToken(requireContext())?.let {
                 pushManager.registerPusherWithFcmKey(it)
+
+                Log.i("sygnal", it)
             }
         } else {
             FcmHelper.getFcmToken(requireContext())?.let {

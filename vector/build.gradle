@@ -202,7 +202,7 @@ android {
 
     buildTypes {
         debug {
-            applicationIdSuffix ".debug"
+//            applicationIdSuffix ".debug"
             resValue "string", "app_name", "X-LinX (dev)"
 
             resValue "bool", "debug_mode", "true"

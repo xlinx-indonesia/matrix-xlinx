@@ -18,6 +18,10 @@
     <string name="protectedapps_enable">Enable Now</string>
     <string name="protectedapps_skip">Do not show again</string>
 
+    <string name="emailstep_title">Welcome to X-LinX !</string>
+    <string name="emailstep_description">Simple. Fast. Secure</string>
+
+
 
     <string name="space_bs_create_meeting_username_hint">Enter your nickname</string>
     <string name="space_bs_create_meeting_room_hint">Enter group name</string>

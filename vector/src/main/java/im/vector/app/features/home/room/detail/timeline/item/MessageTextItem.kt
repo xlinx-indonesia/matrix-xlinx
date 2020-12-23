@@ -87,11 +87,11 @@ abstract class MessageTextItem : AbsMessageItem<MessageTextItem.Holder>() {
         holder.messageView.setOnLongClickListener(attributes.itemLongClickListener)
         holder.messageView.setTextFuture(textFuture)
 
-        if (attributes.informationData.sentByMe) {
-            holder.messageView.apply {
-                textAlignment = View.TEXT_ALIGNMENT_VIEW_END
-            }
-        }
+//        if (attributes.informationData.sentByMe) {
+//            holder.messageView.apply {
+//                textAlignment = View.TEXT_ALIGNMENT_VIEW_END
+//            }
+//        }
     }
 
     override fun unbind(holder: Holder) {

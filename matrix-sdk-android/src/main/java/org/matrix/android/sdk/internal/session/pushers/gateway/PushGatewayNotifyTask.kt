@@ -15,6 +15,8 @@
  */
 package org.matrix.android.sdk.internal.session.pushers.gateway
 
+import android.annotation.SuppressLint
+import android.util.Log
 import okhttp3.OkHttpClient
 import org.matrix.android.sdk.api.session.pushers.PushGatewayFailure
 import org.matrix.android.sdk.internal.di.Unauthenticated
@@ -38,6 +40,7 @@ internal class DefaultPushGatewayNotifyTask @Inject constructor(
         @Unauthenticated private val unauthenticatedOkHttpClient: OkHttpClient
 ) : PushGatewayNotifyTask {
 
+    @SuppressLint("LogNotTimber")
     override suspend fun execute(params: PushGatewayNotifyTask.Params) {
         val sygnalApi = retrofitFactory.create(
                 unauthenticatedOkHttpClient,

@@ -37,6 +37,9 @@
     <string name="settings_security_pin_code_change_pin_title">更改PIN</string>
     <string name="settings_security_pin_code_change_pin_summary">更改当前的PIN</string>
 
+    <string name="emailstep_title">欢迎使用X-LinX！</string>
+    <string name="emailstep_description">简单. 快速. 安全</string>
+
 
     <string name="space_bs_create_meeting_username_hint">输入您的昵称</string>
     <string name="space_bs_create_meeting_room_hint">输入房间名称</string>

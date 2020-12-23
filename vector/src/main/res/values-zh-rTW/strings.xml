@@ -21,6 +21,9 @@
     <string name="protectedapps_enable">立即启用</string>
     <string name="protectedapps_skip">别再显示</string>
 
+    <string name="emailstep_title">欢迎使用X-LinX！</string>
+    <string name="emailstep_description">简单. 快速. 安全</string>
+
     <string name="resources_language">zh</string>
     <string name="resources_country_code">TW</string>
     <string name="light_theme">淺色主題</string>

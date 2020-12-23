@@ -169,8 +169,6 @@ class HomeActivity : VectorBaseActivity(), ToolbarConfigurable, UnknownDeviceDet
         println("mmkv root: $rootDir")
 
 
-        XlinxUtils.startPowerSaverIntent(this)
-
     }
 
     private fun handleIntent(intent: Intent?) {

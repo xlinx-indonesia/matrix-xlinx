@@ -25,7 +25,9 @@ import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
 import com.google.android.material.badge.BadgeDrawable
 import im.vector.app.R
+import im.vector.app.XlinxUtils
 import im.vector.app.core.extensions.commitTransaction
+import im.vector.app.core.extensions.registerStartForActivityResult
 import im.vector.app.core.glide.GlideApp
 import im.vector.app.core.platform.ToolbarConfigurable
 import im.vector.app.core.platform.VectorBaseActivity
@@ -33,6 +35,8 @@ import im.vector.app.core.platform.VectorBaseFragment
 import im.vector.app.core.ui.views.ActiveCallView
 import im.vector.app.core.ui.views.ActiveCallViewHolder
 import im.vector.app.core.ui.views.KeysBackupBanner
+import im.vector.app.core.utils.isIgnoringBatteryOptimizations
+import im.vector.app.core.utils.requestDisablingBatteryOptimization
 import im.vector.app.features.call.SharedActiveCallViewModel
 import im.vector.app.features.call.VectorCallActivity
 import im.vector.app.features.call.WebRtcPeerConnectionManager
@@ -44,6 +48,7 @@ import im.vector.app.features.home.xwallet.XlinxWalletFragment
 import im.vector.app.features.popup.PopupAlertManager
 import im.vector.app.features.popup.VerificationVectorAlert
 import im.vector.app.features.roomprofile.RoomProfileViewEvents
+import im.vector.app.features.settings.BackgroundSyncMode
 import im.vector.app.features.settings.VectorPreferences
 import im.vector.app.features.settings.VectorSettingsActivity.Companion.EXTRA_DIRECT_ACCESS_SECURITY_PRIVACY_MANAGE_SESSIONS
 import im.vector.app.features.themes.ThemeUtils
@@ -149,6 +154,26 @@ class HomeDetailFragment @Inject constructor(
         } catch (e: NullPointerException) {
             e.printStackTrace()
         }
+
+//        if (vectorPreferences.isBackgroundSyncEnabled()) {
+//            vectorPreferences.setFdroidSyncBackgroundMode(BackgroundSyncMode.FDROID_BACKGROUND_SYNC_MODE_FOR_REALTIME)
+//
+//            if (mode == BackgroundSyncMode.FDROID_BACKGROUND_SYNC_MODE_FOR_REALTIME) {
+//                // Important, Battery optim white listing is needed in this mode;
+//                // Even if using foreground service with foreground notif, it stops to work
+//                // in doze mode for certain devices :/
+//                if (!isIgnoringBatteryOptimizations(requireContext())) {
+//                    requestDisablingBatteryOptimization(requireActivity(), batteryStartForActivityResult)
+//                }
+//            }
+//
+//            XlinxUtils.startPowerSaverIntent(requireContext())
+//
+//        }
+    }
+
+    private val batteryStartForActivityResult = registerStartForActivityResult {
+        // Noop
     }
 
     override fun onResume() {

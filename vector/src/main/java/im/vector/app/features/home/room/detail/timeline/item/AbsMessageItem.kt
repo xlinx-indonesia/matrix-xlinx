@@ -75,7 +75,7 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
                 holder.memberNameView.apply {
 //                    layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
 //                            TableRow.LayoutParams.WRAP_CONTENT)
-                    textAlignment = View.TEXT_ALIGNMENT_VIEW_END
+//                    textAlignment = View.TEXT_ALIGNMENT_VIEW_END
                     text = "You"
                 }
 //                holder.avatarImageView.apply {
