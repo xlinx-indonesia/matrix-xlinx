@@ -83,10 +83,15 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
         }
 //        holder.view.setOnClickListener(clickListener)
 
+        if (filename.contains("REC_", true)) {
+            holder.fileImageWrapper.setOnClickListener(clickListener)
+            holder.fileLayout.setOnClickListener(clickListener)
+        } else {
+            holder.fileImageWrapper.setOnClickListener(attributes.itemClickListener)
+            holder.filenameView.setOnClickListener(attributes.itemClickListener)
+            holder.filenameView.setOnLongClickListener(attributes.itemLongClickListener)
+        }
 
-        holder.filenameView.setOnClickListener(attributes.itemClickListener)
-        holder.filenameView.setOnLongClickListener(attributes.itemLongClickListener)
-        holder.fileImageWrapper.setOnClickListener(attributes.itemClickListener)
         holder.fileImageWrapper.setOnLongClickListener(attributes.itemLongClickListener)
         holder.filenameView.paintFlags = (holder.filenameView.paintFlags or Paint.UNDERLINE_TEXT_FLAG)
 
@@ -95,12 +100,6 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
             SendState.ENCRYPTING,
             SendState.SENDING -> true
             else              -> false
-        }
-
-        if (filename.contains("REC_", true)) {
-            holder.filenameView.setOnClickListener(clickListener)
-            holder.fileImageWrapper.setOnClickListener(clickListener)
-            holder.fileLayout.setOnClickListener(clickListener)
         }
     }
 

@@ -34,7 +34,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.Parcelable
-import android.os.StrictMode
 import android.os.Vibrator
 import android.text.Spannable
 import android.util.Log
@@ -83,8 +82,10 @@ import com.airbnb.mvrx.args
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
 import com.google.android.exoplayer2.DefaultLoadControl
+import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.LoadControl
+import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.extractor.ExtractorsFactory
@@ -205,8 +206,6 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.composer_layout.view.*
 import kotlinx.android.synthetic.main.fragment_room_detail.*
 import kotlinx.android.synthetic.main.merge_overlay_waiting_view.*
-import kotlinx.android.synthetic.main.view_sync_state.*
-import kotlinx.android.synthetic.main.view_sync_state.view.*
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 import omrecorder.AudioRecordConfig
@@ -236,7 +235,6 @@ import org.matrix.android.sdk.api.session.room.send.SendState
 import org.matrix.android.sdk.api.session.room.timeline.Timeline
 import org.matrix.android.sdk.api.session.room.timeline.TimelineEvent
 import org.matrix.android.sdk.api.session.room.timeline.getLastMessageContent
-import org.matrix.android.sdk.api.session.sync.SyncState
 import org.matrix.android.sdk.api.session.widgets.model.Widget
 import org.matrix.android.sdk.api.session.widgets.model.WidgetType
 import org.matrix.android.sdk.api.util.MatrixItem
@@ -245,8 +243,6 @@ import org.matrix.android.sdk.internal.crypto.model.event.EncryptedEventContent
 import org.matrix.android.sdk.internal.crypto.model.event.WithHeldCode
 import timber.log.Timber
 import java.io.File
-import java.io.IOException
-import java.net.HttpURLConnection
 import java.net.URL
 import java.util.UUID
 import java.util.concurrent.TimeUnit
@@ -350,6 +346,14 @@ class RoomDetailFragment @Inject constructor(
 
     private var lockSendButton = false
     private val activeCallViewHolder = ActiveCallViewHolder()
+
+    private var voiceNoteCurrentPlaying: String = ""
+    private var voiceNoteIconCurrentPlayng: View? = null
+    private lateinit var trackSelector: TrackSelector
+    private lateinit var loadControl: LoadControl
+    private lateinit var dataSourceFactory: DefaultDataSourceFactory
+    private lateinit var extractorsFactory: ExtractorsFactory
+    private var exoPlayer: SimpleExoPlayer? = null
 
 
     @BindView(R.id.recorder_view)
@@ -480,10 +484,12 @@ class RoomDetailFragment @Inject constructor(
         }
 
 //        xrecorder_container.isVisible = false
-        syncStateView.render(SyncState.RestoreSlow)
+//        syncStateView.render(SyncState.RestoreSlow)
 //        syncStateView.isVisible = true
 //        syncStateNoNetwork.isVisible = true
 //        syncStateNoNetwork.text = "Restoring messages ..."
+
+        initExoPlayer()
     }
 
     private fun handleChatEffect(chatEffect: ChatEffect) {
@@ -1670,8 +1676,6 @@ class RoomDetailFragment @Inject constructor(
     }
 
 
-    private var exoPlayer: SimpleExoPlayer? = null
-
 //    @Suppress("DEPRECATED_IDENTITY_EQUALS")
 //    @Throws(IOException::class)
 //    fun getFinalURL(url: String?): String? {
@@ -1695,45 +1699,66 @@ class RoomDetailFragment @Inject constructor(
 //        return url
 //    }
 
-    @SuppressLint("LogNotTimber")
-    override fun onAudioMessageClicked(messageAudioContent: MessageAudioContent, fileUrl: String) {
-        val contentUrlResolver = activeSessionHolder.getActiveSession().contentUrlResolver()
-        val resolvedUrl = contentUrlResolver.resolveFullSize(fileUrl) ?: return
-
-        val trackSelector: TrackSelector = DefaultTrackSelector()
-        val loadControl: LoadControl = DefaultLoadControl()
+    private fun initExoPlayer() {
+        trackSelector = DefaultTrackSelector()
+        loadControl = DefaultLoadControl()
+        dataSourceFactory = DefaultDataSourceFactory(requireContext(), Util.getUserAgent(requireContext(), "xlinx"), null)
+        extractorsFactory = DefaultExtractorsFactory().setConstantBitrateSeekingEnabled(true)
 
         exoPlayer = ExoPlayerFactory.newSimpleInstance(requireContext(), trackSelector, loadControl)
+    }
 
-        val dataSourceFactory = DefaultDataSourceFactory(requireContext(), Util.getUserAgent(requireContext(), "xlinx"), null)
-        val extractorsFactory: ExtractorsFactory = DefaultExtractorsFactory().setConstantBitrateSeekingEnabled(true)
+    @SuppressLint("LogNotTimber", "CutPasteId")
+    override fun onAudioMessageClicked(messageAudioContent: MessageAudioContent, view: View) {
+        val iconView = view.findViewById<ImageView>(R.id.messageFileIconView)
+
+        exoPlayer!!.addListener(object : Player.EventListener {
+            override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+                when (playbackState) {
+                    Player.STATE_BUFFERING -> {
+                    }
+                    Player.STATE_ENDED     -> {
+                        iconView.setImageResource(R.drawable.exo_icon_play)
+                    }
+                    Player.STATE_IDLE      -> {
+                    }
+                    Player.STATE_READY     -> {
+                    }
+                    else                   -> {
+                    }
+                }
+            }
+
+            override fun onPlayerError(error: ExoPlaybackException) {}
+        })
+
+        if (voiceNoteCurrentPlaying == messageAudioContent.body && exoPlayer!!.isPlaying) {
+            iconView.setImageResource(R.drawable.exo_icon_play)
+            exoPlayer!!.stop()
+            return
+        }
+
+        if (voiceNoteCurrentPlaying !== messageAudioContent.body) {
+            val lastIconView = voiceNoteIconCurrentPlayng?.findViewById<ImageView>(R.id.messageFileIconView)
+            lastIconView?.setImageResource(R.drawable.exo_icon_play)
+        }
+
+        iconView.setImageResource(R.drawable.exo_icon_stop)
 
         session.fileService().downloadFile(
                 messageContent = messageAudioContent,
                 callback = object : MatrixCallback<File> {
                     override fun onSuccess(data: File) {
                         if (isAdded) {
-//                          val audioSource: MediaSource = ExtractorMediaSource(Uri.parse(resolvedUrl), dataSourceFactory, extractorsFactory, null, null)
                             val progressiveMediaSource: ProgressiveMediaSource = ProgressiveMediaSource.Factory(dataSourceFactory, extractorsFactory).createMediaSource(Uri.fromFile(data))
-
-                            exoPlayer?.prepare(progressiveMediaSource)
-
-                            setPlayPause(true)
+                            voiceNoteCurrentPlaying = messageAudioContent.body
+                            voiceNoteIconCurrentPlayng = view
+                            exoPlayer!!.prepare(progressiveMediaSource)
+                            exoPlayer!!.playWhenReady = true
                         }
                     }
                 }
         )
-        Log.i("audiocontent", messageAudioContent.url + " | " + resolvedUrl)
-    }
-
-    private fun setPlayPause(play: Boolean) {
-//        var isPlaying = play
-        exoPlayer!!.playWhenReady = play
-//        if (!isPlaying) {
-//            btnPlay.setImageResource(android.R.drawable.ic_media_play)
-//        } else {
-//            setProgress()
-//        }
     }
 
 //    override fun onFileMessageClicked(eventId: String, messageFileContent: MessageFileContent) {

@@ -94,7 +94,7 @@ class TimelineEventController @Inject constructor(private val dateFormatter: Vec
         fun onVideoMessageClicked(messageVideoContent: MessageVideoContent, mediaData: VideoContentRenderer.Data, view: View)
 
         //        fun onFileMessageClicked(eventId: String, messageFileContent: MessageFileContent)
-        fun onAudioMessageClicked(messageAudioContent: MessageAudioContent, fileUrl: String)
+        fun onAudioMessageClicked(messageAudioContent: MessageAudioContent, view: View)
         fun onEditedDecorationClicked(informationData: MessageInformationData)
 
         // TODO move all callbacks to this?

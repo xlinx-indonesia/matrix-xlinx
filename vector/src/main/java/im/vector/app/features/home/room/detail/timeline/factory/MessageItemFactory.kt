@@ -221,11 +221,11 @@ class MessageItemFactory @Inject constructor(
                 .highlighted(highlight)
                 .leftGuideline(avatarSizeProvider.leftGuideline)
                 .filename(messageContent.body)
-                .iconRes(R.drawable.ic_headphones)
+                .iconRes(R.drawable.exo_icon_play)
                 .apply {
                     clickListener(
-                            DebouncedClickListener(View.OnClickListener { _ ->
-                                callback?.onAudioMessageClicked(messageContent, fileUrl)
+                            DebouncedClickListener(View.OnClickListener { view ->
+                                callback?.onAudioMessageClicked(messageContent, view)
                             }))
                 }
     }
