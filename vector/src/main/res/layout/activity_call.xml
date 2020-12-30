@@ -6,7 +6,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?riotx_background"
+    android:background="#15161D"
     tools:ignore="MergeRootFrame">
 
     <org.webrtc.SurfaceViewRenderer
@@ -33,7 +33,7 @@
         android:layout_marginStart="@dimen/layout_horizontal_margin"
         android:layout_marginEnd="@dimen/layout_horizontal_margin"
         android:gravity="center"
-        android:textColor="?riotx_text_primary"
+        android:textColor="@color/core_white"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/callTypeText"
