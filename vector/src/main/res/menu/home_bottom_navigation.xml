@@ -16,7 +16,7 @@
     <item
         android:id="@+id/bottom_action_rooms"
         android:enabled="true"
-        android:icon="@drawable/ic_xlinx_nav_room"
+        android:icon="@drawable/ic_xlinx_nav_room_2"
         android:title="@string/bottom_action_rooms" />
 
     <item
