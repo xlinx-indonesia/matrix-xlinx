@@ -16,6 +16,8 @@
 
 package im.vector.app.features.home.room.detail.timeline.factory
 
+import android.content.Context
+import android.net.Uri
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.TextPaint
@@ -23,6 +25,7 @@ import android.text.style.AbsoluteSizeSpan
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import dagger.Lazy
 import im.vector.app.R
 import im.vector.app.core.epoxy.VectorEpoxyModel
@@ -66,6 +69,7 @@ import im.vector.app.features.media.ImageContentRenderer
 import im.vector.app.features.media.VideoContentRenderer
 import me.gujun.android.span.span
 import org.commonmark.node.Document
+import org.matrix.android.sdk.api.MatrixCallback
 import org.matrix.android.sdk.api.session.Session
 import org.matrix.android.sdk.api.session.events.model.RelationType
 import org.matrix.android.sdk.api.session.events.model.toModel
@@ -86,14 +90,18 @@ import org.matrix.android.sdk.api.session.room.model.message.OPTION_TYPE_BUTTONS
 import org.matrix.android.sdk.api.session.room.model.message.OPTION_TYPE_POLL
 import org.matrix.android.sdk.api.session.room.model.message.getFileName
 import org.matrix.android.sdk.api.session.room.model.message.getFileUrl
+import org.matrix.android.sdk.api.session.room.send.SendState
 import org.matrix.android.sdk.api.session.room.timeline.TimelineEvent
 import org.matrix.android.sdk.api.session.room.timeline.getLastMessageContent
 import org.matrix.android.sdk.api.util.MimeTypes
 import org.matrix.android.sdk.internal.crypto.attachments.toElementToDecrypt
 import org.matrix.android.sdk.internal.crypto.model.event.EncryptedEventContent
+import java.io.File
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MessageItemFactory @Inject constructor(
+        private val context: Context,
         private val colorProvider: ColorProvider,
         private val dimensionConverter: DimensionConverter,
         private val timelineMediaSizeProvider: TimelineMediaSizeProvider,
@@ -142,10 +150,12 @@ class MessageItemFactory @Inject constructor(
             // This is an edit event, we should display it when debugging as a notice event
             return noticeItemFactory.create(event, highlight, roomSummaryHolder.roomSummary, callback)
         }
+
         val attributes = messageItemAttributesFactory.create(messageContent, informationData, callback)
 
 //        val all = event.root.toContent()
 //        val ev = all.toModel<Event>()
+
         return when (messageContent) {
             is MessageEmoteContent               -> buildEmoteMessageItem(messageContent, informationData, highlight, callback, attributes)
             is MessageTextContent                -> buildItemForTextContent(messageContent, informationData, highlight, callback, attributes)
@@ -222,6 +232,7 @@ class MessageItemFactory @Inject constructor(
                 .leftGuideline(avatarSizeProvider.leftGuideline)
                 .filename(messageContent.body)
                 .iconRes(R.drawable.exo_icon_play)
+                .context(context)
                 .apply {
                     clickListener(
                             DebouncedClickListener(View.OnClickListener { view ->

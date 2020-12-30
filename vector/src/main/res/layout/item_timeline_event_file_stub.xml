@@ -28,6 +28,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include layout="@layout/view_file_icon" />
+
     </RelativeLayout>
 
     <!--    <ImageView-->
@@ -55,6 +56,129 @@
         app:layout_constraintStart_toEndOf="@+id/messageFileImageView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="A filename here" />
+
+<!--    <com.google.android.exoplayer2.ui.PlayerControlView-->
+<!--        android:id="@+id/audioPlayerContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/messageFileImageView"-->
+<!--        app:layout_constraintTop_toTopOf="@id/messageFileImageView"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/messageFileImageView"-->
+<!--        app:controller_layout_id="@layout/xlinx_audio_voicenote_player_control"/>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/audioPlayerContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/messageFileImageView"-->
+<!--        app:layout_constraintTop_toTopOf="@id/messageFileImageView"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/messageFileImageView">-->
+
+<!--        <include layout="@layout/xlinx_audio_voicenote_player_control" />-->
+
+<!--    </RelativeLayout>-->
+
+<!--    <com.masoudss.lib.WaveformSeekBar-->
+<!--        app:wave_progress="33"-->
+<!--        app:wave_width="5dp"-->
+<!--        app:wave_gap="2dp"-->
+<!--        app:wave_min_height="5dp"-->
+<!--        app:wave_corner_radius="2dp"-->
+<!--        app:wave_background_color="@color/riotx_notice_secondary_alpha12"-->
+<!--        app:wave_progress_color="@color/riotx_accent"-->
+<!--        app:wave_gravity="center"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/messageFileImageView"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/messageFileImageView"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:id="@+id/waveformSeekBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"/>-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/messageAudioElapsedView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:autoLink="none"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:minHeight="@dimen/chat_avatar_size"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/messageFileImageView"-->
+<!--        app:layout_constraintTop_toTopOf="@id/messageFileImageView"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/mediaFileProgressBar"-->
+<!--        tools:visibility="visible"-->
+<!--        tools:text="0:00"-->
+<!--        tools:ignore="HardcodedText" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/messageAudioDurationView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:autoLink="none"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:minHeight="@dimen/chat_avatar_size"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/messageAudioElapsedView"-->
+<!--        app:layout_constraintTop_toTopOf="@id/messageFileImageView"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/mediaFileProgressBar"-->
+<!--        tools:visibility="visible"-->
+<!--        tools:text="0:00"-->
+<!--        tools:ignore="HardcodedText" />-->
+
+<!--    <SeekBar-->
+<!--        android:id="@+id/mediaFileProgressBar"-->
+<!--        style="?android:attr/progressBarStyleHorizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="20dp"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/messageFileImageView"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/messageAudioElapsedView"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/messageFileImageView"-->
+<!--        android:max="100"-->
+<!--        tools:progress="45"-->
+<!--        android:visibility="visible"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        android:layout_marginEnd="32dp" />-->
+
+<!--    <com.google.android.exoplayer2.ui.DefaultTimeBar-->
+<!--        android:id="@+id/mediaFileProgressBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="20dp"-->
+<!--        android:layout_weight="1"-->
+<!--        app:scrubber_color="@color/riotx_accent"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/messageFileImageView"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/messageAudioElapsedView"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/messageFileImageView"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        android:layout_marginEnd="32dp"/>-->
 
     <ProgressBar
         android:id="@+id/eventSendingIndicator"

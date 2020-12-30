@@ -108,7 +108,7 @@ class XlinxCallsFragment @Inject constructor(
         callListView.itemAnimator = RoomListAnimator()
         callListView.setRecycledViewPool(sharedViewPool)
         layoutManager.recycleChildrenOnDetach = true
-        xlinxCallsItemAdapter = XlinxCallsItemAdapter(callItems, session, avatarRenderer, webRtcPeerConnectionManager)
+        xlinxCallsItemAdapter = XlinxCallsItemAdapter(requireContext(), callItems, session, avatarRenderer, webRtcPeerConnectionManager)
         callListView.adapter = xlinxCallsItemAdapter
     }
 

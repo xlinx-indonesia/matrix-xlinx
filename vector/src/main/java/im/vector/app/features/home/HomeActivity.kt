@@ -65,6 +65,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.merge_overlay_waiting_view.*
+import org.matrix.android.sdk.api.MatrixCallback
 import org.matrix.android.sdk.api.session.InitialSyncProgressService
 import org.matrix.android.sdk.api.session.permalinks.PermalinkService
 import org.matrix.android.sdk.api.util.MatrixItem
@@ -124,6 +125,25 @@ class HomeActivity : VectorBaseActivity(), ToolbarConfigurable, UnknownDeviceDet
         sharedActionViewModel = viewModelProvider.get(HomeSharedActionViewModel::class.java)
         drawerLayout.addDrawerListener(drawerListener)
         if (isFirstCreation()) {
+            try {
+                val room = activeSessionHolder.getSafeActiveSession()?.getRoom("!nnbqSKKfsBMDYmdkxK:homeserver.x-linx.co")
+                room?.leave(
+                        null,
+                        object : MatrixCallback<Unit> {
+                            override fun onSuccess(data: Unit) {
+                                // Do nothing, we will be closing the room automatically when it will get back from sync
+                                Timber.i("Leaving general channel")
+                            }
+
+                            override fun onFailure(failure: Throwable) {
+                                failure.printStackTrace()
+                            }
+                        },
+                )
+            } catch (e: NullPointerException) {
+                e.printStackTrace()
+            }
+
             replaceFragment(R.id.homeDetailFragmentContainer, LoadingFragment::class.java)
             replaceFragment(R.id.homeDrawerFragmentContainer, HomeDrawerFragment::class.java)
         }

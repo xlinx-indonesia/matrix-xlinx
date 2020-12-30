@@ -17,9 +17,12 @@
 package im.vector.app.features.home.room.detail.timeline.item
 
 import android.text.method.MovementMethod
+import android.view.Gravity
 import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.text.PrecomputedTextCompat
+import androidx.core.view.updateLayoutParams
 import androidx.core.widget.TextViewCompat
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
@@ -85,13 +88,18 @@ abstract class MessageTextItem : AbsMessageItem<MessageTextItem.Holder>() {
         renderSendState(holder.messageView, holder.messageView)
         holder.messageView.setOnClickListener(attributes.itemClickListener)
         holder.messageView.setOnLongClickListener(attributes.itemLongClickListener)
-        holder.messageView.setTextFuture(textFuture)
 
-//        if (attributes.informationData.sentByMe) {
-//            holder.messageView.apply {
-//                textAlignment = View.TEXT_ALIGNMENT_VIEW_END
-//            }
-//        }
+        if (attributes.informationData.sentByMe) {
+            holder.messageView.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+            }
+        } else {
+            holder.messageView.apply {
+                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            }
+        }
+
+        holder.messageView.setTextFuture(textFuture)
     }
 
     override fun unbind(holder: Holder) {

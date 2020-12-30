@@ -110,7 +110,7 @@ class LoginFragment @Inject constructor() : AbstractSSOLoginFragment() {
             error++
         }
         if (isSignupMode && isNumericOnlyUserIdForbidden && login.isDigitsOnly()) {
-            loginFieldTil.error = "The homeserver does not accept username with only digits."
+            loginFieldTil.error = getString(R.string.error_xlinx_onlydigits)
             error++
         }
         if (password.isEmpty()) {
@@ -261,7 +261,8 @@ class LoginFragment @Inject constructor() : AbstractSSOLoginFragment() {
                 && throwable.error.code == MatrixError.M_WEAK_PASSWORD) {
             passwordFieldTil.error = errorFormatter.toHumanReadable(throwable)
         } else {
-            loginFieldTil.error = errorFormatter.toHumanReadable(throwable)
+//            loginFieldTil.error = errorFormatter.toHumanReadable(throwable)
+            loginFieldTil.error = getString(R.string.error_xlinx_connection)
         }
     }
 
@@ -292,7 +293,8 @@ class LoginFragment @Inject constructor() : AbstractSSOLoginFragment() {
                     if (error.isInvalidPassword() && spaceInPassword()) {
                         passwordFieldTil.error = getString(R.string.auth_invalid_login_param_space_in_password)
                     } else {
-                        passwordFieldTil.error = errorFormatter.toHumanReadable(error)
+//                        passwordFieldTil.error = errorFormatter.toHumanReadable(error)
+                        passwordFieldTil.error = getString(R.string.error_xlinx_connection)
                     }
                 }
             }

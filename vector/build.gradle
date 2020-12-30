@@ -214,7 +214,7 @@ android {
         }
 
         release {
-            resValue "string", "app_name", "X-LinX (new)"
+            resValue "string", "app_name", "X-LinX"
 
             resValue "bool", "debug_mode", "false"
             buildConfigField "boolean", "LOW_PRIVACY_LOG_ENABLE", "false"
@@ -438,6 +438,7 @@ dependencies {
     // org.webrtc:google-webrtc is for development purposes only
     // implementation 'org.webrtc:google-webrtc:1.0.+'
     implementation('org.jitsi.react:jitsi-meet-sdk:2.9.3') { transitive = true }
+//    implementation ('org.jitsi.react:jitsi-meet-sdk:2.11.0') { transitive = true }
 
     // QR-code
     // Stick to 3.3.3 because of https://github.com/zxing/zxing/issues/1170
@@ -460,6 +461,7 @@ dependencies {
     implementation 'com.kailashdabhi:om-recorder:1.1.5'
     implementation "com.google.android.exoplayer:exoplayer:2.12.2"
     implementation 'com.loopj.android:android-async-http:1.4.11'
+//    implementation 'com.github.massoudss:waveformSeekBar:1.1.4'
 
 
 

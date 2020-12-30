@@ -27,8 +27,11 @@ import im.vector.app.core.extensions.replaceFragment
 import im.vector.app.core.platform.VectorBaseActivity
 import im.vector.app.features.settings.devices.VectorSettingsDevicesFragment
 import kotlinx.android.synthetic.main.activity_vector_settings.*
+import kotlinx.android.synthetic.main.activity_vector_settings.syncStateView
+import kotlinx.android.synthetic.main.fragment_room_detail.*
 import org.matrix.android.sdk.api.failure.GlobalError
 import org.matrix.android.sdk.api.session.Session
+import org.matrix.android.sdk.api.session.sync.SyncState
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -82,6 +85,8 @@ class VectorSettingsActivity : VectorBaseActivity(),
         }
 
         supportFragmentManager.addOnBackStackChangedListener(this)
+
+        syncStateView.render(SyncState.RestoreSlow)
     }
 
     override fun onDestroy() {

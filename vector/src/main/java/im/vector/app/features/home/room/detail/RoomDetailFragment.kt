@@ -33,6 +33,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.os.Parcelable
 import android.os.Vibrator
 import android.text.Spannable
@@ -44,9 +45,12 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
@@ -92,13 +96,15 @@ import com.google.android.exoplayer2.extractor.ExtractorsFactory
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelector
+import com.google.android.exoplayer2.ui.PlayerControlView
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.jakewharton.rxbinding3.widget.textChanges
 import im.vector.app.R
-import im.vector.app.core.di.ActiveSessionHolder
+import im.vector.app.core.date.DateFormatKind
+import im.vector.app.core.date.VectorDateFormatter
 import im.vector.app.core.dialogs.CameraDialogChooserHelper
 import im.vector.app.core.dialogs.ConfirmationDialogBuilder
 import im.vector.app.core.dialogs.GalleryOrCameraDialogHelper
@@ -276,7 +282,7 @@ class RoomDetailFragment @Inject constructor(
         private val imageContentRenderer: ImageContentRenderer,
         private val roomDetailPendingActionStore: RoomDetailPendingActionStore,
         private val pillsPostProcessorFactory: PillsPostProcessor.Factory,
-        private val activeSessionHolder: ActiveSessionHolder
+        private val dateFormatter: VectorDateFormatter
 ) :
         VectorBaseFragment(),
         TimelineEventController.Callback,
@@ -348,7 +354,7 @@ class RoomDetailFragment @Inject constructor(
     private val activeCallViewHolder = ActiveCallViewHolder()
 
     private var voiceNoteCurrentPlaying: String = ""
-    private var voiceNoteIconCurrentPlayng: View? = null
+    private var voiceNoteCurrentView: View? = null
     private lateinit var trackSelector: TrackSelector
     private lateinit var loadControl: LoadControl
     private lateinit var dataSourceFactory: DefaultDataSourceFactory
@@ -380,6 +386,15 @@ class RoomDetailFragment @Inject constructor(
     private lateinit var recordTime: RecordTime
 
     private lateinit var slideToCancel: SlideToCancel
+
+    @BindView(R.id.audioPlayerView)
+    lateinit var audioPlayerContainer: View
+
+    @BindView(R.id.mediaFileNameText)
+    lateinit var audioPlayerVoiceNoteName: TextView
+
+    @BindView(R.id.playerControlView)
+    lateinit var audioPlayerController: PlayerControlView
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -1700,17 +1715,38 @@ class RoomDetailFragment @Inject constructor(
 //    }
 
     private fun initExoPlayer() {
-        trackSelector = DefaultTrackSelector()
+        trackSelector = DefaultTrackSelector(requireContext())
         loadControl = DefaultLoadControl()
         dataSourceFactory = DefaultDataSourceFactory(requireContext(), Util.getUserAgent(requireContext(), "xlinx"), null)
         extractorsFactory = DefaultExtractorsFactory().setConstantBitrateSeekingEnabled(true)
 
         exoPlayer = ExoPlayerFactory.newSimpleInstance(requireContext(), trackSelector, loadControl)
+        audioPlayerController.player = exoPlayer
+        audioPlayerController.setShowFastForwardButton(true)
+        audioPlayerController.setShowRewindButton(true)
+        audioPlayerController.setShowNextButton(false)
+        audioPlayerController.setShowPreviousButton(false)
+        audioPlayerController.showTimeoutMs = 0
     }
+
+    val mHandler = Handler()
 
     @SuppressLint("LogNotTimber", "CutPasteId")
     override fun onAudioMessageClicked(messageAudioContent: MessageAudioContent, view: View) {
-        val iconView = view.findViewById<ImageView>(R.id.messageFileIconView)
+        val iconView                = view.findViewById<ImageView>(R.id.messageFileIconView)
+        val fileNameView            = view.findViewById<TextView>(R.id.messageFilenameView)
+
+        if (voiceNoteCurrentPlaying == messageAudioContent.body && exoPlayer!!.isPlaying) {
+            iconView.setImageResource(R.drawable.exo_icon_play)
+            audioPlayerContainer.isVisible = false
+            exoPlayer!!.stop()
+            return
+        }
+
+        if (voiceNoteCurrentPlaying !== messageAudioContent.body) {
+            val lastIconView = voiceNoteCurrentView?.findViewById<ImageView>(R.id.messageFileIconView)
+            lastIconView?.setImageResource(R.drawable.exo_icon_play)
+        }
 
         exoPlayer!!.addListener(object : Player.EventListener {
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
@@ -1719,6 +1755,7 @@ class RoomDetailFragment @Inject constructor(
                     }
                     Player.STATE_ENDED     -> {
                         iconView.setImageResource(R.drawable.exo_icon_play)
+                        audioPlayerContainer.isVisible = false
                     }
                     Player.STATE_IDLE      -> {
                     }
@@ -1732,18 +1769,10 @@ class RoomDetailFragment @Inject constructor(
             override fun onPlayerError(error: ExoPlaybackException) {}
         })
 
-        if (voiceNoteCurrentPlaying == messageAudioContent.body && exoPlayer!!.isPlaying) {
-            iconView.setImageResource(R.drawable.exo_icon_play)
-            exoPlayer!!.stop()
-            return
-        }
-
-        if (voiceNoteCurrentPlaying !== messageAudioContent.body) {
-            val lastIconView = voiceNoteIconCurrentPlayng?.findViewById<ImageView>(R.id.messageFileIconView)
-            lastIconView?.setImageResource(R.drawable.exo_icon_play)
-        }
 
         iconView.setImageResource(R.drawable.exo_icon_stop)
+        audioPlayerVoiceNoteName.text = fileNameView.text
+        audioPlayerContainer.isVisible = true
 
         session.fileService().downloadFile(
                 messageContent = messageAudioContent,
@@ -1752,7 +1781,7 @@ class RoomDetailFragment @Inject constructor(
                         if (isAdded) {
                             val progressiveMediaSource: ProgressiveMediaSource = ProgressiveMediaSource.Factory(dataSourceFactory, extractorsFactory).createMediaSource(Uri.fromFile(data))
                             voiceNoteCurrentPlaying = messageAudioContent.body
-                            voiceNoteIconCurrentPlayng = view
+                            voiceNoteCurrentView = view
                             exoPlayer!!.prepare(progressiveMediaSource)
                             exoPlayer!!.playWhenReady = true
                         }
@@ -2285,10 +2314,10 @@ class RoomDetailFragment @Inject constructor(
 
     override fun onRecordPressed() {
 //        fileName = "${requireContext().externalCacheDir?.absolutePath}/" + fileString
-        val current = DateProvider.currentLocalDateTime()
-        val formatter = org.threeten.bp.format.DateTimeFormatter.ISO_DATE_TIME
-        val formatted = current.format(formatter)
-        fileName = "REC_${formatted}.wav"
+        val current = DateProvider.toTimestamp(DateProvider.currentLocalDateTime())
+        val formattedDate = dateFormatter.format(current, DateFormatKind.MESSAGE_DETAIL)
+        val me = session.getUser(session.myUserId)?.toMatrixItem()
+        fileName = "VNR:::${me?.getBestName()}:::$formattedDate"
 
         recordTime.display()
         slideToCancel.display()
@@ -2307,7 +2336,7 @@ class RoomDetailFragment @Inject constructor(
         if (elapsedTime > 1000) {
             onRecordFinished();
         } else {
-            Toast.makeText(requireContext(), R.string.InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send, Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), getString(R.string.InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send), Toast.LENGTH_LONG).show();
             onRecordCanceled();
         }
     }

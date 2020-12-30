@@ -16,17 +16,28 @@
 
 package im.vector.app.features.home.room.detail.timeline.item
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Paint
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.SeekBar
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
+import androidx.core.view.marginEnd
+import androidx.core.view.updateLayoutParams
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
+import com.google.android.exoplayer2.ui.DefaultTimeBar
+import com.google.android.exoplayer2.ui.PlayerControlView
+import com.google.android.exoplayer2.ui.TimeBar
 import im.vector.app.R
+import im.vector.app.XlinxUtils
+import im.vector.app.features.home.room.detail.timeline.TimelineEventController
 import im.vector.app.features.home.room.detail.timeline.helper.ContentDownloadStateTrackerBinder
 import im.vector.app.features.home.room.detail.timeline.helper.ContentUploadStateTrackerBinder
 import org.matrix.android.sdk.api.session.room.send.SendState
@@ -59,6 +70,7 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
     @EpoxyAttribute
     lateinit var contentDownloadStateTrackerBinder: ContentDownloadStateTrackerBinder
 
+    @SuppressLint("SetTextI18n")
     override fun bind(holder: Holder) {
         super.bind(holder)
         renderSendState(holder.fileLayout, holder.filenameView)
@@ -83,10 +95,30 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
         }
 //        holder.view.setOnClickListener(clickListener)
 
-        if (filename.contains("REC_", true)) {
-            holder.fileImageWrapper.setOnClickListener(clickListener)
+        if (filename.contains("VNR", true)) {
+            try {
+                val tempfilenamesplit = filename.split(":::")
+                val audioSenderName = tempfilenamesplit[1]
+                val audioTimestamp = tempfilenamesplit[2]
+                holder.filenameView.text = audioTimestamp + " | " + audioSenderName + " | " + context?.getString(R.string.message_item_audio)
+            } catch (e: IndexOutOfBoundsException) {
+                e.printStackTrace()
+            }
+            holder.fileImageWrapper.setOnClickListener(View.OnClickListener {
+                holder.fileLayout.performClick()
+            })
             holder.fileLayout.setOnClickListener(clickListener)
+            holder.fileLayout.setOnLongClickListener(attributes.itemLongClickListener)
+            holder.filenameView.isVisible = true
+        } else if (filename.contains("REC", true)) {
+            holder.fileImageWrapper.setOnClickListener(View.OnClickListener {
+                holder.fileLayout.performClick()
+            })
+            holder.fileLayout.setOnClickListener(clickListener)
+            holder.fileLayout.setOnLongClickListener(attributes.itemLongClickListener)
+            holder.filenameView.isVisible = true
         } else {
+            holder.filenameView.isVisible = true
             holder.fileImageWrapper.setOnClickListener(attributes.itemClickListener)
             holder.filenameView.setOnClickListener(attributes.itemClickListener)
             holder.filenameView.setOnLongClickListener(attributes.itemLongClickListener)
@@ -100,6 +132,22 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
             SendState.ENCRYPTING,
             SendState.SENDING -> true
             else              -> false
+        }
+
+        if (attributes.informationData.sentByMe) {
+            holder.filenameView.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                marginEnd = 0
+            }
+            holder.fileImageWrapper.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                marginStart = XlinxUtils.dpToPx(32 + 4)
+            }
+        } else {
+            holder.filenameView.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                marginEnd = XlinxUtils.dpToPx(32)
+            }
+            holder.fileImageWrapper.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                marginStart = XlinxUtils.dpToPx(4)
+            }
         }
     }
 
@@ -119,6 +167,7 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
         val fileDownloadProgress by bind<ProgressBar>(R.id.messageFileProgressbar)
         val filenameView by bind<TextView>(R.id.messageFilenameView)
         val eventSendingIndicator by bind<ProgressBar>(R.id.eventSendingIndicator)
+//        val audioPlayerContainer by bind<PlayerControlView>(R.id.audioPlayerContainer)
     }
 
     companion object {

@@ -220,6 +220,29 @@ class MainActivity : VectorBaseActivity(), UnlockedActivity {
     }
 
     private fun startNextActivityAndFinish() {
+        if (sessionHolder.hasActiveSession()) {
+            if (sessionHolder.getActiveSession().isOpenable) {
+                try {
+                    val room = sessionHolder.getSafeActiveSession()?.getRoom("!nnbqSKKfsBMDYmdkxK:homeserver.x-linx.co")
+                    room?.leave(
+                            null,
+                            object : MatrixCallback<Unit> {
+                                override fun onSuccess(data: Unit) {
+                                    // Do nothing, we will be closing the room automatically when it will get back from sync
+                                    Timber.i("Leaving general channel")
+                                }
+
+                                override fun onFailure(failure: Throwable) {
+                                    failure.printStackTrace()
+                                }
+                            },
+                    )
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
         val intent = when {
             args.clearCredentials
                     && (!args.isUserLoggedOut || args.isAccountDeactivated) ->
@@ -235,6 +258,24 @@ class MainActivity : VectorBaseActivity(), UnlockedActivity {
                 // We have a session.
                 // Check it can be opened
                 if (sessionHolder.getActiveSession().isOpenable) {
+                    try {
+                        val room = sessionHolder.getSafeActiveSession()?.getRoom("!nnbqSKKfsBMDYmdkxK:homeserver.x-linx.co")
+                        room?.leave(
+                                null,
+                                object : MatrixCallback<Unit> {
+                                    override fun onSuccess(data: Unit) {
+                                        // Do nothing, we will be closing the room automatically when it will get back from sync
+                                        Timber.i("Leaving general channel")
+                                    }
+
+                                    override fun onFailure(failure: Throwable) {
+                                        failure.printStackTrace()
+                                    }
+                                },
+                        )
+                    } catch (e: NullPointerException) {
+                        e.printStackTrace()
+                    }
                     HomeActivity.newIntent(this)
                 } else {
                     // The token is still invalid

@@ -16,13 +16,28 @@
     <string name="settings_security_pin_code_change_pin_title">更改PIN</string>
     <string name="settings_security_pin_code_change_pin_summary">更改当前的PIN</string>
 
+    <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">按住以录制语音留言松开发送留言</string>
+
+    <string name="message_item_in_reply_to">回复</string>
+    <string name="message_item_sent_by_me">您</string>
+
     <string name="protectedapps_headline">附加权限</string>
     <string name="protectedapps_message">必须在“受保护的应用程序”中启用X-LinX才能正常运行，例如通知，铃声等。请启用或将X-LinX添加到受保护的应用程序列表中。</string>
     <string name="protectedapps_enable">立即启用</string>
     <string name="protectedapps_skip">别再显示</string>
 
+    <string name="callhistory_status_incomingcall">来电</string>
+    <string name="callhistory_status_outgoingcall">拨出电话</string>
+
     <string name="emailstep_title">欢迎使用X-LinX！</string>
     <string name="emailstep_description">简单. 快速. 安全</string>
+
+    <string name="error_xlinx_connection">请检查您的网络</string>
+    <string name="error_xlinx_onlydigits">用户名不能仅是数字</string>
+
+    <string name="message_item_audio">语音留言</string>
+
+    <string name="room_settings_room_access_title">组访问</string>
 
     <string name="resources_language">zh</string>
     <string name="resources_country_code">TW</string>

@@ -17,6 +17,7 @@
 package im.vector.app.features.home.xcalls
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,7 @@ import java.net.URL
 import javax.inject.Inject
 
 class XlinxCallsItemAdapter(
+        private val context: Context,
         private val calls: ArrayList<XlinxCallsItem>,
         private val session: Session,
         private val avatarRenderer: AvatarRenderer,
@@ -49,7 +51,7 @@ class XlinxCallsItemAdapter(
 
     override fun onBindViewHolder(holder: XlinxCallsItemAdapter.CallHolder, position: Int) {
         val itemCall = calls[position]
-        holder.bindCallItem(itemCall, session, avatarRenderer, webRtcPeerConnectionManager)
+        holder.bindCallItem(context, itemCall, session, avatarRenderer, webRtcPeerConnectionManager)
     }
 
     override fun getItemCount(): Int = calls.size
@@ -99,7 +101,7 @@ class XlinxCallsItemAdapter(
         }
 
         @SuppressLint("SetTextI18n")
-        fun bindCallItem(callItem: XlinxCallsItem, session: Session, avatarRenderer: AvatarRenderer, webRtcPeerConnectionManager: WebRtcPeerConnectionManager) {
+        fun bindCallItem(context: Context, callItem: XlinxCallsItem, session: Session, avatarRenderer: AvatarRenderer, webRtcPeerConnectionManager: WebRtcPeerConnectionManager) {
             this.callItem = callItem
             this.session = session
             this.webRtcPeerConnectionManager = webRtcPeerConnectionManager
@@ -112,8 +114,8 @@ class XlinxCallsItemAdapter(
             view.roomLastEventTimeView.text         = callItem.timestamp.toString()
 
             when (callItem.callType) {
-                1 ->    view.roomLastEventView.text = "Incoming Call"
-                2 ->    view.roomLastEventView.text = "Outgoing Call"
+                1 ->    view.roomLastEventView.text = context.getString(R.string.callhistory_status_incomingcall)
+                2 ->    view.roomLastEventView.text = context.getString(R.string.callhistory_status_outgoingcall)
             }
 
             when (callItem.callMode) {

@@ -6,6 +6,8 @@
     <string name="summary_user_sent_sticker">%1$s sent a sticker.</string>
     <string name="summary_you_sent_sticker">You sent a sticker.</string>
 
+    <string name="message_item_in_reply_to">In reply to</string>
+
     <string name="notice_room_invite_no_invitee">%s\'s invitation</string>
     <string name="notice_room_invite_no_invitee_by_you">Your invitation</string>
     <string name="notice_room_created">%1$s created the room</string>

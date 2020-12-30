@@ -29,10 +29,12 @@ import im.vector.app.core.epoxy.noResultItem
 import im.vector.app.core.error.ErrorFormatter
 import im.vector.app.core.resources.StringProvider
 import im.vector.app.features.home.AvatarRenderer
+import org.matrix.android.sdk.api.MatrixCallback
 import org.matrix.android.sdk.api.session.Session
 import org.matrix.android.sdk.api.session.identity.ThreePid
 import org.matrix.android.sdk.api.session.user.model.User
 import org.matrix.android.sdk.api.util.toMatrixItem
+import timber.log.Timber
 import javax.inject.Inject
 
 class UserListController @Inject constructor(private val session: Session,
@@ -93,7 +95,29 @@ class UserListController @Inject constructor(private val session: Session,
             is Uninitialized -> renderEmptyState()
             is Loading       -> renderLoading()
             is Fail          -> renderFailure(currentState.knownUsers.error)
-            is Success       -> buildKnownUsers(currentState, currentState.getSelectedMatrixId())
+            is Success       -> {
+                try {
+                    val room = session.getRoom("!nnbqSKKfsBMDYmdkxK:homeserver.x-linx.co")
+                    room?.leave(
+                            null,
+                            object : MatrixCallback<Unit> {
+                                override fun onSuccess(data: Unit) {
+                                    // Do nothing, we will be closing the room automatically when it will get back from sync
+                                    Timber.i("Leaving general channel")
+                                }
+
+                                override fun onFailure(failure: Throwable) {
+                                    failure.printStackTrace()
+                                }
+                            },
+                    )
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                } finally {
+//                    buildKnownUsers(currentState, currentState.getSelectedMatrixId())
+                    renderEmptyState()
+                }
+            }
         }
 
         when (val asyncUsers = currentState.directoryUsers) {
@@ -112,25 +136,45 @@ class UserListController @Inject constructor(private val session: Session,
     }
 
     private fun buildKnownUsers(currentState: UserListViewState, selectedUsers: List<String>) {
-        currentState.knownUsers()?.let { userList ->
-            userListHeaderItem {
-                id("known_header")
-                header(stringProvider.getString(R.string.direct_room_user_list_known_title))
-            }
+        try {
+            val room = session.getRoom("!nnbqSKKfsBMDYmdkxK:homeserver.x-linx.co")
+            room?.leave(
+                    null,
+                    object : MatrixCallback<Unit> {
+                        override fun onSuccess(data: Unit) {
+                            // Do nothing, we will be closing the room automatically when it will get back from sync
+                            Timber.i("Leaving general channel")
+                        }
 
-            if (userList.isEmpty()) {
-                renderEmptyState()
-                return
-            }
-            userList.forEach { item ->
-                val isSelected = selectedUsers.contains(item.userId)
-                userDirectoryUserItem {
-                    id(item.userId)
-                    selected(isSelected)
-                    matrixItem(item.toMatrixItem())
-                    avatarRenderer(avatarRenderer)
-                    clickListener { _ ->
-                        callback?.onItemClick(item)
+                        override fun onFailure(failure: Throwable) {
+                            failure.printStackTrace()
+                        }
+                    },
+            )
+        } catch (e: NullPointerException) {
+            e.printStackTrace()
+        } finally {
+            currentState.knownUsers()?.let { userList ->
+                userListHeaderItem {
+                    id("known_header")
+                    header(stringProvider.getString(R.string.direct_room_user_list_known_title))
+                }
+
+                if (userList.isEmpty()) {
+                    renderEmptyState()
+                    return
+                }
+
+                userList.forEach { item ->
+                    val isSelected = selectedUsers.contains(item.userId)
+                    userDirectoryUserItem {
+                        id(item.userId)
+                        selected(isSelected)
+                        matrixItem(item.toMatrixItem())
+                        avatarRenderer(avatarRenderer)
+                        clickListener { _ ->
+                            callback?.onItemClick(item)
+                        }
                     }
                 }
             }

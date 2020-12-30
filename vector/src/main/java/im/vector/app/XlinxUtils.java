@@ -24,6 +24,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.widget.CompoundButton;
 
 import androidx.appcompat.widget.AppCompatCheckBox;
@@ -85,5 +87,25 @@ public class XlinxUtils {
         } catch (Exception ignored) {
             return false;
         }
+    }
+
+    public static float pxToDp(float px) {
+        return px / Resources.getSystem().getDisplayMetrics().density;
+    }
+
+    public static int dpToPx(Context context, int dp) {
+        return (int)((dp * context.getResources().getDisplayMetrics().density) + 0.5);
+    }
+
+    public static int dpToPx(int dp) {
+        return Math.round(dp * Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    public static int dpToSp(int dp) {
+        return (int) (dpToPx(dp) / Resources.getSystem().getDisplayMetrics().scaledDensity);
+    }
+
+    public static int spToPx(float sp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, Resources.getSystem().getDisplayMetrics());
     }
 }

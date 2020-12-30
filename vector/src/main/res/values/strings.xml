@@ -22,6 +22,18 @@
     <string name="emailstep_description">Simple. Fast. Secure</string>
 
 
+    <string name="callhistory_status_incomingcall">Incoming call</string>
+    <string name="callhistory_status_outgoingcall">Outgoing call</string>
+
+    <string name="error_xlinx_connection">Please check your internet connection</string>
+    <string name="error_xlinx_onlydigits">Username can not be only digits</string>
+
+    <string name="message_item_audio">Voice Note</string>
+    <string name="message_item_in_reply_to">In reply to</string>
+    <string name="message_item_sent_by_me">You</string>
+
+
+
 
     <string name="space_bs_create_meeting_username_hint">Enter your nickname</string>
     <string name="space_bs_create_meeting_room_hint">Enter group name</string>

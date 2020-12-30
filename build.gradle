@@ -49,6 +49,8 @@ allprojects {
                 includeGroupByRegex 'nl\\.dionsegijn'
 
                 includeGroupByRegex 'com\\.github\\.WrathChaos'
+                includeGroupByRegex 'com\\.github\\.massoudss'
+                includeGroupByRegex 'com\\.github\\.lincollincol'
             }
         }
         maven {
@@ -64,6 +66,9 @@ allprojects {
             // Note: to test Jitsi release you can use a local file like this:
             // url "file:///Users/bmarty/workspaces/jitsi_libre_maven/android-sdk-2.9.3"
         }
+//        maven {
+//            url "file:/Users/dennyaprilio/development/repo"
+//        }
         google()
         jcenter()
     }

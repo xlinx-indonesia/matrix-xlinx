@@ -17,16 +17,23 @@
 package im.vector.app.features.home.room.detail.timeline.item
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Typeface
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TableRow
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.core.view.marginStart
+import androidx.core.view.marginTop
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import com.airbnb.epoxy.EpoxyAttribute
 import im.vector.app.R
+import im.vector.app.XlinxUtils
 import im.vector.app.core.utils.DebouncedClickListener
 import im.vector.app.features.home.AvatarRenderer
 import im.vector.app.features.home.room.detail.timeline.MessageColorProvider
@@ -44,6 +51,9 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
     @EpoxyAttribute
     lateinit var attributes: Attributes
 
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    var context: Context? = null
+
     private val _avatarClickListener = DebouncedClickListener(View.OnClickListener {
         attributes.avatarCallback?.onAvatarClicked(attributes.informationData)
     })
@@ -54,6 +64,7 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
     @SuppressLint("SetTextI18n")
     override fun bind(holder: H) {
         super.bind(holder)
+
         if (attributes.informationData.showInformation) {
             holder.avatarImageView.layoutParams = holder.avatarImageView.layoutParams?.apply {
                 height = attributes.avatarSize
@@ -73,14 +84,25 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
 
             if (attributes.informationData.sentByMe) {
                 holder.memberNameView.apply {
-//                    layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
-//                            TableRow.LayoutParams.WRAP_CONTENT)
-//                    textAlignment = View.TEXT_ALIGNMENT_VIEW_END
-                    text = "You"
+                    textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                    text = context.getString(R.string.message_item_sent_by_me)
                 }
+//                val params = RelativeLayout.LayoutParams(XlinxUtils.dpToPx(44), XlinxUtils.dpToPx(44))
+//                params.addRule(RelativeLayout.ALIGN_PARENT_END)
 //                holder.avatarImageView.apply {
-//                    visibility = View.GONE
+//                    layoutParams = params
 //                }
+//                holder.avatarImageView.updateLayoutParams<RelativeLayout.LayoutParams> {
+//                    updateMargins(0, XlinxUtils.dpToPx(4), XlinxUtils.dpToPx(8), 0)
+//                    marginEnd = XlinxUtils.dpToPx(8)
+//                }
+                holder.avatarImageView.visibility = View.GONE
+            } else {
+                holder.memberNameView.apply {
+                    textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                    text = attributes.informationData.memberName
+                }
+                holder.avatarImageView.visibility = View.VISIBLE
             }
         } else {
             holder.avatarImageView.setOnClickListener(null)

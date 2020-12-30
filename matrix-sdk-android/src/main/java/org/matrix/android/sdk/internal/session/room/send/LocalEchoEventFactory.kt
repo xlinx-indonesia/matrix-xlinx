@@ -172,6 +172,7 @@ internal class LocalEchoEventFactory @Inject constructor(
         val body = bodyForReply(originalEvent.getLastMessageContent(), originalEvent.isReply())
         val replyFormatted = REPLY_PATTERN.format(
                 permalink,
+                context.getString(R.string.message_item_in_reply_to),
                 userLink,
                 originalEvent.senderInfo.disambiguatedDisplayName,
                 // Remove inner mx_reply tags if any
@@ -370,6 +371,7 @@ internal class LocalEchoEventFactory @Inject constructor(
         val body = bodyForReply(eventReplied.getLastMessageContent(), eventReplied.isReply())
         val replyFormatted = REPLY_PATTERN.format(
                 permalink,
+                context.getString(R.string.message_item_in_reply_to),
                 userLink,
                 userId,
                 // Remove inner mx_reply tags if any
@@ -484,7 +486,8 @@ internal class LocalEchoEventFactory @Inject constructor(
         //     </blockquote>
         // </mx-reply>
         // No whitespace because currently breaks temporary formatted text to Span
-        const val REPLY_PATTERN = """<mx-reply><blockquote><a href="%s">In reply to</a> <a href="%s">%s</a><br />%s</blockquote></mx-reply>%s"""
+//        const val REPLY_PATTERN = """<mx-reply><blockquote><a href="%s">In reply to</a> <a href="%s">%s</a><br />%s</blockquote></mx-reply>%s"""
+        const val REPLY_PATTERN = """<mx-reply><blockquote><a href="%s">%s</a> <a href="%s">%s</a><br />%s</blockquote></mx-reply>%s"""
 
         // This is used to replace inner mx-reply tags
         val MX_REPLY_REGEX = "<mx-reply>.*</mx-reply>".toRegex()

@@ -105,15 +105,15 @@ class RoomSettingsController @Inject constructor(
             }
         }
 
-        buildProfileAction(
-                id = "alias",
-                title = stringProvider.getString(R.string.room_settings_alias_title),
-                subtitle = stringProvider.getString(R.string.room_settings_alias_subtitle),
-                dividerColor = dividerColor,
-                divider = true,
-                editable = true,
-                action = { callback?.onRoomAliasesClicked() }
-        )
+//        buildProfileAction(
+//                id = "alias",
+//                title = stringProvider.getString(R.string.room_settings_alias_title),
+//                subtitle = stringProvider.getString(R.string.room_settings_alias_subtitle),
+//                dividerColor = dividerColor,
+//                divider = true,
+//                editable = true,
+//                action = { callback?.onRoomAliasesClicked() }
+//        )
 
         buildProfileAction(
                 id = "historyReadability",
