@@ -139,7 +139,7 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
                 marginEnd = 0
             }
             holder.fileImageWrapper.updateLayoutParams<ConstraintLayout.LayoutParams> {
-                marginStart = XlinxUtils.dpToPx(32 + 4)
+                marginStart = XlinxUtils.dpToPx(48 + 4)
             }
         } else {
             holder.filenameView.updateLayoutParams<ConstraintLayout.LayoutParams> {

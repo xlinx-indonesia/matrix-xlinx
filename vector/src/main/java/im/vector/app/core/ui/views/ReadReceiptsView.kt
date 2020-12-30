@@ -53,6 +53,7 @@ class ReadReceiptsView @JvmOverloads constructor(
         setOnClickListener(clickListener)
         if (readReceipts.isNotEmpty()) {
             isVisible = true
+            receiptSendState.setImageResource(R.drawable.ic_status_read)
             for (index in 0 until MAX_RECEIPT_DISPLAYED) {
                 val receiptData = readReceipts.getOrNull(index)
                 if (receiptData == null) {
@@ -108,7 +109,9 @@ class ReadReceiptsView @JvmOverloads constructor(
                     }
             }
         } else {
-            isVisible = false
+            isVisible = true
+            receiptSendState.setImageResource(R.drawable.ic_status_sent)
+            receiptMore.visibility = View.GONE
         }
     }
 

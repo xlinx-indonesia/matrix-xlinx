@@ -712,6 +712,8 @@ class RoomDetailFragment @Inject constructor(
     }
 
     override fun onDestroyView() {
+        exoPlayer!!.stop()
+        exoPlayer!!.release()
         timelineEventController.callback = null
         timelineEventController.removeModelBuildListener(modelBuildListener)
         activeCallView.callback = null

@@ -70,6 +70,17 @@
         android:scaleType="centerCrop"
         tools:src="@tools:sample/avatars" />
 
+    <ImageView
+        android:id="@+id/receiptSendState"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:padding="4dp"
+        android:layout_marginStart="2dp"
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/ic_status_sent" />
+
 <!--    <ImageView-->
 <!--        android:id="@+id/readBy"-->
 <!--        android:layout_width="18dp"-->

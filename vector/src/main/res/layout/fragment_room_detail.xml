@@ -129,21 +129,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="REC_1234567sdadasdadsa8.wav" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/mediaFileDurationText"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:maxLines="1"-->
-<!--                android:textAlignment="textEnd"-->
-<!--                android:textColor="@color/core_white"-->
-<!--                app:layout_constraintStart_toEndOf="@id/mediaFileNameText"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                tools:text="0:00" />-->
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.exoplayer2.ui.PlayerControlView
@@ -154,20 +139,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             />
-
-<!--        <SeekBar-->
-<!--            android:id="@+id/mediaFileProgressBar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:progressBackgroundTint="@color/core_white"-->
-<!--            android:progressTint="@color/grey_300"-->
-<!--            android:thumbTint="@color/grey_300"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            tools:progress="45"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
