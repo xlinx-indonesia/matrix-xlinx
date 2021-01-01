@@ -16,9 +16,13 @@
 
 package im.vector.app.features.home.room.detail.timeline.item
 
+import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import im.vector.app.R
@@ -41,7 +45,11 @@ abstract class DefaultItem : BaseEventItem<DefaultItem.Holder>() {
         holder.messageTextView.text = attributes.text
         attributes.avatarRenderer.render(attributes.informationData.matrixItem, holder.avatarImageView)
         holder.view.setOnLongClickListener(attributes.itemLongClickListener)
-        holder.readReceiptsView.render(attributes.informationData.readReceipts, attributes.avatarRenderer, _readReceiptsClickListener)
+        if (attributes.informationData.sentByMe) {
+            holder.readReceiptsView.render(attributes.informationData.readReceipts, attributes.avatarRenderer, _readReceiptsClickListener)
+        } else {
+            holder.readReceiptsView.isVisible = false
+        }
     }
 
     override fun unbind(holder: Holder) {

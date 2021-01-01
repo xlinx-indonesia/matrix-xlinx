@@ -28,6 +28,7 @@ import im.vector.app.core.epoxy.VectorEpoxyModel
 import im.vector.app.core.platform.CheckableView
 import im.vector.app.core.ui.views.ReadReceiptsView
 import im.vector.app.core.utils.DimensionConverter
+import im.vector.app.features.home.room.detail.timeline.ui.ConversationItemBodyBubble
 
 /**
  * Children must override getViewType()

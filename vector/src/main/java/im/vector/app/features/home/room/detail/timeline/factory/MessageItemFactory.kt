@@ -293,6 +293,7 @@ class MessageItemFactory @Inject constructor(
                 .izLocalFile(messageContent.getFileUrl().isLocalFile())
                 .izDownloaded(session.fileService().isFileInCache(messageContent))
                 .mxcUrl(mxcUrl)
+                .context(context)
                 .contentUploadStateTrackerBinder(contentUploadStateTrackerBinder)
                 .contentDownloadStateTrackerBinder(contentDownloadStateTrackerBinder)
                 .highlighted(highlight)
@@ -335,6 +336,7 @@ class MessageItemFactory @Inject constructor(
                 .playable(messageContent.info?.mimeType == MimeTypes.Gif)
                 .highlighted(highlight)
                 .mediaData(data)
+                .context(context)
                 .apply {
                     if (messageContent.msgType == MessageType.MSGTYPE_STICKER_LOCAL) {
                         mode(ImageContentRenderer.Mode.STICKER)
@@ -383,6 +385,7 @@ class MessageItemFactory @Inject constructor(
                 .playable(true)
                 .highlighted(highlight)
                 .mediaData(thumbnailData)
+                .context(context)
                 .clickListener { view -> callback?.onVideoMessageClicked(messageContent, videoData, view.findViewById(R.id.messageThumbnailView)) }
     }
 
@@ -457,6 +460,7 @@ class MessageItemFactory @Inject constructor(
                 .leftGuideline(avatarSizeProvider.leftGuideline)
                 .attributes(attributes)
                 .highlighted(highlight)
+                .context(context)
                 .movementMethod(createLinkMovementMethod(callback))
     }
 
@@ -476,6 +480,7 @@ class MessageItemFactory @Inject constructor(
                 .attributes(attributes)
                 .highlighted(highlight)
                 .message(formattedBody)
+                .context(context)
     }
 
     private fun annotateWithEdited(linkifiedBody: CharSequence,
@@ -535,6 +540,7 @@ class MessageItemFactory @Inject constructor(
                 .attributes(attributes)
                 .message(message)
                 .highlighted(highlight)
+                .context(context)
                 .movementMethod(createLinkMovementMethod(callback))
     }
 
@@ -563,6 +569,7 @@ class MessageItemFactory @Inject constructor(
                 .imageContentRenderer(imageContentRenderer)
                 .previewUrlCallback(callback)
                 .attributes(attributes)
+                .context(context)
                 .highlighted(highlight)
                 .movementMethod(createLinkMovementMethod(callback))
     }

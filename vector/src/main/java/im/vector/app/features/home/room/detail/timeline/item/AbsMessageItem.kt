@@ -18,19 +18,19 @@ package im.vector.app.features.home.room.detail.timeline.item
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.IdRes
-import androidx.core.view.isInvisible
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.core.view.marginStart
-import androidx.core.view.marginTop
+import androidx.core.view.marginBottom
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
+import androidx.core.view.updatePadding
 import com.airbnb.epoxy.EpoxyAttribute
 import im.vector.app.R
 import im.vector.app.XlinxUtils
@@ -38,6 +38,9 @@ import im.vector.app.core.utils.DebouncedClickListener
 import im.vector.app.features.home.AvatarRenderer
 import im.vector.app.features.home.room.detail.timeline.MessageColorProvider
 import im.vector.app.features.home.room.detail.timeline.TimelineEventController
+import im.vector.app.features.home.room.detail.timeline.ui.ConversationItemBodyBubble
+import im.vector.app.features.home.room.detail.timeline.ui.Outliner
+import java.util.ArrayList
 
 /**
  * Base timeline item that adds an optional information bar with the sender avatar, name and time
@@ -61,15 +64,17 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
         attributes.avatarCallback?.onMemberNameClicked(attributes.informationData)
     })
 
+//    private val outliners: MutableList<Outliner> = ArrayList(2)
+
+    @Suppress("DEPRECATION")
     @SuppressLint("SetTextI18n")
     override fun bind(holder: H) {
         super.bind(holder)
 
-        if (attributes.informationData.showInformation) {
-            holder.avatarImageView.layoutParams = holder.avatarImageView.layoutParams?.apply {
-                height = attributes.avatarSize
-                width = attributes.avatarSize
-            }
+        holder.avatarImageView.layoutParams = holder.avatarImageView.layoutParams?.apply {
+            height = attributes.avatarSize
+            width = attributes.avatarSize
+        }
             holder.avatarImageView.visibility = View.VISIBLE
             holder.avatarImageView.setOnClickListener(_avatarClickListener)
             holder.memberNameView.visibility = View.VISIBLE
@@ -83,41 +88,106 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
             holder.memberNameView.setOnLongClickListener(attributes.itemLongClickListener)
 
             if (attributes.informationData.sentByMe) {
+                val background = R.drawable.message_bubble_background_sent_alone
+//                val outliner = Outliner()
+//                context?.resources?.let { outliner.setRadius(it.getDimensionPixelOffset(R.dimen.message_corner_radius)) }
+//                context?.let { ContextCompat.getColor(it, R.color.core_grey_05) }?.let { outliner.setColor(it) }
+//                outliners.clear()
+//                outliners.add(outliner)
+
+                holder.bodyBubble.setBackgroundResource(background)
+//                holder.bodyBubble.setOutliners(outliners)
+
+                val params = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+                params.addRule(RelativeLayout.END_OF, RelativeLayout.NO_ID)
+                params.addRule(RelativeLayout.BELOW, R.id.messageMemberNameView)
+                params.addRule(RelativeLayout.START_OF, RelativeLayout.NO_ID)
+                params.addRule(RelativeLayout.ALIGN_PARENT_END)
+                holder.bodyBubble.layoutParams = params
+                holder.bodyBubble.isVisible = true
+                holder.bodyBubble.updateLayoutParams<RelativeLayout.LayoutParams> {
+                    updateMargins(0,0,0, XlinxUtils.dpToPx(4))
+                }
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    context?.getColor(R.color.core_grey_05)?.let { holder.bodyBubble.background.setColorFilter(it, PorterDuff.Mode.MULTIPLY) }
+                }
+
                 holder.memberNameView.apply {
                     textAlignment = View.TEXT_ALIGNMENT_TEXT_END
                     text = context.getString(R.string.message_item_sent_by_me)
                 }
-//                val params = RelativeLayout.LayoutParams(XlinxUtils.dpToPx(44), XlinxUtils.dpToPx(44))
-//                params.addRule(RelativeLayout.ALIGN_PARENT_END)
-//                holder.avatarImageView.apply {
-//                    layoutParams = params
-//                }
-//                holder.avatarImageView.updateLayoutParams<RelativeLayout.LayoutParams> {
-//                    updateMargins(0, XlinxUtils.dpToPx(4), XlinxUtils.dpToPx(8), 0)
-//                    marginEnd = XlinxUtils.dpToPx(8)
-//                }
                 holder.avatarImageView.visibility = View.GONE
+
+                val memberNameViewParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+                memberNameViewParams.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+                memberNameViewParams.addRule(RelativeLayout.START_OF, R.id.messageTimeView)
+                memberNameViewParams.addRule(RelativeLayout.END_OF, R.id.messageStartGuideline)
+                holder.memberNameView.layoutParams = memberNameViewParams
+                holder.memberNameView.updateLayoutParams<RelativeLayout.LayoutParams> {
+                    updateMargins(XlinxUtils.dpToPx(8), XlinxUtils.dpToPx(4), XlinxUtils.dpToPx(4), 0)
+                }
+
+                val timeViewParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+                timeViewParams.addRule(RelativeLayout.ALIGN_BASELINE, R.id.messageMemberNameView)
+                timeViewParams.addRule(RelativeLayout.ALIGN_PARENT_END)
+                holder.timeView.layoutParams = timeViewParams
+                holder.timeView.updateLayoutParams<RelativeLayout.LayoutParams> {
+                    updateMargins(XlinxUtils.dpToPx(8), 0, XlinxUtils.dpToPx(8), 0)
+                }
+
+                holder.memberNameView.visibility = View.INVISIBLE
+
             } else {
+                val background = R.drawable.message_bubble_background_sent_alone
+//                val outliner = Outliner()
+//                context?.resources?.let { outliner.setRadius(it.getDimensionPixelOffset(R.dimen.message_corner_radius)) }
+//                outliner.setColor(attributes.getMemberNameColor())
+//                outliners.clear()
+//                outliners.add(outliner)
+
+                holder.bodyBubble.setBackgroundResource(background)
+//                holder.bodyBubble.setOutliners(outliners)
+
+                val params = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+                params.addRule(RelativeLayout.END_OF, R.id.messageStartGuideline)
+                params.addRule(RelativeLayout.BELOW, R.id.messageMemberNameView)
+                holder.bodyBubble.layoutParams = params
+                holder.bodyBubble.isVisible = true
+                holder.bodyBubble.background.setColorFilter(attributes.getMemberNameColor(), PorterDuff.Mode.MULTIPLY)
+                holder.bodyBubble.updateLayoutParams<RelativeLayout.LayoutParams> {
+                    updateMargins(0,0,XlinxUtils.dpToPx(52), XlinxUtils.dpToPx(4))
+                }
+
                 holder.memberNameView.apply {
                     textAlignment = View.TEXT_ALIGNMENT_TEXT_START
                     text = attributes.informationData.memberName
                 }
+
+                val memberNameViewParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+                memberNameViewParams.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+                memberNameViewParams.addRule(RelativeLayout.END_OF, R.id.messageStartGuideline)
+                holder.memberNameView.layoutParams = memberNameViewParams
+                holder.memberNameView.updateLayoutParams<RelativeLayout.LayoutParams> {
+                    updateMargins(XlinxUtils.dpToPx(8), XlinxUtils.dpToPx(4), XlinxUtils.dpToPx(4), 0)
+                }
+
+                val timeViewParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+                timeViewParams.addRule(RelativeLayout.ALIGN_BASELINE, R.id.messageMemberNameView)
+                timeViewParams.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.NO_ID)
+                timeViewParams.addRule(RelativeLayout.END_OF, R.id.messageMemberNameView)
+                holder.timeView.layoutParams = timeViewParams
+                holder.timeView.updateLayoutParams<RelativeLayout.LayoutParams> {
+                    updateMargins(XlinxUtils.dpToPx(8), 0, XlinxUtils.dpToPx(8), 0)
+                }
+
                 holder.avatarImageView.visibility = View.VISIBLE
+
+                holder.memberNameView.visibility = View.VISIBLE
             }
-        } else {
-            holder.avatarImageView.setOnClickListener(null)
-            holder.memberNameView.setOnClickListener(null)
-            holder.avatarImageView.visibility = View.GONE
-            if (attributes.informationData.forceShowTimestamp) {
-                holder.memberNameView.isInvisible = true
-                holder.timeView.isVisible = true
-                holder.timeView.text = attributes.informationData.time
-            } else {
-                holder.memberNameView.isVisible = false
-                holder.timeView.isVisible = false
-            }
-            holder.avatarImageView.setOnLongClickListener(null)
-            holder.memberNameView.setOnLongClickListener(null)
+
+        holder.bodyBubble.apply {
+            updatePadding(0, XlinxUtils.dpToPx(3), 0, XlinxUtils.dpToPx(4))
         }
     }
 
@@ -136,6 +206,7 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
         val avatarImageView by bind<ImageView>(R.id.messageAvatarImageView)
         val memberNameView by bind<TextView>(R.id.messageMemberNameView)
         val timeView by bind<TextView>(R.id.messageTimeView)
+        val bodyBubble by bind<ConversationItemBodyBubble>(R.id.body_bubble)
     }
 
     /**

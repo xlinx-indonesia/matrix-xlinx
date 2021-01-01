@@ -70,6 +70,7 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
     @EpoxyAttribute
     lateinit var contentDownloadStateTrackerBinder: ContentDownloadStateTrackerBinder
 
+    @Suppress("DEPRECATION")
     @SuppressLint("SetTextI18n")
     override fun bind(holder: Holder) {
         super.bind(holder)
@@ -98,9 +99,10 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
         if (filename.contains("VNR", true)) {
             try {
                 val tempfilenamesplit = filename.split(":::")
-                val audioSenderName = tempfilenamesplit[1]
+//                val audioSenderName = tempfilenamesplit[1]
                 val audioTimestamp = tempfilenamesplit[2]
-                holder.filenameView.text = audioTimestamp + " | " + audioSenderName + " | " + context?.getString(R.string.message_item_audio)
+                holder.filenameView.text = audioTimestamp
+//                holder.filenameView.text = audioTimestamp + " | " + audioSenderName + " | " + context?.getString(R.string.message_item_audio)
             } catch (e: IndexOutOfBoundsException) {
                 e.printStackTrace()
             }
@@ -138,12 +140,18 @@ abstract class MessageFileItem : AbsMessageItem<MessageFileItem.Holder>() {
             holder.filenameView.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 marginEnd = 0
             }
+            holder.filenameView.apply {
+                setTextColor(context.resources.getColor(R.color.riotx_text_primary_light))
+            }
             holder.fileImageWrapper.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 marginStart = XlinxUtils.dpToPx(48 + 4)
             }
         } else {
             holder.filenameView.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 marginEnd = XlinxUtils.dpToPx(32)
+            }
+            holder.filenameView.apply {
+                setTextColor(context.resources.getColor(R.color.riotx_text_primary_dark))
             }
             holder.fileImageWrapper.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 marginStart = XlinxUtils.dpToPx(4)

@@ -16,12 +16,16 @@
 
 package im.vector.app.features.home.room.detail.timeline.item
 
+import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import im.vector.app.R
 import im.vector.app.core.utils.DebouncedClickListener
 import im.vector.app.features.home.AvatarRenderer
@@ -29,6 +33,7 @@ import im.vector.app.features.home.room.detail.timeline.MessageColorProvider
 import im.vector.app.features.home.room.detail.timeline.TimelineEventController
 import im.vector.app.features.reactions.widget.ReactionButton
 import org.matrix.android.sdk.api.session.room.send.SendState
+import timber.log.Timber
 
 /**
  * Base timeline item with reactions and read receipts.
@@ -67,11 +72,21 @@ abstract class AbsBaseMessageItem<H : AbsBaseMessageItem.Holder> : BaseEventItem
 
     override fun bind(holder: H) {
         super.bind(holder)
-        holder.readReceiptsView.render(
-                baseAttributes.informationData.readReceipts,
-                baseAttributes.avatarRenderer,
-                _readReceiptsClickListener
-        )
+        baseAttributes.informationData.readReceipts.forEach {
+            Timber.tag("receiptdata").i(it.userId)
+        }
+        if (baseAttributes.informationData.sentByMe) {
+            holder.readReceiptsView.updateLayoutParams<LinearLayout.LayoutParams> {
+                gravity = Gravity.END
+            }
+            holder.readReceiptsView.render(
+                    baseAttributes.informationData.readReceipts,
+                    baseAttributes.avatarRenderer,
+                    _readReceiptsClickListener
+            )
+        } else {
+            holder.readReceiptsView.isVisible = false
+        }
 
         val reactions = baseAttributes.informationData.orderedReactionList
         if (!shouldShowReactionAtBottom() || reactions.isNullOrEmpty()) {

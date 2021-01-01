@@ -109,9 +109,12 @@ class ReadReceiptsView @JvmOverloads constructor(
                     }
             }
         } else {
-            isVisible = true
-            receiptSendState.setImageResource(R.drawable.ic_status_sent)
-            receiptMore.visibility = View.GONE
+            isVisible = false
+//            receiptSendState.setImageResource(R.drawable.ic_status_sent)
+//            receiptMore.visibility = View.GONE
+//            receiptAvatars.forEach {
+//                it.visibility = View.GONE
+//            }
         }
     }
 

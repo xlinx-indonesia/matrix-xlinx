@@ -60,6 +60,7 @@ abstract class MessageTextItem : AbsMessageItem<MessageTextItem.Holder>() {
 
     private val previewUrlViewUpdater = PreviewUrlViewUpdater()
 
+    @Suppress("DEPRECATION")
     override fun bind(holder: Holder) {
         // Preview URL
         previewUrlViewUpdater.previewUrlView = holder.previewUrlView
@@ -91,11 +92,11 @@ abstract class MessageTextItem : AbsMessageItem<MessageTextItem.Holder>() {
 
         if (attributes.informationData.sentByMe) {
             holder.messageView.apply {
-                textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                setTextColor(context.resources.getColor(R.color.riotx_text_primary_light))
             }
         } else {
             holder.messageView.apply {
-                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                setTextColor(context.resources.getColor(R.color.riotx_text_primary_dark))
             }
         }
 

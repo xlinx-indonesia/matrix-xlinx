@@ -28,8 +28,10 @@ import android.content.res.Resources;
 import android.util.TypedValue;
 import android.widget.CompoundButton;
 
+import androidx.annotation.DimenRes;
 import androidx.appcompat.widget.AppCompatCheckBox;
 
+import java.util.Collection;
 import java.util.List;
 
 public class XlinxUtils {
@@ -87,6 +89,14 @@ public class XlinxUtils {
         } catch (Exception ignored) {
             return false;
         }
+    }
+
+    public static boolean isEmpty(Collection<?> collection) {
+        return collection == null || collection.isEmpty();
+    }
+
+    public static int readDimen(Context context, @DimenRes int dimenId) {
+        return context.getResources().getDimensionPixelOffset(dimenId);
     }
 
     public static float pxToDp(float px) {

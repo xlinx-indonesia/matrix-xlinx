@@ -37,5 +37,16 @@
 
     <dimen name="conversation_compose_height">54dp</dimen>
 
+    <dimen name="message_corner_radius">16dp</dimen>
+    <dimen name="message_corner_collapse_radius">4dp</dimen>
+    <dimen name="message_bubble_corner_radius">2dp</dimen>
+    <dimen name="message_bubble_shadow_distance">1.5dp</dimen>
+    <dimen name="message_bubble_horizontal_padding">12dp</dimen>
+    <dimen name="message_bubble_top_padding">6dp</dimen>
+    <dimen name="message_bubble_top_padding_audio">12dp</dimen>
+    <dimen name="message_bubble_collapsed_footer_padding">6dp</dimen>
+    <dimen name="message_bubble_edge_margin">32dp</dimen>
+    <dimen name="message_bubble_bottom_padding">8dp</dimen>
+
 
 </resources>
