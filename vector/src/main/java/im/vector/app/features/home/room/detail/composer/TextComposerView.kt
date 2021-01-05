@@ -199,9 +199,11 @@ import org.matrix.android.sdk.api.crypto.RoomEncryptionTrustLevel
             composerEditText.setHint(R.string.room_message_placeholder)
             composerShieldImageView.isVisible = true
             val shieldRes = when (roomEncryptionTrustLevel) {
-                RoomEncryptionTrustLevel.Trusted -> R.drawable.ic_shield_trusted
+//                RoomEncryptionTrustLevel.Trusted -> R.drawable.ic_shield_trusted
+                RoomEncryptionTrustLevel.Trusted -> R.drawable.ic_shield_safe_xlinx
                 RoomEncryptionTrustLevel.Warning -> R.drawable.ic_shield_warning
-                else                             -> R.drawable.ic_shield_black
+                else                             -> R.drawable.ic_shield_safe_xlinx
+//                else                             -> R.drawable.ic_shield_black
             }
             composerShieldImageView.setImageResource(shieldRes)
         } else {

@@ -111,7 +111,8 @@ abstract class MergedRoomCreationItem : BasedMergedItem<MergedRoomCreationItem.H
                 }
                 holder.e2eTitleDescriptionView.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 holder.e2eTitleTextView.setCompoundDrawablesWithIntrinsicBounds(
-                        ContextCompat.getDrawable(holder.view.context, R.drawable.ic_shield_black),
+//                        ContextCompat.getDrawable(holder.view.context, R.drawable.ic_shield_black),
+                        ContextCompat.getDrawable(holder.view.context, R.drawable.ic_shield_safe_xlinx),
                         null, null, null
                 )
             } else {

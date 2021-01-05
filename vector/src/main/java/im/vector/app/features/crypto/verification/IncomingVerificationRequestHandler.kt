@@ -67,7 +67,8 @@ class IncomingVerificationRequestHandler @Inject constructor(
                         uid,
                         context.getString(R.string.sas_incoming_request_notif_title),
                         context.getString(R.string.sas_incoming_request_notif_content, name),
-                        R.drawable.ic_shield_black,
+//                        R.drawable.ic_shield_black,
+                        R.drawable.ic_shield_safe_xlinx,
                         shouldBeDisplayedIn = { activity ->
                             if (activity is VectorBaseActivity) {
                                 // TODO a bit too ugly :/
@@ -127,7 +128,8 @@ class IncomingVerificationRequestHandler @Inject constructor(
                     uniqueIdForVerificationRequest(pr),
                     context.getString(R.string.sas_incoming_request_notif_title),
                     "$name(${pr.otherUserId})",
-                    R.drawable.ic_shield_black,
+//                    R.drawable.ic_shield_black,
+                    R.drawable.ic_shield_safe_xlinx,
                     shouldBeDisplayedIn = { activity ->
                         if (activity is RoomDetailActivity) {
                             activity.intent?.extras?.getParcelable<RoomDetailArgs>(RoomDetailActivity.EXTRA_ROOM_DETAIL_ARGS)?.let {

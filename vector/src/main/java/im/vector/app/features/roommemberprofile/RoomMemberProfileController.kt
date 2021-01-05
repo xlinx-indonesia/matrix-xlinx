@@ -108,7 +108,8 @@ class RoomMemberProfileController @Inject constructor(
                 if (state.userMXCrossSigningInfo.isTrusted()) {
                     // User is trusted
                     val icon = if (state.allDevicesAreTrusted) {
-                        R.drawable.ic_shield_trusted
+//                        R.drawable.ic_shield_trusted
+                        R.drawable.ic_shield_safe_xlinx
                     } else {
                         R.drawable.ic_shield_warning
                     }
@@ -137,7 +138,8 @@ class RoomMemberProfileController @Inject constructor(
                                 title = stringProvider.getString(R.string.verification_profile_verify),
                                 dividerColor = dividerColor,
                                 editable = true,
-                                icon = R.drawable.ic_shield_black,
+//                                icon = R.drawable.ic_shield_black,
+                                icon = R.drawable.ic_shield_safe_xlinx,
                                 divider = false,
                                 action = { callback?.onTapVerify() }
                         )

@@ -24,6 +24,7 @@ import android.text.TextPaint
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import dagger.Lazy
@@ -96,6 +97,7 @@ import org.matrix.android.sdk.api.session.room.timeline.getLastMessageContent
 import org.matrix.android.sdk.api.util.MimeTypes
 import org.matrix.android.sdk.internal.crypto.attachments.toElementToDecrypt
 import org.matrix.android.sdk.internal.crypto.model.event.EncryptedEventContent
+import timber.log.Timber
 import java.io.File
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -433,7 +435,22 @@ class MessageItemFactory @Inject constructor(
                                        attributes: AbsMessageItem.Attributes): MessageTextItem? {
         val compressed = htmlCompressor.compress(messageContent.formattedBody!!)
         val formattedBody = htmlRenderer.get().render(compressed, pillsPostProcessor)
-        return buildMessageTextItem(formattedBody, true, informationData, highlight, callback, attributes)
+        Timber.tag("frmt").i(formattedBody.toString())
+
+        return if (compressed.contains("<mx-reply>")) {
+            val splitOriginalBody = compressed.split("</a><br/>")
+            val splitReplyBody = compressed.split("</mx-reply>")
+            val originalId = splitOriginalBody[0]
+            val originalMessage = splitOriginalBody[1]
+            val shortenOriMessage = originalMessage.substring(0, Math.min(originalMessage.length, 30))
+            val shortenReplyBody = originalId + "</a><br/>" + shortenOriMessage + "...</blockquote></mx-reply>" + splitReplyBody[1]
+
+            val shortenFormattedBody = htmlRenderer.get().render(shortenReplyBody, pillsPostProcessor)
+
+            buildMessageTextItem(shortenFormattedBody, true, informationData, highlight, callback, attributes)
+        } else {
+            buildMessageTextItem(formattedBody, true, informationData, highlight, callback, attributes)
+        }
     }
 
     private fun buildMessageTextItem(body: CharSequence,

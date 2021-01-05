@@ -49,7 +49,8 @@ class DeviceTrustInfoEpoxyController @Inject constructor(private val stringProvi
             genericItem {
                 id("title")
                 style(GenericItem.STYLE.BIG_TEXT)
-                titleIconResourceId(if (isVerified) R.drawable.ic_shield_trusted else R.drawable.ic_shield_warning)
+//                titleIconResourceId(if (isVerified) R.drawable.ic_shield_trusted else R.drawable.ic_shield_warning)
+                titleIconResourceId(if (isVerified) R.drawable.ic_shield_safe_xlinx else R.drawable.ic_shield_warning)
                 title(
                         stringProvider.getString(
                                 if (isVerified) R.string.verification_profile_verified else R.string.verification_profile_warning
@@ -78,7 +79,8 @@ class DeviceTrustInfoEpoxyController @Inject constructor(private val stringProvi
 
             genericItemWithValue {
                 id(it.deviceId)
-                titleIconResourceId(if (isVerified) R.drawable.ic_shield_trusted else R.drawable.ic_shield_warning)
+//                titleIconResourceId(if (isVerified) R.drawable.ic_shield_trusted else R.drawable.ic_shield_warning)
+                titleIconResourceId(if (isVerified) R.drawable.ic_shield_safe_xlinx else R.drawable.ic_shield_warning)
                 title(
                         span {
                             +(it.displayName() ?: "")

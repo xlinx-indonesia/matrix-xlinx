@@ -25,8 +25,11 @@ import org.matrix.android.sdk.api.crypto.RoomEncryptionTrustLevel
 fun RoomEncryptionTrustLevel?.toImageRes(): Int {
     return when (this) {
         null                             -> 0
-        RoomEncryptionTrustLevel.Default -> R.drawable.ic_shield_black
+//        RoomEncryptionTrustLevel.Default -> R.drawable.ic_shield_black
+        RoomEncryptionTrustLevel.Default -> R.drawable.ic_shield_safe_xlinx
         RoomEncryptionTrustLevel.Warning -> R.drawable.ic_shield_warning
-        RoomEncryptionTrustLevel.Trusted -> R.drawable.ic_shield_trusted
+//        RoomEncryptionTrustLevel.Trusted -> R.drawable.ic_shield_trusted
+        RoomEncryptionTrustLevel.Trusted -> R.drawable.ic_shield_safe_xlinx
+
     }.exhaustive
 }

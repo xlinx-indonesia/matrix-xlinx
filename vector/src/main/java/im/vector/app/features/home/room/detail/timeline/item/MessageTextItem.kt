@@ -92,11 +92,13 @@ abstract class MessageTextItem : AbsMessageItem<MessageTextItem.Holder>() {
 
         if (attributes.informationData.sentByMe) {
             holder.messageView.apply {
-                setTextColor(context.resources.getColor(R.color.riotx_text_primary_light))
+//                setTextColor(context.resources.getColor(R.color.riotx_text_primary_light))
+                setTextColor(context.resources.getColor(R.color.riotx_text_primary_dark))
             }
         } else {
             holder.messageView.apply {
-                setTextColor(context.resources.getColor(R.color.riotx_text_primary_dark))
+//                setTextColor(context.resources.getColor(R.color.riotx_text_primary_dark))
+                setTextColor(context.resources.getColor(R.color.riotx_text_primary_light))
             }
         }
 

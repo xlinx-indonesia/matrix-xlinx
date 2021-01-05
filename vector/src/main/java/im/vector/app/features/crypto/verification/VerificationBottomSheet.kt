@@ -167,7 +167,8 @@ class VerificationBottomSheet : VectorBaseBottomSheetDialogFragment() {
                 if (state.sasTransactionState == VerificationTxState.Verified
                         || state.qrTransactionState == VerificationTxState.Verified
                         || state.verifiedFromPrivateKeys) {
-                    otherUserShield.setImageResource(R.drawable.ic_shield_trusted)
+//                    otherUserShield.setImageResource(R.drawable.ic_shield_trusted)
+                    otherUserShield.setImageResource(R.drawable.ic_shield_safe_xlinx)
                 } else {
                     otherUserShield.setImageResource(R.drawable.ic_shield_warning)
                 }

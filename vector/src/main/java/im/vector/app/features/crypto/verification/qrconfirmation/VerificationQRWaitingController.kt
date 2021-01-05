@@ -49,7 +49,8 @@ class VerificationQRWaitingController @Inject constructor(
 
         bottomSheetVerificationBigImageItem {
             id("image")
-            imageRes(R.drawable.ic_shield_trusted)
+//            imageRes(R.drawable.ic_shield_trusted)
+            imageRes(R.drawable.ic_shield_safe_xlinx)
         }
 
         bottomSheetVerificationWaitingItem {

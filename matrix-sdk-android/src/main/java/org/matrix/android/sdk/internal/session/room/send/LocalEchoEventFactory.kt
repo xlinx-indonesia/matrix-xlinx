@@ -170,6 +170,7 @@ internal class LocalEchoEventFactory @Inject constructor(
         val userLink = originalEvent.root.senderId?.let { permalinkFactory.createPermalink(it) } ?: ""
 
         val body = bodyForReply(originalEvent.getLastMessageContent(), originalEvent.isReply())
+
         val replyFormatted = REPLY_PATTERN.format(
                 permalink,
                 context.getString(R.string.message_item_in_reply_to),
@@ -369,6 +370,9 @@ internal class LocalEchoEventFactory @Inject constructor(
         val userLink = permalinkFactory.createPermalink(userId) ?: return null
 
         val body = bodyForReply(eventReplied.getLastMessageContent(), eventReplied.isReply())
+
+//        val shortenRawBody = body.formattedText?.substring(0, Math.min(body.formattedText.length, 20))
+
         val replyFormatted = REPLY_PATTERN.format(
                 permalink,
                 context.getString(R.string.message_item_in_reply_to),

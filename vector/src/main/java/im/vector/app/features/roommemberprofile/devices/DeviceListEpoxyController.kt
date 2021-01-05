@@ -75,7 +75,8 @@ class DeviceListEpoxyController @Inject constructor(private val stringProvider: 
                 genericItem {
                     id("title")
                     style(GenericItem.STYLE.BIG_TEXT)
-                    titleIconResourceId(if (allGreen) R.drawable.ic_shield_trusted else R.drawable.ic_shield_warning)
+//                    titleIconResourceId(if (allGreen) R.drawable.ic_shield_trusted else R.drawable.ic_shield_warning)
+                    titleIconResourceId(if (allGreen) R.drawable.ic_shield_safe_xlinx else R.drawable.ic_shield_warning)
                     title(
                             stringProvider.getString(
                                     if (allGreen) R.string.verification_profile_verified else R.string.verification_profile_warning
@@ -105,7 +106,8 @@ class DeviceListEpoxyController @Inject constructor(private val stringProvider: 
                     deviceList.forEach { device ->
                         genericItemWithValue {
                             id(device.deviceId)
-                            titleIconResourceId(if (device.isVerified) R.drawable.ic_shield_trusted else R.drawable.ic_shield_warning)
+//                            titleIconResourceId(if (device.isVerified) R.drawable.ic_shield_trusted else R.drawable.ic_shield_warning)
+                            titleIconResourceId(if (device.isVerified) R.drawable.ic_shield_safe_xlinx else R.drawable.ic_shield_warning)
                             apply {
                                 if (vectorPreferences.developerMode()) {
                                     val seq = span {

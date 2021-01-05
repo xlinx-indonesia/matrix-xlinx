@@ -201,12 +201,14 @@ class RoomMemberProfileFragment @Inject constructor(
                         val icon = if (state.userMXCrossSigningInfo.isTrusted()) {
                             // User is trusted
                             if (state.allDevicesAreCrossSignedTrusted) {
-                                R.drawable.ic_shield_trusted
+//                                R.drawable.ic_shield_trusted
+                                R.drawable.ic_shield_safe_xlinx
                             } else {
                                 R.drawable.ic_shield_warning
                             }
                         } else {
-                            R.drawable.ic_shield_black
+//                            R.drawable.ic_shield_black
+                            R.drawable.ic_shield_safe_xlinx
                         }
 
                         memberProfileDecorationImageView.setImageResource(icon)
@@ -214,8 +216,10 @@ class RoomMemberProfileFragment @Inject constructor(
                     } else {
                         // Legacy
                         if (state.allDevicesAreTrusted) {
-                            memberProfileDecorationImageView.setImageResource(R.drawable.ic_shield_trusted)
-                            matrixProfileDecorationToolbarAvatarImageView.setImageResource(R.drawable.ic_shield_trusted)
+//                            memberProfileDecorationImageView.setImageResource(R.drawable.ic_shield_trusted)
+//                            matrixProfileDecorationToolbarAvatarImageView.setImageResource(R.drawable.ic_shield_trusted)
+                            memberProfileDecorationImageView.setImageResource(R.drawable.ic_shield_safe_xlinx)
+                            matrixProfileDecorationToolbarAvatarImageView.setImageResource(R.drawable.ic_shield_safe_xlinx)
                         } else {
                             memberProfileDecorationImageView.setImageResource(R.drawable.ic_shield_warning)
                             matrixProfileDecorationToolbarAvatarImageView.setImageResource(R.drawable.ic_shield_warning)

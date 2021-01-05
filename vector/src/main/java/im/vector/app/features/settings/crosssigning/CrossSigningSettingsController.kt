@@ -41,21 +41,24 @@ class CrossSigningSettingsController @Inject constructor(
             data.xSigningKeyCanSign        -> {
                 genericItem {
                     id("can")
-                    titleIconResourceId(R.drawable.ic_shield_trusted)
+//                    titleIconResourceId(R.drawable.ic_shield_trusted)
+                    titleIconResourceId(R.drawable.ic_shield_safe_xlinx)
                     title(stringProvider.getString(R.string.encryption_information_dg_xsigning_complete))
                 }
             }
             data.xSigningKeysAreTrusted    -> {
                 genericItem {
                     id("trusted")
-                    titleIconResourceId(R.drawable.ic_shield_custom)
+//                    titleIconResourceId(R.drawable.ic_shield_custom)
+                    titleIconResourceId(R.drawable.ic_shield_safe_xlinx)
                     title(stringProvider.getString(R.string.encryption_information_dg_xsigning_trusted))
                 }
             }
             data.xSigningIsEnableInAccount -> {
                 genericItem {
                     id("enable")
-                    titleIconResourceId(R.drawable.ic_shield_black)
+//                    titleIconResourceId(R.drawable.ic_shield_black)
+                    titleIconResourceId(R.drawable.ic_shield_safe_xlinx)
                     title(stringProvider.getString(R.string.encryption_information_dg_xsigning_not_trusted))
                 }
             }

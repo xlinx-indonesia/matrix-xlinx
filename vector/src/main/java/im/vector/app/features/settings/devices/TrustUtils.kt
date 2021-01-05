@@ -28,26 +28,33 @@ object TrustUtils {
             currentDevice -> {
                 if (legacyMode) {
                     // In legacy, current session is always trusted
-                    R.drawable.ic_shield_trusted
+//                    R.drawable.ic_shield_trusted
+                    R.drawable.ic_shield_safe_xlinx
                 } else {
                     // If current session doesn't trust MSK, show red shield for current device
-                    R.drawable.ic_shield_trusted.takeIf { trustMSK } ?: R.drawable.ic_shield_warning
+//                    R.drawable.ic_shield_trusted.takeIf { trustMSK } ?: R.drawable.ic_shield_warning
+                    R.drawable.ic_shield_safe_xlinx.takeIf { trustMSK } ?: R.drawable.ic_shield_warning
                 }
             }
             else          -> {
                 if (legacyMode) {
                     // use local trust
-                    R.drawable.ic_shield_trusted.takeIf { deviceTrustLevel?.locallyVerified == true } ?: R.drawable.ic_shield_warning
+//                    R.drawable.ic_shield_trusted.takeIf { deviceTrustLevel?.locallyVerified == true } ?: R.drawable.ic_shield_warning
+                    R.drawable.ic_shield_safe_xlinx.takeIf { deviceTrustLevel?.locallyVerified == true } ?: R.drawable.ic_shield_warning
                 } else {
                     if (trustMSK) {
                         // use cross sign trust, put locally trusted in black
-                        R.drawable.ic_shield_trusted.takeIf { deviceTrustLevel?.crossSigningVerified == true }
-                                ?: R.drawable.ic_shield_black.takeIf { deviceTrustLevel?.locallyVerified == true }
+//                        R.drawable.ic_shield_trusted.takeIf { deviceTrustLevel?.crossSigningVerified == true }
+//                                ?: R.drawable.ic_shield_black.takeIf { deviceTrustLevel?.locallyVerified == true }
+//                                ?: R.drawable.ic_shield_warning
+                        R.drawable.ic_shield_safe_xlinx.takeIf { deviceTrustLevel?.crossSigningVerified == true }
+                                ?: R.drawable.ic_shield_safe_xlinx.takeIf { deviceTrustLevel?.locallyVerified == true }
                                 ?: R.drawable.ic_shield_warning
                     } else {
                         // The current session is untrusted, so displays others in black
                         // as we can't know the cross-signing state
-                        R.drawable.ic_shield_black
+//                        R.drawable.ic_shield_black
+                        R.drawable.ic_shield_safe_xlinx
                     }
                 }
             }

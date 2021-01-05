@@ -110,7 +110,7 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
                 }
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    context?.getColor(R.color.core_grey_05)?.let { holder.bodyBubble.background.setColorFilter(it, PorterDuff.Mode.MULTIPLY) }
+                    context?.getColor(R.color.notification_accent_color)?.let { holder.bodyBubble.background.setColorFilter(it, PorterDuff.Mode.MULTIPLY) }
                 }
 
                 holder.memberNameView.apply {
@@ -154,7 +154,10 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
                 params.addRule(RelativeLayout.BELOW, R.id.messageMemberNameView)
                 holder.bodyBubble.layoutParams = params
                 holder.bodyBubble.isVisible = true
-                holder.bodyBubble.background.setColorFilter(attributes.getMemberNameColor(), PorterDuff.Mode.MULTIPLY)
+//                holder.bodyBubble.background.setColorFilter(attributes.getMemberNameColor(), PorterDuff.Mode.MULTIPLY)
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    context?.getColor(R.color.core_grey_05)?.let { holder.bodyBubble.background.setColorFilter(it, PorterDuff.Mode.MULTIPLY) }
+                }
                 holder.bodyBubble.updateLayoutParams<RelativeLayout.LayoutParams> {
                     updateMargins(0,0,XlinxUtils.dpToPx(52), XlinxUtils.dpToPx(4))
                 }
@@ -189,6 +192,7 @@ abstract class AbsMessageItem<H : AbsMessageItem.Holder> : AbsBaseMessageItem<H>
         holder.bodyBubble.apply {
             updatePadding(0, XlinxUtils.dpToPx(3), 0, XlinxUtils.dpToPx(4))
         }
+
     }
 
     override fun unbind(holder: H) {
