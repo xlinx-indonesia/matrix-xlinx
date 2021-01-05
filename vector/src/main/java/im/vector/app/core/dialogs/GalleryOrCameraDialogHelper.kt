@@ -95,6 +95,12 @@ class GalleryOrCameraDialogHelper(
                 .let { uCropActivityResultLauncher.launch(it) }
     }
 
+//    private fun startPhotoEditor(image: MultiPickerImageType) {
+//        val destinationFile = File(activity.cacheDir, image.displayName.insertBeforeLast("_e_${System.currentTimeMillis()}"))
+//        val uri = image.contentUri
+//
+//    }
+
     private enum class Type {
         Camera,
         Gallery

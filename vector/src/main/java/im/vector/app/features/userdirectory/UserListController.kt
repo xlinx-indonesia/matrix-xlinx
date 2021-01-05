@@ -114,8 +114,8 @@ class UserListController @Inject constructor(private val session: Session,
                 } catch (e: NullPointerException) {
                     e.printStackTrace()
                 } finally {
-//                    buildKnownUsers(currentState, currentState.getSelectedMatrixId())
-                    renderEmptyState()
+                    buildKnownUsers(currentState, currentState.getSelectedMatrixId())
+//                    renderEmptyState()
                 }
             }
         }

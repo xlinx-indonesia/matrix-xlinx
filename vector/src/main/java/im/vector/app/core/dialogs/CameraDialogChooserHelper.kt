@@ -106,6 +106,18 @@ class CameraDialogChooserHelper(
         }
     }
 
+//    private fun startPhotoEditor(image: MultiPickerImageType) {
+//        val destinationFile = File(activity.cacheDir, image.displayName.insertBeforeLast("_e_${System.currentTimeMillis()}"))
+//        val uri = image.contentUri
+//
+//    }
+
+//    private val photoEditorActivityResultLauncher = fragment.registerStartForActivityResult { activityResult ->
+//        if (activityResult.resultCode == Activity.RESULT_OK) {
+//            activityResult.data?.let { listener.onImageReady(UCrop.getOutput(it)) }
+//        }
+//    }
+
 
     private enum class Type {
         Photo,

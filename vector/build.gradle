@@ -261,7 +261,7 @@ android {
         lintConfig file("lint.xml")
 
 //        ignoreWarnings true
-        abortOnError true
+        abortOnError false
     }
 
     compileOptions {
@@ -462,6 +462,8 @@ dependencies {
     implementation "com.google.android.exoplayer:exoplayer:2.12.2"
     implementation 'com.loopj.android:android-async-http:1.4.11'
 //    implementation 'com.github.massoudss:waveformSeekBar:1.1.4'
+    implementation 'ja.burhanrashid52:photoeditor:1.1.0'
+
 
 
 
